@@ -29,5 +29,10 @@ public class PageController {
 		session.removeAttribute("loginUserName");
 		return "index";
 	}
+	
+	@GetMapping("/signUp")
+	public String signUp() {
+		return "member/signUp";
+	}
 
 }

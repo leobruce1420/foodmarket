@@ -48,6 +48,7 @@
 		</c:when>
 			
 		<c:otherwise>
+		 	 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${contextRoot}/signUp'">註冊</button>
 			 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${contextRoot}/login'">登入</button>
 		</c:otherwise>
 	</c:choose>
