@@ -1,10 +1,13 @@
 package com.foodmarket.app.member.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -13,8 +16,11 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.foodmarket.app.blog.model.Recipe;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="customer")
@@ -96,6 +102,10 @@ public class Member {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="ModifiedDate", columnDefinition="datetime", nullable = false) 
 	private Date modifiedDate;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+	private Set<Recipe> books = new LinkedHashSet<Recipe>();
+
 
 
 	// 檢查是否有時間，沒有的話依照現在時間產生
