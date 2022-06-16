@@ -9,6 +9,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
 <title>會員註冊</title>
+<script>window.verifyCallback = verifyCallback;</script>
 </head>
 <body>
 
@@ -51,8 +52,20 @@
         <option value="female">女</option>
       </select>
     </div>
+    
 </div>
-<div class="form-row justify-content-center mt-4"><button type="submit" class="btn btn-primary  col-md-4">送出</button></div>
+
+<div class="form-row justify-content-center mt-4">
+ <div
+    class="g-recaptcha btn-sm"
+    data-sitekey="6Le9B3QgAAAAAHgp8DNKlx4U_A58N6IfMu6GqjER"
+    data-theme="light" data-size="normal"
+    data-callback="verifyCallback"
+    data-expired-callback="expired"
+    data-error-callback="error">
+</div>
+<button type="submit" class="btn btn-outline-primary col-md-3" id="submit">送出
+</button></div>
 
 </div>
 </form>
@@ -60,5 +73,38 @@
 
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+
+
+
+function verifyCallback(token) {
+	var params = {"token":grecaptcha.getResponse()};
+	
+	console.log(params)
+	console.log(grecaptcha.getResponse())
+	
+	
+	$.ajax({
+    type :"POST",
+    url  : "checkRecaptcha",
+    contentType:'application/json',
+	data: JSON.stringify(grecaptcha.getResponse()),
+	success: function(data){
+		   if(data=='Y'){
+			   console.log("ok")
+		   }
+		   
+		   if(data=='N'){
+			   document.getElementById("submit").setAttribute("disabled", true);
+		   }
+	   },
+	   error: function(e){
+		   console.log(e);
+	   }
+	})
+}
+
+</script>
 </body>
 </html>

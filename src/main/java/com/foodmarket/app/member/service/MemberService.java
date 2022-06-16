@@ -13,13 +13,13 @@ import com.foodmarket.app.member.repository.MemberRepository;
 
 @Service("MemberService")
 @Transactional
-public class MemberService {
+public class MemberService implements MemberServiceInterface{
 	
 	@Autowired
 	private MemberRepository memberDao;
-	
+
+	@Override
 	public Map checkLogin(String mail, String password) {
-		
 		Map<String, String> errors = new HashMap<String, String>();
 		
 		if(mail != null || mail.length() > 0) {
@@ -36,8 +36,10 @@ public class MemberService {
 		}else {
 			errors.put("mailNotImput", "請輸入電子信箱");
 		}
-		
 		return errors;
 	}
+	
+	
+
 
 }
