@@ -3,7 +3,10 @@ package com.foodmarket.app.member.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.foodmarket.app.member.model.Member;
 
 @Controller
 public class PageController {
@@ -31,7 +34,9 @@ public class PageController {
 	}
 	
 	@GetMapping("/signUp")
-	public String signUp() {
+	public String signUp(Model m) {
+		Member member = new Member();
+		m.addAttribute("member", member);
 		return "member/signUp";
 	}
 
