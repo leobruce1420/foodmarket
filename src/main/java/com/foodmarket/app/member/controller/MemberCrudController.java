@@ -2,6 +2,8 @@ package com.foodmarket.app.member.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -21,14 +23,9 @@ public class MemberCrudController {
 	
 	@Autowired
 	private MemberServiceInterface memberService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(MemberCrudController.class);
 
-	
-	@PostMapping("/insertCustomer")
-	public String insertCustomer(@ModelAttribute("member")Member member, Model m) {
-		memberService.insertCustomer(member);
-		return "index";
-	}
-	
 	@GetMapping("/member/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		memberService.deleteById(id);

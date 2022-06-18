@@ -56,9 +56,16 @@ public class MemberService implements MemberServiceInterface{
 	//加密密碼並新增到資料庫
 	@Override
 	public Member insertCustomer(Member member) {
+		Member memberCheck = memberDao.findByMail(member.getMail());
 		member.setPassword(util.encryptString(member.getPassword()));
-		Member m = memberDao.save(member);
-		return m;
+		
+		if(memberCheck == null) {
+			Member m = memberDao.save(member);
+			return m;
+		}
+		
+		return null;
+		
 	}
 
 	@Override

@@ -4,17 +4,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.foodmarket.app.member.service.MemberServiceInterface;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
+	
+	@Autowired
+	private MemberServiceInterface memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
@@ -24,12 +29,18 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		String uri = new String(request.getRequestURI());
 		
-		HttpSession session = request.getSession();
+		Long id = (Long) request.getSession().getAttribute("loginUserId");
 
 		// 已登入
-		if(request.getSession().getAttribute("loginUserId") != null) {
-			logger.info("會員編號：" + session.getAttribute("loginUserId") + " 訪問 " + uri);
-			return true;
+		if(id != null) {
+			if(memberService.findById(id).getAuthCheck().equals("true")) {
+				logger.info("會員編號：" + id + " 訪問 " + uri);
+				return true;
+			}else {
+				logger.info("未驗證會員編號：" + id + " 訪問 " + uri + "，已導向重發驗證!");
+				response.sendRedirect("/foodmarket/authMailReSend");
+				return false;
+			}
 		}
 		// 未登入
 		else {

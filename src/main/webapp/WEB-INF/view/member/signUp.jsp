@@ -51,7 +51,6 @@
       <label for="birthday">生日</label>
       <input type="date" class="form-control" id="birthday" name="birthday" required autocomplete="off">
     </div>
-    
      <div class="form-group col-md-3">
       <label for="gender">性別</label>
       <select id="gender" class="form-control"  name="gender">
@@ -207,7 +206,7 @@ $('#mail').blur(function(){
 
 $('#password').blur(function(){
 	var pswInput = $('#password').val();
-	var pattern = new RegExp("^[a-zA-Z\u4E00-\u9FA5!@#$%^&*]+$");
+	var pattern = new RegExp("^[1~9a-zA-Z!@#$%^&*]+$");
 	
 	if (pswInput == "") {
 		pswChecked = false;
@@ -222,7 +221,7 @@ $('#password').blur(function(){
 		} else {
 			pswChecked = false;
 			$('#submit').attr("disabled", true);
-			$('#pswmsg')[0].innerHTML='本欄位只接受中文、英文字母及!@#$%^&*'
+			$('#pswmsg')[0].innerHTML='本欄位只接受數字、英文字母及!@#$%^&*'
 		}
 	} else {
 		pswChecked = false;

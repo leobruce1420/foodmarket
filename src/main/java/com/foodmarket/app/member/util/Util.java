@@ -166,4 +166,11 @@ public class Util {
 	    }
 	    return false;
 	}
+	//暫時用不到
+	public String createToken() {
+		int randomNum = (int)(Math.random()*1000000);
+		String randomStr = ""+ randomNum;
+		String token = "splitFromHere" + encryptString(randomStr);
+		return token;
+	}
 }
