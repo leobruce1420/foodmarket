@@ -23,6 +23,8 @@ public interface MemberServiceInterface {
 	
 	public Member findByMail(String mail);
 	
+	public Member findByAuthToken(String token);
+	
 	public void deleteById (Long Id);
 	
 	public Member updateCustomer(Member member);

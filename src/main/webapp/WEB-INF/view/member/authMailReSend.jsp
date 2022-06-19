@@ -15,6 +15,10 @@
 </head>
 <body>
 
+<c:if test="${error} != null">
+alert(${error});
+</c:if>
+
 <form class="form" method="post" action="${contextRoot}/authMailReSend" onsubmit="return(checkRobot())">
 <div class="container mt-5">
 <h2 class="form-row justify-content-center">重新發送驗證信</h2>
@@ -54,8 +58,6 @@
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
-
-alert(${error});
 	
 // 到後端進行機器人驗證	
 function verifyCallback(token) {

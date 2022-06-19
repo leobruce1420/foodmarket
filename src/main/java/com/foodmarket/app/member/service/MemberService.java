@@ -104,6 +104,12 @@ public class MemberService implements MemberServiceInterface{
 		Member member = memberDao.findByMail(mail);
 		return member;
 	}
+	
+	@Override
+	public Member findByAuthToken(String token) {
+		Member member = memberDao.findByAuthToken(token);
+		return member;
+	}
 
 	@Override
 	public Member updateCustomer(Member member) {

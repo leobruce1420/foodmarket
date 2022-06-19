@@ -100,8 +100,8 @@ public class MemberController {
 		Member rsMember = memberService.insertCustomer(member);
 		logger.info("註冊成功! 會員編號：" + rsMember.getCustomerId());		
 		
-		String token =  util.encryptString(rsMember.getCustomerId().toString());
-				
+		String token =  util.encodeSha512(rsMember.getCustomerId().toString());
+			
 		//信件標題及內容設定
 		String title = "foodmarket會員驗證信";
 		String text = "您好，請點擊下方連結啟動完整會員功能<br>"+
@@ -115,8 +115,8 @@ public class MemberController {
 		rsMember.setAuthToken(token);
 		
 		Calendar cal = Calendar.getInstance();
-//		cal.add(Calendar.DATE, +3);
-		cal.add(Calendar.SECOND, +3); 
+		cal.add(Calendar.DATE, +3);
+//		cal.add(Calendar.SECOND, +3); 
 		rsMember.setAuthLimit(cal.getTime());
 		
 		memberService.updateCustomer(rsMember);
@@ -126,13 +126,15 @@ public class MemberController {
 		return "member/authMail";
 	}
 
+	
 	@GetMapping("/authMailCheck/{token}")
 	public String authMailCheck(@PathVariable String token, HttpSession session) {
-		Member rsMember = memberService.findById(Long.parseLong(util.decryptString("KittySnoopyMicky", token)));
+		Member rsMember = memberService.findByAuthToken(token.substring(1, token.length()-1));
 		
-		if(rsMember.getAuthCheck().equals("false")) {
-			if(rsMember.getAuthLimit().after(new Date())) {
-				if(rsMember.getAuthToken().equals(token.substring(1, token.length()-1))) {
+		if(rsMember != null) {			
+			if(rsMember.getAuthCheck().equals("false")) {
+				
+				if(rsMember.getAuthLimit().after(new Date())) {
 					logger.info("驗證成功! 會員編號：" + rsMember.getCustomerId());
 					rsMember.setAuthCheck("true");
 					rsMember.setAuthToken(null);
@@ -143,13 +145,16 @@ public class MemberController {
 					logger.info("錯誤驗證碼! 會員編號：" + rsMember.getCustomerId());
 					return "member/authMailReSend";
 				}
+				
 			}else {
-				logger.info("過期驗證碼! 會員編號：" + rsMember.getCustomerId());
-				return "member/authMailReSend";
-			}
+				logger.info("重複驗證! 會員編號：" + rsMember.getCustomerId());
+				return "index";
+			}	
+		}else {
+			logger.info("無此會員或重複驗證");
+			return "index";
 		}
-		
-		return "index";	
+
 	}
 	
 	@PostMapping("/authMailReSend")
@@ -158,26 +163,32 @@ public class MemberController {
 		Member rsMember = memberService.findByMail(email);
 		
 		if(rsMember != null) {
-			String token =  util.encryptString(rsMember.getCustomerId().toString());
-			
-			//信件標題及內容設定
-					String title = "foodmarket會員驗證信<br>";
-					String text = "您好，請點擊下方連結啟動完整會員功能"+
-								"<a href = 'http://localhost:8080/foodmarket/authMailCheck/("+token + ")'>"+
-								"http://localhost:8080/foodmarket/authMailCheck/("+ token +")</a>";
-							
-					//在db新增authToken及到期日
-					rsMember.setAuthToken(token);
-					
-					Calendar cal = Calendar.getInstance();
-					cal.add(Calendar.DATE, +3);
-					rsMember.setAuthLimit(cal.getTime());
-					
-					memberService.updateCustomer(rsMember);
-					
-					mail.SendMail(email, title, text);
-			
-			return "index";
+			if(rsMember.getAuthCheck().equals("false")) {
+				String token =  util.encodeSha512(rsMember.getCustomerId().toString());
+				
+				//信件標題及內容設定
+						String title = "foodmarket會員驗證信<br>";
+						String text = "您好，請點擊下方連結啟動完整會員功能"+
+									"<a href = 'http://localhost:8080/foodmarket/authMailCheck/("+token + ")'>"+
+									"http://localhost:8080/foodmarket/authMailCheck/("+ token +")</a>";
+								
+						//在db新增authToken及到期日
+						rsMember.setAuthToken(token);
+						
+						Calendar cal = Calendar.getInstance();
+						cal.add(Calendar.DATE, +3);
+						rsMember.setAuthLimit(cal.getTime());
+						
+						memberService.updateCustomer(rsMember);
+						
+						mail.SendMail(email, title, text);
+				
+				return "index";
+			}else {
+				logger.info("驗證過的帳號!");
+				m.addAttribute("error","驗證過的帳號!");
+				return "member/authMailReSend";
+			}	
 		}else {
 			logger.info("無此帳號!");
 			m.addAttribute("error","無此帳號!");
