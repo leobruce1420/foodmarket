@@ -10,26 +10,41 @@
 <title>驗證成功</title>
 </head>
 <body>
-<div class="modal" tabindex="-1">
+<div class="modal" tabindex="-1" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title">驗證成功</h5>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+      	<h4><span class="badge badge-secondary badge-danger">恭喜完成會員驗證！</span></h4>
+      	<span class="form-text text-muted">5秒後將自動跳轉至首頁</span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/'">返回首頁</button>
       </div>
     </div>
   </div>
 </div>
+
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('#myModal').modal('show')
+		
+		
+		var timeout = setTimeout(toIndex, 5000);
+		
+		function toIndex() {
+			window.location.href='${contextRoot}/';
+		}
+
+	})
+	
+</script>
 </body>
 </html>
