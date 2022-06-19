@@ -14,9 +14,9 @@ public class PageController {
 		return "index";
 	}
 	
-	@GetMapping("/lock/test")
+	@GetMapping("/test")
 	public String tese() {
-		return "index";
+		return "member/authMail";
 	}
 	
 	@GetMapping("/login")

@@ -58,7 +58,7 @@
         <option value="female">女</option>
       </select>
     </div>
-    <small id="readme" class="form-text text-muted ">點擊送出後請至信箱進行驗證，本站所提供之服務需經驗正後方可正式開通</small>
+    <small id="readme" class="form-text text-muted ">點擊送出後請在三天內至信箱進行驗證，本站所提供之服務需經驗正後方可正式開通</small>
 </div>
 
 <div class="form-row justify-content-center mt-4">
@@ -206,7 +206,10 @@ $('#mail').blur(function(){
 
 $('#password').blur(function(){
 	var pswInput = $('#password').val();
-	var pattern = new RegExp("^[1~9a-zA-Z!@#$%^&*]+$");
+// 	var pattern = new RegExp("^[0~9a-zA-Z!@#$%^&*]+$");
+	var pattern = new RegExp("^[A-Za-z0-9]+$");
+	
+	
 	
 	if (pswInput == "") {
 		pswChecked = false;
