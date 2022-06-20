@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,8 +20,8 @@
 </div>
 </div>
 
-<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<%-- <script src="${contextRoot}/js/jquery-3.6.0.js"></script> --%>
+<%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 
 </body>
 </html>

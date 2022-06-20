@@ -45,10 +45,10 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-      <a class="nav-link" href="#">所有商品訊息</a>
+      <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>
       <li class="nav-item dropdown">
-      <a class="nav-link" href="#">ajax</a>
+      <a class="nav-link" href="${contextRoot}/product/add">新增商品訊息</a>
     </li>
     
     

@@ -12,8 +12,15 @@ public class ProductDto implements Serializable{
 	
 	@JsonProperty("pmsg")
 	private String pmessage;
-	private MultipartFile productimgdto;
+	private Long productid;
+	private String productname;
+	private String productcategory;
+	private Integer productprice;
+	private byte[] productimg;
 	private String imgtype;
+	private String productdesciption;
+	private Integer inventoryquantity;
+	private String takedown;
 	private String keyword;
 	
 	
@@ -30,14 +37,70 @@ public class ProductDto implements Serializable{
 		this.pmessage = pmessage;
 	}
 
+	
 
-
-	public MultipartFile getProductimgdto() {
-		return productimgdto;
+	public Long getProductid() {
+		return productid;
 	}
 
-	public void setProductimgdto(MultipartFile productimgdto) {
-		this.productimgdto = productimgdto;
+	public void setProductid(Long productid) {
+		this.productid = productid;
+	}
+
+	public String getProductname() {
+		return productname;
+	}
+
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+
+	public String getProductcategory() {
+		return productcategory;
+	}
+
+	public void setProductcategory(String productcategory) {
+		this.productcategory = productcategory;
+	}
+
+	public Integer getProductprice() {
+		return productprice;
+	}
+
+	public void setProductprice(Integer productprice) {
+		this.productprice = productprice;
+	}
+
+	public String getProductdesciption() {
+		return productdesciption;
+	}
+
+	public void setProductdesciption(String productdesciption) {
+		this.productdesciption = productdesciption;
+	}
+
+	public Integer getInventoryquantity() {
+		return inventoryquantity;
+	}
+
+	public void setInventoryquantity(Integer inventoryquantity) {
+		this.inventoryquantity = inventoryquantity;
+	}
+
+	public String getTakedown() {
+		return takedown;
+	}
+
+	public void setTakedown(String takedown) {
+		this.takedown = takedown;
+	}
+
+	public byte[] getProductimgdto() {
+		return productimg;
+	}
+
+	public void setProductimgdto(byte[] productimg) {
+		this.productimg = productimg;
 	}
 
 	public String getImgtype() {
