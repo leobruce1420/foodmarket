@@ -75,10 +75,10 @@
 </nav>
 <div class="row justify-content-center">
 <div  class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="width: 50rem;">
-  <button type="button" class="btn btn-secondary">蔬菜類</button>
-  <button type="button" class="btn btn-secondary">水果類</button>
-  <button type="button" class="btn btn-secondary">肉品</button>
-  <button type="button" class="btn btn-secondary">海鮮</button>
+  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=蔬菜類"><button type="button" class="btn btn-secondary" >蔬菜類</button></a>
+  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=水果類"><button type="button" class="btn btn-secondary">水果類</button></a>
+  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=肉品"><button type="button" class="btn btn-secondary">肉品</button></a>
+  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=海鮮"><button type="button" class="btn btn-secondary">海鮮</button></a>
 </div>
 </div>
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
