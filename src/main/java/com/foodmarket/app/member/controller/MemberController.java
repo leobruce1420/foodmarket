@@ -167,8 +167,8 @@ public class MemberController {
 				String token =  util.encodeSha512(rsMember.getCustomerId().toString());
 				
 				//信件標題及內容設定
-						String title = "foodmarket會員驗證信<br>";
-						String text = "您好，請點擊下方連結啟動完整會員功能"+
+						String title = "foodmarket會員驗證信";
+						String text = "您好，請點擊下方連結啟動完整會員功能<br>"+
 									"<a href = 'http://localhost:8080/foodmarket/authMailCheck/("+token + ")'>"+
 									"http://localhost:8080/foodmarket/authMailCheck/("+ token +")</a>";
 								
