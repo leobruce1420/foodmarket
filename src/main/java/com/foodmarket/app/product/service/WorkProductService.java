@@ -37,14 +37,14 @@ public class WorkProductService {
 		return page;
 	}
 
-	public WorkProduct findById(Long productid) {
+	public Optional<WorkProduct> findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
-
-		if (optional.isPresent()) {
-			return optional.get();
-
-		}
-		return null;
+//
+//		if (optional.isPresent()) {
+//			return optional.get();
+//
+//		}
+		return optional;
 	}
 
 	public Page<WorkProduct> findByProductcategoryKey(Integer pageNumber, String productcategory) {

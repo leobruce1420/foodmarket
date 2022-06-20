@@ -120,7 +120,7 @@
 					<div>
 						<c:out value='${lastestpMsg.productimg}' />
 						<img
-								src="<c:url value="/backend/firm/${firm.firmId}/photo"/>"
+								src="<c:url value="${lastestpMsg.productimg}"/>"
 								style="width: 100px; height: 100px;">
 						<%--       <c:out value="${lastestpMsg.productimg}" /> --%>
 						<%--       <img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>

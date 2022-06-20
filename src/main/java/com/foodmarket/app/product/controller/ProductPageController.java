@@ -1,9 +1,14 @@
 package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +47,17 @@ public class ProductPageController {
 		
 		
 		return "product/addMessage";
+	}
+	@GetMapping("firm/{id}/productimg")
+	public ResponseEntity<byte[]> getProductimg(@PathVariable("productid") Long productid) {
+		Optional<WorkProduct> productBean = pmsgService.findById(productid);
+
+		byte[] productimg = productBean.get().getProductimg();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_JPEG);
+
+		return new ResponseEntity<byte[]>(productimg, headers, HttpStatus.OK);
 	}
 	
 	@GetMapping("product/all")

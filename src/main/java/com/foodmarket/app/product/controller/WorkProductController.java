@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -105,14 +106,14 @@ public class WorkProductController {
 	}
 	
 	
-	@GetMapping("product/editProduct")
-	public String editMessage(@RequestParam("productid") Long productid, Model model) {
-
-		WorkProduct pMsg = pmsgService.findById(productid);
-
-		model.addAttribute("pMsg", pMsg);
-		return "product/editMessage";
-	}
+//	@GetMapping("product/editProduct")
+//	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+//		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
+////		WorkProduct pMsg = pmsgService.findById(productid);
+//
+//		model.addAttribute("pMsg", opmsg);
+//		return "product/editMessage";
+//	}
 
 	@PostMapping("product/editProduct")
 	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {

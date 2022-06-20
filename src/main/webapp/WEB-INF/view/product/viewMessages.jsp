@@ -56,6 +56,9 @@
 								<td><c:out value="${workProduct.productprice}" /></td>
 								<td>
 								<c:out value="${workProduct.productimg}" />
+								<img
+								src="<c:url value="/backend/firm/${workProduct.productprice}/photo"/>"
+								style="width: 100px; height: 100px;">
 <%-- 								<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/></td> --%>
 								<td><c:out value="${workProduct.imgtype}" /></td>
 								<td><fmt:formatDate
