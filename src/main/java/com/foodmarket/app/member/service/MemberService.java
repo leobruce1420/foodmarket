@@ -110,6 +110,12 @@ public class MemberService implements MemberServiceInterface{
 		Member member = memberDao.findByAuthToken(token);
 		return member;
 	}
+	
+	@Override
+	public Member findByChangePasswordToken(String token) {
+		Member member = memberDao.findByChangePasswordToken(token);
+		return member;
+	}
 
 	@Override
 	public Member updateCustomer(Member member) {

@@ -30,6 +30,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	//用AuthToken查詢
 	public Member findByAuthToken(String token);
 	
+	//用AuthToken查詢
+	public Member findByChangePasswordToken(String token);
+	
 	//用姓名查詢，有分頁
 	@Query(value = "select * from customer where CustomerName like %:name%", nativeQuery=true)
 	public Page<Member> findByName(Pageable pgb, @Param("name")String name);
