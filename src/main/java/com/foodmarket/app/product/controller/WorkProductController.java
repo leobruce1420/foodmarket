@@ -32,6 +32,7 @@ public class WorkProductController {
 
 	@PostMapping("postProduct")
 	public String addMessage(@ModelAttribute("workProduct") ProductDto productDto, Model model) throws IOException {
+		WorkProduct newpMsg = new WorkProduct();
 //		System.out.println("qweqeqweqweweqw");
 //		String base64Str=productDto.getProductimgdto();
 //		if(!StringUtil.isBlank(path)) {
@@ -43,7 +44,7 @@ public class WorkProductController {
 //		productDto.setProductimgdto(method.encoder(imgBytes));
 //		System.out.println(method.encoder(imgBytes));
 //		pmsgService.insertProduct(imgBytes);
-		WorkProduct newpMsg = new WorkProduct();
+//		WorkProduct newpMsg = new WorkProduct();
 		WorkProduct lastestpMsg = pmsgService.getLastest();
 
 		model.addAttribute("workProduct", newpMsg);
