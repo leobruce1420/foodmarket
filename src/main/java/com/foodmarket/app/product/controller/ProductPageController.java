@@ -48,17 +48,18 @@ public class ProductPageController {
 		
 		return "product/addMessage";
 	}
-	@GetMapping("firm/{id}/productimg")
-	public ResponseEntity<byte[]> getProductimg(@PathVariable("productid") Long productid) {
-		Optional<WorkProduct> productBean = pmsgService.findById(productid);
-
-		byte[] productimg = productBean.get().getProductimg();
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
-
-		return new ResponseEntity<byte[]>(productimg, headers, HttpStatus.OK);
-	}
+	//0621T0000
+//	@GetMapping("firm/{id}/productimg")
+//	public ResponseEntity<byte[]> getProductimg(@PathVariable("productid") Long productid) {
+//		Optional<WorkProduct> productBean = pmsgService.findById(productid);
+//
+//		byte[] productimg = productBean.get().getProductimg();
+//
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(MediaType.IMAGE_JPEG);
+//
+//		return new ResponseEntity<byte[]>(productimg, headers, HttpStatus.OK);
+//	}
 	
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav, 

@@ -37,7 +37,9 @@ public class WorkProduct {
 	private Integer productprice;
 	
 	@Column(name="productimg", columnDefinition = "varchar(MAX)")
-	private byte[] productimg;
+	private String productimg;
+//	@Column(name="productimg", columnDefinition = "varchar(MAX)")
+//	private byte[] productimg;
 
 	@Column(name="ImgType", columnDefinition = "varchar(10)")
 	private String imgtype;
@@ -101,13 +103,20 @@ public class WorkProduct {
 		this.productprice = productprice;
 	}
 
-	public byte[] getProductimg() {
+	public String getProductimg() {
 		return productimg;
 	}
 
-	public void setProductimg(byte[] productimg) {
+	public void setProductimg(String productimg) {
 		this.productimg = productimg;
 	}
+//	public byte[] getProductimg() {
+//		return productimg;
+//	}
+//	
+//	public void setProductimg(byte[] productimg) {
+//		this.productimg = productimg;
+//	}
 
 	public String getProductdesciption() {
 		return productdesciption;

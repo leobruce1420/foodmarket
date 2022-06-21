@@ -16,7 +16,8 @@ public class ProductDto implements Serializable{
 	private String productname;
 	private String productcategory;
 	private Integer productprice;
-	private byte[] productimg;
+//	private byte[] productimg;
+	private String productimg;
 	private String imgtype;
 	private String productdesciption;
 	private Integer inventoryquantity;
@@ -95,13 +96,20 @@ public class ProductDto implements Serializable{
 		this.takedown = takedown;
 	}
 
-	public byte[] getProductimgdto() {
+	public String getProductimgdto() {
 		return productimg;
 	}
 
-	public void setProductimgdto(byte[] productimg) {
+	public void setProductimgdto(String productimg) {
 		this.productimg = productimg;
 	}
+//	public byte[] getProductimgdto() {
+//		return productimg;
+//	}
+//	
+//	public void setProductimgdto(byte[] productimg) {
+//		this.productimg = productimg;
+//	}
 
 	public String getImgtype() {
 		return imgtype;

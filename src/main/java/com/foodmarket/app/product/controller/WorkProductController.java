@@ -1,11 +1,13 @@
 package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -33,7 +35,7 @@ public class WorkProductController {
 
 	@Autowired
 	private WorkProductService pmsgService;
-
+	// 圖片未成功
 //	@PostMapping("postProduct")
 //	public String addMessage(@RequestParam("imgFile") MultipartFile mf, Model model) throws IOException {
 ////		System.out.println("qweqeqweqweweqw");
@@ -58,54 +60,98 @@ public class WorkProductController {
 //		model.addAttribute("lastestpMsg", lastestpMsg);
 //		return "product/addMessage";
 //	}
+	// img byte[]
+//	@PostMapping("postProduct")
+//	public String addNewFirm(@RequestParam String productname, @RequestParam String productcategory,
+//							 @RequestParam Integer productprice, @RequestPart MultipartFile productimg,
+//							 @RequestParam String imgtype,
+//							 @RequestParam String productdesciption,
+//							 @RequestParam Integer inventoryquantity,
+//							 @RequestParam String takedown,Model m) {
+//		WorkProduct newProduct = new WorkProduct();
+//
+//		String productType = productimg.getContentType();
+//
+//		System.out.println(productType);
+//
+//		if(!productType.startsWith("image")) {
+//			
+//			Map<String, String> errors = new HashMap<String, String>();
+//			errors.put("firmLogo", "檔案類型必須為圖片");
+//			
+//			ProductDto productDto = new ProductDto();
+//						
+//			m.addAttribute("errors", errors);
+//			m.addAttribute("productDto", productDto);
+//			return "product/addMessage";
+//		}
+//
+//		newProduct.setProductname(productname);
+//		newProduct.setProductcategory(productcategory);
+//		newProduct.setProductprice(productprice);
+//		newProduct.setImgtype(imgtype);
+//		newProduct.setProductdesciption(productdesciption);
+//		newProduct.setInventoryquantity(inventoryquantity);
+//		newProduct.setTakedown(takedown);
+//		try {
+//			newProduct.setProductimg(productimg.getBytes());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			ProductDto proDto = new ProductDto();
+//			m.addAttribute("productDto", proDto);
+//			return "product/addMessage";
+//		}
+//
+//		pmsgService.insertProduct(newProduct);
+//
+//		return "redirect:/product/all";
+//	}
 
+	// base64
 	@PostMapping("postProduct")
-	public String addNewFirm(@RequestParam String productname, @RequestParam String productcategory,
-							 @RequestParam Integer productprice, @RequestPart MultipartFile productimg,
-							 @RequestParam String imgtype,
-							 @RequestParam String productdesciption,
-							 @RequestParam Integer inventoryquantity,
-							 @RequestParam String takedown,Model m) {
-		WorkProduct newProduct = new WorkProduct();
-
-		String productType = productimg.getContentType();
-
-		System.out.println(productType);
-
-		if(!productType.startsWith("image")) {
-			
-			Map<String, String> errors = new HashMap<String, String>();
-			errors.put("firmLogo", "檔案類型必須為圖片");
-			
-			ProductDto productDto = new ProductDto();
-						
-			m.addAttribute("errors", errors);
-			m.addAttribute("productDto", productDto);
-			return "product/addMessage";
-		}
-
-		newProduct.setProductname(productname);
-		newProduct.setProductcategory(productcategory);
-		newProduct.setProductprice(productprice);
-		newProduct.setImgtype(imgtype);
-		newProduct.setProductdesciption(productdesciption);
-		newProduct.setInventoryquantity(inventoryquantity);
-		newProduct.setTakedown(takedown);
+	public String addMessage(HttpServletRequest request,@RequestParam String productname, @RequestParam String productcategory,
+			 @RequestParam Integer productprice, @RequestParam("productimg") MultipartFile mf,
+			 @RequestParam String imgtype,
+			 @RequestParam String productdesciption,
+			 @RequestParam Integer inventoryquantity,
+			 @RequestParam String takedown,Model m) throws  IOException {
+		Util method = new Util();
 		try {
-			newProduct.setProductimg(productimg.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-			ProductDto proDto = new ProductDto();
-			m.addAttribute("productDto", proDto);
+//			if (!pmsgService.checkLoginSession(session)) {
+//				return "AdminLogin";
+//			}
+
+			request.setCharacterEncoding("UTF-8");
+			WorkProduct productbean = new WorkProduct();
+
+			productbean.setProductname(productname);
+			productbean.setProductcategory(productcategory);
+			productbean.setProductprice(productprice);
+			productbean.setImgtype(imgtype);
+			productbean.setProductdesciption(productdesciption);
+			productbean.setInventoryquantity(inventoryquantity);
+			productbean.setTakedown(takedown);
+			productbean.setImgtype("png");
+			productbean.setProductdesciption(productdesciption);
+			productbean.setInventoryquantity(inventoryquantity);
+
+			byte[] imgBytes = mf.getBytes();
+			productbean.setProductimg(method.encoder(imgBytes));
+
+
+			pmsgService.insertProduct(productbean);
+
+			WorkProduct Products = pmsgService.insertProduct();
+			m.addAttribute("products", Products);
 			return "product/addMessage";
+
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		pmsgService.insertProduct(newProduct);
-
-		return "redirect:/product/all";
+		return "product/addMessage";
 	}
-	
-	
+
 //	@GetMapping("product/editProduct")
 //	public String editMessage(@RequestParam("productid") Long productid, Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
@@ -142,7 +188,7 @@ public class WorkProductController {
 
 		return content;
 	}
-	//關鍵字查詢
+	// 關鍵字查詢
 //	@PostMapping("product/queryByName")
 //	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {
 //
@@ -151,7 +197,7 @@ public class WorkProductController {
 //		m.addAttribute("productname", productname);
 //		return "product/viewoneMessages";
 //	}
-	
+
 //	商品種類查詢
 //	@PostMapping("product/category?productcategory=")
 //	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {
