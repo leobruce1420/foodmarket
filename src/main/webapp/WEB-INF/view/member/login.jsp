@@ -37,7 +37,7 @@
 <!--         </label> -->
 <!--       </div> -->
       <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-      還不是會員?<a  href="<c:url value='/signUp'/>">點我註冊</a>&emsp;&emsp;<a  href="#">忘記密碼</a>
+      還不是會員?<a  href="<c:url value='/signUp'/>">點我註冊</a>&emsp;&emsp;<a  href="<c:url value='/toforgotPwd'/>">忘記密碼</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2022EEIT44T2</p>
     </form>
   </body>

@@ -25,6 +25,8 @@ public interface MemberServiceInterface {
 	
 	public Member findByAuthToken(String token);
 	
+	public Member findByChangePasswordToken(String token);
+	
 	public void deleteById (Long Id);
 	
 	public Member updateCustomer(Member member);

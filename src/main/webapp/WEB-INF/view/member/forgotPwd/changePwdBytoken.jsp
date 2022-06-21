@@ -3,14 +3,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<jsp:include page="../layout/navbar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
-<title>重新發送驗證信</title>
+<title>修改密碼</title>
 <script>window.verifyCallback = verifyCallback;</script>
 </head>
 <body>
@@ -19,23 +18,29 @@
 alert(${error});
 </c:if>
 
-<form class="form" method="post" action="${contextRoot}/authMailReSend" onsubmit="return(checkRobot())">
+<form class="form" method="post" action="${contextRoot}/changePwd" onsubmit="return(checkRobot())">
 <div class="container mt-5">
-<h2 class="form-row justify-content-center">重新發送驗證信</h2>
+<h2 class="form-row justify-content-center">修改密碼</h2>
 
 <div class="form-row justify-content-center mt-2">
 	
     
     <div class="form-group col-md-5">
-      <label for="mail">請輸入電子信箱</label>
-      <span id="emailcheck" class="badge badge-secondary badge-danger"></span>
-      <span id="emailmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="on">
+      <label for="password">請輸入新密碼</label>
+      <span id="pswmsg" class="badge badge-secondary badge-danger"></span>
+      <input type="password" class="form-control" id="password" name="password" required>
     </div>
     
      <div class="w-100"></div>
+     
+    <div class="form-group col-md-5">
+      <label for="password2">請再次輸入新密碼</label>
+      <span id="pswmsg2" class="badge badge-secondary badge-danger"></span>
+      <input type="password" class="form-control" id="password2" name="password2" required>
+    </div>
     
-    <small id="readme" class="form-text text-muted ">點擊送出後請在三天內至信箱進行驗證，本站所提供之服務需經驗正後方可正式開通</small>
+    <div class="w-100"></div>
+
 </div>
 
 <div class="form-row justify-content-center mt-4">
@@ -89,43 +94,47 @@ function checkRobot(){
     }
 }
 
-$('#mail').blur(function(){
-	var mailInput = $('#mail').val();
-	var pattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,4})*$/;
-
-		if (mailInput == "") {
-			$('#emailcheck')[0].innerHTML=''
-			$('#submit').attr("disabled", true);
-			$('#emailmsg')[0].innerHTML='請輸入信箱'
-		} 
+$('#password').blur(function(){
+	var pswInput = $('#password').val();
+// 	var pattern = new RegExp("^[0~9a-zA-Z!@#$%^&*]+$");
+	var pattern = new RegExp("^[A-Za-z0-9]+$");
 		
-		if (!pattern.test(mailInput)) {
-			$('#emailcheck')[0].innerHTML=''
-			$('#submit').attr("disabled", true);
-			$('#emailmsg')[0].innerHTML='請輸入格式正確之信箱'
+	if (pswInput == "") {
+		$('#submit').attr("disabled", true);
+		$('#pswmsg')[0].innerHTML='請輸入密碼'
+	}		
+	if (pswInput.length >= 6) {
+		if (pattern.test(pswInput)) {
+			$('#submit').attr("disabled", false);
+			$('#pswmsg')[0].innerHTML=''
 		} else {
-			$.ajax({
-				type :"POST",
-				url  : "checkMail",
-				contentType:'application/text',
-				data: mailInput,
-				success: function(data){
-					if(data=='Y'){
-						$('#emailmsg')[0].innerHTML=''
-						$('#submit').attr("disabled", false);
-						$('#emailcheck')[0].innerHTML=''
-					} 
-					if(data=='N'){
-						$('#emailmsg')[0].innerHTML=''
-						$('#submit').attr("disabled", true);
-						$('#emailcheck')[0].innerHTML='此帳號不存在'
-					}
-				},
-				error: function(e){
-					console.log(e);
-				}
-			})	
-		}	
+			$('#submit').attr("disabled", true);
+			$('#pswmsg')[0].innerHTML='本欄位只接受數字及英文字母'
+		}
+	} else {
+		$('#submit').attr("disabled", true);
+		$('#pswmsg')[0].innerHTML='請輸入至少六位數之密碼'
+	}
+});
+
+$('#password2').keyup(function(){
+	var pswInput = $('#password').val();
+	var pswInput2 = $('#password2').val();
+	var pattern = new RegExp("^[A-Za-z0-9]+$");
+	
+	if (pswInput2 == "") {
+		$('#submit').attr("disabled", true);
+		$('#pswmsg2')[0].innerHTML='請再次輸入密碼'
+	}	
+	
+	if(pswInput2 != pswInput){
+		$('#submit').attr("disabled", true);
+		$('#pswmsg2')[0].innerHTML='密碼不一致'	
+	}else{
+		pswChecked = true;
+		$('#submit').attr("disabled", false);
+		$('#pswmsg2')[0].innerHTML=''
+	}
 });
 
 </script>

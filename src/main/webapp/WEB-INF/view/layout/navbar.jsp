@@ -12,7 +12,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " >
-  <a class="navbar-brand" href="${contextRoot}/p">管理員</a>
+  <a class="navbar-brand" href="${contextRoot}/p">好食光市場</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,17 +33,17 @@
           <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          會員管理
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">所有會員訊息</a>
-          <a class="dropdown-item" href="#">訊息</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">ajax</a>
-        </div>
-      </li>
+<!--       <li class="nav-item dropdown"> -->
+<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> -->
+<!--           會員管理 -->
+<!--         </a> -->
+<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+<!--           <a class="dropdown-item" href="#">所有會員訊息</a> -->
+<!--           <a class="dropdown-item" href="#">訊息</a> -->
+<!--           <div class="dropdown-divider"></div> -->
+<!--           <a class="dropdown-item" href="#">ajax</a> -->
+<!--         </div> -->
+<!--       </li> -->
       <li class="nav-item dropdown">
       <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>
@@ -61,13 +61,13 @@
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
-			你好，${loginUserName}&emsp;
-			 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter'">會員中心</button>
+			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
 		</c:when>
 			
 		<c:otherwise>
-		 	 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${contextRoot}/signUp'">註冊</button>
-			 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${contextRoot}/login'">登入</button>
+		 	 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/signUp'">註冊</button>
+			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/login'">登入</button>
 		</c:otherwise>
 	</c:choose>
   </div>

@@ -38,8 +38,6 @@ public class WorkProduct {
 	
 	@Column(name="productimg", columnDefinition = "varchar(MAX)")
 	private String productimg;
-//	@Column(name="productimg", columnDefinition = "varchar(MAX)")
-//	private byte[] productimg;
 
 	@Column(name="ImgType", columnDefinition = "varchar(10)")
 	private String imgtype;
@@ -110,13 +108,6 @@ public class WorkProduct {
 	public void setProductimg(String productimg) {
 		this.productimg = productimg;
 	}
-//	public byte[] getProductimg() {
-//		return productimg;
-//	}
-//	
-//	public void setProductimg(byte[] productimg) {
-//		this.productimg = productimg;
-//	}
 
 	public String getProductdesciption() {
 		return productdesciption;

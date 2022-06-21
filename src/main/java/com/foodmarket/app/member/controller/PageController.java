@@ -14,7 +14,7 @@ public class PageController {
 		return "index";
 	}
 	
-	@GetMapping("/test")
+	@GetMapping("/member/test")
 	public String tese() {
 		return "member/authMail";
 	}
@@ -29,6 +29,11 @@ public class PageController {
 		Member member = new Member();
 		m.addAttribute("member", member);
 		return "member/signUp";
+	}
+	
+	@GetMapping("/toforgotPwd")
+	public String forgotPwd() {
+		return "member/forgotPwd/forgotPwd";
 	}
 
 }

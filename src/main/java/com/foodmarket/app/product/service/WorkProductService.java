@@ -3,9 +3,6 @@ package com.foodmarket.app.product.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +21,11 @@ public class WorkProductService {
 	@Autowired
 	private WorkProductRepository productDao;
 
+	public List<WorkProduct> selectAll() {
+		
+		List<WorkProduct> productAll=productDao.findAll();
+		  return productAll;
+	}
 	public void insertProduct(WorkProduct pmsg) {
 		productDao.save(pmsg);
 	}
@@ -34,21 +36,21 @@ public class WorkProductService {
 	}
 
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 3, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 6, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
 		return page;
 	}
 
-	public Optional<WorkProduct> findById(Long productid) {
+	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
-//
-//		if (optional.isPresent()) {
-//			return optional.get();
-//
-//		}
-		return optional;
+
+		if (optional.isPresent()) {
+			return optional.get();
+
+		}
+		return null;
 	}
 
 	public Page<WorkProduct> findByProductcategoryKey(Integer pageNumber, String productcategory) {
@@ -69,27 +71,6 @@ public class WorkProductService {
 
 		return page;
 	}
-	
-	//0621T0725
-//	public List<WorkProduct> selectAll() {
-//		Session session = SessionFactory.openSession();
-//		
-//		try {
-//			session.beginTransaction();
-//			
-//			Query<WorkProduct> query = session.createQuery("from Product", WorkProduct.class);
-//			
-//			session.getTransaction().commit();
-//			
-//			return query.getResultList();
-//		}catch(Exception e) {
-//			session.getTransaction().rollback();
-//		}finally {
-//			session.close();
-//		}
-//		
-//		return null;
-//	}
 //	public WorkProduct findById(Long productid) {
 //		Optional<WorkProduct> optional = productDao.findById(productid);
 //		
