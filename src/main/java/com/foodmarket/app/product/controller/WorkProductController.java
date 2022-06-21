@@ -133,15 +133,9 @@ public class WorkProductController {
 			pmsgService.insertProduct(workProduct);
 			WorkProduct newpMsg = new WorkProduct();
 			WorkProduct lastestpMsg = pmsgService.getLastest();
-<<<<<<< HEAD
-//			List<WorkProduct> Products = pmsgService.selectAll();
-			m.addAttribute("workProduct", newpMsg);
-//			m.addAttribute("products", Products);
-=======
 			List<WorkProduct> Products = pmsgService.selectAll();
 			m.addAttribute("workProduct", newpMsg);
 			m.addAttribute("products", Products);
->>>>>>> 0818e065de80f6de73061fffcf50a30b413bd270
 			m.addAttribute("lastestpMsg", lastestpMsg);
 			return "product/addMessage";
 
@@ -216,3 +210,4 @@ public class WorkProductController {
 //	}
 
 }
+
