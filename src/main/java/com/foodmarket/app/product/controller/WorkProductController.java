@@ -2,15 +2,8 @@ package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -20,12 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.foodmarket.app.product.dto.ProductDto;
-import com.foodmarket.app.product.dto.ProductimageDto;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
@@ -109,7 +100,7 @@ public class WorkProductController {
 
 	// base64
 	@PostMapping("postProduct")
-	public String addMessage(HttpServletRequest request,@RequestParam String productname, @RequestParam String productcategory,
+	public String addMessage(@RequestParam String productname, @RequestParam String productcategory,
 			 @RequestParam Integer productprice, @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam String imgtype,
 			 @RequestParam String productdesciption,
@@ -121,28 +112,31 @@ public class WorkProductController {
 //				return "AdminLogin";
 //			}
 
-			request.setCharacterEncoding("UTF-8");
-			WorkProduct productbean = new WorkProduct();
+//			request.setCharacterEncoding("UTF-8");
+			WorkProduct workProduct = new WorkProduct();
 
-			productbean.setProductname(productname);
-			productbean.setProductcategory(productcategory);
-			productbean.setProductprice(productprice);
-			productbean.setImgtype(imgtype);
-			productbean.setProductdesciption(productdesciption);
-			productbean.setInventoryquantity(inventoryquantity);
-			productbean.setTakedown(takedown);
-			productbean.setImgtype("png");
-			productbean.setProductdesciption(productdesciption);
-			productbean.setInventoryquantity(inventoryquantity);
+			workProduct.setProductname(productname);
+			workProduct.setProductcategory(productcategory);
+			workProduct.setProductprice(productprice);
+			workProduct.setImgtype(imgtype);
+			workProduct.setProductdesciption(productdesciption);
+			workProduct.setInventoryquantity(inventoryquantity);
+			workProduct.setTakedown(takedown);
+			workProduct.setImgtype("jpg");
+			workProduct.setProductdesciption(productdesciption);
+			workProduct.setInventoryquantity(inventoryquantity);
 
 			byte[] imgBytes = mf.getBytes();
-			productbean.setProductimg(method.encoder(imgBytes));
+			workProduct.setProductimg(method.encoder(imgBytes));
 
 
-			pmsgService.insertProduct(productbean);
-
-//			WorkProduct Products = pmsgService.insertProduct();
+			pmsgService.insertProduct(workProduct);
+			WorkProduct newpMsg = new WorkProduct();
+			WorkProduct lastestpMsg = pmsgService.getLastest();
+//			List<WorkProduct> Products = pmsgService.selectAll();
+			m.addAttribute("workProduct", newpMsg);
 //			m.addAttribute("products", Products);
+			m.addAttribute("lastestpMsg", lastestpMsg);
 			return "product/addMessage";
 
 		} catch (UnsupportedEncodingException e) {
@@ -152,14 +146,14 @@ public class WorkProductController {
 		return "product/addMessage";
 	}
 
-//	@GetMapping("product/editProduct")
-//	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+	@GetMapping("product/editProduct")
+	public String editMessage(@RequestParam("productid") Long productid, Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
-////		WorkProduct pMsg = pmsgService.findById(productid);
-//
-//		model.addAttribute("pMsg", opmsg);
-//		return "product/editMessage";
-//	}
+		WorkProduct pMsg = pmsgService.findById(productid);
+
+		model.addAttribute("pMsg", pMsg);
+		return "product/editMessage";
+	}
 
 	@PostMapping("product/editProduct")
 	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {
