@@ -1,5 +1,6 @@
 package com.foodmarket.app.product.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class WorkProductService {
 	@Autowired
 	private WorkProductRepository productDao;
 
+	public List<WorkProduct> selectAll() {
+		
+		List<WorkProduct> productAll=productDao.findAll();
+		  return productAll;
+	}
 	public void insertProduct(WorkProduct pmsg) {
 		productDao.save(pmsg);
 	}
@@ -30,7 +36,7 @@ public class WorkProductService {
 	}
 
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 3, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 6, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 

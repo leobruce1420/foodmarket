@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>修改商品</title>
 </head>
 <body>
 <div class="container">
@@ -18,10 +18,10 @@
 
 <div class="row justify-content-center">
 <div class="col-9">
-  <h1>修改留言頁面</h1>
+  <h1>修改商品頁面</h1>
 <div class="card">
   <div class="card-header">
-    請輸入要修改的留言
+    請輸入要修改的商品
   </div>
   <div class="card-body">
   
@@ -30,6 +30,7 @@
   <form:input path="productid" type="hidden" />
   <form:input path="added" type="hidden" />
   <div class="form-group">
+  <div>
 <%--   <form:textarea path="text" class="form-control"/> --%>
   商品名稱
   <form:input path="productname" class="form-control"/>
@@ -38,20 +39,25 @@
   價格
   <form:input path="productprice" class="form-control"/>
   圖
+<%--   <form:input path="productimg" class="form-control"/> --%>
+  
   <form:input path="productimg" class="form-control"/>
-  <div>
-  <figure>
-	<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" />
-</figure>
+  <img style="width: 100px; height: 100px;" src= "data:image/${lastestpMsg.imgtype};base64,${lastestpMsg.productimg}" alt="image" />
+<input type="file" id="productimg" name="productimg" accept=".jpg,.jpeg,.gif" required/>
+<!--   <figure> -->
+<%-- 	<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
+<!-- </figure> -->
   <script>
   
 // function preview() { 
  //     frame.src=URL.createObjectURL(event.target.files[0]);
  // } 
 </script> 
- <div>
-					<img id="frame" class="rounded-sm" alt="productImg" src="${product.pImg}" width="100px" height="100px">
-					</div>
+<!--  <div> -->
+<%-- 					<img id="frame" class="rounded-sm" alt="productImg" src="${product.pImg}" width="100px" height="100px"> --%>
+<!-- 
+					</div> -->
+<br/>
   圖檔名
   <form:input path="imgtype" class="form-control"/>
   商品介紹
@@ -61,9 +67,8 @@
   上下架
   <form:input path="takedown" class="form-control"/>
   </div>
-  
-  <input type="submit" name="submit" value="修改訊息">
   </div>
+  <input type="submit" name="submit" value="修改訊息">
   </form:form>
   
    

@@ -33,8 +33,54 @@
   圖
 <%--   <form action=""> --%>
 <%--   <form:input path="productimg" class="form-control" /> --%>
-  <input type="file" id="productimg" name="productimg" accept=".jpg,.jpeg,.gif" required/><br/>
+  
+<!--   <input type="file" name="file" id="img_upload_file" multiple="multiple" accept=".jpg,.jpeg,.gif" required/><br/> -->
+<!-- <input type="hidden" name="img_upload_base" id="img_upload_base" /> -->
+<!-- <label>圖片預覽</label>  -->
+<%-- <img id="img_upload_show"  style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
 <%--   </form> --%>
+
+<div>
+<input type="file" accept="image/*" onchange="loadFile(event)">
+</div>
+<br/>
+
+<img id="output" style="width: 100px; height: 100px;" />
+<script> 
+// function preview() {
+//     frame.src=URL.createObjectURL(event.target.files[0]);
+// }
+// $("#img_upload_file").change(function() {
+//         var file = this.files[0];
+//         var reader = new FileReader();
+//         reader.readAsDataURL(file);//呼叫自帶方法進行轉換
+//         reader.onload = function(e) {
+//             $("#img_upload_show").attr("src", this.result);//將轉換後的編碼存入src完成預覽
+//             $("#img_upload_base").val(this.result);//將轉換後的編碼儲存到input供後臺使用
+//         }; 
+//     });
+    
+    
+
+
+  var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
+    
+ </script>
+ 
+ 
+
+<!-- <div> -->
+<%--      <img id="frame" class="rounded-sm" alt="productImg" src="data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" width="100px" height="100px"> --%>
+<!--      </div> -->
+<br/>
   圖檔名
   <form:input path="imgtype" class="form-control"/>
   商品介紹
@@ -106,8 +152,8 @@
       <c:out value="${lastestpMsg.productprice}" />
       </div>
       <div>
-      <c:out value="${lastestpMsg.productimg}" />
-<%--       <img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>
+<%--       <c:out value="${lastestpMsg.productimg}" /> --%>
+      <img style="width: 100px; height: 100px;" src= "data:image/${lastestpMsg.imgtype};base64,${lastestpMsg.productimg}" alt="image" />
       </div>
       <div>
       <c:out value="${lastestpMsg.imgtype}" />
