@@ -51,6 +51,7 @@ public class ProductPageController {
 		
 		mav.getModel().put("page", page);
 		mav.setViewName("product/viewMessages");
+//		mav.setViewName("index");
 		return mav;
 	}
 	@GetMapping("product/category")
