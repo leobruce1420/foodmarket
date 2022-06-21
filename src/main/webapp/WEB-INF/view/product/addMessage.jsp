@@ -41,7 +41,7 @@
 <%--   </form> --%>
 
 <div>
-<input type="file" accept="image/*" onchange="loadFile(event)">
+<form:input path="productimg" type="file" accept="image/*" onchange="loadFile(event)" />
 </div>
 <br/>
 

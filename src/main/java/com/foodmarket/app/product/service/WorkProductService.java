@@ -36,10 +36,19 @@ public class WorkProductService {
 	}
 
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 6, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 4, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
+		return page;
+	}
+	
+	//商品一個一個排
+	public Page<WorkProduct> findByall(Integer productNumber) {
+		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
+		
+		Page<WorkProduct> page = productDao.findAll(pgb);
+		
 		return page;
 	}
 

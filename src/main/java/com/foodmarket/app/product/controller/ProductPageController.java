@@ -1,6 +1,7 @@
 package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,6 +55,19 @@ public class ProductPageController {
 //		mav.setViewName("index");
 		return mav;
 	}
+	
+	
+	//0622T0024 商品全部查詢
+//	@GetMapping("product/allproduct")
+//	public ModelAndView  viewAllProducts(ModelAndView mav, 
+//			@RequestParam(name="to", defaultValue = "1") Integer productNumber) {
+//		List<WorkProduct> allpro = pmsgService.selectAll();
+//		
+//		mav.getModel().put("allpro", allpro);
+//		mav.setViewName("product/viewMessages");
+////		mav.setViewName("index");
+//		return mav;
+//	}
 	@GetMapping("product/category")
 	public String viewProductcategory(ModelAndView catmav,@RequestParam(value="productcategory") String productcategory, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
 //		System.out.println("qweqweqweqwe");
@@ -69,10 +83,10 @@ public class ProductPageController {
 	}
 	@GetMapping("product/name")
 	public String viewProductname(@RequestParam (value="productname")String productname, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-		Page<WorkProduct> page = pmsgService.findByName(p, productname);
+		Page<WorkProduct> pname = pmsgService.findByName(p, productname);
 		
-		m.addAttribute("page", page);
-		System.out.println(page.getTotalElements());
+		m.addAttribute("page", pname);
+		System.out.println(pname.getTotalElements());
 		return "product/viewoneMessages";
 	
 	}

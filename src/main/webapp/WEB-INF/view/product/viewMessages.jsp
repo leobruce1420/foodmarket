@@ -8,6 +8,21 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
+<style>
+table,td{
+    border:3px rgb(66, 170, 218) solid ;
+    background-color: rgb(187, 229, 235);
+    color: red;
+    border-collapse: collapse;
+    margin: 10px auto;
+    font-size: 125%;
+    padding: 10px;
+    box-shadow: 5px 5px 2px gray;
+
+}
+
+
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -16,7 +31,7 @@
 	<br />
 	<div class="container">
 
-		<c:forEach var="workProduct" items="${page.content}">
+		
 			<div class="row justify-content-center">
 
 				<div class="col-18">
@@ -48,6 +63,7 @@
 								<th scope="col">修改</th>
 							</tr>
 						</thead>
+						<c:forEach var="workProduct" items="${page.content}">
 						<tbody>
 							<tr>
 								<th scope="row"><c:out value="${workMessage.productid}" /></th>
@@ -77,6 +93,7 @@
 									</div></td>
 							</tr>
 						</tbody>
+						</c:forEach>
 					</table>
 					<!-- 					<div class="col-12 "> -->
 					<%-- 						<a href="${contextRoot}/message/editMessage?id=${workMessage.id}"><button --%>
@@ -92,9 +109,9 @@
 
 
 			<br />
-		</c:forEach>
+		
 </div>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center container" >
 
 			<div class="col-9">
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
@@ -181,7 +198,7 @@
 
 			<div>
 				<br />
-				<div class="card" style="width: 20rem;">
+				<div class="card container" style="width: 20rem;">
 					<img src="..." class="card-img-top" alt="...">
 					<div class="card-body">
 						<h5 class="card-title"><c:out value="${workProduct.productname}" /></h5>
@@ -203,7 +220,7 @@
 		</div>
 
 
-<div id="carouselExampleIndicator" class="carousel slide"
+<div id="carouselExampleIndicator" class="carousel slide container"
 		data-ride="carousel"data-interval="false" >
 <!-- 		data-interval="false" -->
 		<ol class="carousel-indicators">
@@ -215,7 +232,7 @@
 		</c:forEach>
 		</ol>
 		<br/>
-		<div class="carousel-inner">
+		<div class="carousel-inner container">
 		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 			<div class="carousel-item active">
 			<table class="table table-dark">
@@ -223,7 +240,7 @@
 			<c:forEach var="workProduct" items="${page.content}">
 			<td>
 			
-				<div class="card" style="width: 18rem;">
+				<div class="card container" style="width: 18rem;">
 <%-- 				<img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>
 					<img style="width: 200px; height: 200px;" src="data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" class="card-img-top" >
 					<div class="card-body">
@@ -366,6 +383,199 @@
 				class="sr-only">Next</span>
 		</button>
 	</div>
+	
+	
+	<br/>
+	
+	
+	
+	<div id="carouselExampleControlsNoTouching" class="carousel slide container" data-touch="true" data-interval="false">
+  <div class="carousel-inner">
+	<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+    <div class="carousel-item active">
+    <table>
+  <tr>
+  <c:forEach var="workProduct" items="${page.content}">
+  <td>
+      <div class="card" style="width: 18rem;">
+<%-- 				<img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>
+					<img style="width: 200px; height: 200px;" src="data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" class="card-img-top" >
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">加入購物車</a>
+					</div>
+				</div>
+				</td>
+  </c:forEach>
+				</tr>
+				</table>
+    </div>
+    
+<!--     <div class="carousel-item"> -->
+<!--       <img src="..." class="d-block w-100" alt="..."> -->
+<!--     </div> -->
+<!--     <div class="carousel-item"> -->
+<!--       <img src="..." class="d-block w-100" alt="..."> -->
+<!--     </div> -->
+  </c:forEach>
+  </div>
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+
+
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="true" data-interval="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="carousel-item"> -->
+				<table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+    </div>
+    <div class="carousel-item">
+      <table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+    </div>
+    <div class="carousel-item">
+      <table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+    
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
 
 </body>
 
