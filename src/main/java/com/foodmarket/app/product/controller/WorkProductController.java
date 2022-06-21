@@ -141,8 +141,8 @@ public class WorkProductController {
 
 			pmsgService.insertProduct(productbean);
 
-			WorkProduct Products = pmsgService.insertProduct();
-			m.addAttribute("products", Products);
+//			WorkProduct Products = pmsgService.insertProduct();
+//			m.addAttribute("products", Products);
 			return "product/addMessage";
 
 		} catch (UnsupportedEncodingException e) {

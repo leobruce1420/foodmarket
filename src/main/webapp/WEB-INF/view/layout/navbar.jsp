@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>好食光市場</title>
 </head>
 <body>
 
@@ -61,7 +61,7 @@
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
-			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter'">會員中心</button>
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter/${loginUserId}'">會員中心</button>
 			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
 		</c:when>
 			

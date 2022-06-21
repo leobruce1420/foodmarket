@@ -1,5 +1,6 @@
 package com.foodmarket.app.member.controller;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.foodmarket.app.member.model.Member;
 import com.foodmarket.app.member.service.MemberServiceInterface;
@@ -259,7 +261,7 @@ public class MemberController {
 		}
 	}
 	
-	@PostMapping("/changePwd")
+	@PostMapping("/changePwdByToken")
 	public String changePwd(@RequestParam("password") String password, HttpSession session, Model m) {
 		
 		String psw = util.encryptString(password);
@@ -275,7 +277,46 @@ public class MemberController {
 			m.addAttribute("error", "錯誤，請重新發送驗證信");
 			return "member/forgotPwd/forgotPwd";
 		}
-
 	}
+	
+	// ===============================修改會員==============================================================================================
 
+	@PostMapping("/updateCustomer")
+	public String updateCustomer(@ModelAttribute("member") Member member, @RequestParam(name="img" ,required=false) MultipartFile mf, Model m, HttpSession session) throws IOException {
+
+		Member datamember = memberService.findById(member.getCustomerId());
+		String pwd = datamember.getPassword();
+		member.setPassword(pwd);
+				
+		//修改時間
+		member.setModifiedDate(new Date());
+		
+		
+		if(!mf.isEmpty()) {
+			String imgType = mf.getOriginalFilename().substring(mf.getOriginalFilename().indexOf(".")+1); 
+			if(imgType.equals("png")) {
+				member.setImgType(imgType);
+			}else {
+				member.setImgType("jpeg");
+			}
+			
+			byte[] imgBytes = mf.getBytes();
+			String file = util.encoder(imgBytes);
+			member.setImgFile(file);
+		}else {
+			member.setImgType(datamember.getImgType());
+			member.setImgFile(datamember.getImgFile());
+		}
+		
+		
+		Member rsMember = memberService.updateCustomer(member);
+		logger.info("修改成功! 會員編號：" + rsMember.getCustomerId());
+		
+//		Member resMember = memberService.findById(rsMember.getCustomerId());		
+//		m.addAttribute("member", resMember);
+//		
+//		return "member/memberCenter";
+		
+		return "redirect:/memberCenter/" + rsMember.getCustomerId();	
+	}
 }

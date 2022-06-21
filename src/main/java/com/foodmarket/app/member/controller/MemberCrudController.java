@@ -33,20 +33,20 @@ public class MemberCrudController {
 		//return "redirect:/message/all";
 	}
 	
-	@PostMapping("/updateCustomer")
-	public String updateCustomer(@ModelAttribute("member")Member member, Model m) {
-//		@ModelAttribute("member")Member member
-//		Member member = memberService.findById((long) 3);
-//		member.setCustomerName("李阿甭");
-//		member.setMobile("0919777666");
-//		member.setMail("hamham@gmail.com");
-//		member.setPassword(util.encryptString("a12345"));
-//		member.setBirthday(new Date());
-//		member.setGender("female");
-		
-		memberService.insertCustomer(member);	
-		return "index";
-	}
+//	@PostMapping("/updateCustomer")
+//	public String updateCustomer(@ModelAttribute("member")Member member, Model m) {
+////		@ModelAttribute("member")Member member
+////		Member member = memberService.findById((long) 3);
+////		member.setCustomerName("李阿甭");
+////		member.setMobile("0919777666");
+////		member.setMail("hamham@gmail.com");
+////		member.setPassword(util.encryptString("a12345"));
+////		member.setBirthday(new Date());
+////		member.setGender("female");
+//		
+//		memberService.insertCustomer(member);	
+//		return "index";
+//	}
 	
 	@GetMapping("/member/findByName/{name}")
 	public String findByNamePageable(@PathVariable String name, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
