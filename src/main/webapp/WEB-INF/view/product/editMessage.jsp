@@ -39,11 +39,40 @@
 									圖
 									<%--   <form:input path="productimg" class="form-control"/> --%>
 
-									<form:input path="productimg" class="form-control" />
-									<img style="width: 100px; height: 100px;"
+									<div>
+										<form:input path="productimg" type="file" accept="image/*"
+											onchange="preview()" />
+									</div>
+									<br /> <img id="output" style="width: 100px; height: 100px;" />
+									<img id=productimg style="width: 100px; height: 100px;"
 										src="data:image/image/*;base64,${lastestpMsg.productimg}"
-										alt="image" /> <input type="file" id="productimg"
-										name="productimg" accept=".jpg,.jpeg,.gif" required />
+										alt="image" />
+									<!-- 										<input type="file" id="productimg" -->
+									<!-- 										name="productimg" accept=".jpg,.jpeg,.gif" required /> -->
+									<script>
+										// 										var loadFile = function(event) {
+										// 											var reader = new FileReader();
+										// 											reader.onload = function() {
+										// 												var output = document
+										// 														.getElementById('output');
+										// 												output.src = reader.result;
+										// 											};
+										// 											reader
+										// 													.readAsDataURL(event.target.files[0]);
+										// 										};
+										$(function() {
+											$('#productimg').hide();
+										});
+
+										function preview() {
+											logo.src = URL
+													.createObjectURL(event.target.files[0]);
+											if ((event.target.files[0].type)
+													.startsWith("image")) {
+												$('#productimg').show();
+											}
+										}
+									</script>
 									<!--   <figure> -->
 									<%-- 	<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
 									<!-- </figure> -->
@@ -63,11 +92,11 @@
 									上下架
 									<form:input path="takedown" class="form-control" />
 								</div>
-								<div>
-									<a onclick="return confirm('真的要刪除嗎?')"
-										href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button
-											class="btn btn-danger" class=".check_pid">刪除</button></a>
-								</div>
+								<!-- 								<div> -->
+								<!-- 									<a onclick="return confirm('真的要刪除嗎?')" -->
+								<%-- 										href="${contextRoot}/product/delete?productid=${lastestpMsg.productid}"><button --%>
+								<!-- 											class="btn btn-danger" class=".check_pid">刪除</button></a> -->
+								<!-- 								</div> -->
 							</div>
 							<input type="submit" name="submit" value="修改訊息">
 						</form:form>

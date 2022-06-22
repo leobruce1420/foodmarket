@@ -576,7 +576,7 @@ table,td{
     <span class="sr-only">Next</span>
   </button>
 </div>
-<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+<%-- <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
 <ul class="responsive">
 <c:forEach var="workProduct" items="${page.content}">
     <li>
@@ -594,7 +594,7 @@ table,td{
 <%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
     </c:forEach>
   </ul>
-</c:forEach>
+<%-- </c:forEach> --%>
 <%-- <script type="text/javascript" src="${contextRoot}/js/slick.js"></script> --%>
 <script type="text/javascript">
 $(document).ready(function(){
