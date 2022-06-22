@@ -48,9 +48,11 @@ public class ShopAdController {
 	public String queryById(@RequestParam("id") Integer id, Model m) {
 		
 		ShopAdvertisement ad = sService.findById(id);
-		
-		m.addAttribute("ad", ad);
+		if(ad!=null) {
+			m.addAttribute("ad", ad);
 		return "advertisement/getShopAd";
+		}
+		return "advertisement/noMessage";
 	}
 	
 	@GetMapping("/shopad/update")

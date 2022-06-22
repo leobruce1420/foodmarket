@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -46,8 +47,12 @@ public class BlogAdController {
 		
 		BlogAdvertisement ad = bService.findById(id);
 		
-		m.addAttribute("ad", ad);
+		if(ad != null) {
+			m.addAttribute("ad", ad);
 		return "advertisement/getBlogAd";
+		}
+		
+		return"advertisement/noMessage";
 	}
 	
 	@GetMapping("/blogad/update")

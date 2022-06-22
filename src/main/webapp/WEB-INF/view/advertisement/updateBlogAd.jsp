@@ -12,11 +12,14 @@
 <title>修改資料</title>
 <style>
 fieldset{
-width: 1000px;
-height: 600px;
-text-align: center;
+width: 800px;
+height: 750px;
 margin: auto;
 margin-top: 10px;
+text-align: center;
+border: 3px solid black;
+background-color: lightblue;
+border-radius: 20px
 }
 
 h2{
@@ -35,32 +38,47 @@ text-align: center;
 
 .picture{
 width: 450px;
+text-algin: center;
+}
+
+.div1{
+margin: auto;
+margin-top: 10px;
+}
+
+picture{
+text-algin: center;
+}
+
+textarea{
+resize: none; 
 }
 
 </style>
 </head>
 <body>
 	<fieldset>
-		<h2>修改資料</h2>
+		<br><h2>修改資料</h2>
 		<form:form method="post" action="${contextRoot}/blogad/update"
 			enctype='multipart/form-data' modelAttribute="editAd">
 
+			<div class="picturediv">
+				<label for="picture" class="FormTitle">圖片 :  </label> <img
+					id="output" src="data:image/*;base64, ${ad.picture}"
+					class="picture" name="picture" />
+			</div>
+	
 			<div class="div1">
 				活動編號: <input type="text" readonly name="blogAdId" required
 					value="${ad.blogAdId}">
 			</div>
-
+			
 			<div class="div1">
 				<label for="blogAdName" class="FormTitle">活動名稱 : </label> <input
 					type="text" id="blogAdName" name="blogAdName" autocomplete="off"
 					required value="${ad.blogAdName}" />
 			</div>
 
-			<div class="">
-				<label for="picture" class="FormTitle">圖片 : </label> <img
-					id="output" src="data:image/*;base64, ${ad.picture}"
-					class="picture" name="picture" />
-			</div>
 
 			 <!--  <div class="div1">
 

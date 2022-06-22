@@ -40,7 +40,7 @@ td {
 			<div class="div1">
 				<label for="id" class="id">單筆活動查詢 : </label> <input type="text"
 					id="id" name="id" autocomplete="off" required /><input
-					type="button" value="查詢">
+					type="submit" value="查詢">
 			</div>
 
 		</form:form>
