@@ -14,13 +14,14 @@ margin: 0px;
 padding: 0px;
 }
 .div1 {
-	width: 1000px;
-	height: 600px;
+	width: 800px;
+	height: 700px;
 	margin: auto;
 	margin-top: 10px;
 	text-align: center;
 	border: 3px solid black;
 	background-color: lightblue;
+	border-radius: 20px
 }
 
 img{
