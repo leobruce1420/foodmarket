@@ -51,7 +51,7 @@ public class WorkProductService {
 		
 		return page;
 	}
-
+	//ID查詢
 	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
 

@@ -23,7 +23,8 @@
 					<div class="card-header">修改商品</div>
 					<div class="card-body">
 
-						<form:form class="form" method="post" modelAttribute="pMsg">
+						<form:form class="form" method="post" modelAttribute="pMsg" 
+						enctype='multipart/form-data'>
 
 							<form:input path="productid" type="hidden" />
 							<form:input path="added" type="hidden" />
@@ -41,10 +42,14 @@
 
 									<div>
 										<form:input path="productimg" type="file" accept="image/*"
-											onchange="preview()" />
+											onchange="loadFile(event)" />
 									</div>
-									<br /> <img id="output" style="width: 100px; height: 100px;" />
-									<img id="productimg" style="width: 100px; height: 100px;"
+									<br />
+									修改後圖片
+									 <img id="output" style="width: 100px; height: 100px;" />
+									
+									原始圖片
+									<img id="output" style="width: 100px; height: 100px;"
 										src="data:image/*;base64,${pMsg.productimg}"
 										alt="image" />
 									<!-- 										<input type="file" id="productimg" -->

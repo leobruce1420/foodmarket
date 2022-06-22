@@ -20,6 +20,7 @@ import com.foodmarket.app.product.dto.ProductDto;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
+import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 @Controller
 public class WorkProductController {
@@ -168,7 +169,7 @@ public class WorkProductController {
 			 @RequestParam("takedown") String takedown,Model m) throws IOException {
 		WorkProduct workProduct = pmsgService.findById(productid);
 		Util method = new Util();
-//		WorkProduct workProduct = new WorkProduct();
+//		WorkProduct newworkProduct = new WorkProduct();
 
 		workProduct.setProductname(productname);
 		workProduct.setProductcategory(productcategory);
@@ -180,9 +181,10 @@ public class WorkProductController {
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
 		
+		if(!mf.isEmpty()) {
 		byte[] imgBytes = mf.getBytes();
 		workProduct.setProductimg(method.encoder(imgBytes));
-
+		}
 		pmsgService.insertProduct(workProduct);
 		
 		List<WorkProduct> pMsg = pmsgService.selectAll();
@@ -220,6 +222,14 @@ public class WorkProductController {
 
 		return content;
 	}
+	
+	
+//	@GetMapping("/shopad/update")
+//	public String UpdateAd(@RequestParam("id") Integer id, Model m) {
+//		ShopAdvertisement ad = sService.findById(id);
+//		m.addAttribute("ad", ad);
+//		return "advertisement/updateShopAd";
+//	}
 	// 關鍵字查詢
 //	@PostMapping("product/queryByName")
 //	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {
