@@ -20,6 +20,9 @@
 		<h1 style="text-align: center">常見問題</h1>
 		<br>
 
+		<td><a
+			href="${contextRoot}/question/findByQuestionTitle?questionTitle=${Question.questionTitle}"><button
+					class="btn btn-warning">修改</button></a></td>
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card">
@@ -27,10 +30,14 @@
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
 							<c:if test="${Question.questionCategory =='產品及服務'}">
-								<button type="button" class="collapsible"><c:out value="${Question.questionTitle}" /></button>
+								<button type="button" class="collapsible">
+									<c:out value="${Question.questionTitle}" />
+								</button>
 								<div class="content">
-								<br>
-									<p><c:out value="${Question.answer}" /></p>
+									<br>
+									<p>
+										<c:out value="${Question.answer}" />
+									</p>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -42,10 +49,14 @@
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
 							<c:if test="${Question.questionCategory =='配送物流'}">
-								<button type="button" class="collapsible"><c:out value="${Question.questionTitle}" /></button>
+								<button type="button" class="collapsible">
+									<c:out value="${Question.questionTitle}" />
+								</button>
 								<div class="content">
-								<br>
-									<p><c:out value="${Question.answer}" /></p>
+									<br>
+									<p>
+										<c:out value="${Question.answer}" />
+									</p>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -57,10 +68,14 @@
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
 							<c:if test="${Question.questionCategory =='會員申請'}">
-								<button type="button" class="collapsible"><c:out value="${Question.questionTitle}" /></button>
+								<button type="button" class="collapsible">
+									<c:out value="${Question.questionTitle}" />
+								</button>
 								<div class="content">
-								<br>
-									<p><c:out value="${Question.answer}" /></p>
+									<br>
+									<p>
+										<c:out value="${Question.answer}" />
+									</p>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -72,10 +87,14 @@
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
 							<c:if test="${Question.questionCategory =='其他'}">
-								<button type="button" class="collapsible"><c:out value="${Question.questionTitle}" /></button>
+								<button type="button" class="collapsible">
+									<c:out value="${Question.questionTitle}" />
+								</button>
 								<div class="content">
-								<br>
-									<p><c:out value="${Question.answer}" /></p>
+									<br>
+									<p>
+										<c:out value="${Question.answer}" />
+									</p>
 								</div>
 							</c:if>
 

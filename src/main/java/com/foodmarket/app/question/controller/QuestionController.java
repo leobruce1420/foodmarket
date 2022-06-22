@@ -40,9 +40,9 @@ public class QuestionController {
 		
 	@PostMapping("question/postQuestion")  //傳資料到資料庫
 	public String addQuestion (@ModelAttribute("Question") Question qus, Model model) {	
-		Question newQs = new Question();
+		Question newQs = new Question();  //這行是不是可以不寫???
 		qs.insertQuestion(qus);		
-		model.addAttribute("Question", newQs);
+		model.addAttribute("Question", newQs);  //這行是不是可以不寫???
 		ArrayList<String> categoryList = new ArrayList<>();
 		categoryList.add("產品及服務");
 		categoryList.add("配送物流");
@@ -101,8 +101,10 @@ public class QuestionController {
 		return "redirect:/question/viewAllQuestion";
 	}
 	
-	@PostMapping("question/findByQuestionTitle")
-	public List<Question> findByQuestionTitle(@RequestParam(name="questionTitle") String questionTitle){
-		
+	@GetMapping("question/findByQuestionTitle")
+	public String findByQuestionTitle(@RequestParam(name="QuestionTitle") String questionTitle, Model model){
+		List<Question> findByQuestionTitle = qs.findByQuestionTitle(questionTitle);
+		model.addAttribute("QuestionTitle", findByQuestionTitle);
+		return "question/findByQuestionTitle";
 	}
 }
