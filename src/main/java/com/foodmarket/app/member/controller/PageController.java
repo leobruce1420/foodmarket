@@ -13,7 +13,10 @@ import com.foodmarket.app.member.service.MemberServiceInterface;
 
 @Controller
 public class PageController {
-
+	
+	@Autowired
+	private MemberServiceInterface memberService;
+	
 	@GetMapping("/")
 	public String homePage() {
 		return "index";
@@ -35,4 +38,25 @@ public class PageController {
 		m.addAttribute("member", member);
 		return "member/signUp";
 	}
+	
+	@GetMapping("/toforgotPwd")
+	public String forgotPwd() {
+		return "member/forgotPwd/forgotPwd";
+	}
+	
+	@GetMapping("/memberCenter/{id}")
+	public String memberCenter(@PathVariable Long id, Model m, HttpSession session) {
+		
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		
+		//判斷路徑的id跟登入中id是否一致(若不一致轉到首頁)(還想亂來啊
+		if(sessionUId.equals(id)) {
+			Member member = memberService.findById(id);		
+			m.addAttribute("member", member);
+			
+			return "member/memberCenter";	
+		}
+		return "index";	
+	}
+
 }

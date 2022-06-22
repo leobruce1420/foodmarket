@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="productStatistic")
-public class productStatistic {
+public class ProductStatistic {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ public class productStatistic {
 	}
 
 
-	public productStatistic(Integer id, Integer productId, String productName, Integer sales) {
+	public ProductStatistic(Integer id, Integer productId, String productName, Integer sales) {
 		super();
 		this.id = id;
 		this.productId = productId;
@@ -110,7 +110,7 @@ public class productStatistic {
 
 
 
-	public productStatistic() {
+	public ProductStatistic() {
 	}
 
 }
