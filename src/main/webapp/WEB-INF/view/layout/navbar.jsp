@@ -7,10 +7,14 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
 <title>Insert title here</title>
+=======
+<title>好食光市場</title>
+>>>>>>> 64d0dc4b5d7b6a98068f766d7098f47360915b20
 </head>
 <body>
 
@@ -64,7 +68,7 @@
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
-			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter'">會員中心</button>
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter/${loginUserId}'">會員中心</button>
 			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
 		</c:when>
 			

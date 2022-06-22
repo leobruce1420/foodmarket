@@ -18,7 +18,7 @@
 alert(${error});
 </c:if>
 
-<form class="form" method="post" action="${contextRoot}/changePwd" onsubmit="return(checkRobot())">
+<form class="form" method="post" action="${contextRoot}/changePwdByToken" onsubmit="return(checkRobot())">
 <div class="container mt-5">
 <h2 class="form-row justify-content-center">修改密碼</h2>
 
@@ -38,23 +38,11 @@ alert(${error});
       <span id="pswmsg2" class="badge badge-secondary badge-danger"></span>
       <input type="password" class="form-control" id="password2" name="password2" required>
     </div>
-    
-    <div class="w-100"></div>
 
 </div>
 
 <div class="form-row justify-content-center mt-4">
- <div
-    class="g-recaptcha btn-sm"
-    data-sitekey="6Le9B3QgAAAAAHgp8DNKlx4U_A58N6IfMu6GqjER"
-    data-theme="light" data-size="normal"
-    data-callback="verifyCallback">
-</div>
-
-<div class="w-100"></div>
-
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
-
 </div>
 </form>
 
@@ -63,36 +51,6 @@ alert(${error});
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
-	
-// 到後端進行機器人驗證	
-function verifyCallback(token) {
-	$.ajax({
-    type :"POST",
-    url  : "checkRecaptcha",
-    contentType:'application/json',
-	data: JSON.stringify(grecaptcha.getResponse()),
-	success: function(data){
-		   if(data=='Y'){
-			   console.log("ok")
-			   $('#submit').attr("disabled", false);
-		   } 
-		   if(data=='N'){
-			   $('#submit').attr("disabled", true);
-		   }
-	   },
-	   error: function(e){
-		   console.log(e);
-	   }
-	})
-}
-// 按送出時檢查是否進行過機器人驗證
-function checkRobot(){
-    var v = grecaptcha.getResponse();
-    if(v.length == 0){
-        alert('請先進行機器人驗證!!');
-        return false;
-    }
-}
 
 $('#password').blur(function(){
 	var pswInput = $('#password').val();
