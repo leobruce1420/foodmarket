@@ -202,4 +202,121 @@ public class MemberController {
 			return "member/auth/authMailReSend";
 		}
 	}
+
+	// ===============================忘記密碼==============================================================================================
+
+	@PostMapping("/pwdMail")
+	public String pwdMail(@RequestParam("mail") String email, Model m) {
+
+		Member rsMember = memberService.findByMail(email);
+
+		if (rsMember != null) {
+			String token = util.encodeSha512(rsMember.getPassword().toString());
+
+			// 信件標題及內容設定
+			String title = "foodmarket忘記密碼驗證信";
+			String text = "您好，請點擊下方連結修改密碼<br>" + "<a href = 'http://localhost:8080/foodmarket/pswMailCheck/" + token
+					+ "'>" + "http://localhost:8080/foodmarket/pswMailCheck/" + token + "</a>";
+
+			// 在db新增authToken及到期日
+			rsMember.setChangePasswordToken(token);
+
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.MINUTE, +30);
+			rsMember.setChangePasswordLimit(cal.getTime());
+
+			memberService.updateCustomer(rsMember);
+
+			mail.SendMail(email, title, text);
+
+			return "member/forgotPwd/pwdMail";
+
+		} else {
+			logger.info("無此帳號!");
+			m.addAttribute("error", "無此帳號!");
+			return "member/forgotPwd/forgotPwd";
+		}
+	}
+
+	@GetMapping("/pswMailCheck/{token}")
+	public String pswMailCheck(@PathVariable String token, Model m, HttpSession session) {
+		Member rsMember = memberService.findByChangePasswordToken(token);
+
+		if (rsMember != null) {
+			if (rsMember.getChangePasswordLimit().after(new Date())) {
+				logger.info("忘記密碼驗證成功! 會員編號：" + rsMember.getCustomerId());
+				rsMember.setChangePasswordLimit(null);
+				rsMember.setChangePasswordToken(null);
+				memberService.updateCustomer(rsMember);
+				session.setAttribute("changePwdUserId", rsMember.getCustomerId());
+				return "member/forgotPwd/changePwdBytoken";
+			} else {
+				logger.info("驗證碼過期! 會員編號：" + rsMember.getCustomerId());
+				m.addAttribute("error", "驗證碼過期!");
+				return "member/forgotPwd/forgotPwd";
+			}
+		} else {
+			logger.info("無此token或重複使用");
+			return "index";
+		}
+	}
+	
+	@PostMapping("/changePwdByToken")
+	public String changePwd(@RequestParam("password") String password, HttpSession session, Model m) {
+		
+		String psw = util.encryptString(password);
+		
+		if(session.getAttribute("changePwdUserId") != null) {
+			Member rsMember = memberService.findById((Long) session.getAttribute("changePwdUserId"));		
+			rsMember.setPassword(psw);
+			session.setAttribute("changePwdUserId", null);
+			memberService.updateCustomer(rsMember);
+			return "member/forgotPwd/pwdMailCheck";
+		}else {
+			logger.info("錯誤，請從新發送驗證信");
+			m.addAttribute("error", "錯誤，請重新發送驗證信");
+			return "member/forgotPwd/forgotPwd";
+		}
+	}
+	
+	// ===============================修改會員==============================================================================================
+
+	@PostMapping("/updateCustomer")
+	public String updateCustomer(@ModelAttribute("member") Member member, @RequestParam(name="img" ,required=false) MultipartFile mf, Model m, HttpSession session) throws IOException {
+
+		Member datamember = memberService.findById(member.getCustomerId());
+		String pwd = datamember.getPassword();
+		member.setPassword(pwd);
+				
+		//修改時間
+		member.setModifiedDate(new Date());
+		
+		
+		if(!mf.isEmpty()) {
+			String imgType = mf.getOriginalFilename().substring(mf.getOriginalFilename().indexOf(".")+1); 
+			if(imgType.equals("png")) {
+				member.setImgType(imgType);
+			}else {
+				member.setImgType("jpeg");
+			}
+			
+			byte[] imgBytes = mf.getBytes();
+			String file = util.encoder(imgBytes);
+			member.setImgFile(file);
+		}else {
+			member.setImgType(datamember.getImgType());
+			member.setImgFile(datamember.getImgFile());
+		}
+		
+		
+		Member rsMember = memberService.updateCustomer(member);
+		logger.info("修改成功! 會員編號：" + rsMember.getCustomerId());
+		
+//		Member resMember = memberService.findById(rsMember.getCustomerId());		
+//		m.addAttribute("member", resMember);
+//		
+//		return "member/memberCenter";
+		
+		return "redirect:/memberCenter/" + rsMember.getCustomerId();	
+	}
 }
