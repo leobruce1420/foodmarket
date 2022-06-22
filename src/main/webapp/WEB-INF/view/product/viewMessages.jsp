@@ -26,6 +26,9 @@ table,td{
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%-- <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/> --%>
+<!-- <!-- // Add the new slick-theme.css if you want the default styling --> -->
+<%-- <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/> --%>
 </head>
 <body>
 	<br />
@@ -576,6 +579,55 @@ table,td{
     <span class="sr-only">Next</span>
   </button>
 </div>
+
+<ul class="responsive">
+<c:forEach var="workProduct" items="${page.content}">
+    <li><img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/></li>
+    <li><img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/></li>
+    <li><img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/></li>
+    </c:forEach>
+  </ul>
+
+<%-- <script type="text/javascript" src="${contextRoot}/js/slick.js"></script> --%>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.responsive').slick({
+	  dots: true,
+	  infinite: false,
+	  speed: 300,
+	  slidesToShow: 4,
+	  slidesToScroll: 4,
+	  responsive: [
+	    {
+	      breakpoint: 1024,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 3,
+	        infinite: true,
+	        dots: true
+	      }
+	    },
+	    {
+	      breakpoint: 600,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 2
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
+	});
+	});
+</script>
 
 </body>
 

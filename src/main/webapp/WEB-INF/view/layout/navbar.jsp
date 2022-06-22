@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
+<!-- // Add the new slick-theme.css if you want the default styling -->
+<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -75,6 +78,6 @@
 </nav>
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
-
+<script type="text/javascript" src="${contextRoot}/js/slick.js"></script>
 </body>
 </html>
