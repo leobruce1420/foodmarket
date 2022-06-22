@@ -20,6 +20,45 @@ table,td{
     box-shadow: 5px 5px 2px gray;
 
 }
+h5 {
+    text-align: center;
+}
+
+.banner {
+    width: 80%;
+    margin: auto;
+}
+
+img {
+    width: 200px;
+}
+
+.slick-slide {
+    height: 45%;
+}
+
+.Btn-prev, .Btn-next {
+background: #6994B9;
+}
+
+.slick-slide img{
+    margin: auto;
+}
+.card-text{
+margin-bottom: 10pt;
+}
+.stretched-link{
+}
+/* li{ */
+/* border:3px rgb(66, 170, 218) solid ; */
+/*     background-color: rgb(187, 229, 235); */
+/*     color: red; */
+/*     border-collapse: collapse; */
+/*     margin: 10px auto; */
+/*     font-size: 70%; */
+/*     padding: 10px; */
+/*     box-shadow: 5px 5px 2px gray; */
+/* } */
 
 
 </style>
@@ -69,7 +108,7 @@ table,td{
 						<c:forEach var="workProduct" items="${page.content}">
 						<tbody>
 							<tr>
-								<th scope="row"><c:out value="${workMessage.productid}" /></th>
+								<th scope="row"><c:out value="${workProduct.productid}" /></th>
 								<td><c:out value="${workProduct.productname}" /></td>
 								<td><c:out value="${workProduct.productcategory}" /></td>
 								<td><c:out value="${workProduct.productprice}" /></td>
@@ -236,10 +275,10 @@ table,td{
 		</ol>
 		<br/>
 		<div class="carousel-inner container">
-		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 			<div class="carousel-item active">
 			<table class="table table-dark">
 			<tr>
+		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 			<c:forEach var="workProduct" items="${page.content}">
 			<td>
 			
@@ -279,10 +318,10 @@ table,td{
 <!-- 				</div> -->
 <!-- 				</td> -->
 			
+			</c:forEach>
 			</tr>
 			</table>
 			</div>
-			</c:forEach>
 			
 <!-- 			<div class="carousel-item"> -->
 <!-- 				<table class="table table-dark"> -->
@@ -576,42 +615,68 @@ table,td{
     <span class="sr-only">Next</span>
   </button>
 </div>
-<%-- <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+<div>
 <ul class="responsive">
+<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 <c:forEach var="workProduct" items="${page.content}">
     <li>
-    <div class="card" style="width: 18rem;">
-					<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/>
+    <div class="card" style="width: 18rem ;height: 23rem;">
+					<img style="width: 200px; height: 200px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/>
 					<div class="card-body">
 						<h5 class="card-title">${workProduct.productname}</h5>
 						<p class="card-text">${workProduct.productprice}</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
+						<a href="#" id="frontdesk" class="btn btn-primary stretched-link">Go
 							somewhere</a>
 					</div>
 				</div>
     </li>
 <%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
 <%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
+</c:forEach>
     </c:forEach>
   </ul>
-<%-- </c:forEach> --%>
+</div>
+<%--   <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
+<%-- 							<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out --%>
+<%-- 									value="${pageNumber}" /></a> --%>
+<%-- 						</c:when> --%>
+
+<%-- 						<c:otherwise> --%>
+<%-- 							<c:out value="${pageNumber}" /> --%>
+<%-- 						</c:otherwise> --%>
+
+<%-- 					</c:choose> --%>
+
+<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
+<!-- 							| -->
+<%-- 							</c:if> --%>
+<%-- 				</c:forEach> --%>
 <%-- <script type="text/javascript" src="${contextRoot}/js/slick.js"></script> --%>
 <script type="text/javascript">
+// 需要左右兩邊可滑動的箭頭
+// arrows: true,
+// prevArrow: '<button type="button" class="slick-prev Btn-prev">Previous</button>',
+// nextArrow: '<button type="button" class="slick-next Btn-next">Next</button>',
 $(document).ready(function(){
 $('.responsive').slick({
-	  dots: true,
+	  dots: false,
 	  infinite: false,
 	  speed: 300,
 	  slidesToShow: 4,
-	  slidesToScroll: 4,
+	  slidesToScroll: 2,
 	  responsive: [
 	    {
 	      breakpoint: 1024,
 	      settings: {
+// 	    	  畫面中一次輪播的幾張圖片
 	        slidesToShow: 3,
-	        slidesToScroll: 3,
-	        infinite: true,
-	        dots: true
+// 	        左右滑動時，一次更新幾張圖片
+	        slidesToScroll: 2,
+// 	        照片播完時，再重新播放
+	        infinite: false,
+	        dots: false
 	      }
 	    },
 	    {

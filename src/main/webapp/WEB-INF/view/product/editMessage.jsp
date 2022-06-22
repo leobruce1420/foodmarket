@@ -20,7 +20,7 @@
 			<div class="col-9">
 				<h1>修改商品頁面</h1>
 				<div class="card">
-					<div class="card-header">請輸入要修改的商品</div>
+					<div class="card-header">修改商品</div>
 					<div class="card-body">
 
 						<form:form class="form" method="post" modelAttribute="pMsg">
@@ -44,34 +44,35 @@
 											onchange="preview()" />
 									</div>
 									<br /> <img id="output" style="width: 100px; height: 100px;" />
-									<img id=productimg style="width: 100px; height: 100px;"
-										src="data:image/image/*;base64,${lastestpMsg.productimg}"
+									<img id="productimg" style="width: 100px; height: 100px;"
+										src="data:image/*;base64,${pMsg.productimg}"
 										alt="image" />
 									<!-- 										<input type="file" id="productimg" -->
 									<!-- 										name="productimg" accept=".jpg,.jpeg,.gif" required /> -->
 									<script>
-										// 										var loadFile = function(event) {
-										// 											var reader = new FileReader();
-										// 											reader.onload = function() {
-										// 												var output = document
-										// 														.getElementById('output');
-										// 												output.src = reader.result;
-										// 											};
-										// 											reader
-										// 													.readAsDataURL(event.target.files[0]);
-										// 										};
-										$(function() {
-											$('#productimg').hide();
-										});
+										var loadFile = function(event) {
+											var reader = new FileReader();
+											reader.onload = function() {
+												var output = document
+														.getElementById('output');
+												output.src = reader.result;
+											};
+											reader.readAsDataURL(event.target.files[0]);
+													
+										};
+																			
+// 										$(function() {
+// 											$('#prodimg').hide();
+// 										});
 
-										function preview() {
-											logo.src = URL
-													.createObjectURL(event.target.files[0]);
-											if ((event.target.files[0].type)
-													.startsWith("image")) {
-												$('#productimg').show();
-											}
-										}
+// 										function preview() {
+// 											logo.src = URL
+// 													.createObjectURL(event.target.files[0]);
+// 											if ((event.target.files[0].type)
+// 													.startsWith("image")) {
+// 												$('#prodimg').show();
+// 											}
+// 										}
 									</script>
 									<!--   <figure> -->
 									<%-- 	<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
@@ -85,12 +86,16 @@
 									<%-- 					<img id="frame" class="rounded-sm" alt="productImg" src="${product.pImg}" width="100px" height="100px"> --%>
 									<!-- 
 					</div> -->
-									<br /> 商品介紹
+									<br />
+									 商品介紹
 									<form:input path="productdesciption" class="form-control" />
 									庫存數量
 									<form:input path="inventoryquantity" class="form-control" />
 									上下架
 									<form:input path="takedown" class="form-control" />
+
+									<form:input path="administrator" class="form-control"
+										type="hidden" />
 								</div>
 								<!-- 								<div> -->
 								<!-- 									<a onclick="return confirm('真的要刪除嗎?')" -->
@@ -99,6 +104,7 @@
 								<!-- 								</div> -->
 							</div>
 							<input type="submit" name="submit" value="修改訊息">
+							<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
 						</form:form>
 
 
