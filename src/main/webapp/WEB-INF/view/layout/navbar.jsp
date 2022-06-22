@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
@@ -15,6 +16,12 @@
 
 <title>好食光市場</title>
 
+=======
+<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
+<!-- // Add the new slick-theme.css if you want the default styling -->
+<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
+<title>好食光市場</title>
+>>>>>>> product/main
 </head>
 <body>
 
