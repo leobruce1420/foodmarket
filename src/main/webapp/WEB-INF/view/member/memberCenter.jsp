@@ -53,7 +53,7 @@
       </div>
     </nav>
 
-<form:form class="form" method="post" action="${contextRoot}/updateCustomer" modelAttribute="member" enctype='multipart/form-data' onsubmit="return(checkRobot())">
+<form:form class="form" method="post" action="${contextRoot}/updateCustomer" modelAttribute="member" enctype='multipart/form-data'>
 <div class="container-fluid mt-3 ml-5">
 <h2 class="form-row justify-content-start">會員資料</h2>
 
@@ -149,13 +149,6 @@
 <script type="text/javascript">
 let nameChecked = false;
 let mobileChecked = false;
-	
-function checkRobot(){
-    if(nameChecked != true || mobileChecked != true){
-    	alert('請先修改資料不正確之欄位!!');
-        return false;
-    }
-}
 
 $('#customerName').blur(function checkName(){
 	var nameInput = $('#customerName').val();
@@ -163,17 +156,17 @@ $('#customerName').blur(function checkName(){
 	
 	if (nameInput == "") {
 		nameChecked = false;
-		$('#submit').attr("disabled", true);
+		lock()
 		$('#namemsg')[0].innerHTML='請輸入姓名'
 	}
 		
 	if (!pattern.test(nameInput)) {
 		nameChecked = false;
-		$('#submit').attr("disabled", true);
+		lock()
 		$('#namemsg')[0].innerHTML='本欄位只接受中文及英文字母'
 	} else {
 		nameChecked = true;
-		$('#submit').attr("disabled", false);
+		lock()
 		$('#namemsg')[0].innerHTML=''
 	}
 	
@@ -185,20 +178,28 @@ $('#mobile').blur(function(){
 	
 	if (mobileInput == "") {
 		mobileChecked = false;
-		$('#submit').attr("disabled", true);
+		lock()
 		$('#mobilemsg')[0].innerHTML='請輸入手機'
 	}
 	if (!pattern.test(mobileInput)) {
 		mobileChecked = false;
-		$('#submit').attr("disabled", true);
+		lock()
 		$('#mobilemsg')[0].innerHTML='請輸入09xxoooxxx格式之手機'
 	} else {
 		mobileChecked = true;
-		$('#submit').attr("disabled", false);
+		lock()
 		$('#mobilemsg')[0].innerHTML=''
 	}
 	
 });
+
+function lock(){
+	if(nameChecked == true && mobileChecked == true){
+		$('#submit').attr("disabled", false);
+	}else{
+		$('#submit').attr("disabled", true);
+	}
+}
 </script>
 
 </body>
