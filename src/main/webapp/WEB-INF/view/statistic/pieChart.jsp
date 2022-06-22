@@ -11,9 +11,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="${contextRoot}/js/highcharts.src.js"></script>
+<script src="${contextRoot}/js/exporting.src.js"></script>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>~~~~</title>
+<title>PieChart</title>
 
 </head>
 <body>
@@ -28,45 +30,153 @@
 			</thead>
 		</table>
 	</div>
-	<div class="container my-4">
+	<div>
 		<div>
-			<canvas id="pieChart" style="display: block; height: 500px; width: 499.2px;"></canvas>
+			<div id="chart1"
+				style="min-width: 450px; height: 550px; margin: 0 auto"></div>
 		</div>
 	</div>
-
+	<button type="button" onclick="download()">Click Me!!</button>
 
 	<script>
-		let rtnMapLabels = [];
-		let rtnMapData = [];
-
+		var rtnMapLabels = [];
+		var rtnMapData = [];
+		var rtnMapQQQ = [];
+		var download
+		var myPieChart;
 		$.get("${contextRoot}/productCount", function(rtnMap) {
 			console.log(rtnMap)
+
+			var array = [];
 			for ( var key in rtnMap) {
-				// 				  console.log("名稱:" + key);
-				// 				  console.log("數字:" + rtnMap[key]);
-				rtnMapLabels.push(key);
-				rtnMapData.push(rtnMap[key]);
+				array.push({
+					name : key,
+					value : rtnMap[key]
+				});
 			}
-
-			var ctxP = document.getElementById("pieChart").getContext('2d');
-
-			var myPieChart = new Chart(ctxP, {
-				type : 'pie',
-				data : data,
-				options : {
-					responsive : true
-				}
+			var sorted1 = array.sort(function(a, b) {
+				return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
 			});
+			console.log(sorted1)
+			console.log(sorted1[0].value)
+			
+			for(var i = 0; i < sorted1.length; i++){
+				rtnMapQQQ.push([sorted1[i].name, sorted1[i].value])
+			}
+				console.log(rtnMapQQQ)
+
+			// 			var ctxP = document.getElementById("pieChart").getContext('2d');
+
+// 			Highcharts.setOptions({
+// 				chart : {
+// 					style : {
+// 						fontFamily: 'serif',
+// // 						fontFamily : 'Times New Roman',
+// 						fontSize : '20em',
+// 						color : '#f00'
+// 					}
+// 				}
+// 			});
+			
+			Highcharts.setOptions({
+			    chart: {
+			        style: {
+			            fontFamily: 'Times New Roman'
+			        }
+			    }
+			});
+			$('#chart1').highcharts(
+					{
+						chart : {
+							type : 'pie'
+						},
+						colors : [ '#ED5565', '#5D9CEC', '#A0D468', '#FFCE54',
+								'#48CFAD', '#AC92EC', '#AAB2BD', '#D770AD',
+								'#c42525', '#a6c96a' ],
+						title : {
+							text : '銷售圓餅圖',
+							style : {
+								color : '#555'
+							}
+						},
+						legend : {
+							layout : 'horizontal',
+							align : 'center',
+							verticalAlign : 'bottom',
+							borderWidth : 0,
+							backgroundColor : '#FFFFFF'
+							
+						},
+// 						xAxis : {
+// 							categories : [ '2006', '2007', '2008', '2009',
+// 									'2010', '2011' ]
+// 						},
+// 						yAxis : {
+// 							title : {
+// 								text : ''
+// 							}
+// 						},
+						tooltip : {
+							shared : false,
+							valueSuffix : '件'
+						},
+						credits : {
+							enabled : false
+						},
+						plotOptions : {
+							areaspline : {
+								fillOpacity : 0.1
+							},
+							series : {
+								groupPadding : .15
+							}
+						},
+						series : [ {
+							type : 'pie',
+							data : rtnMapQQQ
+						} ]
+
+					});
+
+			//]]> 
+
+			// 			myPieChart = new Chart(ctxP, {
+			// 				type : 'pie',
+			// 				data : data,
+			// 				options : {
+			// 					responsive : true
+			// 				}
+
+			// 			});
+			// 			var image = myPieChart.toBase64Image();
+			// 			console.log(image);
+
+			// 			download = function(){
+			// 			var a = document.createElement('a');
+			// 			a.href = myPieChart.toBase64Image();
+			// 			a.download = 'my_file_name.png';
+			// 			console.log("AAAA");
+			// 			a.click();
+			// 			}	
+
+			// Trigger the download
 
 		});
 
+
+		
 		const data = {
 			labels : rtnMapLabels,
-			datasets : [ {
-				data : rtnMapData,
-				backgroundColor : [ "#F7464A", "#46BFBD", "#FDB45C", "#00000" ],
-			} ]
+			datasets : rtnMapData
 		};
+
+		// 		const data = {
+		// 			labels : rtnMapLabels,
+		// 			datasets : [ {
+		// 				data : rtnMapData,
+		// 				backgroundColor : [ "#F7464A", "#46BFBD", "#FDB45C", "#00000" ],
+		// 			} ]
+		// 		};
 	</script>
 	<script type="text/javascript">
 		$(document).ready(
@@ -85,7 +195,7 @@
 								return (a.value < b.value) ? 1
 										: ((b.value < a.value) ? -1 : 0)
 							});
-							console.log(sorted);
+
 							sort_data = ''
 
 							for (var key = 0; key < sorted.length; key++) {

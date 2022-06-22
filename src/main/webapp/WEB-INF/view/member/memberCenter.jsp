@@ -53,7 +53,7 @@
       </div>
     </nav>
 
-<form:form class="form" method="post" action="${contextRoot}/updateCustomer" modelAttribute="member" enctype='multipart/form-data'>
+<form:form class="form" method="post" action="${contextRoot}/updateCustomer" modelAttribute="member" enctype='multipart/form-data' onsubmit="return(checkRobot())">
 <div class="container-fluid mt-3 ml-5">
 <h2 class="form-row justify-content-start">會員資料</h2>
 
@@ -147,59 +147,58 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
 
 <script type="text/javascript">
-var nameChecked = false;
-var mobileChecked = false;
+let nameChecked = false;
+let mobileChecked = false;
+	
+function checkRobot(){
+    if(nameChecked != true || mobileChecked != true){
+    	alert('請先修改資料不正確之欄位!!');
+        return false;
+    }
+}
 
-$('#customerName').keyup(function checkName(){
+$('#customerName').blur(function checkName(){
 	var nameInput = $('#customerName').val();
 	var pattern = new RegExp("^[a-zA-Z\u4E00-\u9FA5]+$");
 	
 	if (nameInput == "") {
 		nameChecked = false;
+		$('#submit').attr("disabled", true);
 		$('#namemsg')[0].innerHTML='請輸入姓名'
-		lock();
 	}
 		
 	if (!pattern.test(nameInput)) {
 		nameChecked = false;
+		$('#submit').attr("disabled", true);
 		$('#namemsg')[0].innerHTML='本欄位只接受中文及英文字母'
-		lock();
 	} else {
 		nameChecked = true;
+		$('#submit').attr("disabled", false);
 		$('#namemsg')[0].innerHTML=''
-		lock();
 	}
 	
 });
 
-$('#mobile').keyup(function(){
+$('#mobile').blur(function(){
 	var mobileInput = $('#mobile').val();
 	var pattern = /^09\d{2}?\d{3}?\d{3}$/;
 	
 	if (mobileInput == "") {
 		mobileChecked = false;
+		$('#submit').attr("disabled", true);
 		$('#mobilemsg')[0].innerHTML='請輸入手機'
-		lock();
 	}
 	if (!pattern.test(mobileInput)) {
 		mobileChecked = false;
+		$('#submit').attr("disabled", true);
 		$('#mobilemsg')[0].innerHTML='請輸入09xxoooxxx格式之手機'
-		lock();
 	} else {
 		mobileChecked = true;
+		$('#submit').attr("disabled", false);
 		$('#mobilemsg')[0].innerHTML=''
-		lock();
 	}
 	
 });
-
-function lock(){
-	if(nameChecked == true && mobileChecked == true){
-		$('#submit').attr("disabled", false);
-	}else{
-		$('#submit').attr("disabled", true);
-	}
-}
 </script>
 
 </body>

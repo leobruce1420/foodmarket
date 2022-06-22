@@ -38,9 +38,11 @@ public class WorkProduct {
 	
 	@Column(name="productimg", columnDefinition = "varchar(MAX)")
 	private String productimg;
-
-	@Column(name="ImgType", columnDefinition = "varchar(10)")
-	private String imgtype;
+	
+	
+	@Column(name="administrator", columnDefinition="nvarchar(30)") 
+	private String administrator;
+	
 	
 	@Column(name="productdesciption", columnDefinition = "nvarchar(200)")
 	private String productdesciption;
@@ -143,13 +145,15 @@ public class WorkProduct {
 		this.added = added;
 	}
 
-	public String getImgtype() {
-		return imgtype;
+	public String getAdministrator() {
+		return administrator;
 	}
 
-	public void setImgtype(String imgtype) {
-		this.imgtype = imgtype;
+	public void setAdministrator(String administrator) {
+		this.administrator = administrator;
 	}
+
+
 
 
 
