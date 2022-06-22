@@ -102,8 +102,8 @@ public class WorkProductController {
 	@PostMapping("postProduct")
 	public String addMessage(@RequestParam String productname, @RequestParam String productcategory,
 			 @RequestParam Integer productprice, @RequestParam("productimg") MultipartFile mf,
-			 @RequestParam String imgtype,
 			 @RequestParam String productdesciption,
+			 @RequestParam String administrator,
 			 @RequestParam Integer inventoryquantity,
 			 @RequestParam String takedown,Model m) throws  IOException {
 		Util method = new Util();
@@ -118,11 +118,10 @@ public class WorkProductController {
 			workProduct.setProductname(productname);
 			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
-			workProduct.setImgtype(imgtype);
+			workProduct.setAdministrator(administrator);
 			workProduct.setProductdesciption(productdesciption);
 			workProduct.setInventoryquantity(inventoryquantity);
 			workProduct.setTakedown(takedown);
-			workProduct.setImgtype("jpg");
 			workProduct.setProductdesciption(productdesciption);
 			workProduct.setInventoryquantity(inventoryquantity);
 
