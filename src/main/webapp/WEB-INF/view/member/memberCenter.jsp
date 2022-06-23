@@ -78,7 +78,6 @@
     <div class="form-group col-md-5">
       <label for="mailReadOnly">電子信箱</label>
       <input type="text" class="form-control" id="mailReadOnly"  disabled value="${member.mail}">
-       <small id="emailHelp" class="form-text text-muted"> <a href="${contextRoot}/changeMail">修改信箱</a></small>
     </div>
     
      <div class="w-100"></div>
