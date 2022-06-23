@@ -33,6 +33,9 @@ width: 600px;
 text-align: center;
 }
 
+textarea{
+resize: none; 
+}
 </style>
 </head>
 <body>

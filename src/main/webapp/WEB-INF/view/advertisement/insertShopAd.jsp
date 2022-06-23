@@ -11,39 +11,44 @@
 <meta charset="UTF-8">
 <title>新增商城活動</title>
 <style>
-fieldset{
-width: 1000px;
-height: 600px;
-text-align: center;
-margin: auto;
-margin-top: 10px;
+fieldset {
+	width: 800px;
+	height: 750px;
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+	border: 3px solid black;
+	background-color: lightblue;
+	border-radius: 20px
 }
 
-h2{
-text-align: center;
+h2 {
+	text-align: center;
 }
 
-form{
-margin: auto;
-text-align: left;
-width: 600px;
+form {
+	margin: auto;
+	text-align: left;
+	width: 600px;
 }
 
-.submit{
-text-align: center;
+.submit {
+	text-align: center;
 }
 
-.remark{
-resize:none;
-width:100px;
-height:50px;
+.picture {
+	width: 450px;
 }
 
+textarea {
+	resize: none;
+}
 </style>
 </head>
 <body>
 	<fieldset>
-		<h2>新增商城活動</h2><br>
+		<h2>新增商城活動</h2>
+		<br>
 		<form:form method="post" action="${contextRoot}/shopad/insert"
 			enctype='multipart/form-data'>
 
@@ -60,7 +65,8 @@ height:50px;
 
 			<div class="div1">
 				<label for="imgFile" class="FormTitle">圖片 : </label> <input
-					type="file" onchange="loadFile(event)" name="picture" accept="image/*" required/>
+					type="file" onchange="loadFile(event)" name="picture"
+					accept="image/*" required />
 			</div>
 
 			<div class="div1">
@@ -74,9 +80,13 @@ height:50px;
 			</div>
 
 			<div class="div1">
-				<label for="remark" class="FormTitle">備註 : </label>
-				<textarea id="remark" name="remark" rows="4" cols="50" autofocus>
+				<label for="remark" class="FormTitle">備註 :</label>
+				<textarea id="remark" name="remark" rows="4" cols="50"
+					onKeyDown="checkMaxInput(this.form)"
+					onKeyUp="checkMaxInput(this.form)" required> ${ad.remark}
 				</textarea>
+				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
+					readonly type=text name=remLen size=3 maxlength=3 value="50">字
 			</div>
 
 			<div class="div1">
@@ -85,7 +95,9 @@ height:50px;
 			</div>
 
 			<div class="submit">
-				<input type="submit" id="submit" class="btn btn-outline-info" value="確定" />
+				<input type="submit" id="submit" class="btn btn-outline-info"
+					value="確定" /> <input class="btn btn-outline-danger" type="button"
+					name="back" value="返回" onClick="javascript:history.back()">
 			</div>
 		</form:form>
 	</fieldset>
@@ -98,6 +110,17 @@ height:50px;
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		};
+
+		maxLen = 50; // 字數頂限
+
+		function checkMaxInput(form) {
+			if (form.remark.value.length > maxLen) // if too long.... trim it!
+				form.remark.value = form.remark.value.substring(0, maxLen);
+			// otherwise, update 'characters left' counter
+			else
+				form.remLen.value = maxLen - form.remark.value.length;
+		}
+		//
 	</script>
 </body>
 </html>

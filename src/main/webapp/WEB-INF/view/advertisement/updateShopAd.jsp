@@ -11,33 +11,38 @@
 <meta charset="UTF-8">
 <title>修改資料</title>
 <style>
-fieldset{
-width: 1000px;
-height: 600px;
-text-align: center;
-margin: auto;
-margin-top: 10px;
+fieldset {
+	width: 800px;
+	height: 750px;
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+	border: 3px solid black;
+	background-color: lightblue;
+	border-radius: 20px
 }
 
-h2{
-text-align: center;
+h2 {
+	text-align: center;
 }
 
-form{
-margin: auto;
-text-align: left;
-width: 600px;
+form {
+	margin: auto;
+	text-align: left;
+	width: 600px;
 }
 
-.submit{
-text-align: center;
+.submit {
+	text-align: center;
 }
 
-.picture{
-width: 450px;
+.picture {
+	width: 450px;
 }
 
-
+textarea {
+	resize: none;
+}
 </style>
 </head>
 <body>
@@ -45,6 +50,12 @@ width: 450px;
 		<h2>修改資料</h2>
 		<form:form method="post" action="${contextRoot}/shopad/update"
 			enctype='multipart/form-data' modelAttribute="editAd">
+
+			<div class="div2">
+				<label for="picture" class="FormTitle">圖片 : </label> <br><img
+					id="output" src="data:image/*;base64, ${ad.picture}"
+					class="picture" name="picture" />
+			</div>
 
 			<div class="div1">
 				活動編號: <input type="text" readonly name="shopAdId" required
@@ -57,11 +68,6 @@ width: 450px;
 					required value="${ad.shopAdName}" />
 			</div>
 
-			<div class="div2">
-				<label for="picture" class="FormTitle">圖片 : </label> <img
-					id="output" src="data:image/*;base64, ${ad.picture}"
-					class="picture" name="picture"  />
-			</div>
 
 			<!--  <div class="div1">
 
@@ -83,8 +89,12 @@ width: 450px;
 
 			<div class="div1">
 				<label for="remark" class="FormTitle">備註 :</label>
-				<textarea id="remark" name="remark" rows="4" cols="50" required> ${ad.remark}
-				</textarea>
+				<textarea id="remark" name="remark" rows="4" cols="50"
+					onKeyDown="checkMaxInput(this.form)"
+					onKeyUp="checkMaxInput(this.form)" required> ${ad.remark}
+				</textarea><br>
+				<label for="remark" class="FormTitle">剩餘 : </label>
+				<input readonly type=text name=remLen size=3 maxlength=3 value="">字
 			</div>
 
 			<div class="div1">
@@ -94,8 +104,9 @@ width: 450px;
 			</div>
 
 			<div class="submit">
-				<input type="submit" id="submit" class="btn btn-outline-info" value="確定" />
-				<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
+				<input type="submit" id="submit" class="btn btn-outline-info"
+					value="確定" /> <input class="btn btn-outline-danger" type="button"
+					name="back" value="返回" onClick="javascript:history.back()">
 			</div>
 		</form:form>
 	</fieldset>
@@ -108,6 +119,16 @@ width: 450px;
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		};
-	</script>
+		
+		maxLen = 50; // 字數頂限
+
+		function checkMaxInput(form) {
+		if (form.remark.value.length > maxLen) // if too long.... trim it!
+		form.remark.value = form.remark.value.substring(0, maxLen);
+		// otherwise, update 'characters left' counter
+		else form.remLen.value = maxLen - form.remark.value.length;
+		}
+		//  
+		</script>
 </body>
 </html>

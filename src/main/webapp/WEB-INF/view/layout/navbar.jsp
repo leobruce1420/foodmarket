@@ -7,10 +7,6 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cdd63f1a84b63d5dc4c2c3ee5cf0bc131d6f1470
 
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
@@ -19,15 +15,6 @@
 
 <title>好食光市場</title>
 
-<<<<<<< HEAD
-=======
-<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
-<!-- // Add the new slick-theme.css if you want the default styling -->
-<link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-<title>好食光市場</title>
->>>>>>> product/main
-=======
->>>>>>> cdd63f1a84b63d5dc4c2c3ee5cf0bc131d6f1470
 </head>
 <body>
 
@@ -64,6 +51,18 @@
 <!--           <a class="dropdown-item" href="#">ajax</a> -->
 <!--         </div> -->
 <!--       </li> -->
+
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          廣告管理
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
+          <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">ajax</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
       <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>

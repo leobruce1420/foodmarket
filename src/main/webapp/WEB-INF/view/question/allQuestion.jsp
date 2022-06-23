@@ -20,9 +20,9 @@
 		<h1 style="text-align: center">常見問題</h1>
 		<br>
 
-		<td><a
-			href="${contextRoot}/question/findByQuestionTitle?questionTitle=${Question.questionTitle}"><button
-					class="btn btn-warning">修改</button></a></td>
+<!-- 		<td><a -->
+<%-- 			href="${contextRoot}/question/findByQuestionTitle?questionTitle=${Question.questionTitle}"><button --%>
+<!-- 					class="btn btn-warning">修改</button></a></td> -->
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card">
