@@ -20,6 +20,7 @@ import com.foodmarket.app.product.dto.ProductDto;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
+import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 @Controller
 public class WorkProductController {
@@ -100,12 +101,14 @@ public class WorkProductController {
 
 	// base64
 	@PostMapping("postProduct")
-	public String addMessage(@RequestParam String productname, @RequestParam String productcategory,
-			 @RequestParam Integer productprice, @RequestParam("productimg") MultipartFile mf,
-			 @RequestParam String productdesciption,
-			 @RequestParam String administrator,
-			 @RequestParam Integer inventoryquantity,
-			 @RequestParam String takedown,Model m) throws  IOException {
+	public String addMessage(@RequestParam("productname") String productname, 
+			@RequestParam("productcategory")  String productcategory,
+			 @RequestParam("productprice") Integer productprice,
+			 @RequestParam("productimg") MultipartFile mf,
+			 @RequestParam("productdesciption") String productdesciption,
+			 @RequestParam("administrator") String administrator,
+			 @RequestParam("inventoryquantity") Integer inventoryquantity,
+			 @RequestParam("takedown") String takedown,Model m) throws  IOException {
 		Util method = new Util();
 		try {
 //			if (!pmsgService.checkLoginSession(session)) {
@@ -153,19 +156,57 @@ public class WorkProductController {
 		model.addAttribute("pMsg", pMsg);
 		return "product/editMessage";
 	}
-
+	//修改2
 	@PostMapping("product/editProduct")
-	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {
-		pmsgService.insertProduct(pMsg);
+	public String postMessage(@RequestParam("productid") Long productid, 
+			@RequestParam("productname") String productname, 
+			@RequestParam("productcategory")  String productcategory,
+			 @RequestParam("productprice") Integer productprice,
+			 @RequestParam("productimg") MultipartFile mf,
+			 @RequestParam("productdesciption") String productdesciption,
+			 @RequestParam("administrator") String administrator,
+			 @RequestParam("inventoryquantity") Integer inventoryquantity,
+			 @RequestParam("takedown") String takedown,Model m) throws IOException {
+		WorkProduct workProduct = pmsgService.findById(productid);
+		Util method = new Util();
+//		WorkProduct newworkProduct = new WorkProduct();
 
+		workProduct.setProductname(productname);
+		workProduct.setProductcategory(productcategory);
+		workProduct.setProductprice(productprice);
+		workProduct.setAdministrator(administrator);
+		workProduct.setProductdesciption(productdesciption);
+		workProduct.setInventoryquantity(inventoryquantity);
+		workProduct.setTakedown(takedown);
+		workProduct.setProductdesciption(productdesciption);
+		workProduct.setInventoryquantity(inventoryquantity);
+		
+		if(!mf.isEmpty()) {
+		byte[] imgBytes = mf.getBytes();
+		workProduct.setProductimg(method.encoder(imgBytes));
+		}
+		pmsgService.insertProduct(workProduct);
+		
+		List<WorkProduct> pMsg = pmsgService.selectAll();
+		
+		m.addAttribute("pMsg",pMsg);
+		
+		
 		return "redirect:/product/all";
 	}
-
-	@GetMapping("product/delete")
-	public String deleteMsg(@RequestParam("productid") Long productid) {
-		pmsgService.deleteById(productid);
-		return "redirect:/product/all";
-	}
+//	修改
+//	@PostMapping("product/editProduct")
+//	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {
+//		pmsgService.insertProduct(pMsg);
+//		
+//		return "redirect:/product/all";
+//	}
+//
+//	@GetMapping("product/delete")
+//	public String deleteMsg(@RequestParam("productid") Long productid) {
+//		pmsgService.deleteById(productid);
+//		return "redirect:/product/all";
+//	}
 
 	@PostMapping("api/postProduct")
 	@ResponseBody
@@ -181,6 +222,14 @@ public class WorkProductController {
 
 		return content;
 	}
+	
+	
+//	@GetMapping("/shopad/update")
+//	public String UpdateAd(@RequestParam("id") Integer id, Model m) {
+//		ShopAdvertisement ad = sService.findById(id);
+//		m.addAttribute("ad", ad);
+//		return "advertisement/updateShopAd";
+//	}
 	// 關鍵字查詢
 //	@PostMapping("product/queryByName")
 //	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {

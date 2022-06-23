@@ -36,7 +36,7 @@ public class WorkProductService {
 	}
 
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 2, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 7, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
@@ -51,7 +51,7 @@ public class WorkProductService {
 		
 		return page;
 	}
-
+	//ID查詢
 	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
 

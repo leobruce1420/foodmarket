@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.foodmarket.app.statistic.model.StatisticRepository;
-import com.foodmarket.app.statistic.model.productStatistic;
+import com.foodmarket.app.statistic.model.ProductStatistic;
 
 
 
@@ -25,17 +25,17 @@ public class StatisticService {
 	public Map<String, Integer> productCount(String productName, Integer sales){
 	//public List<productStatistic> productCount(String productName, Integer sales){
 		
-		List<productStatistic> ps_list = statisticDao.findAll();
+		List<ProductStatistic> ps_list = statisticDao.findAll();
 		
 		System.err.println("============== test ps_list str ==============");
 		System.err.println(ps_list);
 		System.err.println("============== test ps_list end ==============");
 		
-		List<productStatistic> rtnList = new ArrayList();
+		List<ProductStatistic> rtnList = new ArrayList();
 		
 		Map<String, Integer> keyMap = new HashMap(); // 泛型: 是否在宣告的時候指定型態
 		
-		for (productStatistic data : ps_list) {
+		for (ProductStatistic data : ps_list) {
 			
 			// 確認原始資料
 			int id = data.getProductId();
@@ -59,14 +59,7 @@ public class StatisticService {
 		}
 		
 		System.err.println("加總結果:" + keyMap);
-		
-//        for (String i : keyMap.keySet()) {
-//            System.out.println("key: " + i + " value: " + keyMap.get(i));
-//        }
-//		keyMap.forEach((key, value) -> {
-//            // value 价格减少百分之 10
-//            System.out.print(key + "=" + value + " ");
-//        });
+
 		return keyMap;
 	}
 }
