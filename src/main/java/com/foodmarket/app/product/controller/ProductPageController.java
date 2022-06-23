@@ -83,19 +83,32 @@ public class ProductPageController {
 //		return catmav;
 //	}
 	
-//	管理員商品種類查詢無分頁 測試
+//	管理員商品種類查詢分頁 測試
+	@GetMapping("product/all")
+	public ModelAndView Productcategory(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+		Page<WorkProduct> page = pmsgService.findByProductcategory(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("product/viewMessages");
+		return mav;
+	
+	}
+	
+	
+//	消費者商品種類查詢無分頁 測試
 	@GetMapping("product/category")
 	public String viewProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
-			 Model m) {
+			Model m) {
 		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
 		
 		m.addAttribute("workProduct", workProduct);
 		m.addAttribute("productcategory", productcategory);
 		return "product/viewcategoryMessages";
-	
+		
 	}
 	
-	//商品查詢名稱不分頁 測試
+	//消費者商品查詢名稱不分頁 測試
 	@GetMapping("product/productname")
 	public String viewProductname(@RequestParam (required=false ,value="productname")String productname,
 			 Model m) {

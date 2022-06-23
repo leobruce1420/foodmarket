@@ -34,7 +34,7 @@ public class WorkProductService {
 	public WorkProduct getLastest() {
 		return productDao.findFirstByOrderByAddedDesc();
 	}
-	//滑動圖有幾張就要幾張一頁
+	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 7, Sort.Direction.DESC, "added");
 
@@ -44,13 +44,13 @@ public class WorkProductService {
 	}
 	
 	//商品一個一個排
-	public Page<WorkProduct> findByall(Integer productNumber) {
-		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
-		
-		Page<WorkProduct> page = productDao.findAll(pgb);
-		
-		return page;
-	}
+//	public Page<WorkProduct> findByall(Integer productNumber) {
+//		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
+//		
+//		Page<WorkProduct> page = productDao.findAll(pgb);
+//		
+//		return page;
+//	}
 	//ID查詢
 	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
@@ -74,16 +74,16 @@ public class WorkProductService {
 	
 	
 	//商品查詢種類分頁
-//	public Page<WorkProduct> findByProductcategoryKey(Integer pageNumber) {
-//		Pageable pgb = PageRequest.of(pageNumber - 1, 1, Sort.Direction.DESC, "added");
-//		Page<WorkProduct> page = productDao.findByProductcategoryKey(pgb);
-//		
-////		if(page.isPresent()) {
-////			return page.get();
-////			
-////		}
-//		return page;
-//	}
+	public Page<WorkProduct> findByProductcategory(Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 1, Sort.Direction.DESC, "added");
+		Page<WorkProduct> page = productDao.findByProductcategory(null, pgb);
+		
+//		if(page.isPresent()) {
+//			return page.get();
+//			
+//		}
+		return page;
+	}
 	
 	
 	

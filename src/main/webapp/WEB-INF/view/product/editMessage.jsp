@@ -108,7 +108,7 @@
 								<!-- 											class="btn btn-danger" class=".check_pid">刪除</button></a> -->
 								<!-- 								</div> -->
 							</div>
-							<input type="submit" name="submit" value="修改訊息">
+							<input type="submit" name="submit" value="修改訊息" onclick="return confirm('真的要修改嗎?')">
 							<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
 						</form:form>
 
