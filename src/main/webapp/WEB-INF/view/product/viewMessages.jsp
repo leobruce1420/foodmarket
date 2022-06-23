@@ -71,10 +71,17 @@ margin-bottom: 10pt;
 </head>
 <body>
 	<br />
-	<form:form action="${contextRoot}/product/name" method="get">
+	<form:form action="${contextRoot}/product/productname" method="get">
 	<div class="div1">
-				<label for="id" class="id">單筆商品查詢 : </label> 
-				<input type="text" id="name" name="name" autocomplete="off" required />
+				<label for="id" class="id">商品名稱查詢 : </label> 
+				<input type="text" id="name" name="productname" autocomplete="off" required />
+				<input type="submit" value="查詢">
+			</div>
+			</form:form>
+	<form:form action="${contextRoot}/product/category" method="get">
+	<div class="div1">
+				<label for="id" class="id">商品類別查詢 : </label> 
+				<input type="text" id="name" name="productcategory" autocomplete="off" required />
 				<input type="submit" value="查詢">
 			</div>
 			</form:form>

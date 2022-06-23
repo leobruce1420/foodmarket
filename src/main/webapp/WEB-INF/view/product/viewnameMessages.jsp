@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/navbarProduct.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -57,32 +58,32 @@ table,td{
 								<th scope="col">修改</th>
 							</tr>
 						</thead>
-						<c:forEach var="pname" items="${pname}">
+						<c:forEach var="workProduct" items="${workProduct}">
 						<tbody>
 							<tr>
-								<th scope="row"><c:out value="${pname.productid}" /></th>
-								<td><c:out value="${pname.productname}" /></td>
-								<td><c:out value="${pname.productcategory}" /></td>
-								<td><c:out value="${pname.productprice}" /></td>
+								<th scope="row"><c:out value="${workProduct.productid}" /></th>
+								<td><c:out value="${workProduct.productname}" /></td>
+								<td><c:out value="${workProduct.productcategory}" /></td>
+								<td><c:out value="${workProduct.productprice}" /></td>
 								<td>
 <%-- 								<c:out value="${workProduct.productimg}" /> --%>
-								<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${pname.productimg}" alt="image"/></td>
+								<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></td>
 								<td><fmt:formatDate
 										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
-										value="${pname.added}" /></td>
+										value="${workProduct.added}" /></td>
 
-								<td><c:out value="${pname.productdesciption}" /></td>
-								<td><c:out value="${pname.inventoryquantity}" /></td>
-								<td><c:out value="${pname.takedown}" /></td>
-								<td><c:out value="${pname.administrator}" /></td>
+								<td><c:out value="${workProduct.productdesciption}" /></td>
+								<td><c:out value="${workProduct.inventoryquantity}" /></td>
+								<td><c:out value="${workProduct.takedown}" /></td>
+								<td><c:out value="${workProduct.administrator}" /></td>
 								<td><div>
 										<a
-											href="${contextRoot}/product/editProduct?productid=${pname.productid}"><button
+											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button
 												class="btn btn-info">編輯</button></a>
 									</div> <br />
 									<div>
 										<a onclick="return confirm('真的要刪除嗎?')"
-											href="${contextRoot}/product/delete?productid=${pname.productid}"><button
+											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button
 												class="btn btn-danger" class=".check_pid">刪除</button></a>
 									</div></td>
 							</tr>
@@ -105,29 +106,29 @@ table,td{
 			<br />
 <%-- 		</c:forEach> --%>
 
-		<div class="row justify-content-center">
+<!-- 		<div class="row justify-content-center"> -->
 
-			<div class="col-9">
-				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-					<c:choose>
-						<c:when test="${page.number != pageNumber-1}">
-							<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out
-									value="${pageNumber}" /></a>
-						</c:when>
+<!-- 			<div class="col-9"> -->
+<%-- 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
+<%-- 							<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out --%>
+<%-- 									value="${pageNumber}" /></a> --%>
+<%-- 						</c:when> --%>
 
-						<c:otherwise>
-							<c:out value="${pageNumber}" />
-						</c:otherwise>
+<%-- 						<c:otherwise> --%>
+<%-- 							<c:out value="${pageNumber}" /> --%>
+<%-- 						</c:otherwise> --%>
 
-					</c:choose>
+<%-- 					</c:choose> --%>
 
-					<c:if test="${pageNumber != page.totalPages}">
-							|
-							</c:if>
-				</c:forEach>
+<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
+<!-- 							| -->
+<%-- 							</c:if> --%>
+<%-- 				</c:forEach> --%>
 
 
-			</div>
+<!-- 			</div> -->
 			<br />
 			<!-- 			<div> -->
 			<!-- 				<table class="table"> -->

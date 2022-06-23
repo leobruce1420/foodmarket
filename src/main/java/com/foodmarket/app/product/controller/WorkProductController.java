@@ -27,6 +27,8 @@ public class WorkProductController {
 
 	@Autowired
 	private WorkProductService pmsgService;
+	
+	
 	// 圖片未成功
 //	@PostMapping("postProduct")
 //	public String addMessage(@RequestParam("imgFile") MultipartFile mf, Model model) throws IOException {

@@ -70,46 +70,53 @@ public class ProductPageController {
 //		return mav;
 //	}
 	
-	//種類查詢
-	@GetMapping("product/category")
-	public String viewProductcategory(ModelAndView catmav,@RequestParam(value="productcategory") String productcategory, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-//		System.out.println("qweqweqweqwe");
-		System.out.println(productcategory);
-//		System.out.println(productcate);
-		Page<WorkProduct> pcat = pmsgService.findByProductcategoryKey(p, productcategory);
-		
-		m.addAttribute("pcat", pcat);
-		m.addAttribute("productcategory", productcategory);
-//		catmav.getModel().put("pcat", pcat);
-//		catmav.setViewName("product/viewcategoryMessages");
-		return "product/viewcategoryMessages";
-	}
-	
-//	管理員商品查詢分頁
-//	@GetMapping("product/{name}")
-//	public String viewProductname(@RequestParam (value="productname")String productname,
-//			@RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-//		Page<WorkProduct> pname = pmsgService.findByName(p, productname);
+	//種類查詢分頁
+//	@GetMapping("product/category")
+//	public ModelAndView viewProductcategory(ModelAndView catmav,
+//			@RequestParam(name="pageNumber", defaultValue="1")Integer pageNumber) {
+//		Page<WorkProduct> page = pmsgService.findByProductcategoryKey(pageNumber);
 //		
-//		m.addAttribute("pname", pname);
-//		m.addAttribute("productname", productname);
-//		System.out.println(pname.getTotalElements());
-//		return "product/viewnameMessages";
-//	
+//		catmav.getModel().put("page", page);
+////		catmav.addAttribute("productcategory", productcategory);
+////		catmav.getModel().put("pcat", pcat);
+//		catmav.setViewName("product/viewcategoryMessages");
+//		return catmav;
 //	}
 	
-	//管理員商品查詢不分頁
-	@GetMapping("product/name")
-	public String viewProductname(@RequestParam (required=false ,value="name")String productname,
+//	管理員商品種類查詢無分頁 測試
+	@GetMapping("product/category")
+	public String viewProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
 			 Model m) {
-		List<WorkProduct> pname = pmsgService.findByName(productname);
+		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
 		
-		m.addAttribute("pname", pname);
+		m.addAttribute("workProduct", workProduct);
+		m.addAttribute("productcategory", productcategory);
+		return "product/viewcategoryMessages";
+	
+	}
+	
+	//商品查詢名稱不分頁 測試
+	@GetMapping("product/productname")
+	public String viewProductname(@RequestParam (required=false ,value="productname")String productname,
+			 Model m) {
+		List<WorkProduct> workProduct = pmsgService.findByName(productname);
+		
+		m.addAttribute("workProduct", workProduct);
 		m.addAttribute("productname", productname);
-//		System.out.println(pname.getTotalElements());
 		return "product/viewnameMessages";
 		
 	}
+//	//商品查詢名稱分頁
+//	@GetMapping("product/name")
+//	public String viewProductname(@RequestParam (required=false ,value="name")String productname,
+//			Model m) {
+//		List<WorkProduct> pname = pmsgService.findByName(productname);
+//		
+//		m.addAttribute("pname", pname);
+//		m.addAttribute("productname", productname);
+//		return "product/viewnameMessages";
+//		
+//	}
 	
 //	消費者
 //	@GetMapping("product/name")

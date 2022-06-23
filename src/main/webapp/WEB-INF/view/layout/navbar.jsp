@@ -73,8 +73,8 @@
     
       
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/name" method="get">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="name" name="name" autocomplete="off" required>
+    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/productname" method="get">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="name" name="productname" autocomplete="off" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
     </form>
     
