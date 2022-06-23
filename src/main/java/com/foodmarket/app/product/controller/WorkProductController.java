@@ -230,7 +230,7 @@ public class WorkProductController {
 //		m.addAttribute("ad", ad);
 //		return "advertisement/updateShopAd";
 //	}
-	// 關鍵字查詢
+//	 關鍵字查詢
 //	@PostMapping("product/queryByName")
 //	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {
 //

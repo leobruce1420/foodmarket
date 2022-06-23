@@ -1,5 +1,8 @@
 package com.foodmarket.app.product.model;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
@@ -25,13 +28,18 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	//用productcategory種類查詢
 //		public WorkProduct findByProductcategory (String productcategory);
 		//用商品名稱關鍵字查詢，有分頁
-				@Query(value = "select * from product where productcategory like %:productcategory%", nativeQuery=true)
+				@Query(value = "select * from product where productcategory =:productcategory", nativeQuery=true)
 				public Page<WorkProduct> findByProductcategoryKey(Pageable pgb,@Param("productcategory")String productcategory);
 		
 		
 		//用商品名稱關鍵字查詢，有分頁
+//		@Query(value = "select * from product where productname like %:productname%", nativeQuery=true)
+//		public Page<WorkProduct> findByName(Pageable pgb, @Param("productname")String productname);
+		
+			
+		//用商品名稱關鍵字查詢，無分頁
 		@Query(value = "select * from product where productname like %:productname%", nativeQuery=true)
-		public Page<WorkProduct> findByName(Pageable pgb, @Param("productname")String productname);
+		public List<WorkProduct> findByName(@Param("productname")String productname);
 	
 		//用id刪除
 		@Transactional

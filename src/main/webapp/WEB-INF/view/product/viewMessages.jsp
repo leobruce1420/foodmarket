@@ -64,13 +64,28 @@ margin-bottom: 10pt;
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品管理</title>
 <%-- <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/> --%>
 <!-- // Add the new slick-theme.css if you want the default styling --> 
 <%-- <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/> --%>
 </head>
 <body>
 	<br />
+	<form:form action="${contextRoot}/product/name" method="get">
+	<div class="div1">
+				<label for="id" class="id">單筆商品查詢 : </label> 
+				<input type="text" id="name" name="name" autocomplete="off" required />
+				<input type="submit" value="查詢">
+			</div>
+			</form:form>
+			
+			<hr/>
+			
+			<br/>
+
+			<hr/>
+
+
 	<div class="container">
 
 		
@@ -137,17 +152,14 @@ margin-bottom: 10pt;
 						</tbody>
 						</c:forEach>
 					</table>
-					<!-- 					<div class="col-12 "> -->
-					<%-- 						<a href="${contextRoot}/message/editMessage?id=${workMessage.id}"><button --%>
-					<!-- 								class="btn btn-info">編輯</button></a> <a -->
-					<!-- 							onclick="return confirm('真的要刪除嗎?')" -->
-					<%-- 							href="${contextRoot}/message/delete?id=${workMessage.id}"><button --%>
-					<!-- 								class="btn btn-danger" class=".check_pid">刪除</button></a> -->
-					<!-- 					</div> -->
 
 				</div>
 
 			</div>
+			
+			
+			
+		
 
 
 			<br />
@@ -176,67 +188,13 @@ margin-bottom: 10pt;
 
 
 			</div>
+			
+			
 			<br />
-			<!-- 			<div> -->
-			<!-- 				<table class="table"> -->
-			<!-- 					<thead class="thead-light"> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="col">productid</th> -->
-			<!-- 							<th scope="col">productname</th> -->
-			<!-- 							<th scope="col">productcategory</th> -->
-			<!-- 							<th scope="col">productprice</th> -->
-			<!-- 							<th scope="col">productimg</th> -->
-			<!-- 							<th scope="col">added</th> -->
-			<!-- 							<th scope="col">productdesciption</th> -->
-			<!-- 							<th scope="col">Inventoryquantity</th> -->
-			<!-- 							<th scope="col">takedown</th> -->
 
-			<!-- 						</tr> -->
-			<!-- 					</thead> -->
-			<!-- 					<tbody> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">1</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">2</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">3</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
+				<hr/>
 
-			<!-- 					</tbody> -->
-			<!-- 				</table> -->
-			<!-- 			</div> -->
+
 
 			<div>
 				<br />
@@ -293,124 +251,12 @@ margin-bottom: 10pt;
 				</div>
 				</td>
 				</c:forEach>
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
 			
 			</c:forEach>
 			</tr>
 			</table>
 			</div>
 			
-<!-- 			<div class="carousel-item"> -->
-<!-- 				<table class="table table-dark"> -->
-<!-- 			<tr> -->
-<!-- 			<td> -->
-			
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			</table> -->
-<!-- 			</div> -->
-			
-			
-<!-- 			<div class="carousel-item"> -->
-<!-- 				<table class="table table-dark"> -->
-<!-- 			<tr> -->
-<!-- 			<td> -->
-			
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 				<td> -->
-<!-- 				<div class="card" style="width: 18rem;"> -->
-<!-- 					<img src="..." class="card-img-top" alt="..."> -->
-<!-- 					<div class="card-body"> -->
-<!-- 						<h5 class="card-title">Card with stretched link</h5> -->
-<!-- 						<p class="card-text">Some quick example text to build on the -->
-<!-- 							card title and make up the bulk of the card's content.</p> -->
-<!-- 						<a href="#" class="btn btn-primary stretched-link">Go -->
-<!-- 							somewhere</a> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			</table> -->
-<!-- 			</div> -->
 		</div>
 		
 		<button class="carousel-control-prev" type="button"
@@ -425,9 +271,11 @@ margin-bottom: 10pt;
 		</button>
 	</div>
 	
+	<hr/>
 	
 	<br/>
 	
+	<hr/>
 	
 	
 	<div id="carouselExampleControlsNoTouching" class="carousel slide container" data-touch="true" data-interval="false">
@@ -453,12 +301,6 @@ margin-bottom: 10pt;
 				</table>
     </div>
     
-<!--     <div class="carousel-item"> -->
-<!--       <img src="..." class="d-block w-100" alt="..."> -->
-<!--     </div> -->
-<!--     <div class="carousel-item"> -->
-<!--       <img src="..." class="d-block w-100" alt="..."> -->
-<!--     </div> -->
   </c:forEach>
   </div>
   <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
@@ -471,156 +313,18 @@ margin-bottom: 10pt;
   </button>
 </div>
 
+<hr/>
 
-<div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="true" data-interval="false">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="carousel-item"> -->
-				<table class="table table-dark">
-			<tr>
-			<td>
-			
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-			</tr>
-			</table>
-			</div>
-    </div>
-    <div class="carousel-item">
-      <table class="table table-dark">
-			<tr>
-			<td>
-			
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-			</tr>
-			</table>
-			</div>
-    </div>
-    <div class="carousel-item">
-      <table class="table table-dark">
-			<tr>
-			<td>
-			
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-				<td>
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">${workProduct.productname}</h5>
-						<p class="card-text">${workProduct.productprice}</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
-					</div>
-				</div>
-				</td>
-			</tr>
-			</table>
-			</div>
-    
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </button>
-</div>
+<br/>
+
+<hr/>
+
 <div>
 <ul class="responsive">
 <c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 <c:forEach var="workProduct" items="${page.content}">
     <li>
-    <div class="card" style="width: 18rem ;height: 23rem;">
+    <div class="card" style="width: 18rem ;height: 23rem; background: #B5FFB5" >
 					<img style="width: 200px; height: 200px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/>
 					<div class="card-body">
 						<h5 class="card-title">${workProduct.productname}</h5>

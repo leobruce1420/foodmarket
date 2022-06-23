@@ -2,6 +2,7 @@ package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -68,6 +69,8 @@ public class ProductPageController {
 ////		mav.setViewName("index");
 //		return mav;
 //	}
+	
+	//種類查詢
 	@GetMapping("product/category")
 	public String viewProductcategory(ModelAndView catmav,@RequestParam(value="productcategory") String productcategory, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
 //		System.out.println("qweqweqweqwe");
@@ -78,18 +81,46 @@ public class ProductPageController {
 		m.addAttribute("pcat", pcat);
 		m.addAttribute("productcategory", productcategory);
 //		catmav.getModel().put("pcat", pcat);
-//		catmav.setViewName("product/viewoneMessages");
-		return "product/viewoneMessages";
+//		catmav.setViewName("product/viewcategoryMessages");
+		return "product/viewcategoryMessages";
 	}
-	@GetMapping("product/name")
-	public String viewProductname(@RequestParam (value="productname")String productname, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-		Page<WorkProduct> pname = pmsgService.findByName(p, productname);
-		
-		m.addAttribute("page", pname);
-		System.out.println(pname.getTotalElements());
-		return "product/viewoneMessages";
 	
+//	管理員商品查詢分頁
+//	@GetMapping("product/{name}")
+//	public String viewProductname(@RequestParam (value="productname")String productname,
+//			@RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
+//		Page<WorkProduct> pname = pmsgService.findByName(p, productname);
+//		
+//		m.addAttribute("pname", pname);
+//		m.addAttribute("productname", productname);
+//		System.out.println(pname.getTotalElements());
+//		return "product/viewnameMessages";
+//	
+//	}
+	
+	//管理員商品查詢不分頁
+	@GetMapping("product/name")
+	public String viewProductname(@RequestParam (required=false ,value="name")String productname,
+			 Model m) {
+		List<WorkProduct> pname = pmsgService.findByName(productname);
+		
+		m.addAttribute("pname", pname);
+		m.addAttribute("productname", productname);
+//		System.out.println(pname.getTotalElements());
+		return "product/viewnameMessages";
+		
 	}
+	
+//	消費者
+//	@GetMapping("product/name")
+//	public String viewProductname(@RequestParam (value="productname")String productname, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
+//		Page<WorkProduct> pname = pmsgService.findByName(p, productname);
+//		
+//		m.addAttribute("page", pname);
+//		System.out.println(pname.getTotalElements());
+//		return "product/viewoneMessages";
+//		
+//	}
 	@GetMapping("product/ajax")
 	public String ajaxVersion() {
 		return "product/ajax-message";

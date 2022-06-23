@@ -61,26 +61,40 @@ public class WorkProductService {
 		}
 		return null;
 	}
-
+	
 	public Page<WorkProduct> findByProductcategoryKey(Integer pageNumber, String productcategory) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
 		Page<WorkProduct> page = productDao.findByProductcategoryKey(pgb, productcategory);
 
-//		if(optionalcategory.isPresent()) {
-//			return optionalcategory.get();
+//		if(page.isPresent()) {
+//			return page.get();
 //			
 //		}
 		return page;
 	}
+	//商品查詢分頁
+//	public Page<WorkProduct> findByName(Integer pageNumber, String productname) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
+//
+//		Page<WorkProduct> page = productDao.findByName(pgb, productname);
+//
+//		return page;
+//	}
+	//商品查詢不分頁
+	public List<WorkProduct> findByName(String productname) {
+		
 
-	public Page<WorkProduct> findByName(Integer pageNumber, String productname) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "added");
+		return productDao.findByName(productname);
 
-		Page<WorkProduct> page = productDao.findByName(pgb, productname);
-
-		return page;
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
 	}
-//	public WorkProduct findById(Long productid) {
+
+	
+	//	public WorkProduct findById(Long productid) {
 //		Optional<WorkProduct> optional = productDao.findById(productid);
 //		
 //		if(optional.isPresent()) {
