@@ -244,7 +244,7 @@ public class WorkProductController {
 
 //	商品種類查詢
 //	@PostMapping("product/category?productcategory=")
-//	public String queryNameAll(@RequestParam("productname") String productname, Model m, HttpSession session) {
+//	public String queryNameAll(@RequestParam("productcategory") String productname, Model m, HttpSession session) {
 //
 //		
 //		List<WorkProduct> products = pmsgService.findByproductcategory(productname);

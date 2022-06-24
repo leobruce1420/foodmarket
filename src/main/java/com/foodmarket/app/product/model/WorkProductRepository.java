@@ -26,7 +26,7 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 //		public WorkProduct findByProductcategory (String productcategory);
 	// 用商品名稱關鍵字查詢，有分頁
 				@Query(value = "select * from product where productcategory like %:productcategory%", nativeQuery=true)
-				public Page<WorkProduct> findByProductcategory(@Param("productcategory")String productcategory, Pageable pgb);
+				public Page<WorkProduct> findByProductcategorypage(@Param("productcategory")String productcategory, Pageable pgb);
 
 	// 用商品名稱關鍵字查詢，無分頁
 	@Query(value = "select * from product where productcategory like %:productcategory%", nativeQuery = true)

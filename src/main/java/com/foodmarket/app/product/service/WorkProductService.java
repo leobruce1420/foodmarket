@@ -51,13 +51,14 @@ public class WorkProductService {
 //		
 //		return page;
 //	}
+	
 	//ID查詢
 	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
-
+		
 		if (optional.isPresent()) {
 			return optional.get();
-
+			
 		}
 		return null;
 	}
@@ -74,9 +75,9 @@ public class WorkProductService {
 	
 	
 	//商品查詢種類分頁
-	public Page<WorkProduct> findByProductcategory(Integer pageNumber) {
+	public Page<WorkProduct> findByProductcategorypage(Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 1, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findByProductcategory(null, pgb);
+		Page<WorkProduct> page = productDao.findByProductcategorypage(null, pgb);
 		
 //		if(page.isPresent()) {
 //			return page.get();
@@ -95,6 +96,7 @@ public class WorkProductService {
 //
 //		return page;
 //	}
+	
 	//商品查詢不分頁
 	public List<WorkProduct> findByName(String productname) {
 		List<WorkProduct> page = productDao.findByName(productname);
@@ -147,7 +149,12 @@ public class WorkProductService {
 		productDao.deleteById(productid);
 
 	}
-
+	
+	
+	
+	
+	
+	//網路範例-------------------------------
 //	public List<WorkProduct> findByName(String productname) {
 //		Session session = sessionfactory.openSession();
 //		
