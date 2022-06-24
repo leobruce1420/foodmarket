@@ -14,7 +14,7 @@ public class PageController {
 	
 	@GetMapping("/member/test")
 	public String tese() {
-		return "member/authMail";
+		return "member/test";
 	}
 	
 	@GetMapping("/login")
