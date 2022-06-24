@@ -105,6 +105,14 @@ public class MemberController {
 
 	// ===============================註冊(韓信箱驗證)==============================================================================================
 
+	
+	@GetMapping("/signUp")
+	public String signUp(Model m) {
+		Member member = new Member();
+		m.addAttribute("member", member);
+		return "member/signUp";
+	}
+	
 	// 新增會員並發信
 	@PostMapping("/insertCustomer")
 	public String insertCustomer(@ModelAttribute("member") Member member, Model m, HttpSession session) {
