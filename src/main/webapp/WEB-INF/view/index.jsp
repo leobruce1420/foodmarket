@@ -243,7 +243,44 @@
 					});
 				});
 			</script>
+			
+			
+			
 			<br />
+			
+			<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+      <c:forEach var="workProduct" items="${page.content}">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+<!--           <div class="card" style="width: 18rem; height: 23rem;"> -->
+									<img style="width: 200px; height: 200px;"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" />
+									<div class="card-body">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										<h5 class="card-title">${workProduct.productname}</h5>
+										<p class="card-text">${workProduct.productprice}</p>
+										<a
+											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										<%-- 					</form:form> --%>
+<!-- 									</div> -->
+								</div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+  </div>
+			
+
+
+
+
+
 			<div>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -278,25 +315,13 @@
 
 					<div class="col-12">
 
-						<!-- 					<div class="card"> -->
-						<!-- 						<div class="card-header"> -->
-						<!-- 							最新訊息(時間) -->
-						<%-- 							<fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-						<%-- 								value="${workMessage.added}" /> --%>
-						<!-- 						</div> -->
-						<!-- 						<div class="card-body"> -->
-						<%-- 							<c:out value="${workMessage.text}" /> --%>
-
-						<!-- 						</div> -->
-						<!-- 					</div> -->
-						<table class="table">
+<!-- 						<table class="table"> -->
 							
 							<c:forEach var="workProduct" items="${page.content}">
 								<tbody>
-									<tr>
-									<th>
-										<div class="card"
-									style="width: 18rem; height: 23rem; background: ">
+<!-- 									<tr> -->
+<!-- 									<th> -->
+										<div class="card" style="width: 18rem; height: 23rem;">
 									<img style="width: 200px; height: 200px;"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" />
@@ -310,11 +335,11 @@
 										<%-- 					</form:form> --%>
 									</div>
 								</div>
-									</th>
-									</tr>
+<!-- 									</th> -->
+<!-- 									</tr> -->
 								</tbody>
 							</c:forEach>
-						</table>
+<!-- 						</table> -->
 
 					</div>
 
