@@ -100,7 +100,7 @@ $(document).ready(function(){
 	   });
 });
 
-$('#password').blur(function(){
+$('#password').keyup(function(){
 	var pswInput = $('#password').val();
 	var pattern = new RegExp("^[A-Za-z0-9]+$");
 		
