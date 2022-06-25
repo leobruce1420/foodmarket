@@ -33,8 +33,8 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	public List<WorkProduct> findByProductcategoryKey(@Param("productcategory") String productcategory);
 
 	// 用商品名稱關鍵字查詢，有分頁
-//		@Query(value = "select * from product where productname like %:productname%", nativeQuery=true)
-//		public Page<WorkProduct> findByName(Pageable pgb, @Param("productname")String productname);
+		@Query(value = "select * from product where productname like %:productname%", nativeQuery=true)
+		public Page<WorkProduct> findByNamePage(@Param("productname")String productname,Pageable pgb);
 
 	// 用商品名稱關鍵字查詢，無分頁
 	@Query(value = "select * from product where productname like %:productname%", nativeQuery = true)

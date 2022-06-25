@@ -75,9 +75,9 @@ public class WorkProductService {
 	
 	
 	//商品查詢種類分頁
-	public Page<WorkProduct> findByProductcategorypage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 1, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findByProductcategorypage(null, pgb);
+	public Page<WorkProduct> findByProductcategorypage(String productcategorypage,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
+		Page<WorkProduct> page = productDao.findByProductcategorypage(productcategorypage,pgb);
 		
 //		if(page.isPresent()) {
 //			return page.get();
@@ -89,13 +89,13 @@ public class WorkProductService {
 	
 	
 	//商品查詢分頁
-//	public Page<WorkProduct> findByName(Integer pageNumber, String productname) {
-//		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
-//
-//		Page<WorkProduct> page = productDao.findByName(pgb, productname);
-//
-//		return page;
-//	}
+	public Page<WorkProduct> findByNamePage(String productname ,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
+
+		Page<WorkProduct> page = productDao.findByNamePage(productname,pgb);
+
+		return page;
+	}
 	
 	//商品查詢不分頁
 	public List<WorkProduct> findByName(String productname) {

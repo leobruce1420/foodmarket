@@ -105,8 +105,9 @@ public class ProductPageController {
 //	管理員商品種類查詢分頁 測試
 	@GetMapping("product/productcategory")
 	public ModelAndView Productcategory(ModelAndView mav,
+			@RequestParam(required = false, value = "productcategory")String  productcategory,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		Page<WorkProduct> page = pmsgService.findByProductcategorypage(pageNumber);
+		Page<WorkProduct> page = pmsgService.findByProductcategorypage(productcategory, pageNumber);
 
 		mav.getModel().put("page", page);
 		mav.setViewName("product/viewMessages");
@@ -148,17 +149,18 @@ public class ProductPageController {
 		return "product/viewnameMessages";
 
 	}
-//	//商品查詢名稱分頁
-//	@GetMapping("product/name")
-//	public String viewProductname(@RequestParam (required=false ,value="name")String productname,
-//			Model m) {
-//		List<WorkProduct> pname = pmsgService.findByName(productname);
-//		
-//		m.addAttribute("pname", pname);
-//		m.addAttribute("productname", productname);
-//		return "product/viewnameMessages";
-//		
-//	}
+	//商品查詢名稱分頁
+	@GetMapping("product/name")
+	public ModelAndView Productname(@RequestParam (required=false ,value="productname")String productname,
+			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
+			ModelAndView m) {
+		Page<WorkProduct> page = pmsgService.findByNamePage(productname,pageNumber);
+		
+		m.getModel().put("page", page);
+		m.setViewName("product/viewnameMessages");
+		return m;
+		
+	}
 
 //	消費者
 //	@GetMapping("product/name")

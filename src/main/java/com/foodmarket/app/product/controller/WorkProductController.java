@@ -29,77 +29,7 @@ public class WorkProductController {
 	private WorkProductService pmsgService;
 	
 	
-	// 圖片未成功
-//	@PostMapping("postProduct")
-//	public String addMessage(@RequestParam("imgFile") MultipartFile mf, Model model) throws IOException {
-////		System.out.println("qweqeqweqweweqw");
-////		String base64Str=productDto.getProductimgdto();
-////		if(!StringUtil.isBlank(path)) {
-////			
-////		}
-////		System.out.println(productDto.getProductimg());
-//		ProductDto method = new ProductDto();
-//		WorkProduct test = new WorkProduct();
-//		String producttype = productimgdto.getProductimgdto;
-//		byte[] imgBytes = mf.getBytes();
-//		System.out.println(imgBytes);
-//		String img = method.encoder(imgBytes);
-//		System.out.println(method.encoder(imgBytes));
-//		test.setProductimg(img);
-////		WorkProduct product = pmsgService.insertProduct(imgBytes);
-//		WorkProduct newpMsg = new WorkProduct();
-//		WorkProduct lastestpMsg = pmsgService.getLastest();
-//
-//		model.addAttribute("workProduct", newpMsg);
-//		model.addAttribute("lastestpMsg", lastestpMsg);
-//		return "product/addMessage";
-//	}
-	// img byte[]
-//	@PostMapping("postProduct")
-//	public String addNewFirm(@RequestParam String productname, @RequestParam String productcategory,
-//							 @RequestParam Integer productprice, @RequestPart MultipartFile productimg,
-//							 @RequestParam String imgtype,
-//							 @RequestParam String productdesciption,
-//							 @RequestParam Integer inventoryquantity,
-//							 @RequestParam String takedown,Model m) {
-//		WorkProduct newProduct = new WorkProduct();
-//
-//		String productType = productimg.getContentType();
-//
-//		System.out.println(productType);
-//
-//		if(!productType.startsWith("image")) {
-//			
-//			Map<String, String> errors = new HashMap<String, String>();
-//			errors.put("firmLogo", "檔案類型必須為圖片");
-//			
-//			ProductDto productDto = new ProductDto();
-//						
-//			m.addAttribute("errors", errors);
-//			m.addAttribute("productDto", productDto);
-//			return "product/addMessage";
-//		}
-//
-//		newProduct.setProductname(productname);
-//		newProduct.setProductcategory(productcategory);
-//		newProduct.setProductprice(productprice);
-//		newProduct.setImgtype(imgtype);
-//		newProduct.setProductdesciption(productdesciption);
-//		newProduct.setInventoryquantity(inventoryquantity);
-//		newProduct.setTakedown(takedown);
-//		try {
-//			newProduct.setProductimg(productimg.getBytes());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			ProductDto proDto = new ProductDto();
-//			m.addAttribute("productDto", proDto);
-//			return "product/addMessage";
-//		}
-//
-//		pmsgService.insertProduct(newProduct);
-//
-//		return "redirect:/product/all";
-//	}
+	
 
 	// base64
 	@PostMapping("postProduct")
@@ -158,7 +88,7 @@ public class WorkProductController {
 		model.addAttribute("pMsg", pMsg);
 		return "product/editMessage";
 	}
-	//修改2
+	//修改2加圖片
 	@PostMapping("product/editProduct")
 	public String postMessage(@RequestParam("productid") Long productid, 
 			@RequestParam("productname") String productname, 
@@ -258,6 +188,79 @@ public class WorkProductController {
 //		byte[] imageByte= Base64.decodeBase64(idto);
 //	    return null;
 //	}
+	
+	
+	// 圖片未成功
+//		@PostMapping("postProduct")
+//		public String addMessage(@RequestParam("imgFile") MultipartFile mf, Model model) throws IOException {
+////			System.out.println("qweqeqweqweweqw");
+////			String base64Str=productDto.getProductimgdto();
+////			if(!StringUtil.isBlank(path)) {
+////				
+////			}
+////			System.out.println(productDto.getProductimg());
+//			ProductDto method = new ProductDto();
+//			WorkProduct test = new WorkProduct();
+//			String producttype = productimgdto.getProductimgdto;
+//			byte[] imgBytes = mf.getBytes();
+//			System.out.println(imgBytes);
+//			String img = method.encoder(imgBytes);
+//			System.out.println(method.encoder(imgBytes));
+//			test.setProductimg(img);
+////			WorkProduct product = pmsgService.insertProduct(imgBytes);
+//			WorkProduct newpMsg = new WorkProduct();
+//			WorkProduct lastestpMsg = pmsgService.getLastest();
+	//
+//			model.addAttribute("workProduct", newpMsg);
+//			model.addAttribute("lastestpMsg", lastestpMsg);
+//			return "product/addMessage";
+//		}
+		// img byte[]
+//		@PostMapping("postProduct")
+//		public String addNewFirm(@RequestParam String productname, @RequestParam String productcategory,
+//								 @RequestParam Integer productprice, @RequestPart MultipartFile productimg,
+//								 @RequestParam String imgtype,
+//								 @RequestParam String productdesciption,
+//								 @RequestParam Integer inventoryquantity,
+//								 @RequestParam String takedown,Model m) {
+//			WorkProduct newProduct = new WorkProduct();
+	//
+//			String productType = productimg.getContentType();
+	//
+//			System.out.println(productType);
+	//
+//			if(!productType.startsWith("image")) {
+//				
+//				Map<String, String> errors = new HashMap<String, String>();
+//				errors.put("firmLogo", "檔案類型必須為圖片");
+//				
+//				ProductDto productDto = new ProductDto();
+//							
+//				m.addAttribute("errors", errors);
+//				m.addAttribute("productDto", productDto);
+//				return "product/addMessage";
+//			}
+	//
+//			newProduct.setProductname(productname);
+//			newProduct.setProductcategory(productcategory);
+//			newProduct.setProductprice(productprice);
+//			newProduct.setImgtype(imgtype);
+//			newProduct.setProductdesciption(productdesciption);
+//			newProduct.setInventoryquantity(inventoryquantity);
+//			newProduct.setTakedown(takedown);
+//			try {
+//				newProduct.setProductimg(productimg.getBytes());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//				ProductDto proDto = new ProductDto();
+//				m.addAttribute("productDto", proDto);
+//				return "product/addMessage";
+//			}
+	//
+//			pmsgService.insertProduct(newProduct);
+	//
+//			return "redirect:/product/all";
+//		}
 
 }
 
