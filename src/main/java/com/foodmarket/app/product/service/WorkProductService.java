@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.model.WorkProductRepository;
@@ -146,11 +148,31 @@ public class WorkProductService {
 //	}
 
 	public void deleteById(Long productid) {
-		productDao.deleteById(productid);
+		 productDao.deleteById(productid);
 
 	}
 	
-	
+	//判斷
+//	public void validate(Object target, Errors errors) {
+//		WorkProduct bean = (WorkProduct) target;
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productname", "", "商品名稱不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productprice", "", "價格欄不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mf", "", "圖不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productdesciption", "", "商品介紹不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "administrator", "", "庫存數量不能空白");
+//		
+////		Double price = Double.parseDouble(bean.getListPrice());
+//		
+//		if (bean.getProductcategory().equals("0")) {
+//			errors.rejectValue("productcategory","", "必須挑選分類欄");
+//		}
+//		if () {
+//			if (bean.getProductimg().isEmpty()) {
+//				errors.rejectValue("productImage","", "必須挑選圖片");
+//			}
+//		}
+//	}
+
 	
 	
 	

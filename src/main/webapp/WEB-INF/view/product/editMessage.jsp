@@ -33,11 +33,88 @@
 									<%--   <form:textarea path="text" class="form-control"/> --%>
 									商品名稱
 									<form:input path="productname" class="form-control" />
-									商品類別編號
-									<form:input path="productcategory" class="form-control" />
+<!-- 									商品類別編號 -->
+<%-- 									<form:input path="productcategory" class="form-control" /> --%>
+									<div>
+									
+									<br/>
+									
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
+									</div>
+									<form:select class="custom-select" id="inputGroupSelect01"
+										path="productcategory">
+										<option value="蔬菜類">蔬菜類</option>
+										<option value="水果類">水果類</option>
+										<option value="肉品">肉品</option>
+										<option value="海鮮">海鮮</option>
+									</form:select>
+								</div>
+							</div>
 									價格
 									<form:input path="productprice" class="form-control" />
-									圖
+									
+					</div> 
+									<br />
+									
+									
+									 商品介紹
+									<form:input path="productdesciption" class="form-control" />
+									庫存數量
+									<form:input path="inventoryquantity" class="form-control" />
+									<br />
+
+							<div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">上下架</label>
+									</div>
+									<form:select class="custom-select" id="inputGroupSelect01"
+										path="takedown">
+										<option value="上">上</option>
+										<option value="下">下</option>
+										</form:select>
+								</div>
+							</div>
+							
+							<br/>
+										<div>
+								<label class="input-group-text" for="inputGroupSelect01">商品介紹</label>
+								<form:textarea path="productdesciption" class="form-control" />
+							</div>
+
+							<br />
+
+							<div>
+								<label class="input-group-text" for="inputGroupSelect01">庫存數量</label>
+								<form:input path="inventoryquantity" class="form-control" />
+							</div>
+							
+							<br/>
+							
+							
+<!-- 							<div> -->
+<!-- 								<label class="input-group-text" for="inputGroupSelect01">商品介紹</label> -->
+<%-- 								<form:textarea path="productdesciption" class="form-control" /> --%>
+<!-- 							</div> -->
+
+<!-- 							<br /> -->
+
+<!-- 							<div> -->
+<!-- 								<label class="input-group-text" for="inputGroupSelect01">庫存數量</label> -->
+<%-- 								<form:input path="inventoryquantity" class="form-control" /> --%>
+<!-- 							</div> -->
+							
+<!-- 							<br/> -->
+							
+							
+
+									<form:input path="administrator" class="form-control"
+										type="hidden" />
+										
+										
+										圖
 									<%--   <form:input path="productimg" class="form-control"/> --%>
 
 									<div>
@@ -79,38 +156,19 @@
 // 											}
 // 										}
 									</script>
-									<!--   <figure> -->
-									<%-- 	<img src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
-									<!-- </figure> -->
-									<script>
-										// function preview() { 
-										//     frame.src=URL.createObjectURL(event.target.files[0]);
-										// }
-									</script>
-									<!--  <div> -->
-									<%-- 					<img id="frame" class="rounded-sm" alt="productImg" src="${product.pImg}" width="100px" height="100px"> --%>
-									<!-- 
-					</div> -->
-									<br />
-									 商品介紹
-									<form:input path="productdesciption" class="form-control" />
-									庫存數量
-									<form:input path="inventoryquantity" class="form-control" />
-									上下架
-									<form:input path="takedown" class="form-control" />
-
-									<form:input path="administrator" class="form-control"
-										type="hidden" />
 								</div>
 								<!-- 								<div> -->
 								<!-- 									<a onclick="return confirm('真的要刪除嗎?')" -->
 								<%-- 										href="${contextRoot}/product/delete?productid=${lastestpMsg.productid}"><button --%>
 								<!-- 											class="btn btn-danger" class=".check_pid">刪除</button></a> -->
 								<!-- 								</div> -->
+						</form:form>
 							</div>
+							
+							<div>
 							<input type="submit" name="submit" value="修改訊息" onclick="return confirm('真的要修改嗎?')">
 							<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
-						</form:form>
+							</div>
 
 
 

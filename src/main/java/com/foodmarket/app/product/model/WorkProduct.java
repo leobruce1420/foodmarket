@@ -15,7 +15,6 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="product")//srcmail/resources裡application 的 spring.jpa.hibernate.ddl-auto=update
@@ -25,6 +24,7 @@ public class WorkProduct {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="productid")
 	private Long productid;
+	
 	
 	// 若沒寫 columnDefinition ， 預設為 varchar(255)
 	@Column(name="productname", columnDefinition = "nvarchar(30)")

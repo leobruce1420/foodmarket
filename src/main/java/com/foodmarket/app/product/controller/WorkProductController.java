@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +44,7 @@ public class WorkProductController {
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 			 @RequestParam("takedown") String takedown,Model m) throws  IOException {
 		Util method = new Util();
+		
 		try {
 //			if (!pmsgService.checkLoginSession(session)) {
 //				return "AdminLogin";
@@ -134,11 +137,11 @@ public class WorkProductController {
 //		return "redirect:/product/all";
 //	}
 //
-//	@GetMapping("product/delete")
-//	public String deleteMsg(@RequestParam("productid") Long productid) {
-//		pmsgService.deleteById(productid);
-//		return "redirect:/product/all";
-//	}
+	@GetMapping("product/delete")
+	public String deleteMsg(@RequestParam("productid") Long productid) {
+		pmsgService.deleteById(productid);
+		return "redirect:/product/all";
+	}
 
 	@PostMapping("api/postProduct")
 	@ResponseBody

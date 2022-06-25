@@ -20,7 +20,6 @@ public class ProductDto implements Serializable{
 	public ProductDto() {
 		
 	}
-	
 	public String getPmessage() {
 		return pmessage;
 		
