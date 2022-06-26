@@ -10,14 +10,14 @@
 <html>
 <style>
 table,td{
-    border:3px rgb(66, 170, 218) solid ;
-    background-color: rgb(187, 229, 235);
-    color: red;
-    border-collapse: collapse;
+    border:3px  SOLID ; 
+/*     BACKGROUND-COLOR: RGB(187, 229, 235); */
+/*     COLOR: RED; */
+/*     BORDER-COLLAPSE: COLLAPSE; */
     margin: 10px auto;
     font-size: 125%;
     padding: 10px;
-    box-shadow: 5px 5px 2px gray;
+/*     box-shadow: 5px 5px 2px gray; */
 
 }
 h5 {

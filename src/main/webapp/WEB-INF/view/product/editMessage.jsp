@@ -43,13 +43,13 @@
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
 									</div>
-									<form:select class="custom-select" id="inputGroupSelect01"
-										path="productcategory">
-										<option value="蔬菜類">蔬菜類</option>
-										<option value="水果類">水果類</option>
-										<option value="肉品">肉品</option>
-										<option value="海鮮">海鮮</option>
-									</form:select>
+									<form:input class="form-control" id="inputGroupSelect01"
+										path="productcategory" style="pointer-events: none"/>
+<!-- 										<option value="蔬菜類">蔬菜類</option> -->
+<!-- 										<option value="水果類">水果類</option> -->
+<!-- 										<option value="肉品">肉品</option> -->
+<!-- 										<option value="海鮮">海鮮</option> -->
+<%-- 									</form:select> --%>
 								</div>
 							</div>
 									價格
@@ -59,8 +59,6 @@
 									<br />
 									
 									
-									 商品介紹
-									<form:input path="productdesciption" class="form-control" />
 									庫存數量
 									<form:input path="inventoryquantity" class="form-control" />
 									<br />
@@ -68,12 +66,12 @@
 							<div>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<label class="input-group-text" for="inputGroupSelect01">上下架</label>
+										<label class="input-group-text" for="takedown">上下架</label>
 									</div>
-									<form:select class="custom-select" id="inputGroupSelect01"
-										path="takedown">
-										<option value="上">上</option>
-										<option value="下">下</option>
+									<form:select class="custom-select" id="takedown" name="takedown"
+										path="takedown" >
+										<form:option value="上架">上架</form:option>
+										<form:option value="下架">下架</form:option>
 										</form:select>
 								</div>
 							</div>
@@ -162,13 +160,13 @@
 								<%-- 										href="${contextRoot}/product/delete?productid=${lastestpMsg.productid}"><button --%>
 								<!-- 											class="btn btn-danger" class=".check_pid">刪除</button></a> -->
 								<!-- 								</div> -->
+							<div>
+							<input type="submit" name="submit" class="btn btn-outline-success" value="修改訊息" onclick="return confirm('真的要修改嗎?')">
+							<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
+							</div>
 						</form:form>
 							</div>
 							
-							<div>
-							<input type="submit" name="submit" value="修改訊息" onclick="return confirm('真的要修改嗎?')">
-							<input class="btn btn-outline-danger" type="button" name="back" value="返回"onClick="javascript:history.back()">
-							</div>
 
 
 
@@ -178,6 +176,5 @@
 			</div>
 
 		</div>
-	</div>
 </body>
 </html>

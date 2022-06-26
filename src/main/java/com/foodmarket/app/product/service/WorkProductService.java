@@ -38,7 +38,7 @@ public class WorkProductService {
 	}
 	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 7, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 53, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
