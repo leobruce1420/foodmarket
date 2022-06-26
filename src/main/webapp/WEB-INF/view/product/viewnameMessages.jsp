@@ -36,171 +36,51 @@ table,td{
 	<div class="container">
 
 <%-- 		<c:forEach var="pname" items="${pname}"> --%>
-			<div class="row justify-content-center">
+			<div class="row justify-content">
 <%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
 
-				<div class="col-18">
+				<div class="col-12">
 
-					
-					<table class="table">
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">商品ID</th>
-								<th scope="col">商品名稱</th>
-								<th scope="col">商品類別</th>
-								<th scope="col">價格</th>
-								<th scope="col">圖</th>
-								<th scope="col">新增日期</th>
-								<th scope="col">商品介紹</th>
-								<th scope="col">庫存數量</th>
-								<th scope="col">上下架</th>
-								<th scope="col">修改人員</th>
-								<th scope="col">修改</th>
-							</tr>
-						</thead>
+					<div class="album py-3 bg-light">
+    <div class="container">
+
+      <div class="row">
 						<c:forEach var="workProduct" items="${workProduct}">
-						<tbody>
-							<tr>
-								<th scope="row"><c:out value="${workProduct.productid}" /></th>
-								<td><c:out value="${workProduct.productname}" /></td>
-								<td><c:out value="${workProduct.productcategory}" /></td>
-								<td><c:out value="${workProduct.productprice}" /></td>
-								<td>
-<%-- 								<c:out value="${workProduct.productimg}" /> --%>
-								<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></td>
-								<td><fmt:formatDate
-										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
-										value="${workProduct.added}" /></td>
-
-								<td><c:out value="${workProduct.productdesciption}" /></td>
-								<td><c:out value="${workProduct.inventoryquantity}" /></td>
-								<td><c:out value="${workProduct.takedown}" /></td>
-								<td><c:out value="${workProduct.administrator}" /></td>
-								<td><div>
-										<a
-											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button
-												class="btn btn-info">編輯</button></a>
-									</div> <br />
+<!-- 									<tr> -->
+<!-- 									<th> -->
+										<div class="col-5">
+									<img style="width: 400px; height: 400px;"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" />
+									
+								</div>
+								<div>
 									<div>
-										<a onclick="return confirm('真的要刪除嗎?')"
-											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button
-												class="btn btn-danger" class=".check_pid">刪除</button></a>
-									</div></td>
-							</tr>
-						</tbody>
+									
+										<h5 class="card-title">${workProduct.productname}</h5>
+									</div>
+									<hr/>
+									<div>
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										<h5 class="card-title">${workProduct.productdesciption}</h5>
+										<p class="card-text">$${workProduct.productprice}</p>
+										<a
+											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										<%-- 					</form:form> --%>
+									</div>
+								</div>
+								
 						</c:forEach>
-					</table>
-					<!-- 					<div class="col-12 "> -->
-					<%-- 						<a href="${contextRoot}/message/editMessage?id=${workMessage.id}"><button --%>
-					<!-- 								class="btn btn-info">編輯</button></a> <a -->
-					<!-- 							onclick="return confirm('真的要刪除嗎?')" -->
-					<%-- 							href="${contextRoot}/message/delete?id=${workMessage.id}"><button --%>
-					<!-- 								class="btn btn-danger" class=".check_pid">刪除</button></a> -->
-					<!-- 					</div> -->
-
+</div>
+</div>
 				</div>
 
 			</div>
 
 
 			<br />
-<%-- 		</c:forEach> --%>
 
-<!-- 		<div class="row justify-content-center"> -->
-
-<!-- 			<div class="col-9"> -->
-<%-- 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
-<%-- 							<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out --%>
-<%-- 									value="${pageNumber}" /></a> --%>
-<%-- 						</c:when> --%>
-
-<%-- 						<c:otherwise> --%>
-<%-- 							<c:out value="${pageNumber}" /> --%>
-<%-- 						</c:otherwise> --%>
-
-<%-- 					</c:choose> --%>
-
-<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
-<!-- 							| -->
-<%-- 							</c:if> --%>
-<%-- 				</c:forEach> --%>
-
-
-<!-- 			</div> -->
-			<br />
-			<!-- 			<div> -->
-			<!-- 				<table class="table"> -->
-			<!-- 					<thead class="thead-light"> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="col">productid</th> -->
-			<!-- 							<th scope="col">productname</th> -->
-			<!-- 							<th scope="col">productcategory</th> -->
-			<!-- 							<th scope="col">productprice</th> -->
-			<!-- 							<th scope="col">productimg</th> -->
-			<!-- 							<th scope="col">added</th> -->
-			<!-- 							<th scope="col">productdesciption</th> -->
-			<!-- 							<th scope="col">Inventoryquantity</th> -->
-			<!-- 							<th scope="col">takedown</th> -->
-
-			<!-- 						</tr> -->
-			<!-- 					</thead> -->
-			<!-- 					<tbody> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">1</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">2</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
-			<!-- 						<tr> -->
-			<!-- 							<th scope="row">3</th> -->
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>蔬菜類</td> -->
-			<!-- 							<td>139</td> -->
-			<!-- 							<td>a01.jpg</td> -->
-			<%-- 							<td><fmt:formatDate --%>
-			<%-- 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-			<%-- 									value="${workMessage.added}" /></td> --%>
-			<!-- 							<td>青蔥：1包(200g ±10%)</td> -->
-			<!-- 							<td>1000</td> -->
-			<!-- 							<td>上架中</td> -->
-			<!-- 						</tr> -->
-
-			<!-- 					</tbody> -->
-			<!-- 				</table> -->
-			<!-- 			</div> -->
-
-			<div>
-				<br />
-				<div class="card" style="width: 18rem;">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card with stretched link</h5>
-						<p class="card-text">Some quick example text to build on the
-							card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn btn-primary stretched-link">Go
-							somewhere</a>
 <!-- 							標題對齊圖 -->
 <!-- 						<figure class="figure"> -->
 <!-- 							<img src="..." class="figure-img img-fluid rounded" alt="..."> -->
@@ -211,9 +91,6 @@ table,td{
 <!-- 						<div class="text-center"> -->
 <!-- 							<img src="..." class="rounded" alt="..."> -->
 <!-- 						</div> -->
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </body>
