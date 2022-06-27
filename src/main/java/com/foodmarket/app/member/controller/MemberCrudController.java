@@ -26,12 +26,12 @@ public class MemberCrudController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberCrudController.class);
 
-	@GetMapping("/member/delete/{id}")
-	public String delete(@PathVariable Long id) {
-		memberService.deleteById(id);
-		return "index";
-		//return "redirect:/message/all";
-	}
+//	@GetMapping("/member/delete/{id}")
+//	public String delete(@PathVariable Long id) {
+//		memberService.deleteById(id);
+//		return "index";
+//		//return "redirect:/message/all";
+//	}
 	
 //	@PostMapping("/updateCustomer")
 //	public String updateCustomer(@ModelAttribute("member")Member member, Model m) {
@@ -48,20 +48,20 @@ public class MemberCrudController {
 //		return "index";
 //	}
 	
-	@GetMapping("/member/findByName/{name}")
-	public String findByNamePageable(@PathVariable String name, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-		Page<Member> mPage = memberService.findByNamePageable(p, name);
-		m.addAttribute("page", mPage);
-		System.out.println(mPage.getTotalElements());
-		return "index";
-	}
-	
-	@GetMapping("/member/findAll")
-	public String findAllPageable(@RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
-		Page<Member> mPage = memberService.findAllPageable(p);
-		m.addAttribute("page", mPage);
-		System.out.println(mPage.getTotalElements());
-		return "index";
-	}
+//	@GetMapping("/member/findByName/{name}")
+//	public String findByNamePageable(@PathVariable String name, @RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
+//		Page<Member> mPage = memberService.findByNamePageable(p, name);
+//		m.addAttribute("page", mPage);
+//		System.out.println(mPage.getTotalElements());
+//		return "index";
+//	}
+//	
+//	@GetMapping("/member/findAll")
+//	public String findAllPageable(@RequestParam(value="pageNumber", defaultValue="1")Integer p, Model m) {
+//		Page<Member> mPage = memberService.findAllPageable(p);
+//		m.addAttribute("page", mPage);
+//		System.out.println(mPage.getTotalElements());
+//		return "index";
+//	}
 
 }

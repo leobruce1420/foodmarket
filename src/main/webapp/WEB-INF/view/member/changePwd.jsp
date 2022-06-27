@@ -80,8 +80,8 @@
 </c:if>
 
 
-<%-- <script src="${contextRoot}/js/jquery-3.6.0.js"></script> --%>
-<%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
+<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
 
@@ -99,10 +99,10 @@ $(document).ready(function(){
 		   var oldPassword = $('#oldPassword').val();
 		   var id = ${loginUserId}
 		   
-		   if($.trim(oldPassword)==''){
-			   alert('Account is empty');
-			   return;
-		   }
+// 		   if($.trim(oldPassword)==''){
+// 			   alert('Account is empty');
+// 			   return;
+// 		   }
 		   
 		   var params = {"oldPassword":''+oldPassword, "id":''+ id};
 		   console.log(params)

@@ -56,7 +56,7 @@
     <ul class="navbar-nav mr-auto ">
     
       <li class="nav-item active">
-      <a class="nav-link active" href="${contextRoot}/member/test">管理員首頁 <span class="sr-only">(current)</span></a>
+      <a class="nav-link active" href="${contextRoot}/member/findAll">管理員首頁 <span class="sr-only">(current)</span></a>
       </li>
      	
     </ul>
@@ -76,7 +76,7 @@
     <div class="panel panel-primary leftMenu">
     <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
          data-target="#collapseListGroup1" role="tab">
-		<a class="nav-link" href="${contextRoot}/adminLogout"> <span data-feather="user"></span> 會員管理 </a>
+		<a class="nav-link" href="${contextRoot}/member/findAll"> <span data-feather="user"></span> 會員管理 </a>
     </div>
   </div><!--panel end-->
   <!--  ==================================================================================================    -->
