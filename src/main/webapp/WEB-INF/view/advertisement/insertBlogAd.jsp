@@ -11,31 +11,33 @@
 <meta charset="UTF-8">
 <title>新增部落格活動</title>
 <style>
-fieldset{
-width: 1000px;
-height: 600px;
-text-align: center;
-margin: auto;
-margin-top: 10px;
+fieldset {
+	width: 800px;
+	height: 750px;
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+	
 }
 
-h2{
-text-align: center;
+h2 {
+	text-align: center;
 }
 
-form{
-margin: auto;
-text-align: left;
-width: 600px;
+form {
+	margin: auto;
+	text-align: left;
+	width: 600px;
 }
 
-.submit{
-text-align: center;
+.submit {
+	text-align: center;
 }
 
-textarea{
-resize: none; 
+textarea {
+	resize: none;
 }
+
 </style>
 </head>
 <body>
@@ -51,7 +53,7 @@ resize: none;
 			</div>
 
 			<div>
-				<img id="output" class="picture" width="450px">
+				<img id="output" class="picture" width="400px">
 			</div>
 
 
@@ -71,9 +73,13 @@ resize: none;
 			</div>
 
 			<div class="div1">
-				<label for="remark" class="FormTitle">備註 : </label>
-				<textarea id="remark" name="remark" rows="4" cols="50">
-				</textarea>
+				<label for="remark" class="FormTitle">備註 :</label>
+				<textarea id="remark" name="remark" rows="4" cols="50"
+					onKeyDown="checkMaxInput(this.form)"
+					onKeyUp="checkMaxInput(this.form)" placeholder="輸入限制25字" 
+					required>${ad.remark}</textarea>
+				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
+					readonly type=text name=remLen size=3 maxlength=3 value="">字
 			</div>
 
 			<div class="div1">
@@ -83,6 +89,8 @@ resize: none;
 
 			<div class="submit">
 				<input type="submit" id="submit" class="btn btn-outline-info" value="確定" />
+				<input class="btn btn-outline-danger" type="button"
+					name="back" value="返回" onClick="javascript:history.back()">
 			</div>
 		</form:form>
 	</fieldset>
@@ -95,6 +103,18 @@ resize: none;
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		};
+		
+		maxLen = 25; // 字數頂限
+
+		function checkMaxInput(form) {
+			if (form.remark.value.length > maxLen) // if too long.... trim it!
+				form.remark.value = form.remark.value.substring(0, maxLen);
+			// otherwise, update 'characters left' counter
+			else
+				form.remLen.value = maxLen - form.remark.value.length;
+		}
+		//
+		
 	</script>
 </body>
 </html>
