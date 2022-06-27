@@ -24,7 +24,7 @@ table,td{
 </style>
 <head>
 <meta charset="UTF-8">
-<title>後台查詢商品</title>
+<title>後台查詢商品種類</title>
 </head>
 <body>
 <!-- <div class="div1"> -->
@@ -40,55 +40,60 @@ table,td{
 
 				<div class="col-18">
 
-					
-					<table class="table">
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">商品ID</th>
-								<th scope="col">商品名稱</th>
-								<th scope="col">商品類別</th>
-								<th scope="col">價格</th>
-								<th scope="col">圖</th>
-								<th scope="col">新增日期</th>
-								<th scope="col">商品介紹</th>
-								<th scope="col">庫存數量</th>
-								<th scope="col">上下架</th>
-								<th scope="col">修改人員</th>
-								<th scope="col">修改</th>
-							</tr>
-						</thead>
-						<c:forEach var="workProduct" items="${workProduct}">
-						<tbody>
-							<tr>
-								<th scope="row"><c:out value="${workProduct.productid}" /></th>
-								<td><c:out value="${workProduct.productname}" /></td>
-								<td><c:out value="${workProduct.productcategory}" /></td>
-								<td><c:out value="${workProduct.productprice}" /></td>
-								<td>
-<%-- 								<c:out value="${workProduct.productimg}" /> --%>
-								<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></td>
-								<td><fmt:formatDate
-										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
-										value="${workProduct.added}" /></td>
+					<div class="album py-3 bg-light">
+    <div class="container">
 
-								<td><c:out value="${workProduct.productdesciption}" /></td>
-								<td><c:out value="${workProduct.inventoryquantity}" /></td>
-								<td><c:out value="${workProduct.takedown}" /></td>
-								<td><c:out value="${workProduct.administrator}" /></td>
-								<td><div>
+      <div class="row">
+					
+						
+						<c:forEach var="workProduct" items="${workProduct}">
+						<div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+						<img style="width: 200px; height: 200px;"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" />
+									<div class="card-body">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										<h5 class="card-title">${workProduct.productname}</h5>
+										<p class="card-text">$${workProduct.productprice}</p>
 										<a
-											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button
-												class="btn btn-info">編輯</button></a>
-									</div> <br />
-									<div>
-										<a onclick="return confirm('真的要刪除嗎?')"
-											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button
-												class="btn btn-danger" class=".check_pid">刪除</button></a>
-									</div></td>
-							</tr>
-						</tbody>
+											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										<%-- 					</form:form> --%>
+<!-- 									</div> -->
+								</div>
+								</div>
+								</div>
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<%-- 								<th scope="row"><c:out value="${workProduct.productid}" /></th> --%>
+<%-- 								<td><c:out value="${workProduct.productname}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.productcategory}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.productprice}" /></td> --%>
+<!-- 								<td> -->
+<%-- <%-- 								<c:out value="${workProduct.productimg}" /> --%> 
+<%-- 								<img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></td> --%>
+<%-- 								<td><fmt:formatDate --%>
+<%-- 										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
+<%-- 										value="${workProduct.added}" /></td> --%>
+
+<%-- 								<td><c:out value="${workProduct.productdesciption}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.inventoryquantity}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.takedown}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.administrator}" /></td> --%>
+<!-- 								<td><div> -->
+<!-- 										<a -->
+<%-- 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button --%>
+<!-- 												class="btn btn-info">編輯</button></a> -->
+<!-- 									</div> <br /> -->
+<!-- 									<div> -->
+<!-- 										<a onclick="return confirm('真的要刪除嗎?')" -->
+<%-- 											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button --%>
+<!-- 												class="btn btn-danger" class=".check_pid">刪除</button></a> -->
+<!-- 									</div></td> -->
+<!-- 							</tr> -->
+<!-- 						</tbody> -->
 						</c:forEach>
-					</table>
 					<!-- 					<div class="col-12 "> -->
 					<%-- 						<a href="${contextRoot}/message/editMessage?id=${workMessage.id}"><button --%>
 					<!-- 								class="btn btn-info">編輯</button></a> <a -->
@@ -100,7 +105,9 @@ table,td{
 				</div>
 
 			</div>
-
+</div>
+</div>
+</div>
 
 			<br />
 

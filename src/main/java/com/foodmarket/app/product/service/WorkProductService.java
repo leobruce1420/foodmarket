@@ -99,12 +99,24 @@ public class WorkProductService {
 		return page;
 	}
 	
-	//商品查詢不分頁
+	//商品點擊查詢不分頁
 	public List<WorkProduct> findByName(String productname) {
 		List<WorkProduct> page = productDao.findByName(productname);
 
 		return page;
 
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
+	}
+	//商品輸入查詢不分頁
+	public List<WorkProduct> findByProductName(String productname) {
+		List<WorkProduct> page = productDao.findByName(productname);
+		
+		return page;
+		
 //		if (name.isPresent()) {
 //			return name.get();
 //

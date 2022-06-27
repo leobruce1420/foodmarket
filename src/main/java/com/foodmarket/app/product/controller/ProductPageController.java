@@ -34,12 +34,12 @@ public class ProductPageController {
 
 	}
 	// 好的
-//	@GetMapping("/p")
-//	public String welcomePage(Model model){
-//		model.addAttribute("test", "qweweq");
-//		return "index";
-//		
-//	}
+	@GetMapping("/p")
+	public String welcomePage(Model model){
+		model.addAttribute("test", "qweweq");
+		return "index";
+		
+	}
 
 	@GetMapping("product/add")
 	public String addMessagePage(Model model) {
@@ -139,7 +139,7 @@ public class ProductPageController {
 //		
 //	}
 
-	// 消費者商品查詢名稱不分頁 測試
+	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
 	@GetMapping("product/productname")
 	public String viewProductname(@RequestParam(required = false, value = "productname") String productname, Model m) {
 		List<WorkProduct> workProduct = pmsgService.findByName(productname);
@@ -149,7 +149,18 @@ public class ProductPageController {
 		return "product/viewnameMessages";
 
 	}
-	//商品查詢名稱分頁
+	// 消費者查詢商品名稱顯示商品不分頁 測試
+	@GetMapping("product/searchproductname")
+	public String searchProductname(@RequestParam(required = false, value = "productname") String productname, Model m) {
+		List<WorkProduct> workProduct = pmsgService.findByProductName(productname);
+		
+		m.addAttribute("workProduct", workProduct);
+		m.addAttribute("productname", productname);
+		return "product/searchnameMessages";
+		
+	}
+	
+	//管理員商品查詢名稱分頁
 	@GetMapping("product/name")
 	public ModelAndView Productname(@RequestParam (required=false ,value="productname")String productname,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
@@ -157,7 +168,7 @@ public class ProductPageController {
 		Page<WorkProduct> page = pmsgService.findByNamePage(productname,pageNumber);
 		
 		m.getModel().put("page", page);
-		m.setViewName("product/viewnameMessages");
+		m.setViewName("product/viewMessages");
 		return m;
 		
 	}

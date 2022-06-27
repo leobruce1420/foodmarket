@@ -19,7 +19,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " >
-  <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
+  <a class="navbar-brand" href="${contextRoot}/p">好食光市場</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,7 +27,7 @@
     <ul class="navbar-nav mr-auto ">
     
       <li class="nav-item active">
-      <a class="nav-link active" href="${contextRoot}/HOME">管理員首頁 <span class="sr-only">(current)</span></a>
+      <a class="nav-link active" href="${contextRoot}/HOME">商城首頁 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -73,11 +73,15 @@
     
       
     </ul>
+    
+    
     <button type="button" class="btn btn-primary">
  購物車<span class="badge badge-light">4</span>
 </button>
-    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/productname" method="get">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="name" name="productname" autocomplete="off" required>
+
+
+    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
     </form>
     
