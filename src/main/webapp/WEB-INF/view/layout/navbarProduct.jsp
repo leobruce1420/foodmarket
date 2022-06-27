@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
-<title>Insert title here</title>
+<title>好食光市場</title>
 </head>
 <body>
 

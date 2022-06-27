@@ -4,12 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/memberNavbar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 <meta charset="UTF-8">
 <title>會員資料</title>
 <style>
@@ -23,49 +21,17 @@
 </style>
 </head>
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-           <ul class="nav flex-column">        
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberCenter/${loginUserId}">
-              <span data-feather="user"></span>
-              會員資料
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberAddress/${loginUserId}">
-              <span data-feather="bookmark"></span>
-              常用地址
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/toChangePwd/${loginUserId}">
-              <span data-feather="edit-3"></span>
-              修改密碼
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberShoppingList/${loginUserId}">
-              <span data-feather="shopping-cart"></span>
-              訂單查詢
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberWishList/${loginUserId}">
-              <span data-feather="heart"></span>
-              我的收藏
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+  <div
+   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+   <h1 class="h2">常用地址</h1>
+  </div>
+ </main>
+
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-1 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
 <form class="form" method="post" action="${contextRoot}/editAddress">
 <div class="container-fluid mt-3 ml-5">
-<h2 class="form-row justify-content-start">常用地址</h2>
-
 <div class="form-row justify-content-start mt-2">
 	
  	<div class="form-group col-md-10">
@@ -102,17 +68,36 @@
 <button type="submit" class="btn btn-outline-primary col-md-2 mt-4" id="submit">修改</button></div>
 </div>
 </form>
-
-
-	
  </div>
 </div>
 
-
-<script src="${contextRoot}/js/feather.min.js"></script>
-<script> feather.replace()</script> 
+<c:if test="${editOkMsg == '修改成功'}">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">修改成功</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        資料修改成功
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" onclick="show()">show</button>
+</c:if>
 
 <script type="text/javascript">
+
+$(window).ready(() => {
+	$('#myModal').modal('show');
+})
 
 	$('#view1').click(function(){
 		

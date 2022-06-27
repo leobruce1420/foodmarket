@@ -25,8 +25,6 @@
 <!-- Custom styles for this template -->
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet">
 
-<title>Insert title here</title>
-
 <title>好食光市場後臺系統</title>
 
 <style>

@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-<title>Insert title here</title>
 
 <title>好食光市場</title>
 
