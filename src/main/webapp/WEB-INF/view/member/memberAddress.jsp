@@ -102,37 +102,60 @@ $(window).ready(() => {
 	$('#view1').click(function(){
 		
 		var divContent=$('#map1').html();
+		var input = $('#add1').val();
 		
-		if(divContent==0||divContent==null){
-			$('#map2').empty()
-			$('#view2')[0].innerHTML='顯示地圖'
-			$('#map2').hide()	
-			
-			$('#map3').empty()
-			$('#view3')[0].innerHTML='顯示地圖'
-			$('#map3').hide()
-			
-		$('#map1').html('<iframe '+
-			      	  'width="600" '+
-			          'height="450" '+
-			          'frameborder="0" '+
-			          'style="border:0" '+
-			          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCke-yKhB62CeJB3PtaBLZWYEkECFjJamk&q='+ $('#add1').val() +'" '+
-			          'allowfullscreen>'+
-			      	  '</iframe>')
-		$('#view1')[0].innerHTML='關閉地圖'
-		$('#map1').show()
+		if(input != ""){
+			if(divContent==0||divContent==null){
+				$('#map2').empty()
+				$('#view2')[0].innerHTML='顯示地圖'
+				$('#map2').hide()	
+				
+				$('#map3').empty()
+				$('#view3')[0].innerHTML='顯示地圖'
+				$('#map3').hide()
+				
+			$('#map1').html('<iframe '+
+				      	  'width="600" '+
+				          'height="450" '+
+				          'frameborder="0" '+
+				          'style="border:0" '+
+				          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCke-yKhB62CeJB3PtaBLZWYEkECFjJamk&q='+ $('#add1').val() +'" '+
+				          'allowfullscreen>'+
+				      	  '</iframe>')
+			$('#view1')[0].innerHTML='關閉地圖'
+			$('#map1').show()
+			}else{
+				$('#map1').empty()
+				$('#view1')[0].innerHTML='顯示地圖'
+				$('#map1').hide()
+			}
 		}else{
-			$('#map1').empty()
-			$('#view1')[0].innerHTML='顯示地圖'
-			$('#map1').hide()
-		}
+			if(divContent==0||divContent==null){
+				$('#map2').empty()
+				$('#view2')[0].innerHTML='顯示地圖'
+				$('#map2').hide()	
+				
+				$('#map3').empty()
+				$('#view3')[0].innerHTML='顯示地圖'
+				$('#map3').hide()
+				
+			$('#map1').html("沒有可顯示的地點")
+			$('#view1')[0].innerHTML='關閉地圖'
+			$('#map1').show()
+			}else{
+				$('#map1').empty()
+				$('#view1')[0].innerHTML='顯示地圖'
+				$('#map1').hide()
+			}
+		}	
 	});
 	
 	$('#view2').click(function(){
 		
 		var divContent=$('#map2').html();
+		var input = $('#add2').val();
 		
+		if(input != ""){
 		if(divContent==0||divContent==null){
 			$('#map1').empty()
 			$('#view1')[0].innerHTML='顯示地圖'
@@ -156,12 +179,34 @@ $(window).ready(() => {
 			$('#view2')[0].innerHTML='顯示地圖'
 			$('#map2').hide()
 		}
+		}else{
+			if(divContent==0||divContent==null){
+				$('#map1').empty()
+				$('#view1')[0].innerHTML='顯示地圖'
+				$('#map1').hide()	
+				
+				$('#map3').empty()
+				$('#view3')[0].innerHTML='顯示地圖'
+				$('#map3').hide()
+				
+			$('#map2').html("沒有可顯示的地點")
+			$('#view2')[0].innerHTML='關閉地圖'
+			$('#map2').show()
+			}else{
+				$('#map2').empty()
+				$('#view2')[0].innerHTML='顯示地圖'
+				$('#map2').hide()
+			}
+			
+		}
 	});
 	
 	$('#view3').click(function(){
 		
 		var divContent=$('#map3').html();
+		var input = $('#add3').val();
 		
+		if(input != ""){
 		if(divContent==0||divContent==null){
 			$('#map2').empty()
 			$('#view2')[0].innerHTML='顯示地圖'
@@ -185,6 +230,26 @@ $(window).ready(() => {
 			$('#view3')[0].innerHTML='顯示地圖'
 			$('#map3').hide()
 		}
+		}else{
+		if(divContent==0||divContent==null){
+			$('#map1').empty()
+			$('#view1')[0].innerHTML='顯示地圖'
+			$('#map1').hide()	
+			
+			$('#map2').empty()
+			$('#view2')[0].innerHTML='顯示地圖'
+			$('#map2').hide()
+			
+		$('#map3').html("沒有可顯示的地點")
+		$('#view3')[0].innerHTML='關閉地圖'
+		$('#map3').show()
+		}else{
+			$('#map3').empty()
+			$('#view3')[0].innerHTML='顯示地圖'
+			$('#map3').hide()
+		}
+		
+	}
 	});
 	
 // 	const pattern = new RegExp("^[\s0-9a-zA-Z\u4E00-\u9FA5]+$");

@@ -33,7 +33,7 @@ public class MemberEditController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberEditController.class);
 	
 	//導向會員中心首頁
-	@GetMapping("/memberCenter/{id}")
+	@GetMapping("/lock/memberCenter/{id}")
 	public String memberCenter(@PathVariable Long id, Model m, HttpSession session, @ModelAttribute("editOkMsg") String message) {
 		
 		Long sessionUId = (Long) session.getAttribute("loginUserId");

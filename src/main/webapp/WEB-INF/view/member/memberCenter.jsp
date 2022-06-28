@@ -56,7 +56,7 @@
     </div>
     
     <c:choose>
-    	<c:when test="${member.gender = 'male'}">
+    	<c:when test="${member.gender == 'male'}">
         	<div class="form-group col-md-2">
       			<label for="gender">性別</label>
       			<select id="gender" class="form-control"  name="gender">
@@ -139,10 +139,10 @@ $(window).ready(() => {
 })
 
 
-let nameChecked = false;
-let mobileChecked = false;
+let nameChecked = true;
+let mobileChecked = true;
 
-$('#customerName').blur(function checkName(){
+$('#customerName').keyup(function(){
 	var nameInput = $('#customerName').val();
 	var pattern = new RegExp("^[a-zA-Z\u4E00-\u9FA5]+$");
 	
@@ -150,6 +150,12 @@ $('#customerName').blur(function checkName(){
 		nameChecked = false;
 		lock()
 		$('#namemsg')[0].innerHTML='請輸入姓名'
+	}
+	
+	if(nameInput == '${member.customerName}'){
+		nameChecked = true;
+		lock()
+		$('#namemsg')[0].innerHTML=''
 	}
 		
 	if (!pattern.test(nameInput)) {
@@ -164,7 +170,7 @@ $('#customerName').blur(function checkName(){
 	
 });
 
-$('#mobile').blur(function(){
+$('#mobile').keyup(function(){
 	var mobileInput = $('#mobile').val();
 	var pattern = /^09\d{2}?\d{3}?\d{3}$/;
 	
@@ -173,6 +179,13 @@ $('#mobile').blur(function(){
 		lock()
 		$('#mobilemsg')[0].innerHTML='請輸入手機'
 	}
+	
+	if(mobileInput == ${member.mobile}){
+		mobileChecked = true;
+		lock()
+		$('#mobilemsg')[0].innerHTML=''
+	}
+	
 	if (!pattern.test(mobileInput)) {
 		mobileChecked = false;
 		lock()

@@ -138,13 +138,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberShoppingList/${loginUserId}">
+            <a class="nav-link" href="#">
               <span data-feather="shopping-cart"></span>
               訂單查詢
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberWishList/${loginUserId}">
+            <a class="nav-link" href="#">
               <span data-feather="heart"></span>
               我的收藏
             </a>

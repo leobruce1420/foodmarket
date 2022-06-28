@@ -27,7 +27,7 @@ td{font-size: 1rem;}
  	 <div class="row justify-content-center">	
  	<table >
 		<tr style="background-color:rgb(184, 195, 205)">
-		<th>編號<th>頭像<th>姓名<th>性別<th>手機<th>信箱<th>生日<th>論壇狀態<th>修改<th>刪除
+		<th>編號<th>頭像<th>姓名<th>性別<th>手機<th>信箱<th>生日<th>論壇狀態<th>刪除
 		<c:forEach var="m" items="${page.content}">
 		
 			<tr id="${m.customerId}"><td class="px-3">${m.customerId}
@@ -41,7 +41,7 @@ td{font-size: 1rem;}
     			</c:otherwise>
 			</c:choose>
 			
-			<td class="col-3"><a href="#">${m.customerName}</a>
+			<td class="col-3"><a href="${contextRoot}/member/one/${m.customerId}">${m.customerName}</a>
 			
 			<td class="px-3">
 				<c:choose>
@@ -51,19 +51,17 @@ td{font-size: 1rem;}
 			
 			<td >${m.mobile}
 			<td class="col-4">${m.mail}
-			<td class="col-5">${m.birthday}
+			<td class="col-4">${m.birthday}
 			
 			<c:choose>
     			<c:when test="${m.banned == 'false'}">
-        	  		<td class="col-1"><button type="button" class="btn btn-success" id="unban">正常</button>
+        	  		<td class="col-2"><button type="button" class="btn btn-success" id="ban${m.customerId}" onclick="ban(${m.customerId})">正常</button>
     			</c:when>
     			<c:otherwise>
-    				<td class="col-1"><button type="button" class="btn btn-danger" id="ban">禁言</button>
+    				<td class="col-2"><button type="button" class="btn btn-danger" id="ban${m.customerId}" onclick="ban(${m.customerId})">禁言</button>
     			</c:otherwise>
 			</c:choose>
 			
-<%-- 			<td><input type="button" value="修改" onclick="location.href='${contextRoot}/updateById/${customer.customerId}'"> --%>
-			<td class="col-1"><input type="button" value="修改">
 			<td class="col-1"><input type="button" value="刪除" onclick="checkDelete(${m.customerId})">
 		</c:forEach>
 	</table>
@@ -154,6 +152,28 @@ function checkDelete(customerId){
 	}else{	
 	}
 }
+
+function ban(customerId){
+	$.ajax({
+	      type: "post"
+	      , url: "http://localhost:8080/foodmarket/member/ban"
+	      , data: { id: customerId }
+	      , async: false
+	      , success: function(res){
+	    	  
+	    	  var id = '#ban'+customerId
+	    	  
+	    	  $(id)[0].innerHTML=res
+	    	  
+	    	  if(res == '正常'){
+	    		  $(id).addClass("btn-success").removeClass("btn-danger");
+	    	  }else{
+	    		  $(id).addClass("btn-danger").removeClass("btn-success");
+	    	  }
+	      }
+	    });
+}
+
 
 </script>
 

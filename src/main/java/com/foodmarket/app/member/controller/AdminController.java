@@ -85,11 +85,11 @@ public class AdminController {
 			return "member/viewMember";
 		}
 		
+		//刪除資料
 		@PostMapping("/member/delete")
 		public String deleteById(@RequestParam("id") int id, Model m,HttpSession session) {
 			
 			try {
-				logger.info("test");
 				Member member = memberService.findById((long) id);
 				if(member!=null) {
 					memberService.deleteById((long) id);
@@ -101,6 +101,39 @@ public class AdminController {
 				e.printStackTrace();
 				return "redirect:/member/findAll";
 			}
+		}
+		
+		//ban狀態修改
+		@PostMapping("/member/ban")
+		@ResponseBody
+		public String ban(@RequestParam("id") int id, Model m,HttpSession session) {
+			
+			try {
+				Member member = memberService.findById((long) id);
+				
+				if(member.getBanned().equals("true")) {
+					member.setBanned("false");
+					memberService.updateCustomer(member);
+					logger.info("會員編號：" + member.getCustomerId() + " 解除水桶 ");
+					return "正常";
+				}else {
+					member.setBanned("true");
+					memberService.updateCustomer(member);
+					logger.info("會員編號：" + member.getCustomerId() + " 水桶 ");
+					return "禁言";
+				}	
+			}catch(Exception e) {
+				e.printStackTrace();
+				return "redirect:/member/findAll";
+			}
+		}
+		
+		//單筆資料顯示
+		@GetMapping("/member/one/{id}")
+		public String one(@PathVariable Long id, Model m) {
+			Member member = memberService.findById(id);
+			m.addAttribute("member", member);
+			return "member/viewOne";
 		}
 
 }
