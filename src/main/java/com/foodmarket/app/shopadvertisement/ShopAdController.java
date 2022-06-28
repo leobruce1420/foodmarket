@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,6 +65,15 @@ public class ShopAdController {
 		return "advertisement/updateShopAd";
 	}
 	
+	
+	@GetMapping("/shopad/upload")
+	public String uploadBoard(Model m) {
+		
+		List<ShopAdvertisement> ad = sService.findByBoard();
+		m.addAttribute("ad",ad);
+		return "index"; 
+	}
+	
 	////////////////////////////
 	
 	@PostMapping("/shopad/insert")
@@ -73,6 +83,8 @@ public class ShopAdController {
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
 			@RequestParam("productId") String productId,
+			@RequestParam("shopUrl") String shopUrl,
+			@RequestParam("onboard") String onboard,
 			Model m) throws IOException {
 		ShopAdvertisement bBean = new ShopAdvertisement();
 		
@@ -104,7 +116,15 @@ public class ShopAdController {
 	
 		bBean.setRemark(remark);
 		
-		bBean.setProductId(productId);
+		
+		if(!productId.isEmpty()) {
+			bBean.setProductId(productId);
+		}
+	
+		
+		bBean.setShopUrl(shopUrl);
+		
+		bBean.setOnboard(onboard);
 		
 		sService.insertAd(bBean);
 		
@@ -123,6 +143,8 @@ public class ShopAdController {
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
 			@RequestParam("productId") String productId,
+			@RequestParam("shopUrl") String shopUrl,
+			@RequestParam("onboard") String onboard,
 			Model m) throws IOException {
 		ShopAdvertisement bBean = sService.findById(shopAdId);
 		
@@ -159,6 +181,10 @@ public class ShopAdController {
 		
 		bBean.setProductId(productId);
 		
+		bBean.setShopUrl(shopUrl);
+		
+		bBean.setOnboard(onboard);
+		
 		sService.insertAd(bBean);
 		
 		List<ShopAdvertisement> ad = sService.getAllAds();
@@ -174,23 +200,7 @@ public class ShopAdController {
 		return "redirect:/shopad/getAll";
 	}
 	
-//	@PostMapping("/animalreader.controller")
-//	@ResponseBody
-//	public ArrayList<ShopAdvertisement> processSearchAnimalAction(@RequestParam("keyword") String animalName){
-//		return checkAnimal(animalName);
-//	}
-//
-//	private ArrayList<ShopAdvertisement> checkAnimal(String animalName) {
-//        ArrayList<ShopAdvertisement> result = new ArrayList<ShopAdvertisement>();
-//        
-//        for(ShopAdvertisement a: animals) {
-//        	if(a.getAname().contains(animalName) && animalName.length()!=0) {
-//        		result.add(a);
-//        	}
-//        }
-//        
-//		return result;
-//	}
+	
 	
 }
 

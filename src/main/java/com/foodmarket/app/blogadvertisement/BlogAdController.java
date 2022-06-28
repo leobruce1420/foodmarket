@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+
 @Controller
 public class BlogAdController {
 
@@ -62,6 +64,14 @@ public class BlogAdController {
 		return "advertisement/updateBlogAd";
 	}
 	
+	@GetMapping("/blogad/upload")
+	public String uploadBoard(Model m) {
+		
+		List<BlogAdvertisement> ad = bService.findByBoard();
+		m.addAttribute("ad",ad);
+		return "index"; 
+	}
+	
 	///////////////////////////////////////////
 	
 	@PostMapping("/blogad/insert")
@@ -71,6 +81,8 @@ public class BlogAdController {
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
 			@RequestParam("recipeId") String recipeId,
+			@RequestParam("recipeUrl") String recipeUrl,
+			@RequestParam("onboard") String onboard,
 			Model m) throws IOException {
 		BlogAdvertisement bBean = new BlogAdvertisement();
 		
@@ -102,7 +114,13 @@ public class BlogAdController {
 	
 		bBean.setRemark(remark);
 		
-		bBean.setRecipeId(recipeId);
+		if(!recipeId.isEmpty()) {
+			bBean.setRecipeId(recipeId);
+		}
+		
+		bBean.setRecipeUrl(recipeUrl);
+		
+		bBean.setOnboard(onboard);
 		
 		bService.insertAd(bBean);
 		
@@ -121,6 +139,8 @@ public class BlogAdController {
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
 			@RequestParam("recipeId") String recipeId,
+			@RequestParam("recipeUrl") String recipeUrl,
+			@RequestParam("onboard") String onboard,
 			Model m) throws IOException {
 		BlogAdvertisement bBean = bService.findById(blogAdId);
 		
@@ -156,6 +176,10 @@ public class BlogAdController {
 		bBean.setRemark(remark);
 		
 		bBean.setRecipeId(recipeId);
+		
+		bBean.setRecipeUrl(recipeUrl);
+		
+		bBean.setOnboard(onboard);
 		
 		bService.insertAd(bBean);
 		

@@ -80,17 +80,34 @@ textarea {
 				<label for="remark" class="FormTitle">備註 :</label>
 				<textarea id="remark" name="remark" rows="4" cols="50"
 					onKeyDown="checkMaxInput(this.form)"
-					onKeyUp="checkMaxInput(this.form)" placeholder="輸入限制25字" 
-					required>${ad.remark}</textarea>
+					onKeyUp="checkMaxInput(this.form)" placeholder="輸入限制25字" required>${ad.remark}</textarea>
 				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
 					readonly type=text name=remLen size=3 maxlength=3 value="">字
 			</div>
 
 			<div class="div1">
-				<label for="productId" class="FormTitle">商品編號 : </label> <input
-					id="productId" name="productId" autocomplete="off" required />
+				<!--  <label for="productId" class="FormTitle">商品編號 : </label> <input
+					id="productId" name="productId" autocomplete="off" required /> -->
+					<label for="productId">產品編號 : </label> <select id="productId" name="productId">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
 			</div>
 
+			<div class="div1">
+				<label for="productId" class="FormTitle">商品路徑 : </label> <input
+					id="shopUrl" name="shopUrl" autocomplete="off" required />
+			</div>
+			
+			<div class="div1">
+				<!--  <label for="productId" class="FormTitle">商品編號 : </label> <input
+					id="productId" name="productId" autocomplete="off" required /> -->
+					<label for="productId">上架狀態 : </label> <select id="onboard" name="onboard">
+					<option value="on">上架</option>
+					<option value="off">下架</option>
+				</select>
+			</div>
+			
 			<div class="submit">
 				<input type="submit" id="submit" class="btn btn-outline-info"
 					value="確定" /> <input class="btn btn-outline-danger" type="button"

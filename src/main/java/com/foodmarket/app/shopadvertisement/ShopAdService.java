@@ -31,7 +31,14 @@ public class ShopAdService {
 		}
 		return null;
 	}
+	
 	public void deleteById(Integer id) {
 		sDao.deleteById(id);
+	}
+	
+	public List<ShopAdvertisement> findByBoard() {
+		List<ShopAdvertisement> List = sDao.findShopAdByBoard();
+		return List;
+		
 	}
 }
