@@ -25,17 +25,6 @@ public class ProductStatistic {
 	@Column(name="sales")
 	private Integer sales;
 	
-//	@Column(name="salesTotal")
-//	private Integer salesTotal;
-//	
-//	public Integer getSalesTotal() {
-//		return salesTotal;
-//	}
-//	
-//	public void setSalesTotal(Integer salesTotal) {
-//		this.salesTotal = salesTotal;
-//	}
-	
 	@Override
 	public String toString() {
 		return "productStatistic [id=" + id + ", productId=" + productId + ", productName=" + productName + ", sales="

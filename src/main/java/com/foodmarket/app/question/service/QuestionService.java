@@ -54,9 +54,9 @@ public class QuestionService implements QuestionServiceInterface {
 	}
 	
 	public List<Question> findByQuestionTitle(String questionTitle){
-		List<Question> findByName = questionDto.findByQuestionTitle(questionTitle);
-		return findByName;
-	}
+		List<Question> findByQuestionTitle = questionDto.findByQuestionTitle("%"+questionTitle+"%");
+		return findByQuestionTitle;
+	}	
 	
 //	@Override
 //	public List<Question> findByQuestioncategory(String questioncategory) {

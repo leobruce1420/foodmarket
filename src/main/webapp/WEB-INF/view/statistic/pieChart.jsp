@@ -19,7 +19,6 @@
 
 </head>
 <body>
-	<h1>hi</h1>
 	<div>
 		<table class="mytable" id="list_table_json">
 			<thead>
@@ -36,17 +35,17 @@
 				style="min-width: 450px; height: 550px; margin: 0 auto"></div>
 		</div>
 	</div>
-	<button type="button" onclick="download()">Click Me!!</button>
 
 	<script>
 		var rtnMapLabels = [];
 		var rtnMapData = [];
-		var rtnMapQQQ = [];
+		var rtnMapResult = [];
 		var download
 		var myPieChart;
 		$.get("${contextRoot}/productCount", function(rtnMap) {
 			console.log(rtnMap)
-
+			console.log(rtnMapLabels)
+			console.log(rtnMapData)
 			var array = [];
 			for ( var key in rtnMap) {
 				array.push({
@@ -61,22 +60,9 @@
 			console.log(sorted1[0].value)
 			
 			for(var i = 0; i < sorted1.length; i++){
-				rtnMapQQQ.push([sorted1[i].name, sorted1[i].value])
+				rtnMapResult.push([sorted1[i].name, sorted1[i].value])
 			}
-				console.log(rtnMapQQQ)
-
-			// 			var ctxP = document.getElementById("pieChart").getContext('2d');
-
-// 			Highcharts.setOptions({
-// 				chart : {
-// 					style : {
-// 						fontFamily: 'serif',
-// // 						fontFamily : 'Times New Roman',
-// 						fontSize : '20em',
-// 						color : '#f00'
-// 					}
-// 				}
-// 			});
+				console.log(rtnMapResult)
 			
 			Highcharts.setOptions({
 			    chart: {
@@ -107,15 +93,6 @@
 							backgroundColor : '#FFFFFF'
 							
 						},
-// 						xAxis : {
-// 							categories : [ '2006', '2007', '2008', '2009',
-// 									'2010', '2011' ]
-// 						},
-// 						yAxis : {
-// 							title : {
-// 								text : ''
-// 							}
-// 						},
 						tooltip : {
 							shared : false,
 							valueSuffix : '件'
@@ -124,6 +101,18 @@
 							enabled : false
 						},
 						plotOptions : {
+				            pie: {
+				                allowPointSelect: true,
+				                cursor: 'pointer',
+				                dataLabels: {
+				                    enabled: true,
+				                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+				                    style: {
+				                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+				                         width: '60px'
+				                    }
+				                }
+				            },
 							areaspline : {
 								fillOpacity : 0.1
 							},
@@ -133,50 +122,18 @@
 						},
 						series : [ {
 							type : 'pie',
-							data : rtnMapQQQ
+							data : rtnMapResult
 						} ]
 
 					});
 
-			//]]> 
-
-			// 			myPieChart = new Chart(ctxP, {
-			// 				type : 'pie',
-			// 				data : data,
-			// 				options : {
-			// 					responsive : true
-			// 				}
-
-			// 			});
-			// 			var image = myPieChart.toBase64Image();
-			// 			console.log(image);
-
-			// 			download = function(){
-			// 			var a = document.createElement('a');
-			// 			a.href = myPieChart.toBase64Image();
-			// 			a.download = 'my_file_name.png';
-			// 			console.log("AAAA");
-			// 			a.click();
-			// 			}	
-
-			// Trigger the download
-
 		});
 
-
-		
 		const data = {
 			labels : rtnMapLabels,
 			datasets : rtnMapData
 		};
 
-		// 		const data = {
-		// 			labels : rtnMapLabels,
-		// 			datasets : [ {
-		// 				data : rtnMapData,
-		// 				backgroundColor : [ "#F7464A", "#46BFBD", "#FDB45C", "#00000" ],
-		// 			} ]
-		// 		};
 	</script>
 	<script type="text/javascript">
 		$(document).ready(

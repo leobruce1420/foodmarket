@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
-<%-- <link href="${contextRoot}/css/question.css" rel="stylesheet"> --%>
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextRoot}/css/question.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -18,51 +18,36 @@
 	<br />
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-8">
+			<div class="col-15">
 				<table class="table">
 					<thead class="thead-light">
 						<tr>
-							<th scope="col">questionCategory</th>
-							<th scope="col">questionTitle</th>
-							<th scope="col">answer</th>
-							<th scope="col">修改</th>
-							<th scope="col">刪除</th>
+							<th scope="col" style="text-align: center">問題類別</th>
+							<th scope="col" style="text-align: center">常見問題</th>
+							<th scope="col" style="text-align: center">問題回答</th>
+							<th scope="col" style="text-align: center">修改</th>
+							<th scope="col" style="text-align: center">刪除</th>
 						</tr>
 					</thead>
+						<tbody>
+						<c:forEach var="Question" items="${pageQuestion.content}">
+							<tr>
+								<th scope="row" style="text-align: center"><c:out value="${Question.questionCategory}" /></th>
+								<td style="max-width:300px"><c:out value="${Question.questionTitle}" /></td>
+								<td style="max-width:300px"><c:out value="${Question.answer}" /></td>
+								<td><a
+									href="${contextRoot}/question/editQuestion?id=${Question.id}"><button
+											class="btn btn-warning">修改</button></a></td>
+								<td><a onclick="return confirm('真的要刪除嗎')"
+									href="${contextRoot}/question/deleteQuestion?id=${Question.id}"><button
+											class="btn btn-danger">刪除</button></a></td>
+								</tr>
+						</c:forEach>
+						</tbody>
 				</table>
 			</div>
 		</div>
-		<c:forEach var="Question" items="${pageQuestion.content}">
-			<div class="row justify-content-center">
-				<div class="col-18">
-					<table class="table">
-						<tbody>
-							<tr>
-								<th scope="row"><c:out value="${Question.questionCategory}" /></th>
-								<td><c:out value="${Question.questionTitle}" /></td>
-								<td><c:out value="${Question.answer}" /></td>
-								<td><a href="${contextRoot}/question/editQuestion?id=${Question.id}"><button class="btn btn-warning">修改</button></a></td>
-								<td><a onclick="return confirm('真的要刪除嗎')" href="${contextRoot}/question/deleteQuestion?id=${Question.id}"><button class="btn btn-danger">刪除</button></a></td>
-<!-- 								<td> -->
-<!-- 									<div> -->
-<!-- 										<a -->
-<%-- 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"> --%>
-<!-- 											<button class="btn btn-info">編輯</button> -->
-<!-- 										</a> -->
-<!-- 									</div> <br /> -->
-<!-- 									<div> -->
-<!-- 										<a onclick="return confirm('真的要下架嗎?')" -->
-<%-- 											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button --%>
-<!-- 												class="btn btn-danger" class=".check_pid">下架</button></a> -->
-<!-- 									</div> -->
-<!-- 								</td> -->
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
 
-		</c:forEach>
 
 		<div class="row justify-content-center">
 
