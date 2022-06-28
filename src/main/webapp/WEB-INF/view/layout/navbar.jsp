@@ -19,7 +19,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " >
-  <a class="navbar-brand" href="${contextRoot}/p">好食光市場</a>
+  <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -75,13 +75,13 @@
     </ul>
     
     
-    <button type="button" class="btn btn-primary">
- 購物車<span class="badge badge-light">4</span>
+    <button type="button" class="btn btn-primary mr-sm-2">
+ 購物車
 </button>
 
 
     <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
+      <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
     </form>
     
