@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-<title>Insert title here</title>
 
 <title>好食光市場</title>
 
@@ -87,7 +86,7 @@
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
-			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter/${loginUserId}'">會員中心</button>
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/lock/memberCenter/${loginUserId}'">會員中心</button>
 			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
 		</c:when>
 			

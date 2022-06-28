@@ -102,9 +102,38 @@ public class MemberController {
 		return new ResponseEntity<String>("N", HttpStatus.OK);
 
 	}
+	
+	@PostMapping("/checkYourMail")
+	public ResponseEntity<String> checkYourMail(@RequestBody String mail, HttpSession session) {
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		Member loginMember = memberService.findById(sessionUId);
+		Member inputMember = memberService.findByMail(mail);
+		
+			
+		if (inputMember != null) {
+			if(loginMember.getMail().equals(inputMember.getMail())) {
+				logger.info(" 帳號已存在且一致 ");
+				return new ResponseEntity<String>("Y", HttpStatus.OK);
+			}
+			logger.info(" 帳號已存在但不一致 ");
+			return new ResponseEntity<String>("N", HttpStatus.OK);
+		}
+
+		logger.info(" 帳號沒有重複 ");
+		return new ResponseEntity<String>("N", HttpStatus.OK);
+
+	}
 
 	// ===============================註冊(韓信箱驗證)==============================================================================================
 
+	
+	@GetMapping("/signUp")
+	public String signUp(Model m) {
+		Member member = new Member();
+		m.addAttribute("member", member);
+		return "member/signUp";
+	}
+	
 	// 新增會員並發信
 	@PostMapping("/insertCustomer")
 	public String insertCustomer(@ModelAttribute("member") Member member, Model m, HttpSession session) {
@@ -163,6 +192,11 @@ public class MemberController {
 			return "index";
 		}
 
+	}
+	
+	@GetMapping("/reSendAuth")
+	public String reSendAuth() {
+		return "member/auth/authMailReSend";
 	}
 
 	@PostMapping("/authMailReSend")
