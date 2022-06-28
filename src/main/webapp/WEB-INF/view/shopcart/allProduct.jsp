@@ -211,7 +211,6 @@ $(".insertOrderBtn").click(
 		  url: '${contextRoot}/saveRecord',
 		  data: {
 			  "orderItems"  : shoplist.list
-			 
 		  }
 		}).then(function(response) {
 			  alert(response.data);
