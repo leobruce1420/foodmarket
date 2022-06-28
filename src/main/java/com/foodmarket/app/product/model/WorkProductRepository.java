@@ -39,6 +39,14 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	// 用商品名稱關鍵字查詢，無分頁
 	@Query(value = "select * from product where productname like %:productname%", nativeQuery = true)
 	public List<WorkProduct> findByName(@Param("productname") String productname);
+	
+	// 用商品上下架關鍵字查詢，有分頁
+	@Query(value = "select * from product where takedown = :Y", nativeQuery=true)
+	public Page<WorkProduct> findByTakeDown(@Param("takedown")String takedown,Pageable pgb);
+	
+	// 用商品上下架關鍵字查詢，無分頁
+	@Query(value = "select * from product where takedown = :Y", nativeQuery = true)
+	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
 
 	// 用id刪除
 	@Transactional

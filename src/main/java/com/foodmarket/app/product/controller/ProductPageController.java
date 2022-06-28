@@ -184,6 +184,31 @@ public class ProductPageController {
 //		
 //	}
 	
+	// 前台顯示上架商品不分頁 測試
+	@GetMapping("product/searchproductname")
+	public String searchProductOn(@RequestParam(required = false, value = "takedown") String takedown, Model m) {
+		List<WorkProduct> workProduct = pmsgService.findByOn(takedown);
+		
+		m.addAttribute("workProduct", workProduct);
+		m.addAttribute("productname", takedown);
+		return "product/searchnameMessages";
+		
+	}
+	
+	//後台顯示上架商品 分頁
+	@GetMapping("product/name")
+	public ModelAndView ProductOn(@RequestParam (required=false ,value="takedown")String takedown,
+			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
+			ModelAndView m) {
+		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
+		
+		m.getModel().put("page", page);
+		m.setViewName("product/viewMessages");
+		return m;
+		
+	}
+
+	
 	//ID查詢
 	@GetMapping("product/productid")
 	public String viewProductId(@RequestParam("productid") Long productid, Model m) {

@@ -123,6 +123,28 @@ public class WorkProductService {
 //		}
 //		return null;
 	}
+	
+	//商品上架排序分頁
+	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "added");
+
+		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
+
+		return page;
+	}
+	
+	//商品前台顯示上架不分頁
+	public List<WorkProduct> findByOn(String takedown) {
+		List<WorkProduct> page = productDao.findByOn(takedown);
+		
+		return page;
+		
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
+	}
 
 	
 	//	public WorkProduct findById(Long productid) {
