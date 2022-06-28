@@ -23,7 +23,6 @@ public class StatisticService {
 	private StatisticRepository statisticDao;
 	
 	public Map<String, Integer> productCount(String productName, Integer sales){
-	//public List<productStatistic> productCount(String productName, Integer sales){
 		
 		List<ProductStatistic> ps_list = statisticDao.findAll();
 		

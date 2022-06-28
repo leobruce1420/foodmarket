@@ -15,17 +15,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
-		<br>
-		<h1 style="text-align: center">常見問題</h1>
-		<br>
 
-<!-- 		<td><a -->
-<%-- 			href="${contextRoot}/question/findByQuestionTitle?questionTitle=${Question.questionTitle}"><button --%>
-<!-- 					class="btn btn-warning">修改</button></a></td> -->
+	<br>
+	<h1 style="text-align: center">常見問題</h1>
+	<br>
+	<div class="container">
+		<div style="text-align: center">
+			<input id="myQuestion">
+			<button id="submitBtn">查詢
+		</div>
+			<br/>
+		<div>
+			<div id="1111"></div>
+		</div>
+	</div>
+	<div class="container" id="111">
 		<div class="row justify-content-center">
 			<div class="col-9">
-				<div class="card">
+				<div class="card" id="allQuestion">
 					<div class="card-header">產品及服務</div>
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
@@ -44,7 +51,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="card">
+				<div class="card" id="allQuestion">
 					<div class="card-header">配送物流</div>
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
@@ -63,9 +70,9 @@
 					</div>
 				</div>
 				<br>
-				<div class="card">
+				<div class="card" id="allQuestion">
 					<div class="card-header">會員申請</div>
-					<div class="card-body">
+					<div class="card-body" >
 						<c:forEach var="Question" items="${allqus}">
 							<c:if test="${Question.questionCategory =='會員申請'}">
 								<button type="button" class="collapsible">
@@ -82,7 +89,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="card">
+				<div class="card" id="allQuestion">
 					<div class="card-header">其他</div>
 					<div class="card-body">
 						<c:forEach var="Question" items="${allqus}">
@@ -97,17 +104,16 @@
 									</p>
 								</div>
 							</c:if>
-
 						</c:forEach>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
+	<script type="text/javascript">
 		var coll = document.getElementsByClassName("collapsible");
 		var i;
-
+		var result;
 		for (i = 0; i < coll.length; i++) {
 			coll[i].addEventListener("click", function() {
 				this.classList.toggle("active");
@@ -119,8 +125,39 @@
 				}
 			});
 		}
+		
+		$(document).ready(function() {
+			$('#submitBtn').click(function() {
+				var inputTitle = document.getElementById('myQuestion').value;
+				// 				var objectTitle = {"qt": inputTitle};
+				// 				var jsonTitle = JSON.stringify(objectTitle);
+				$.ajax({
+					url : 'http://localhost:8080/foodmarket/json/postQuestion',
+					method : 'post',
+					contentType : 'application/json',
+					dataType : 'json',
+					data : inputTitle,
+					success : function(result) {
+						$("#111").remove()
+						
+						qus_data = '<div class="container" id="111">'+'<div class="row justify-content-center">'+'<div class="col-9">' + '<div class="card">' + '<div class="card-header">搜尋結果</div>' + '<div class="card-body">'
+						$.each(result, function(index, value) {
+							qus_data += '<button type="button" class="collapsible">'
+							qus_data += value.questionTitle
+							qus_data += '</button>'	
+							qus_data += '<br>'
+							qus_data += '<div>'
+							qus_data += '<div style="display: flex; align-items: center;height: 50px;">'
+							qus_data +=  value.answer
+							qus_data += '</div>'
+							qus_data += '</div>'
+						})
+						console.log(qus_data)
+						$('#1111').append(qus_data)
+					}	
+				})
+			})
+		})
 	</script>
-
-
 </body>
 </html>

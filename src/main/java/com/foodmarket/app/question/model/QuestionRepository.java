@@ -13,6 +13,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	
 	public List<Question> findByquestionCategory(String questionCategory);
 	
-	@Query(value = "select * from question where questionTitle like %:questionTitle%", nativeQuery=true)
+	@Query(value = "select * from question where questionTitle like :questionTitle", nativeQuery=true)
 	public List<Question> findByQuestionTitle(@Param(value="questionTitle")String questionTitle);
 }
