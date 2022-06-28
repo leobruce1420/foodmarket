@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-<title>Insert title here</title>
 
 <title>好食光市場</title>
 
@@ -59,10 +58,26 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
           <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
+          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
+<<<<<<< HEAD
+      		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          常見問題
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/question/allQuestion">常見問題</a>
+          <a class="dropdown-item" href="${contextRoot}/question/addQuestion">新增常見問題</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">ajax</a>
+        </div>
+      </li>
+=======
+      
+>>>>>>> member
       <li class="nav-item dropdown">
       <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>
@@ -70,7 +85,16 @@
       <a class="nav-link" href="${contextRoot}/product/add">新增商品訊息</a>
     </li>
     
-    
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          購物車
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${contextRoot}/orderList/{orderId}">購物明細</a>
+        </div>
+      </li>
       
     </ul>
     
@@ -87,7 +111,7 @@
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
-			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter/${loginUserId}'">會員中心</button>
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/lock/memberCenter/${loginUserId}'">會員中心</button>
 			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
 		</c:when>
 			

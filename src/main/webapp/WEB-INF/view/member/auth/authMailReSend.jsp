@@ -88,7 +88,7 @@ function checkRobot(){
     }
 }
 
-$('#mail').blur(function(){
+$('#mail').keyup(function(){
 	var mailInput = $('#mail').val();
 	var pattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,4})*$/;
 
@@ -105,7 +105,7 @@ $('#mail').blur(function(){
 		} else {
 			$.ajax({
 				type :"POST",
-				url  : "checkMail",
+				url  : "checkYourMail",
 				contentType:'application/text',
 				data: mailInput,
 				success: function(data){
@@ -117,7 +117,7 @@ $('#mail').blur(function(){
 					if(data=='N'){
 						$('#emailmsg')[0].innerHTML=''
 						$('#submit').attr("disabled", true);
-						$('#emailcheck')[0].innerHTML='此帳號不存在'
+						$('#emailcheck')[0].innerHTML='請正確輸入您的信箱'
 					}
 				},
 				error: function(e){

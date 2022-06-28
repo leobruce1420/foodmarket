@@ -17,9 +17,6 @@ fieldset {
 	margin: auto;
 	margin-top: 10px;
 	text-align: center;
-	border: 3px solid black;
-	background-color: lightblue;
-	border-radius: 20px
 }
 
 h2 {
@@ -83,10 +80,10 @@ textarea {
 				<label for="remark" class="FormTitle">備註 :</label>
 				<textarea id="remark" name="remark" rows="4" cols="50"
 					onKeyDown="checkMaxInput(this.form)"
-					onKeyUp="checkMaxInput(this.form)" required> ${ad.remark}
-				</textarea>
+					onKeyUp="checkMaxInput(this.form)" placeholder="輸入限制25字" 
+					required>${ad.remark}</textarea>
 				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
-					readonly type=text name=remLen size=3 maxlength=3 value="50">字
+					readonly type=text name=remLen size=3 maxlength=3 value="">字
 			</div>
 
 			<div class="div1">
@@ -111,7 +108,7 @@ textarea {
 			reader.readAsDataURL(event.target.files[0]);
 		};
 
-		maxLen = 50; // 字數頂限
+		maxLen = 25; // 字數頂限
 
 		function checkMaxInput(form) {
 			if (form.remark.value.length > maxLen) // if too long.... trim it!

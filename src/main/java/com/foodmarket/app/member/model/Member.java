@@ -16,7 +16,9 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodmarket.app.blog.model.Recipe;
+import com.foodmarket.app.shopcar.entity.OrderRecord;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -104,7 +106,11 @@ public class Member {
 	private Date modifiedDate;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
-	private Set<Recipe> books = new LinkedHashSet<Recipe>();
+	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+	private Set<OrderRecord> orderRecord = new LinkedHashSet<OrderRecord>();
 
 
 
@@ -287,5 +293,23 @@ public class Member {
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+
+	public Set<Recipe> getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Set<Recipe> recipe) {
+		this.recipe = recipe;
+	}
+
+	public Set<OrderRecord> getOrderRecord() {
+		return orderRecord;
+	}
+
+	public void setOrderRecord(Set<OrderRecord> orderRecord) {
+		this.orderRecord = orderRecord;
+	}
+	
+	
 
 }

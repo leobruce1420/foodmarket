@@ -14,6 +14,149 @@
 <title>HOME</title>
 </head>
 <body>
+<<<<<<< HEAD
+	<div id="carouselExampleIndicators" class="carousel slide"
+		data-ride="carousel" >
+<!-- 		data-interval="false" -->
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0"
+				class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
+		<br/>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+			<table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="a01.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+			<div class="carousel-item">
+				<table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+			<div class="carousel-item">
+				<table class="table table-dark">
+			<tr>
+			<td>
+			
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+				<td>
+				<div class="card" style="width: 18rem;">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card with stretched link</h5>
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary stretched-link">Go
+							somewhere</a>
+					</div>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</div>
+		</div>
+=======
 	
 	<br/>
 	<hr/>
@@ -71,6 +214,7 @@
 <hr/>
 
 		<div class=" justify-content-center">
+>>>>>>> pro
 		
 		
 		

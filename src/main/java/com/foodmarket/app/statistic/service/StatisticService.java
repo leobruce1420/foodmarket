@@ -1,6 +1,8 @@
 package com.foodmarket.app.statistic.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.foodmarket.app.statistic.model.StatisticRepository;
+import com.foodmarket.app.statistic.model.JoinStatistic;
 import com.foodmarket.app.statistic.model.ProductStatistic;
 
 
@@ -22,8 +25,9 @@ public class StatisticService {
 	@Autowired
 	private StatisticRepository statisticDao;
 	
+	
+	
 	public Map<String, Integer> productCount(String productName, Integer sales){
-	//public List<productStatistic> productCount(String productName, Integer sales){
 		
 		List<ProductStatistic> ps_list = statisticDao.findAll();
 		
