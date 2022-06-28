@@ -104,7 +104,7 @@ public class Member {
 	private Date modifiedDate;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
-	private Set<Recipe> books = new LinkedHashSet<Recipe>();
+	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
 
 
 
