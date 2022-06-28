@@ -17,9 +17,7 @@ fieldset {
 	margin: auto;
 	margin-top: 10px;
 	text-align: center;
-	border: 3px solid black;
-	background-color: lightblue;
-	border-radius: 20px
+	
 }
 
 h2 {
@@ -47,14 +45,19 @@ textarea {
 </head>
 <body>
 	<fieldset>
-		<h2>修改資料</h2>
+		<h2>修改商城活動資料</h2>
 		<form:form method="post" action="${contextRoot}/shopad/update"
 			enctype='multipart/form-data' modelAttribute="editAd">
 
-			<div class="div2">
-				<label for="picture" class="FormTitle">圖片 : </label> <br><img
-					id="output" src="data:image/*;base64, ${ad.picture}"
+			<!--  <div class="div2">
+				<label for="picture" class="FormTitle">目前圖片 : </label><img
+					id="" src="data:image/*;base64, ${ad.picture}"
 					class="picture" name="picture" />
+			</div><br>-->
+			
+			<div class="div1">
+				<label for="imgFile" class="FormTitle">更新圖片 : </label><img id="output" class="picture" width="400px" src="data:image/*;base64, ${ad.picture}"> <input
+					type="file" onchange="loadFile(event)" name="picture" accept="image/*"/>
 			</div>
 
 			<div class="div1">
@@ -69,11 +72,7 @@ textarea {
 			</div>
 
 
-			<!--  <div class="div1">
-
-				<input type="file" onchange="loadFile(event)" accept="image/*"
-					name="picture" required value="${ad.picture}"/>
-			</div>-->
+			
 
 			<div class="div1">
 				<label for="beginDate" class="FormTitle">活動開始日期 : </label> <input
@@ -91,10 +90,9 @@ textarea {
 				<label for="remark" class="FormTitle">備註 :</label>
 				<textarea id="remark" name="remark" rows="4" cols="50"
 					onKeyDown="checkMaxInput(this.form)"
-					onKeyUp="checkMaxInput(this.form)" required> ${ad.remark}
-				</textarea><br>
+					onKeyUp="checkMaxInput(this.form)" maxlength="20" required>${ad.remark}</textarea><br>
 				<label for="remark" class="FormTitle">剩餘 : </label>
-				<input readonly type=text name=remLen size=3 maxlength=3 value="">字
+				<input readonly type=text name=remLen size="3" maxlength="3" value="">字
 			</div>
 
 			<div class="div1">
@@ -114,13 +112,13 @@ textarea {
 		var loadFile = function(event) {
 			var reader = new FileReader();
 			reader.onload = function() {
-				var output = document.getElementById('output');
+				var output = document.getElementById('output')
 				output.src = reader.result;
-			};
+			}
 			reader.readAsDataURL(event.target.files[0]);
-		};
+		}
 		
-		maxLen = 50; // 字數頂限
+		maxLen = 25; // 字數頂限
 
 		function checkMaxInput(form) {
 		if (form.remark.value.length > maxLen) // if too long.... trim it!
@@ -129,6 +127,8 @@ textarea {
 		else form.remLen.value = maxLen - form.remark.value.length;
 		}
 		//  
+		
+		
 		</script>
 </body>
 </html>

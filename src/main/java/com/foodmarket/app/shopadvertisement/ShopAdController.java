@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.foodmarket.app.blogadvertisement.Base64Method;
@@ -116,7 +118,7 @@ public class ShopAdController {
 	@PostMapping("/shopad/update")
 	public String updateAd(@RequestParam("shopAdId") Integer shopAdId,
 			@RequestParam("shopAdName") String shopAdName,
-			//@RequestParam("picture") MultipartFile picture,
+			@RequestParam("picture") MultipartFile picture,
 			@RequestParam("beginDate") String beginDate,
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
@@ -130,9 +132,12 @@ public class ShopAdController {
 		
 		bBean.setShopAdName(shopAdName);
 		
-		//byte[] imgByte = picture.getBytes();
-		//bBean.setPicture(base.encoder(imgByte));
+		if(!picture.isEmpty()) {
+			byte[] imgByte = picture.getBytes();
+			bBean.setPicture(base.encoder(imgByte));
+		}
 		
+			
 		//處理date型別
 		try {
 			cDate = new Date(dateFormat.parse(beginDate).getTime());
@@ -168,6 +173,24 @@ public class ShopAdController {
 		sService.deleteById(id);
 		return "redirect:/shopad/getAll";
 	}
+	
+//	@PostMapping("/animalreader.controller")
+//	@ResponseBody
+//	public ArrayList<ShopAdvertisement> processSearchAnimalAction(@RequestParam("keyword") String animalName){
+//		return checkAnimal(animalName);
+//	}
+//
+//	private ArrayList<ShopAdvertisement> checkAnimal(String animalName) {
+//        ArrayList<ShopAdvertisement> result = new ArrayList<ShopAdvertisement>();
+//        
+//        for(ShopAdvertisement a: animals) {
+//        	if(a.getAname().contains(animalName) && animalName.length()!=0) {
+//        		result.add(a);
+//        	}
+//        }
+//        
+//		return result;
+//	}
 	
 }
 

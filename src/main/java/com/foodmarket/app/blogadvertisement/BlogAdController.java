@@ -116,7 +116,7 @@ public class BlogAdController {
 	@PostMapping("/blogad/update")
 	public String updateAd(@RequestParam("blogAdId") Integer blogAdId,
 			@RequestParam("blogAdName") String blogAdName,
-			//@RequestParam("picture") MultipartFile picture,
+			@RequestParam("picture") MultipartFile picture,
 			@RequestParam("beginDate") String beginDate,
 			@RequestParam("endDate") String endDate,
 			@RequestParam("remark") String remark,
@@ -129,9 +129,12 @@ public class BlogAdController {
 		Date eDate = null;
 		
 		bBean.setBlogAdName(blogAdName);
+	
+		if(!picture.isEmpty()) {
+			byte[] imgByte = picture.getBytes();
+			bBean.setPicture(base.encoder(imgByte));
+		}
 		
-		//byte[] imgByte = picture.getBytes();
-		//bBean.setPicture(base.encoder(imgByte));
 		
 		//處理date型別
 		try {
