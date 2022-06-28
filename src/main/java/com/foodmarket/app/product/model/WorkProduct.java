@@ -18,10 +18,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-<<<<<<< HEAD
-=======
 import com.foodmarket.app.shopcar.entity.ShopCart;
->>>>>>> origin/ShopCart
+
 
 @Entity
 @Table(name="product")//srcmail/resources裡application 的 spring.jpa.hibernate.ddl-auto=update

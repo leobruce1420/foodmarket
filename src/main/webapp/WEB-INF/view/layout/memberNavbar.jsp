@@ -101,7 +101,7 @@
       
       <c:choose>
       <c:when test="${loginUserId != null}">
-        <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/memberCenter/${loginUserId}'">會員中心</button>
+        <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/lock/memberCenter/${loginUserId}'">會員中心</button>
          <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
       </c:when>
         
@@ -120,7 +120,7 @@
       <div class="sidebar-sticky pt-3">
            <ul class="nav flex-column">        
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/memberCenter/${loginUserId}">
+            <a class="nav-link" href="${contextRoot}/lock/memberCenter/${loginUserId}">
               <span data-feather="user"></span>
               會員資料
             </a>

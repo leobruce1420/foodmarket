@@ -52,7 +52,7 @@ public class OrderRecordService {
 		};
 		
 		orderRecord.setTotalAmount(totalAmount);
-		orderRecord.setUserId(userId);
+		orderRecord.setUserId(userId); //orderRecord.getMember().getCustomerId();
 		orderRecord.setCreateDate(LocalDateTime.now());
 		orderRecord.setModifyDate(LocalDateTime.now());
 		final Integer orderRecordId = orderRecordDao.save(orderRecord).getId();
