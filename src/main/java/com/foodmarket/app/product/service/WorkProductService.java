@@ -140,7 +140,7 @@ public class WorkProductService {
 
 	//商品上架排序分頁
 	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 20, Sort.Direction.DESC, "added");
 		
 		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
 		

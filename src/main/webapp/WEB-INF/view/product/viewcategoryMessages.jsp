@@ -35,7 +35,7 @@ table,td{
 	<br />
 	<div class="container">
 
-			<div class="row justify-content-center">
+			<div class="row justify-content-center text-center">
 <%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
 
 				<div class="col-18">
@@ -49,7 +49,7 @@ table,td{
 						<c:forEach var="workProduct" items="${workProduct}">
 						<div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-						<img style="width: 200px; height: 200px;"
+						<img style="width: 100%; height: 100%;"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" />
 									<div class="card-body">

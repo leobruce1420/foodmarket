@@ -63,8 +63,8 @@
           <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
-<<<<<<< HEAD
-      		<li class="nav-item dropdown">
+
+       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           常見問題
         </a>
@@ -75,10 +75,9 @@
           <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
-=======
-      
->>>>>>> member
-      <li class="nav-item dropdown">
+
+
+    <li class="nav-item dropdown">
       <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>
       <li class="nav-item dropdown">
