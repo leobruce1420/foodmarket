@@ -22,104 +22,183 @@
 						enctype="multipart/form-data">
 
 						<div class="form-group">
-							商品名稱
-							<%--   <form:textarea path="text" class="form-control"/> --%>
-							<%--   <form:textarea path="productname" class="form-control"/> --%>
-							<form:input path="productname" class="form-control" />
-							商品類別編號
-							<form:input path="productcategory" class="form-control" />
-							價格
-							<form:input path="productprice" class="form-control" />
-							<br /> 圖
-							<%--   <form action=""> --%>
-							<%--   <form:input path="productimg" class="form-control" /> --%>
+							<div>
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">商品名稱</label>
+									<%--   <form:textarea path="text" class="form-control"/> --%>
+									<%--   <form:textarea path="productname" class="form-control"/> --%>
+									<form:input path="productname" class="form-control" />
+								</div>
+							</div>
+							<br />
+							<div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
+									</div>
+									<form:select class="custom-select" id="inputGroupSelect01"
+										path="productcategory">
+										<option value="蔬菜類">蔬菜類</option>
+										<option value="水果類">水果類</option>
+										<option value="肉品">肉品</option>
+										<option value="海鮮">海鮮</option>
+									</form:select>
+								</div>
+							</div>
 
-							<!--   <input type="file" name="file" id="img_upload_file" multiple="multiple" accept=".jpg,.jpeg,.gif" required/><br/> -->
-							<!-- <input type="hidden" name="img_upload_base" id="img_upload_base" /> -->
-							<!-- <label>圖片預覽</label>  -->
-							<%-- <img id="img_upload_show"  style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
-							<%--   </form> --%>
+							<br />
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">價格</label>
+								</div>
+								<form:input path="productprice" class="form-control" />
+							</div>
+							<!-- 							價格 -->
+							<%-- 							<form:input path="productprice" class="form-control" /> --%>
+
+							
+
+							<br />
 
 							<div>
-								<form:input path="productimg" type="file" accept="image/*"
-									onchange="loadFile(event)" />
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">上下架</label>
+									</div>
+									<form:select class="custom-select" id="inputGroupSelect01"
+										path="takedown">
+										<option value="上架">上架</option>
+										<option value="下架">下架</option>
+									</form:select>
+								</div>
 							</div>
-							<br /> <img id="output" style="width: 100px; height: 100px;" />
-							<script>
-								// function preview() {
-								//     frame.src=URL.createObjectURL(event.target.files[0]);
-								// }
-								// $("#img_upload_file").change(function() {
-								//         var file = this.files[0];
-								//         var reader = new FileReader();
-								//         reader.readAsDataURL(file);//呼叫自帶方法進行轉換
-								//         reader.onload = function(e) {
-								//             $("#img_upload_show").attr("src", this.result);//將轉換後的編碼存入src完成預覽
-								//             $("#img_upload_base").val(this.result);//將轉換後的編碼儲存到input供後臺使用
-								//         }; 
-								//     });
-
-								var loadFile = function(event) {
-									var reader = new FileReader();
-									reader.onload = function() {
-										var output = document
-												.getElementById('output');
-										output.src = reader.result;
-									};
-									reader.readAsDataURL(event.target.files[0]);
-								};
-							</script>
-
-
-
-							<!-- <div> -->
-							<%--      <img id="frame" class="rounded-sm" alt="productImg" src="data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" width="100px" height="100px"> --%>
-							<!--      </div> -->
-							<br /> 商品介紹
-							<form:input path="productdesciption" class="form-control" />
-							庫存數量
-							<form:input path="inventoryquantity" class="form-control" />
-							上下架
-							<form:input path="takedown" class="form-control" />
-							修改人員
+							
+							<br/>
+							
+							<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">修改人員</label>
+									</div>
 							<form:input path="administrator" class="form-control" />
 						</div>
 
+						<br />
+
+						<%--   <form action=""> --%>
+						<%--   <form:input path="productimg" class="form-control" /> --%>
+
+						<!--   <input type="file" name="file" id="img_upload_file" multiple="multiple" accept=".jpg,.jpeg,.gif" required/><br/> -->
+						<!-- <input type="hidden" name="img_upload_base" id="img_upload_base" /> -->
+						<!-- <label>圖片預覽</label>  -->
+						<%-- <img id="img_upload_show"  style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" /> --%>
+						<%--   </form> --%>
+						
+						
+						<div>
+								<label class="input-group-text" for="inputGroupSelect01">商品介紹</label>
+								<form:textarea path="productdesciption" class="form-control" />
+							</div>
+
+							<br />
+
+							<div>
+								<label class="input-group-text" for="inputGroupSelect01">庫存數量</label>
+								<form:input path="inventoryquantity" class="form-control" />
+							</div>
+							
+							<br/>
+						
+						<div>
+							<label class="input-group-text" for="inputGroupSelect01">圖片</label>
+						</div>
+						<div class="custom-file">
+							<form:input path="productimg" type="file" accept="image/* "
+								onchange="loadFile(event)" class="custom-file-input"
+								id="customFileLang" lang="es" />
+							<label class="custom-file-label" for="customFileLang">請選擇圖片</label>
+						</div>
+
+						<br />
+						
+						<br />
+
+							
+
+						<br />
+
+
+						<div>
+							<img id="output" style="width: 100px; height: 100px;" />
+						</div>
+						<script>
+							// function preview() {
+							//     frame.src=URL.createObjectURL(event.target.files[0]);
+							// }
+							// $("#img_upload_file").change(function() {
+							//         var file = this.files[0];
+							//         var reader = new FileReader();
+							//         reader.readAsDataURL(file);//呼叫自帶方法進行轉換
+							//         reader.onload = function(e) {
+							//             $("#img_upload_show").attr("src", this.result);//將轉換後的編碼存入src完成預覽
+							//             $("#img_upload_base").val(this.result);//將轉換後的編碼儲存到input供後臺使用
+							//         }; 
+							//     });
+
+							var loadFile = function(event) {
+								var reader = new FileReader();
+								reader.onload = function() {
+									var output = document
+											.getElementById('output');
+									output.src = reader.result;
+								};
+								reader.readAsDataURL(event.target.files[0]);
+							};
+						</script>
+
+
+
+						<!-- <div> -->
+						<%--      <img id="frame" class="rounded-sm" alt="productImg" src="data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image" width="100px" height="100px"> --%>
+						<!--      </div> -->
+
+</div>
+				<br/>
 						<input type="submit" name="submit" value="新增商品">
 
 					</form:form>
 
 				</div>
-				<table class="table">
-					<thead class="thead-light">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">First</th>
-							<th scope="col">Last</th>
-							<th scope="col">Handle</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
-					</tbody>
-				</table>
+<!-- 				<table class="table"> -->
+<!-- 					<thead class="thead-light"> -->
+<!-- 						<tr> -->
+<!-- 							<th scope="col">#</th> -->
+<!-- 							<th scope="col">First</th> -->
+<!-- 							<th scope="col">Last</th> -->
+<!-- 							<th scope="col">Handle</th> -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+<!-- 					<tbody> -->
+<!-- 						<tr> -->
+<!-- 							<th scope="row">1</th> -->
+<!-- 							<td>Mark</td> -->
+<!-- 							<td>Otto</td> -->
+<!-- 							<td>@mdo</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th scope="row">2</th> -->
+<!-- 							<td>Jacob</td> -->
+<!-- 							<td>Thornton</td> -->
+<!-- 							<td>@fat</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th scope="row">3</th> -->
+<!-- 							<td>Larry</td> -->
+<!-- 							<td>the Bird</td> -->
+<!-- 							<td>@twitter</td> -->
+<!-- 						</tr> -->
+<!-- 					</tbody> -->
+<!-- 				</table> -->
 			</div>
 
 		</div>
@@ -132,10 +211,7 @@
 		<div class="col-9">
 
 			<div class="card">
-				<div class="card-header">
-					最新新增商品資訊
-					
-				</div>
+				<div class="card-header">最新新增商品資訊</div>
 				<div class="card-body">
 					<table class="table">
 						<thead class="thead-light">
@@ -161,8 +237,9 @@
 								src="data:image/image/*;base64,${lastestpMsg.productimg}"
 								alt="image" />
 							</td>
-							<td><fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
-						value="${lastestpMsg.added}" /></td>
+							<td><fmt:formatDate
+									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
+									value="${lastestpMsg.added}" /></td>
 							<td><c:out value="${lastestpMsg.administrator}" /></td>
 							<td><c:out value="${lastestpMsg.productdesciption}" /></td>
 							<td><c:out value="${lastestpMsg.inventoryquantity}" /></td>

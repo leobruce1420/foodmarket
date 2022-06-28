@@ -6,11 +6,17 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.foodmarket.app.member.model.Member;
 
 @Entity
 @Table(name="order_record")
@@ -21,8 +27,13 @@ public class OrderRecord {
 	@Column(name="id")
 	private Integer id;
 	
-	@Column(name="user_id")
+	//@Column(name="user_id")
 	private Integer userId;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	private Member member;
 	
 	@Column(name="total_Amount")
 	private Integer totalAmount;
@@ -83,6 +94,16 @@ public class OrderRecord {
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+	
+	
 	
 
 }

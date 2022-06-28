@@ -38,7 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				return true;
 			}else {
 				logger.info("未驗證會員編號：" + id + " 訪問 " + uri + "，已導向重發驗證!");
-				response.sendRedirect("/foodmarket/authMailReSend");
+				response.sendRedirect("/foodmarket/reSendAuth");
 				return false;
 			}
 		}

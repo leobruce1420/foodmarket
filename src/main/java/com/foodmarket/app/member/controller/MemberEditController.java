@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.foodmarket.app.member.model.Member;
 import com.foodmarket.app.member.service.MemberServiceInterface;
@@ -32,8 +33,8 @@ public class MemberEditController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberEditController.class);
 	
 	//導向會員中心首頁
-	@GetMapping("/memberCenter/{id}")
-	public String memberCenter(@PathVariable Long id, Model m, HttpSession session) {
+	@GetMapping("/lock/memberCenter/{id}")
+	public String memberCenter(@PathVariable Long id, Model m, HttpSession session, @ModelAttribute("editOkMsg") String message) {
 		
 		Long sessionUId = (Long) session.getAttribute("loginUserId");
 		
@@ -41,6 +42,7 @@ public class MemberEditController {
 		if(sessionUId.equals(id)) {
 			Member member = memberService.findById(id);		
 			m.addAttribute("member", member);
+			m.addAttribute("editOkMsg", message);
 			logger.info("會員編號：" + member.getCustomerId() + "進入會員中心");
 			return "member/memberCenter";	
 		}
@@ -50,7 +52,7 @@ public class MemberEditController {
 	
 	//修改會員資料
 	@PostMapping("/updateCustomer")
-	public String updateCustomer(@ModelAttribute("member") Member member, @RequestParam(name="img" ,required=false) MultipartFile mf, Model m, HttpSession session) throws IOException {
+	public String updateCustomer(@ModelAttribute("member") Member member, @RequestParam(name="img" ,required=false) MultipartFile mf, Model m, HttpSession session, RedirectAttributes redirectAttributes) throws IOException {
 
 		Member datamember = memberService.findById(member.getCustomerId());
 		String pwd = datamember.getPassword();
@@ -85,7 +87,9 @@ public class MemberEditController {
 //		
 //		return "member/memberCenter";
 		
-		return "redirect:/memberCenter/" + rsMember.getCustomerId();	
+		redirectAttributes.addFlashAttribute("editOkMsg", "修改成功");
+		
+		return "redirect:/lock/memberCenter/" + rsMember.getCustomerId();	
 	}
 
 }

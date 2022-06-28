@@ -8,20 +8,23 @@
 <head>
 <meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
+<jsp:include page="../layout/memberNavbar.jsp" />
 <title>修改密碼</title>
 </head>
 <body>
 
-<c:if test="${error} != null">
-alert(${error});
-</c:if>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+  <div
+   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+   <h1 class="h2">會員管理</h1>
+  </div>
+ </main>
 
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
 <form class="form" method="post" action="${contextRoot}/changePwd">
 <div class="container mt-5">
-<h2 class="form-row justify-content-center">修改密碼</h2>
-
-<div class="form-row justify-content-center mt-2">
+<div class="form-row justify-content-start mt-2">
 	
 	<div class="form-group col-md-5">
       <label for="oldPassword">請輸入現在的密碼</label>
@@ -47,16 +50,45 @@ alert(${error});
 
 </div>
 
-<div class="form-row justify-content-center mt-4">
+<div class="form-row justify-content-start mt-4">
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
 </div>
 </form>
+ </div>
+</div>
+
+<c:if test="${error != null}">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">錯誤</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ${error}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" onclick="show()">show</button>
+</c:if>
 
 
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
+
+$(window).ready(() => {
+	$('#myModal').modal('show');
+})
+
 var oldPwdCheck = false;
 var pwd1Checked = false;
 var pwd2Checked = false;
@@ -67,10 +99,10 @@ $(document).ready(function(){
 		   var oldPassword = $('#oldPassword').val();
 		   var id = ${loginUserId}
 		   
-		   if($.trim(oldPassword)==''){
-			   alert('Account is empty');
-			   return;
-		   }
+// 		   if($.trim(oldPassword)==''){
+// 			   alert('Account is empty');
+// 			   return;
+// 		   }
 		   
 		   var params = {"oldPassword":''+oldPassword, "id":''+ id};
 		   console.log(params)
@@ -100,7 +132,7 @@ $(document).ready(function(){
 	   });
 });
 
-$('#password').blur(function(){
+$('#password').keyup(function(){
 	var pswInput = $('#password').val();
 	var pattern = new RegExp("^[A-Za-z0-9]+$");
 		

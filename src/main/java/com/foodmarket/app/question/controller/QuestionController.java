@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
@@ -57,7 +59,9 @@ public class QuestionController {
 		List<Question> allqus = qs.findAll();
 		mav.getModel().put("allqus", allqus);
 		mav.setViewName("question/allQuestion");
-		
+		System.out.println(allqus);
+		System.out.println(allqus.get(0));
+		System.out.println(allqus.get(0).getAnswer());
 		return mav;
 	}
 	
@@ -106,5 +110,14 @@ public class QuestionController {
 		List<Question> findByQuestionTitle = qs.findByQuestionTitle(questionTitle);
 		model.addAttribute("QuestionTitle", findByQuestionTitle);
 		return "question/findByQuestionTitle";
+	}
+	
+	@PostMapping(path="json/postQuestion")
+	@ResponseBody
+	public List<Question> test(@RequestBody String questionTitle){
+		List<Question> findByQuestionTitle = qs.findByQuestionTitle(questionTitle);
+		System.out.println(findByQuestionTitle);
+
+		return findByQuestionTitle;
 	}
 }
