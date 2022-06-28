@@ -158,7 +158,8 @@
 		</div>
 =======
 	
-	
+	<br/>
+	<hr/>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -380,21 +381,27 @@
 					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 						<c:forEach var="workProduct" items="${page.content}">
 							<li>
-								<div class="card"
-									style="width: 18rem; height: 23rem; background: ">
-									<img style="width: 200px; height: 200px;"
+				<div class="card-deck">
+<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
+								<div class="card">
+									<img style="width: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" />
+<!-- 										</div> -->
 									<div class="card-body">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
 										<h5 class="card-title">${workProduct.productname}</h5>
 										<p class="card-text">$${workProduct.productprice}</p>
+									</div>
+									<div class="card-footer">
 										<a
 											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
-											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a>
 										<%-- 					</form:form> --%>
 									</div>
+<!-- 									</div> -->
 								</div>
+					</div>
 							</li>
 							<%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
 							<%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
@@ -456,18 +463,20 @@
       <div class="row">
       <c:forEach var="workProduct" items="${page.content}">
         <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
+          <div class="card mb-4 shadow-sm text-center">
 <!--           <div class="card" style="width: 18rem; height: 23rem;"> -->
-									<img style="width: 200px; height: 200px;"
+									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" />
-									<div class="card-body">
+									<div class="card-body ">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
 										<h5 class="card-title">${workProduct.productname}</h5>
 										<p class="card-text">$${workProduct.productprice}</p>
+										<div class="card-footer">
 										<a
 											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										</div>
 										<%-- 					</form:form> --%>
 <!-- 									</div> -->
 								</div>
@@ -520,7 +529,6 @@
 <!-- 						<table class="table"> -->
 							
 							<c:forEach var="workProduct" items="${page.content}">
-								<tbody>
 <!-- 									<tr> -->
 <!-- 									<th> -->
 										<div class="card" style="width: 18rem; height: 23rem;">
@@ -540,7 +548,6 @@
 								
 <!-- 									</th> -->
 <!-- 									</tr> -->
-								</tbody>
 							</c:forEach>
 <!-- 						</table> -->
 

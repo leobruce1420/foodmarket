@@ -172,7 +172,7 @@ img {
 								<td><c:out value="${workProduct.productcategory}" /></td>
 								<td><c:out value="${workProduct.productprice}" /></td>
 								<td>
-									<%-- 								<c:out value="${workProduct.productimg}" /> --%> <img
+									<img
 									style="width: 100px; height: 100px;"
 									src="data:image/image/*;base64,${workProduct.productimg}"
 									alt="image" />
@@ -194,7 +194,8 @@ img {
 										<a onclick="return confirm('真的要刪除嗎?')"
 											href="${contextRoot}/product/delete?productid=${workProduct.productid}"><button
 												class="btn btn-danger" class=".check_pid">刪除</button></a>
-									</div></td>
+									</div>
+									</td>
 							</tr>
 						</tbody>
 					</c:forEach>
@@ -212,6 +213,7 @@ img {
 		<br />
 
 	</div>
+	
 	<div class="row justify-content-center container">
 
 		<div class="col-9">
@@ -235,7 +237,8 @@ img {
 
 
 		</div>
-
+		</div>
+	
 
 		<br />
 
@@ -243,136 +246,7 @@ img {
 
 
 
-		<div>
-			<br />
-			<div class="card container" style="width: 20rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">
-						<c:out value="${workProduct.productname}" />
-					</h5>
-					<p class="card-text">
-						<c:out value="${workProduct.productprice}" />
-					</p>
-					<a href="#" class="btn btn-primary stretched-link">加入購物車</a>
-					<!-- 							標題對齊圖 -->
-					<!-- 						<figure class="figure"> -->
-					<!-- 							<img src="..." class="figure-img img-fluid rounded" alt="..."> -->
-					<!-- 							<figcaption class="figure-caption">A caption for the -->
-					<!-- 								above image.</figcaption> -->
-					<!-- 						</figure> -->
-					<!-- 								塗在中間 -->
-					<!-- 						<div class="text-center"> -->
-					<!-- 							<img src="..." class="rounded" alt="..."> -->
-					<!-- 						</div> -->
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="carouselExampleIndicator" class="carousel slide container"
-		data-ride="carousel" data-interval="false">
-		<!-- 		data-interval="false" -->
-		<ol class="carousel-indicators">
-			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-				<li data-target="#carouselExampleIndicator"
-					data-slide-to="${page.totalPages}" class="active"></li>
-				<!-- 			<li data-target="#carouselExampleIndicator" data-slide-to="1"></li> -->
-				<!-- 			<li data-target="#carouselExampleIndicator" data-slide-to="2"></li> -->
-			</c:forEach>
-		</ol>
-		<br />
-		<div class="carousel-inner container">
-			<div class="carousel-item active">
-				<table class="table table-dark">
-					<tr>
-						<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-							<c:forEach var="workProduct" items="${page.content}">
-								<td>
-
-									<div class="card container" style="width: 18rem;">
-										<%-- 				<img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>
-										<img style="width: 200px; height: 200px;"
-											src="data:image/image/*;base64,${workProduct.productimg}"
-											alt="image" class="card-img-top">
-										<div class="card-body">
-											<h5 class="card-title">${workProduct.productname}</h5>
-											<p class="card-text">${workProduct.productprice}</p>
-											<a href="#" class="btn btn-primary stretched-link">加入購物車</a>
-										</div>
-									</div>
-								</td>
-							</c:forEach>
-
-						</c:forEach>
-					</tr>
-				</table>
-			</div>
-
-		</div>
-
-		<button class="carousel-control-prev" type="button"
-			data-target="#carouselExampleIndicator" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-target="#carouselExampleIndicator" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-		</button>
-	</div>
-
-	<hr />
-
-	<br />
-
-	<hr />
-
-
-	<div id="carouselExampleControlsNoTouching"
-		class="carousel slide container" data-touch="true"
-		data-interval="false">
-		<div class="carousel-inner">
-			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-				<div class="carousel-item active">
-					<table>
-						<tr>
-							<c:forEach var="workProduct" items="${page.content}">
-								<td>
-									<div class="card" style="width: 18rem;">
-										<%-- 				<img style="width: 100px; height: 100px;" src= "data:image/${workProduct.imgtype};base64,${workProduct.productimg}" alt="image"/> --%>
-										<img style="width: 200px; height: 200px;"
-											src="data:image/image/*;base64,${workProduct.productimg}"
-											alt="image" class="card-img-top">
-										<div class="card-body">
-											<h5 class="card-title">${workProduct.productname}</h5>
-											<p class="card-text">${workProduct.productprice}</p>
-											<a href="#" class="btn btn-primary stretched-link">加入購物車</a>
-										</div>
-									</div>
-								</td>
-							</c:forEach>
-						</tr>
-					</table>
-				</div>
-
-			</c:forEach>
-		</div>
-		<button class="carousel-control-prev" type="button"
-			data-target="#carouselExampleControlsNoTouching" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-target="#carouselExampleControlsNoTouching" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-		</button>
-	</div>
-
-	<hr />
+		
 
 	<br />
 
@@ -396,30 +270,10 @@ img {
 							</div>
 						</div>
 					</li>
-					<%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
-					<%--     <li><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${workProduct.productimg}" alt="image"/></li> --%>
 				</c:forEach>
 			</c:forEach>
 		</ul>
 	</div>
-	<%--   <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
-	<%-- 					<c:choose> --%>
-	<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
-	<%-- 							<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out --%>
-	<%-- 									value="${pageNumber}" /></a> --%>
-	<%-- 						</c:when> --%>
-
-	<%-- 						<c:otherwise> --%>
-	<%-- 							<c:out value="${pageNumber}" /> --%>
-	<%-- 						</c:otherwise> --%>
-
-	<%-- 					</c:choose> --%>
-
-	<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
-	<!-- 							| -->
-	<%-- 							</c:if> --%>
-	<%-- 				</c:forEach> --%>
-	<%-- <script type="text/javascript" src="${contextRoot}/js/slick.js"></script> --%>
 	<script type="text/javascript">
 		// 需要左右兩邊可滑動的箭頭
 		// arrows: true,

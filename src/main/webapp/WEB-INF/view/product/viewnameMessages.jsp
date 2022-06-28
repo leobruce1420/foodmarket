@@ -77,10 +77,6 @@ table, td {
 					</div>
 
 				</div>
-
-
-				<br />
-
 				<!-- 							標題對齊圖 -->
 				<!-- 						<figure class="figure"> -->
 				<!-- 							<img src="..." class="figure-img img-fluid rounded" alt="..."> -->
@@ -92,6 +88,39 @@ table, td {
 				<!-- 							<img src="..." class="rounded" alt="..."> -->
 				<!-- 						</div> -->
 			</div>
+		</div>
+		
+		<br/>
+		
+		<div class="row">
+		<div class="container">
+
+			<%-- 		<c:forEach var="pname" items="${pname}"> --%>
+			<div class="row justify-content">
+				<%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
+
+				<div class="col-12">
+		<c:forEach var="workProduct" items="${workProduct}">
+		<div class="card mb-3" style="max-width: 200px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="data:image/image/*;base64,${workProduct.productimg}" alt="image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${workProduct.productdesciption}</h5>
+        <p class="card-text">$${workProduct.productprice}</p>
+<!--         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+     	<a href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+		id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+      </div>
+    </div>
+  </div>
+</div>
+		</c:forEach>
+		</div>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>
