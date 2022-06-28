@@ -57,6 +57,8 @@ public class OrderRecordService {
 		};
 		
 		orderRecord.setTotalAmount(totalAmount);
+		orderRecord.setUserId(userId); //orderRecord.getMember().getCustomerId();
+
 		
 		Member member = memberService.findById(Long.valueOf(userId));
 		orderRecord.setMember(member);
