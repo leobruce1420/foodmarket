@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodmarket.app.blog.model.Recipe;
 import com.foodmarket.app.shopcar.entity.OrderRecord;
 
@@ -107,6 +108,7 @@ public class Member {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
 	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
 	private Set<OrderRecord> orderRecord = new LinkedHashSet<OrderRecord>();
 

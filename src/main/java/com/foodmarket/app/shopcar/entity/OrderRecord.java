@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodmarket.app.member.model.Member;
 
 @Entity
@@ -29,7 +31,7 @@ public class OrderRecord {
 	//@Column(name="user_id")
 	private Integer userId;
 	
-	//用member.get來取值
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private Member member;

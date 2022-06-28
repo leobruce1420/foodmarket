@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.foodmarket.app.member.model.Member;
+import com.foodmarket.app.member.service.MemberServiceInterface;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.model.WorkProductRepository;
 import com.foodmarket.app.shopcar.dao.OrderItemDao;
@@ -29,6 +31,9 @@ public class OrderRecordService {
 	
 	@Autowired
 	private WorkProductRepository productDao;
+	
+	@Autowired
+	private MemberServiceInterface memberService;
 
 	public List<OrderRecord> getAllOrderRecord() {
 		return orderRecordDao.findAll();
@@ -53,6 +58,11 @@ public class OrderRecordService {
 		
 		orderRecord.setTotalAmount(totalAmount);
 		orderRecord.setUserId(userId); //orderRecord.getMember().getCustomerId();
+
+		
+		Member member = memberService.findById(Long.valueOf(userId));
+		orderRecord.setMember(member);
+		//orderRecord.setUserId(userId); 
 		orderRecord.setCreateDate(LocalDateTime.now());
 		orderRecord.setModifyDate(LocalDateTime.now());
 		final Integer orderRecordId = orderRecordDao.save(orderRecord).getId();
