@@ -17,18 +17,13 @@ public class OrderItemService {
 
 	@Autowired
 	private OrderItemDao orderItemDao;
-	
-	public List<OrderItem> getAll() {
-		return orderItemDao.findAll();
-	}
 
 	public OrderItem getOne(Integer id) {
 		return orderItemDao.findById(id).get();
 	}
 
-	public OrderItem save(OrderItem orderItem) {
-		
-		return orderItemDao.save(orderItem);
+	public List<OrderItem> getByOrderRecordId(Integer orderRecordId) {
+		return orderItemDao.findByOrderRecordId(orderRecordId);
 	}
 	
 	public boolean save(List<OrderItem> orderItem) {

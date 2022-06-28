@@ -58,10 +58,12 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
           <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
+          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
+<<<<<<< HEAD
       		<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           常見問題
@@ -73,6 +75,9 @@
           <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
+=======
+      
+>>>>>>> member
       <li class="nav-item dropdown">
       <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
       </li>
@@ -80,7 +85,16 @@
       <a class="nav-link" href="${contextRoot}/product/add">新增商品訊息</a>
     </li>
     
-    
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          購物車
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${contextRoot}/orderList/{orderId}">購物明細</a>
+        </div>
+      </li>
       
     </ul>
     
