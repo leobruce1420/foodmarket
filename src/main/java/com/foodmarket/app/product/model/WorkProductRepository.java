@@ -29,7 +29,7 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 				public Page<WorkProduct> findByProductcategorypage(@Param("productcategory")String productcategory, Pageable pgb);
 
 	// 用商品名稱關鍵字查詢，無分頁
-	@Query(value = "select * from product where productcategory like %:productcategory% and takedown = 'true'", nativeQuery = true)
+	@Query(value = "select * from product where productcategory like %:productcategory% and takedown = '上架'", nativeQuery = true)
 	public List<WorkProduct> findByProductcategoryKey(@Param("productcategory") String productcategory);
 
 	// 用商品名稱關鍵字查詢，有分頁
@@ -37,15 +37,15 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 		public Page<WorkProduct> findByNamePage(@Param("productname")String productname,Pageable pgb);
 
 	// 用商品名稱關鍵字查詢，無分頁
-	@Query(value = "select * from product where productname like %:productname% and takedown = 'true'", nativeQuery = true)
+	@Query(value = "select * from product where productname like %:productname% and takedown = '上架'", nativeQuery = true)
 	public List<WorkProduct> findByName(@Param("productname") String productname);
 	
 	// 用商品上下架關鍵字查詢，有分頁
-	@Query(value = "select * from product where takedown = 'true'", nativeQuery=true)
+	@Query(value = "select * from product where takedown = '上架'", nativeQuery=true)
 	public Page<WorkProduct> findByTakeDown(@Param("takedown")String takedown,Pageable pgb);
 	
 	// 用商品上下架關鍵字查詢，無分頁
-	@Query(value = "select * from product where takedown = 'true'", nativeQuery = true)
+	@Query(value = "select * from product where takedown = '上架'", nativeQuery = true)
 	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
 
 	// 用id刪除

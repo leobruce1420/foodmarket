@@ -70,8 +70,8 @@
 									</div>
 									<form:select class="custom-select" id="takedown" name="takedown"
 										path="takedown" >
-										<form:option value="true">上架</form:option>
-										<form:option value="false">下架</form:option>
+										<form:option value="上架">上架</form:option>
+										<form:option value="下架">下架</form:option>
 										</form:select>
 								</div>
 							</div>
