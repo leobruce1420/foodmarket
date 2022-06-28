@@ -27,7 +27,7 @@
     <ul class="navbar-nav mr-auto ">
     
       <li class="nav-item active">
-      <a class="nav-link active" href="${contextRoot}/p">管理員首頁 <span class="sr-only">(current)</span></a>
+      <a class="nav-link active" href="${contextRoot}/HOME">商城首頁 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -73,9 +73,16 @@
     
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    
+    
+    <button type="button" class="btn btn-primary">
+ 購物車<span class="badge badge-light">4</span>
+</button>
+
+
+    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
     </form>
     
     <c:choose>
