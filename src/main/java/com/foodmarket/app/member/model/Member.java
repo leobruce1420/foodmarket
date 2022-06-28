@@ -105,6 +105,7 @@ public class Member {
 	@Column(name="ModifiedDate", columnDefinition="datetime", nullable = false) 
 	private Date modifiedDate;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
 	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
 	
