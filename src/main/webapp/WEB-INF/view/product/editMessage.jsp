@@ -53,7 +53,7 @@
 								</div>
 							</div>
 									價格
-									<form:input path="productprice" class="form-control" />
+									<form:input path="productprice" class="form-control" required/>
 									
 					</div> 
 									<br />
@@ -79,14 +79,14 @@
 							<br/>
 										<div>
 								<label class="input-group-text" for="inputGroupSelect01">商品介紹</label>
-								<form:textarea path="productdesciption" class="form-control" />
+								<form:textarea path="productdesciption" class="form-control" required/>
 							</div>
 
 							<br />
 
 							<div>
 								<label class="input-group-text" for="inputGroupSelect01">庫存數量</label>
-								<form:input path="inventoryquantity" class="form-control" />
+								<form:input path="inventoryquantity" class="form-control" required/>
 							</div>
 							
 							<br/>
@@ -112,7 +112,7 @@
 										type="hidden" />
 										
 										
-										圖
+										商品圖片
 									<%--   <form:input path="productimg" class="form-control"/> --%>
 
 									<div>

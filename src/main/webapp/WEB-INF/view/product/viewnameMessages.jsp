@@ -76,7 +76,7 @@ table, td {
 											<h5 class="card-title">${workProduct.productdesciption}</h5>
 
 											
-
+											<hr/>
 											<h5 class="card-title">請詳閱以下注意事項</h5>
 											<p class="card-text">
 												※下單即為消費者同意進行無接觸配送方式。<br /> 無接觸配送為貨運司機於指定時間內放置警衛<br />

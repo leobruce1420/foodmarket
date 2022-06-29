@@ -76,12 +76,12 @@
 							
 							<br/>
 							
-							<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<label class="input-group-text" for="inputGroupSelect01">修改人員</label>
-									</div>
-							<form:input path="administrator" class="form-control" />
-						</div>
+<!-- 							<div class="input-group mb-3"> -->
+<!-- 									<div class="input-group-prepend"> -->
+<!-- 										<label class="input-group-text" for="inputGroupSelect01">修改人員</label> -->
+<!-- 									</div> -->
+							<form:hidden path="administrator" class="form-control" />
+<!-- 						</div> -->
 
 						<br />
 
@@ -110,7 +110,7 @@
 							<br/>
 						
 						<div>
-							<label class="input-group-text" for="inputGroupSelect01">圖片</label>
+							<label class="input-group-text" for="inputGroupSelect01">商品圖片</label>
 						</div>
 						<div class="custom-file">
 							<form:input path="productimg" type="file" accept="image/* "
@@ -219,12 +219,12 @@
 								<th scope="col">商品名稱</th>
 								<th scope="col">商品類別</th>
 								<th scope="col">價格</th>
-								<th scope="col">圖</th>
+								<th scope="col">商品圖片</th>
 								<th scope="col">新增日期</th>
 								<th scope="col">商品介紹</th>
 								<th scope="col">庫存數量</th>
 								<th scope="col">上下架</th>
-								<th scope="col">修改人員</th>
+<!-- 								<th scope="col">修改人員</th> -->
 							</tr>
 						</thead>
 						<tr>
@@ -240,7 +240,7 @@
 							<td><fmt:formatDate
 									pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
 									value="${lastestpMsg.added}" /></td>
-							<td><c:out value="${lastestpMsg.administrator}" /></td>
+<%-- 							<td><c:out value="${lastestpMsg.administrator}" /></td> --%>
 							<td><c:out value="${lastestpMsg.productdesciption}" /></td>
 							<td><c:out value="${lastestpMsg.inventoryquantity}" /></td>
 							<td><c:out value="${lastestpMsg.takedown}" /></td>

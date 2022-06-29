@@ -59,6 +59,9 @@ public class WorkProduct {
 	private String takedown;
 	
 	
+	@Column(name="productcategory_id", columnDefinition = "int")
+	private Integer productcategory_id;
+	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
 	@Temporal(TemporalType.TIMESTAMP)

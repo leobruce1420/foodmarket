@@ -1,35 +1,34 @@
 package com.foodmarket.app.product.controller;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
-import com.foodmarket.app.product.util.Util;
+import com.foodmarket.app.shopadvertisement.ShopAdService;
 
 @Controller
 public class ProductPageController {
 
 	@Autowired
 	private WorkProductService pmsgService;
+//	@Autowired
+//	private ShopAdService sService;
 
 	// 首頁 分頁全部查詢
 	@GetMapping("/HOME")
 	public String welcomePage(@RequestParam (required=false ,value="takedown")String takedown, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
 		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
-		
+//		List<ShopAdvertisement> ad = sService.findByBoard();
+//		model.addAttribute("ad",ad);
 		
 		model.addAttribute("page", page);
 		return "index";

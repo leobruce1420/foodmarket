@@ -38,7 +38,7 @@ public class WorkProductService {
 	}
 	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 53, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
@@ -138,9 +138,9 @@ public class WorkProductService {
 //		return null;
 	}
 
-	//商品上架排序分頁
+	//商品上架排序分頁 首頁
 	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 20, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "added");
 		
 		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
 		

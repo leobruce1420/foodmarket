@@ -10,13 +10,13 @@
 <html>
 <style>
 table, td {
-	border: 3px SOLID;
+/* 	border: 3px SOLID; */
 	/*     BACKGROUND-COLOR: RGB(187, 229, 235); */
 	/*     COLOR: RED; */
 	/*     BORDER-COLLAPSE: COLLAPSE; */
-	margin: 10px auto;
-	font-size: 125%;
-	padding: 10px;
+/* 	margin: 10px auto; */
+/* 	font-size: 125%; */
+/* 	padding: 10px; */
 	/*     box-shadow: 5px 5px 2px gray; */
 }
 
@@ -78,7 +78,7 @@ img {
 
 
 		<div class="row justify-content-center">
-		<div>
+		<div class="col-8">
 			<form class="form-inline my-2 my-lg-0"
 				action="${contextRoot}/product/name" method="get">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search"
@@ -93,6 +93,8 @@ img {
 			<!-- 				<input type="submit" value="查詢"> -->
 			<!-- 			</div> -->
 			<%-- 			</form:form> --%>
+			</div>
+			<div class="col-4">
 			<form:form action="${contextRoot}/product/productcategory"
 				method="get">
 				<div class="div1">
@@ -155,12 +157,12 @@ img {
 							<th scope="col">商品名稱</th>
 							<th scope="col">商品類別</th>
 							<th scope="col">價格</th>
-							<th scope="col">圖</th>
+							<th scope="col">商品圖片</th>
 							<th scope="col">新增日期</th>
 							<th scope="col">商品介紹</th>
 							<th scope="col">庫存數量</th>
 							<th scope="col">上下架</th>
-							<th scope="col">修改人員</th>
+<!-- 							<th scope="col">修改人員</th> -->
 							<th scope="col">修改</th>
 						</tr>
 					</thead>
@@ -184,7 +186,7 @@ img {
 								<td><c:out value="${workProduct.productdesciption}" /></td>
 								<td><c:out value="${workProduct.inventoryquantity}" /></td>
 								<td><c:out value="${workProduct.takedown}" /></td>
-								<td><c:out value="${workProduct.administrator}" /></td>
+<%-- 								<td><c:out value="${workProduct.administrator}" /></td> --%>
 								<td><div>
 										<a
 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button
@@ -318,52 +320,52 @@ img {
 		});
 	</script>
 
-	<div class="col-md-4 order-md-2 mb-4">
-		<h4 class="d-flex justify-content-between align-items-center mb-3">
-			<span class="text-muted">Your cart</span> <span
-				class="badge badge-secondary badge-pill">3</span>
-		</h4>
-		<ul class="list-group mb-3">
-			<li
-				class="list-group-item d-flex justify-content-between lh-condensed">
-				<div>
-					<h6 class="my-0">Product name</h6>
-					<small class="text-muted">Brief description</small>
-				</div> <span class="text-muted">$12</span>
-			</li>
-			<li
-				class="list-group-item d-flex justify-content-between lh-condensed">
-				<div>
-					<h6 class="my-0">Second product</h6>
-					<small class="text-muted">Brief description</small>
-				</div> <span class="text-muted">$8</span>
-			</li>
-			<li
-				class="list-group-item d-flex justify-content-between lh-condensed">
-				<div>
-					<h6 class="my-0">Third item</h6>
-					<small class="text-muted">Brief description</small>
-				</div> <span class="text-muted">$5</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between bg-light">
-				<div class="text-success">
-					<h6 class="my-0">Promo code</h6>
-					<small>EXAMPLECODE</small>
-				</div> <span class="text-success">-$5</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between"><span>Total
-					(USD)</span> <strong>$20</strong></li>
-		</ul>
+<!-- 	<div class="col-md-4 order-md-2 mb-4"> -->
+<!-- 		<h4 class="d-flex justify-content-between align-items-center mb-3"> -->
+<!-- 			<span class="text-muted">Your cart</span> <span -->
+<!-- 				class="badge badge-secondary badge-pill">3</span> -->
+<!-- 		</h4> -->
+<!-- 		<ul class="list-group mb-3"> -->
+<!-- 			<li -->
+<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
+<!-- 				<div> -->
+<!-- 					<h6 class="my-0">Product name</h6> -->
+<!-- 					<small class="text-muted">Brief description</small> -->
+<!-- 				</div> <span class="text-muted">$12</span> -->
+<!-- 			</li> -->
+<!-- 			<li -->
+<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
+<!-- 				<div> -->
+<!-- 					<h6 class="my-0">Second product</h6> -->
+<!-- 					<small class="text-muted">Brief description</small> -->
+<!-- 				</div> <span class="text-muted">$8</span> -->
+<!-- 			</li> -->
+<!-- 			<li -->
+<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
+<!-- 				<div> -->
+<!-- 					<h6 class="my-0">Third item</h6> -->
+<!-- 					<small class="text-muted">Brief description</small> -->
+<!-- 				</div> <span class="text-muted">$5</span> -->
+<!-- 			</li> -->
+<!-- 			<li class="list-group-item d-flex justify-content-between bg-light"> -->
+<!-- 				<div class="text-success"> -->
+<!-- 					<h6 class="my-0">Promo code</h6> -->
+<!-- 					<small>EXAMPLECODE</small> -->
+<!-- 				</div> <span class="text-success">-$5</span> -->
+<!-- 			</li> -->
+<!-- 			<li class="list-group-item d-flex justify-content-between"><span>Total -->
+<!-- 					(USD)</span> <strong>$20</strong></li> -->
+<!-- 		</ul> -->
 
-		<form class="card p-2">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Promo code">
-				<div class="input-group-append">
-					<button type="submit" class="btn btn-secondary">Redeem</button>
-				</div>
-			</div>
-		</form>
-	</div>
+<%-- 		<form class="card p-2"> --%>
+<!-- 			<div class="input-group"> -->
+<!-- 				<input type="text" class="form-control" placeholder="Promo code"> -->
+<!-- 				<div class="input-group-append"> -->
+<!-- 					<button type="submit" class="btn btn-secondary">Redeem</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<%-- 		</form> --%>
+<!-- 	</div> -->
 
 </body>
 
