@@ -68,9 +68,11 @@ table, td {
 									<div class="card">
 										<div class="card-body">
 
-											<h5 class="card-title">${workProduct.productname}</h5>
-											<hr />
+<%-- 											<h5 class="card-title">${workProduct.productname}</h5> --%>
+<!-- 											<hr /> -->
 											<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+											<h4>商品詳情</h4>
+											<hr/>
 											<h5 class="card-title">${workProduct.productdesciption}</h5>
 
 											
