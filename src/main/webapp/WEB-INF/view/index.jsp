@@ -14,7 +14,7 @@
 <title>HOME</title>
 </head>
 <body>
-
+	
 	<div class="container">
 	
 		<div class="carousel slide" data-ride="carousel" id="carousel-demo">
@@ -23,38 +23,44 @@
 				<li data-target="#carousel-demo" data-slide-to="1"></li>
 				<li data-target="#carousel-demo" data-slide-to="2"></li>
 			</ol>
-			<c:forEach items="${ad}" var="ad" varStatus="s">
-				<div class="carousel-inner">
-					
 			
-					
+				
+				<div class="carousel-inner">
+										
 					<div class="carousel-item active">
+					<c:forEach items="${ad}" step="4" begin="0" end="2"  var="ad" varStatus="s">
+						<div>
+							<img class="d-block w-100"
+								src="data:image/*;base64, ${ad.picture}" alt="" >
+						</div>
+					</c:forEach>
+					</div>
 					
+					<div class="carousel-item">
+					<c:forEach items="${ad}" step="3" begin="1" end="2"  var="ad" varStatus="s">
 						<img class="d-block w-100"
 							src="data:image/*;base64, ${ad.picture}" alt="">
-						
+					</c:forEach>	
 					</div>
+					<c:forEach items="${ad}" step="1" begin="2" end="2"  var="ad" varStatus="s">
 					<div class="carousel-item">
-<!-- 						<img class="d-block w-100" -->
-<%-- 							src="data:image/*;base64, ${ad.picture}" alt=""> --%>
+						<img class="d-block w-100"
+							src="data:image/*;base64, ${ad.picture}" alt="">
 					</div>
-					<div class="carousel-item">
-<!-- 						<img class="d-block w-100" -->
-<%-- 							src="data:image/*;base64, ${ad.picture}" alt=""> --%>
-					</div>
-
-
-					<a href="#carousel-demo" class="carousel-control-prev"
-						data-slide="prev"> <span class="carousel-control-prev-icon"></span>
-					</a> <a href="#carousel-demo" class="carousel-control-next"
-						data-slide="next"> <span class="carousel-control-next-icon"></span>
-					</a>
-		
+					</c:forEach>					
 				</div>
-			</c:forEach>
+				
+			<a href="#carousel-demo" class="carousel-control-prev"
+				data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+			</a> <a href="#carousel-demo" class="carousel-control-next"
+				data-slide="next"> <span class="carousel-control-next-icon"></span>
+			</a>
+
 		</div>
-	
+		
 	</div>
+	
+
 
 	<div class="container">
 		<hr />
@@ -291,15 +297,21 @@
 					});
 				});
 				
+				function playImg(){
+					for(var i=0; i<=2; i++){
+						if(i>3){
+							i=0;
+						}
+					}
+				}
+				
 				$(document).ready(() => {
 					  $('.carousel').carousel({
 					     interval: 2000
 					  })
 					})
-			</script>
-
-
-
+			
+		</script>
 			<br />
 
 			<div class="album py-5 bg-light">
@@ -460,6 +472,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </body>

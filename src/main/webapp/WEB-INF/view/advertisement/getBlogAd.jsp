@@ -21,7 +21,7 @@ padding: 0px;
 	text-align: center;
 	border: 3px solid black;
 	background-color: lightblue;
-	border-radius: 20px
+	border-radius: 20px;
 }
 
 img{
@@ -63,6 +63,7 @@ h2{
 			<li>結束時間:${ad.endDate}</li>
 			<li>備註  :  ${ad.remark}</li>
 			<li>食譜編號:${ad.recipeId}</li>
+			<li>上架狀態:${ad.onboard}</li>
 		</ul>
 		</div>
 		<div class="div3"><input class="btn btn-outline-info" type="button" value="修改" onclick="location.href='${contextRoot}/blogad/update?id=${ad.blogAdId}'">

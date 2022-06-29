@@ -14,13 +14,14 @@ margin: 0px;
 padding: 0px;
 }
 .div1 {
-	width: 1000px;
-	height: 600px;
+	width: 800px;
+	height: 700px;
 	margin: auto;
 	margin-top: 10px;
 	text-align: center;
 	border: 3px solid black;
 	background-color: lightblue;
+	border-radius: 20px;
 }
 
 img{
@@ -62,6 +63,7 @@ h2{
 			<li>結束時間:${ad.endDate}</li>
 			<li>備註  :  ${ad.remark}</li>
 			<li>商品編號:${ad.productId}</li>
+			<li>上架狀態:${ad.onboard}</li>
 		</ul>
 		</div>
 		<div class="div3"><input class="btn btn-outline-info" type="button" value="修改" onclick="location.href='${contextRoot}/shopad/update?id=${ad.shopAdId}'">
