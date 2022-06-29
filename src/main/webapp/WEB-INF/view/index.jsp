@@ -30,8 +30,10 @@
 					<div class="carousel-item active">
 					<c:forEach items="${ad}" step="4" begin="0" end="2"  var="ad" varStatus="s">
 						<div>
+						<a href="${ad.shopUrl}">
 							<img class="d-block w-100"
 								src="data:image/*;base64, ${ad.picture}" alt="" >
+						</a>
 						</div>
 					</c:forEach>
 					</div>

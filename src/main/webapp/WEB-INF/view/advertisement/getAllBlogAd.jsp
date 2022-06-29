@@ -11,70 +11,65 @@
 <meta charset="UTF-8">
 <title>所有部落格活動</title>
 <style>
-img {
-	width: 50px;
-}
 
+/* img { */
+/* 	width: 50px; */
+/* } */
+
+/* table { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid black; */
+/* } */
+
+/* th { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid orange; */
+/* 	text-align: center; */
+/* } */
+
+/* td { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid orange; */
+/* 	text-align: center; */
+/* } */
+
+.main {
+  width: 80%;
+  margin: 20px auto;
+}
 table {
-	border-collapse: collapse;
-	border: 1px solid black;
+  border-spacing: 0;
+  width: 100%;
 }
-
+tr {
+  text-align: center;
+}
 th {
-	border-collapse: collapse;
-	border: 1px solid orange;
-	text-align: center;
+  padding: 10px;
+}
+table tbody tr:nth-child(odd){
+  background-color: #eee
+}
+table thead {
+  background-color: blue;
+  color: white;
+}
+table thead th:first-child {
+  border-radius: 5px 0 0 0;
+  border: 1px solid blue;
+}
+table thead th:last-child {
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid blue;
+}
+table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
 }
 
-td {
-	border-collapse: collapse;
-	border: 1px solid orange;
-	text-align: center;
-}
-/* .search { */
-/*     text-align: center; */
-/* } */
+table tbody tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}	
 
-/* #myInput { */
-/*     width: 80%; */
-/*     font-size: 20px; */
-/*     padding: 10px; */
-/*     background-color: aquamarine; */
-/*     border: 1px solid gray; */
-/*     margin-bottom: 12px; */
-/* } */
-
-/* #myTable { */
-/*     display: block; */
-/*     margin-left: auto; */
-/*     margin-right: auto; */
-/*     width: 700px; */
-/*     border: 1px solid gray; */
-/*     font-size: 25px; */
-/*     text-align: center; */
-/* } */
-
-/* #myTable th { */
-/*     background-color: brown; */
-/*     color: white; */
-/* } */
-
-/* #myTable td { */
-/*     padding: 8px; */
-/* } */
-
-/* #myTable tr:hover { */
-/*     background-color: rgb(41, 41, 41); */
-/*     color: white; */
-/*     transition: 0.8s; */
-/* } */
-
-/* .highlight { */
-/*     background: #00FF00; */
-/*     padding: 1px; */
-/*     border: #00CC00 dotted 1px; */
-
-/* } */
 </style>
 </head>
 <body>
@@ -90,9 +85,10 @@ td {
 			</div>
 			<br>
 		</form:form>
+		<div class="main">
 		<table id="myTable">
 			<thead>
-			<tr style="background-color: #D68B00">
+			<tr style="background-color: #D94600">
 				<th>活動編號
 				<th>活動名稱
 				<th>活動圖片
@@ -114,7 +110,7 @@ td {
 							<td><a
 								href="${contextRoot}/blogad/queryById?id=${ad.blogAdId}">${ad.blogAdName}</a>
 							<td><img src="data:image/*;base64, ${ad.picture}"
-								alt="image" />
+								alt="image" width="150px">
 							<td>${ad.beginDate}
 							<td>${ad.endDate}
 							<td>${ad.remark}
@@ -130,7 +126,7 @@ td {
 							</a></tr></tbody>
 					</c:forEach>
 		</table>
-
+ 		</div>
 		<br> <a href="${contextRoot}/blogad/insert">
 			<button type="button" class="btn btn-outline-info">新增活動</button>
 		</a>

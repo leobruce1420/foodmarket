@@ -11,72 +11,63 @@
 <meta charset="UTF-8">
 <title>所有商城活動</title>
 <style>
-img {
-	width: 50px;
-}
+/* img { */
+/* 	width: 50px; */
+/* } */
 
-table {
-	border-collapse: collapse;
-	border: 1px solid black;
-}
+/* table { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid black; */
+/* } */
 
-th {
-	border-collapse: collapse;
-	border: 1px solid orange;
-	text-align: center;
-}
+/* th { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid orange; */
+/* 	text-align: center; */
+/* } */
 
-td {
-	border-collapse: collapse;
-	border: 1px solid orange;
-	text-align: center;
+/* td { */
+/* 	border-collapse: collapse; */
+/* 	border: 1px solid orange; */
+/* 	text-align: center; */
 	
 
-
-.search {
-    text-align: center;
+.main {
+  width: 80%;
+  margin: 20px auto;
+}
+table {
+  border-spacing: 0;
+  width: 100%;
+}
+tr {
+  text-align: center;
+}
+th {
+  padding: 10px;
+}
+table tbody tr:nth-child(odd){
+  background-color: #eee
+}
+table thead {
+  background-color: blue;
+  color: white;
+}
+table thead th:first-child {
+  border-radius: 5px 0 0 0;
+  border: 1px solid blue;
+}
+table thead th:last-child {
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid blue;
+}
+table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
 }
 
-#myInput {
-    width: 80%;
-    font-size: 20px;
-    padding: 10px;
-    background-color: aquamarine;
-    border: 1px solid gray;
-    margin-bottom: 12px;
-}
-
-#myTable {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px;
-    border: 1px solid gray;
-    font-size: 25px;
-    text-align: center;
-}
-
-#myTable th {
-    background-color: brown;
-    color: white;
-}
-
-#myTable td {
-    padding: 8px;
-}
-
-#myTable tr:hover {
-    background-color: rgb(41, 41, 41);
-    color: white;
-    transition: 0.8s;
-}
-
-.highlight {
-    background: #00FF00;
-    padding: 1px;
-    border: #00CC00 dotted 1px;
-
-}
+table tbody tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}	
 </style>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </head>
@@ -94,10 +85,11 @@ td {
 				data-table="order-table" placeholder="請輸入關鍵字" />
 			</div>
 		</form:form>
-			<table id="myTable">
+		<div class="main">
+			<table id="myTable" >
 
 				<thead>
-					<tr style="background-color: #D68B00">
+					<tr style="background-color: #D94600">
 						<th>活動編號
 						<th>活動名稱
 						<th>活動圖片
@@ -119,7 +111,7 @@ td {
 							<td><a
 								href="${contextRoot}/shopad/queryById?id=${ad.shopAdId}">${ad.shopAdName}</a>
 							<td><img src="data:image/*;base64, ${ad.picture}"
-								alt="image" />
+								alt="image" width="150px" />
 							<td>${ad.beginDate}
 							<td>${ad.endDate}
 							<td>${ad.remark}
@@ -139,6 +131,7 @@ td {
 				
 
 			</table>
+			</div>
 			<br>
 
 
