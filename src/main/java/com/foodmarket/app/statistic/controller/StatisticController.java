@@ -15,28 +15,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.foodmarket.app.statistic.service.StatisticOrderItemService;
 import com.foodmarket.app.statistic.service.StatisticService;
 
 
 @Controller
 public class StatisticController {
 	
-	@Autowired
-	private StatisticService sService;
 	
-	@GetMapping("/productCountTest")
+	@Autowired
+	private StatisticOrderItemService soiService;
+	
+	
+	@GetMapping("/statistic")
 	public String productCountTest() {
 		return "statistic/pieChart";
 	}
 	
 	@GetMapping("/productCount")
 	@ResponseBody
-	public Map getStatisticCount(@Param(value="productName") String productName, @Param(value="sales") Integer sales){
+	public Map getStatisticCount(@Param(value="productname") String productname, @Param(value="quantity") Integer quantity){
 		//public List<productStatistic> getStatisticCount(@Param(value="productName") String productName, @Param(value="sales") Integer sales){
 		
 		System.err.println("============== test str ==============");
 		
-		Map rtnMap = sService.productCount(productName, sales);
+		Map rtnMap = soiService.productCount();
 		
 		System.err.println("============== test end ==============");
 		

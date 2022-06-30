@@ -153,6 +153,30 @@ public class WorkProduct {
 		this.administrator = administrator;
 	}
 
+	public WorkProduct(Long productid, String productname, String productcategory, Integer productprice,
+			String productimg, String administrator, String productdesciption, Integer inventoryquantity,
+			String takedown, Date added) {
+		super();
+		this.productid = productid;
+		this.productname = productname;
+		this.productcategory = productcategory;
+		this.productprice = productprice;
+		this.productimg = productimg;
+		this.administrator = administrator;
+		this.productdesciption = productdesciption;
+		this.inventoryquantity = inventoryquantity;
+		this.takedown = takedown;
+		this.added = added;
+	}
+
+	@Override
+	public String toString() {
+		return "WorkProduct [productid=" + productid + ", productname=" + productname + ", productcategory="
+				+ productcategory + ", productprice=" + productprice + ", productimg=" + productimg + ", administrator="
+				+ administrator + ", productdesciption=" + productdesciption + ", inventoryquantity="
+				+ inventoryquantity + ", takedown=" + takedown + ", added=" + added + "]";
+	}
+
 
 
 

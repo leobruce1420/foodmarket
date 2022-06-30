@@ -27,7 +27,7 @@ public class OrderItem {
 	
 
 	@Column(name="product_Id")
-	private Integer productId;
+	private Long productId;
 	
 	@Column(name="quantity")
 	private Integer quantity;
@@ -44,6 +44,26 @@ public class OrderItem {
 	public OrderItem() {
 	}
 
+	public OrderItem(Integer id, Integer userId, Integer orderRecordId, Long productId, Integer quantity,
+			Integer totalAmount, LocalDateTime createDate, LocalDateTime modifyDate) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.orderRecordId = orderRecordId;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.totalAmount = totalAmount;
+		this.createDate = createDate;
+		this.modifyDate = modifyDate;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderItem [id=" + id + ", userId=" + userId + ", orderRecordId=" + orderRecordId + ", productId="
+				+ productId + ", quantity=" + quantity + ", totalAmount=" + totalAmount + ", createDate=" + createDate
+				+ ", modifyDate=" + modifyDate + "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -58,6 +78,30 @@ public class OrderItem {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Integer getOrderRecordId() {
+		return orderRecordId;
+	}
+
+	public void setOrderRecordId(Integer orderRecordId) {
+		this.orderRecordId = orderRecordId;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Integer getTotalAmount() {
@@ -84,27 +128,8 @@ public class OrderItem {
 		this.modifyDate = modifyDate;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public Integer getOrderRecordId() {
-		return orderRecordId;
-	}
-
-	public void setOrderRecordId(Integer orderRecordId) {
-		this.orderRecordId = orderRecordId;
-	}
 	
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
+	
+	
 }

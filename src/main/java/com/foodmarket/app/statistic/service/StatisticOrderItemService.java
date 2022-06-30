@@ -13,22 +13,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.foodmarket.app.statistic.model.StatisticRepository;
+import com.foodmarket.app.product.model.WorkProduct;
+import com.foodmarket.app.shopcar.entity.OrderItem;
 import com.foodmarket.app.statistic.model.ProductStatistic;
-
-
+import com.foodmarket.app.statistic.model.StatisticOrderItemRepository;
+import com.foodmarket.app.statistic.model.StatisticProductRepository;
 
 @Service
 @Transactional
-public class StatisticService {
+public class StatisticOrderItemService {
 	
 	@Autowired
-	private StatisticRepository statisticDao;
+	private StatisticOrderItemRepository soiDao;
 	
+	@Autowired
+	private StatisticProductRepository spDao;
 	
-	
-	public Map<String, Integer> productCount(String productName, Integer sales){
+	public Map<String, Integer> productCount(){
 		
-		List<ProductStatistic> ps_list = statisticDao.findAll();
+		List<OrderItem> ps_list = soiDao.findAll();
 		
 		System.err.println("============== test ps_list str ==============");
 		System.err.println(ps_list);
@@ -38,17 +41,18 @@ public class StatisticService {
 		
 		Map<String, Integer> keyMap = new HashMap(); // 泛型: 是否在宣告的時候指定型態
 		
-		for (ProductStatistic data : ps_list) {
+		for (OrderItem data : ps_list) {
 			
 			// 確認原始資料
-			int id = data.getProductId();
-			System.err.println("ID:" + id);
+			Long productid = data.getProductId();
+			System.err.println("ID:" + productid);
 			
-			String pn = data.getProductName();
+			WorkProduct wp = spDao.findByproductid(productid);
+			String pn = wp.getProductname();
 			System.err.println("Product Name:" + pn);
 			
-			int s = data.getSales();
-			System.err.println("Sales:" + s);
+			int s = data.getQuantity();
+			System.err.println("Quantity:" + s);
 			
 			
 			// 取得目前加總
