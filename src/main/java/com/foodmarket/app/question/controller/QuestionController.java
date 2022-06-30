@@ -60,8 +60,8 @@ public class QuestionController {
 		mav.getModel().put("allqus", allqus);
 		mav.setViewName("question/allQuestion");
 		System.out.println(allqus);
-		System.out.println(allqus.get(0));
-		System.out.println(allqus.get(0).getAnswer());
+//		System.out.println(allqus.get(0));
+//		System.out.println(allqus.get(0).getAnswer());
 		return mav;
 	}
 	
