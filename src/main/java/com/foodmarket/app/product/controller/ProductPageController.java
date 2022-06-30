@@ -1,30 +1,28 @@
 package com.foodmarket.app.product.controller;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
-import com.foodmarket.app.product.util.Util;
 import com.foodmarket.app.shopadvertisement.ShopAdService;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+
 
 @Controller
 public class ProductPageController {
 
 	@Autowired
 	private WorkProductService pmsgService;
+//	@Autowired
+//	private ProductcategoryService pcmsgService;
 
 	
 	@Autowired
@@ -38,6 +36,9 @@ public class ProductPageController {
 		
 		List<ShopAdvertisement> ad = sService.findByBoard();
 		model.addAttribute("ad",ad);
+
+//		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
+
 		model.addAttribute("page", page);
 		return "index";
 
@@ -75,11 +76,22 @@ public class ProductPageController {
 //		return mav;
 //	}
 	// 好的
+//	@GetMapping("product/all")
+//	public ModelAndView viewProducts(ModelAndView mav,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+//		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
+//
+//		mav.getModel().put("page", page);
+//		mav.setViewName("product/viewMessages");
+////		mav.setViewName("index");
+//		return mav;
+//	}
+
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
-
+		
 		mav.getModel().put("page", page);
 		mav.setViewName("product/viewMessages");
 //		mav.setViewName("index");
@@ -137,16 +149,16 @@ public class ProductPageController {
 	}
 
 //	消費者商品種類查詢無分頁 首頁顯示
-//	@GetMapping("/p")
-//	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
-//			Model m) {
-//		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
-//		
-//		m.addAttribute("workProduct", workProduct);
-//		m.addAttribute("productcategory", productcategory);
-//		return "index";
-//		
-//	}
+	@GetMapping("/p")
+	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
+			Model m) {
+		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+		
+		m.addAttribute("workProduct", workProduct);
+		m.addAttribute("productcategory", productcategory);
+		return "index";
+		
+	}
 
 	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
 	@GetMapping("product/productname")

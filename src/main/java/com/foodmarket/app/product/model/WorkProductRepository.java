@@ -13,6 +13,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+//import com.foodmarket.app.product.dto.ProductcategoryDto;
+
 @Repository // 可省略
 public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> {
 
@@ -47,6 +49,14 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	// 用商品上下架關鍵字查詢，無分頁
 	@Query(value = "select * from product where takedown = '上架中'", nativeQuery = true)
 	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
+	
+	// 用商品上下架關鍵字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，無分頁 1
+//	@Query(value = "select * from (select * from product  where takedown = '上架中') as product  inner join productcategorys  on product.productcategoryid = productcategorys.categoryid ", nativeQuery = true)
+//	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
+
+	// 用商品上下架關鍵字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，無分頁 2
+//	@Query(value = "select * from (select * from product  where takedown = '上架中') as product  inner join productcategorys  on product.productcategoryid = productcategorys.categoryid ", nativeQuery = true)
+//	public List<ProductcategoryDto> findBycategory(@Param("takedown") String takedown);
 
 	// 用id刪除
 	@Transactional
