@@ -1,38 +1,45 @@
 package com.foodmarket.app.shopcar.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name="shop_cart")
+@Table(name = "shop_cart")
 public class ShopCart {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "id")
+	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name= "product_id")
-	private Integer productId;
-	
-	@Column(name= "product_number")
+
+	@Column(name = "product_number")
 	private Integer productNumber;
-	
-	@Column(name= "product_subtotal")
-	private Integer productSubtotal;
-	
-	@Column(name= "customer_id")
+
+	@Column(name = "customer_id")
 	private Integer customerId;
+
+	@Column(name = "product_id")
+	private Long productId;
+
+	@Transient
+	private String productName;
+
+	@Transient
+	private Integer productPrice;
 	
-	@Column(name= "order_item_id")
-	private Integer orderItemId;
+	
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 
 	public Integer getId() {
 		return id;
@@ -40,14 +47,6 @@ public class ShopCart {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
 	}
 
 	public Integer getProductNumber() {
@@ -58,14 +57,6 @@ public class ShopCart {
 		this.productNumber = productNumber;
 	}
 
-	public Integer getProductSubtotal() {
-		return productSubtotal;
-	}
-
-	public void setProductSubtotal(Integer productSubtotal) {
-		this.productSubtotal = productSubtotal;
-	}
-
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -74,14 +65,20 @@ public class ShopCart {
 		this.customerId = customerId;
 	}
 
-	public Integer getOrderItemId() {
-		return orderItemId;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setOrderItemId(Integer orderItemId) {
-		this.orderItemId = orderItemId;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
-	
-	
+	public Integer getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(Integer productPrice) {
+		this.productPrice = productPrice;
+	}
+
 }

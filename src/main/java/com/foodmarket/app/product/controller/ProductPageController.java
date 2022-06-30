@@ -24,22 +24,24 @@ public class ProductPageController {
 	@Autowired
 	private WorkProductService pmsgService;
 
-	// 首頁
+	// 首頁 分頁全部查詢
 	@GetMapping("/HOME")
-	public String welcomePage( @RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
-		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
-
+	public String welcomePage(@RequestParam (required=false ,value="takedown")String takedown, 
+			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
+		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
+		
+		
 		model.addAttribute("page", page);
 		return "index";
 
 	}
-	// 好的
-	@GetMapping("/p")
-	public String welcomePage(Model model){
-		model.addAttribute("test", "qweweq");
-		return "index";
-		
-	}
+	// 舊的
+//	@GetMapping("/p")
+//	public String welcomePage(Model model){
+//		model.addAttribute("test", "qweweq");
+//		return "index";
+//		
+//	}
 
 	@GetMapping("product/add")
 	public String addMessagePage(Model model) {
@@ -183,6 +185,44 @@ public class ProductPageController {
 //		return "product/viewoneMessages";
 //		
 //	}
+	
+	// 前台顯示上架商品不分頁 測試
+	@GetMapping("product/takedown")
+	public String searchProductOn(@RequestParam(required = false, value = "takedown") String takedown, Model m) {
+		List<WorkProduct> workProduct = pmsgService.findByOn(takedown);
+		
+		m.addAttribute("workProduct", workProduct);
+		m.addAttribute("takedown", takedown);
+		return "product/viewMessages";
+		
+	}
+	
+//	//前台顯示上架商品 分頁
+//	@GetMapping("/HOME")
+//	public ModelAndView ProductOn(@RequestParam (required=false ,value="takedown")String takedown,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
+//			ModelAndView m) {
+//		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
+//		
+//		m.getModel().put("page", page);
+//		m.setViewName("index");
+//		return m;
+//		
+//	}
+
+	//	//後台顯示上架商品 分頁
+//	@GetMapping("product/takedown")
+//	public ModelAndView ProductOn(@RequestParam (required=false ,value="takedown")String takedown,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
+//			ModelAndView m) {
+//		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
+//		
+//		m.getModel().put("page", page);
+//		m.setViewName("product/viewMessages");
+//		return m;
+//		
+//	}
+
 	
 	//ID查詢
 	@GetMapping("product/productid")

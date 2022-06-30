@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="order_item")
@@ -25,7 +26,9 @@ public class OrderItem {
 	@Column(name="order_Record_Id")
 	private Integer orderRecordId;
 	
-
+	@Transient
+	private String productName;
+	
 	@Column(name="product_Id")
 	private Long productId;
 	
@@ -74,6 +77,14 @@ public class OrderItem {
 
 	public Integer getUserId() {
 		return userId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public void setUserId(Integer userId) {

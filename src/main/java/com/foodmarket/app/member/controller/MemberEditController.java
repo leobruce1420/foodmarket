@@ -89,7 +89,7 @@ public class MemberEditController {
 		
 		redirectAttributes.addFlashAttribute("editOkMsg", "修改成功");
 		
-		return "redirect:/memberCenter/" + rsMember.getCustomerId();	
+		return "redirect:/lock/memberCenter/" + rsMember.getCustomerId();	
 	}
 
 }

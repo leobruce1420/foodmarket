@@ -1,13 +1,9 @@
 package com.foodmarket.app.shopcar.controller;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import javax.mail.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,34 +13,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.foodmarket.app.shopcar.dao.OrderItemDao;
+import com.foodmarket.app.member.model.Member;
+import com.foodmarket.app.product.model.WorkProduct;
+import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.shopcar.dao.ShopCartDao;
 import com.foodmarket.app.shopcar.entity.OrderItem;
-import com.foodmarket.app.shopcar.entity.OrderRecord;
 import com.foodmarket.app.shopcar.entity.ShopCart;
-import com.foodmarket.app.shopcar.service.OrderItemService;
-import com.foodmarket.app.shopcar.service.OrderRecordService;
 import com.foodmarket.app.shopcar.service.ShopCartService;
 
 
-
-
-@RestController
+@Controller
 public class ShopCarController {
 	
-	@Autowired
-	private OrderItemService orderItemService;
+//	@Autowired
+//	private OrderItemService orderItemService;
 	
-	@Autowired
-	private OrderRecordService orderRecordService;
+//	@Autowired
+//	private OrderRecordService orderRecordService;
 	
 	@Autowired
 	private ShopCartService shopCartService;
 
 	@Autowired
 	private ShopCartDao shopCartDao;
+	
+	
+//	@Autowired
+//	private WorkProductRepository productDao;
+	
+	@Autowired
+	private WorkProductService productService;
+	
 //	@GetMapping("allProduct")
 //	public String allProductPage(Model model) {
 //		List<Product> products = productService.getAll();// 進到這個頁面就載入所有商品
@@ -106,38 +106,20 @@ public class ShopCarController {
 //		return "shopcar/allProduct";
 //	}
 	
-//	@GetMapping("shopcar/add/{productid}")
-//	public String shopCar(@PathVariable("productid") Integer productid, HttpServletRequest request) throws IOException{
-//		
-//		Product product = productService.getOneById(productid);
-//		
-//		request.setCharacterEncoding("UTF-8");
-//		HttpSession session = request.getSession();
-//		
-//		List<Product> productList = (List<Product>) session.getAttribute("productList");
-//		if(productList == null) {
-//			productList = new ArrayList<Product>();
-//		}
-//		System.out.println(productList);
-//		
-//		productList.add(product);
-//		
-//		Enumeration<String> productList = session.getAttributeNames();
-//		session.setAttribute("productList", productList);
-//		
-//		String[] text = {
-//		                 "Apple","6","300","1800","X"
-//		               };		
-//		session.setAttribute("test", text);
-//
-//		return "shopcar/shopCar";
-//		
-//	}
-//	
-//	@GetMapping("shopcar")
-//	public String shopcar() {
-//		return "shopcar/shopCar";
-//	}
+	
+	@GetMapping("/shopcart")
+	public String shopcart() {
+		return "shopcart/shopCart";
+	}
+	
+	@PostMapping("shopcart/update") //更新單筆
+	@ResponseBody
+	public ShopCart updateShopCart(@RequestBody ShopCart shopCart) {
+		ShopCart dbShopCart = shopCartService.findById(shopCart.getId()); //用網頁傳回的id找出要修改的shopCart
+		dbShopCart.setProductNumber(shopCart.getProductNumber()); //set網頁回傳的productNumber
+		return shopCartService.save(dbShopCart);
+	}
+	
 	
 	@PostMapping("shopcart/insert") //新增單筆
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
@@ -150,13 +132,61 @@ public class ShopCarController {
 		return reqestList;
 	}
 	
-	@GetMapping("shopcart/customerId")
-	public List<ShopCart> findByShopCart(@RequestParam Integer customerId){
-		return shopCartDao.findShopCartByCustomerId(customerId);
+
+	
+	@GetMapping("shopcart/delete")
+	public String deleteById(@RequestParam("id") Integer id) {
+		shopCartDao.deleteById(id);
+		return "redirect:/shopCart/all";
 	}
 	
+<<<<<<< HEAD
 //	@GetMapping("shopcart/delete/{id}")
 //	public deleteById(@PathVariable Integer id) {
 //		
 //	}
+=======
+	@PostMapping("shopcart/add") //新增單筆
+	public String addShopCart(Model model) {
+		
+		ShopCart shopcart = new ShopCart();
+		
+		model.addAttribute("shopcart",shopcart);
+		
+		return "shopCart";
+	}
+
+	@GetMapping("shopCart/all")
+	public String getAll(Model model){
+		List<ShopCart> shopCarts = shopCartService.findAll();
+		for(ShopCart shopCart:shopCarts) {
+			Long productId = shopCart.getProductId();
+			WorkProduct product= productService.findById(productId);
+					
+			String productName =product.getProductname();
+			Integer productPrice= product.getProductprice();
+			shopCart.setProductName(productName);
+			shopCart.setProductPrice(productPrice);
+			
+		}
+		
+//		Session.xxx; //getCustomerId
+
+		Member member = new Member();
+		member.setCustomerId(1L);
+		
+		model.addAttribute("shopCarts" , shopCarts);
+		model.addAttribute("member" , member);
+		
+		return "shopcart/shopCart";
+	}
+	
+	
+	@PostMapping("shopCart/item")
+	public String getItem(Model model,Integer customerId) {
+		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(customerId);
+		
+		return "shopcart/Item";
+	} 
+>>>>>>> 90df862ca3cffb8c97e895c3f120c8ca35a8869d
 }

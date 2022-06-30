@@ -68,8 +68,8 @@
 									</div>
 									<form:select class="custom-select" id="inputGroupSelect01"
 										path="takedown">
-										<option value="上架">上架</option>
-										<option value="下架">下架</option>
+										<option value="true">上架</option>
+										<option value="false">下架</option>
 									</form:select>
 								</div>
 							</div>
