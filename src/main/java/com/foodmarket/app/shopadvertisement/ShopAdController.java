@@ -65,14 +65,13 @@ public class ShopAdController {
 		return "advertisement/updateShopAd";
 	}
 	
-	
-	@GetMapping("/shopad/upload")
-	public String uploadBoard(Model m) {
-		
-		List<ShopAdvertisement> ad = sService.findByBoard();
-		m.addAttribute("ad",ad);
-		return "index"; 
-	}
+//  跟主頁合併
+//	@GetMapping("/shopad/upload")
+//	public String uploadBoard(Model m) {
+//		List<ShopAdvertisement> ad = sService.findByBoard();
+//		m.addAttribute("ad",ad);
+//		return "index"; 
+//	}
 	
 	////////////////////////////
 	

@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
+import com.foodmarket.app.shopadvertisement.ShopAdService;
+import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 
 @Controller
@@ -24,9 +26,16 @@ public class ProductPageController {
 	@Autowired
 	private WorkProductService pmsgService;
 	
-	@GetMapping("/p")
+	@Autowired
+	private ShopAdService sService;
+	
+	@GetMapping("/HOME")
 	public String welcomePage(Model model){
+		
+		
 		model.addAttribute("test", "qweweq");
+		List<ShopAdvertisement> ad = sService.findByBoard();
+		model.addAttribute("ad",ad);
 		return "index";
 		
 	}
