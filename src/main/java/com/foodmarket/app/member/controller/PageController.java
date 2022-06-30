@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 	
-	@GetMapping("/")
-	public String homePage() {
-		return "index";
-	}
-	
 	@GetMapping("/member/test")
 	public String tese() {
 		return "member/viewMember";

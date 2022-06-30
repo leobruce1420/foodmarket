@@ -88,8 +88,8 @@
 </form:form>
 
 
-<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<%-- <script src="${contextRoot}/js/jquery-3.6.0.js"></script> --%>
+<%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
 let nameChecked = false;
