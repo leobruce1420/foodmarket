@@ -59,8 +59,8 @@ public class WorkProduct {
 	private String takedown;
 	
 	
-	@Column(name="productcategory_id", columnDefinition = "int")
-	private productcategory productcategoryid;
+//	@Column(name="productcategoryid", columnDefinition = "int")
+//	private productcategory categoryid;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
