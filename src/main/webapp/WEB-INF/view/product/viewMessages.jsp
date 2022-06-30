@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <style>
-table, td {
-/* 	border: 3px SOLID; */
+table, td ,th {
+	border: 1px groove; 
 	/*     BACKGROUND-COLOR: RGB(187, 229, 235); */
 	/*     COLOR: RED; */
 	/*     BORDER-COLLAPSE: COLLAPSE; */
@@ -72,13 +72,15 @@ img {
 </head>
 <body>
 	<br />
-
-
+	<main role="main" class="col-md-6 ml-sm-auto  ">
+ <h1 class="h1">所有商品頁面</h1>
+</main>
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
 	<div class="container">
 
 
 		<div class="row justify-content-center">
-		<div class="col-8">
+		<div class="col-10">
 			<form class="form-inline my-2 my-lg-0"
 				action="${contextRoot}/product/name" method="get">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search"
@@ -94,7 +96,7 @@ img {
 			<!-- 			</div> -->
 			<%-- 			</form:form> --%>
 			</div>
-			<div class="col-4">
+			<div class="col-1">
 			<form:form action="${contextRoot}/product/productcategory"
 				method="get">
 				<div class="div1">
@@ -122,6 +124,7 @@ img {
 					</div>
 				</div>
 			</form:form>
+			<br/>
 </div>
 			<%-- 	<form:form action="${contextRoot}/product/productid" method="get"> --%>
 			<!-- 	<div class="div1"> -->
@@ -180,7 +183,7 @@ img {
 									alt="image" />
 								</td>
 								<td><fmt:formatDate
-										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
+										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss  EEEE"
 										value="${workProduct.added}" /></td>
 
 								<td><c:out value="${workProduct.productdesciption}" /></td>
@@ -240,7 +243,7 @@ img {
 
 		</div>
 		</div>
-	
+	</div>
 
 		<br />
 
@@ -248,124 +251,6 @@ img {
 
 
 
-		
-
-	<br />
-
-	<hr />
-
-	<div>
-		<ul class="responsive">
-			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-				<c:forEach var="workProduct" items="${page.content}">
-					<li>
-						<div class="card"
-							style="width: 18rem; height: 23rem; background: #B5FFB5">
-							<img style="width: 200px; height: 200px;"
-								src="data:image/image/*;base64,${workProduct.productimg}"
-								alt="image" />
-							<div class="card-body">
-								<h5 class="card-title">${workProduct.productname}</h5>
-								<p class="card-text">${workProduct.productprice}</p>
-								<a href="#" id="frontdesk"
-									class="btn btn-primary stretched-link">Go somewhere</a>
-							</div>
-						</div>
-					</li>
-				</c:forEach>
-			</c:forEach>
-		</ul>
-	</div>
-	<script type="text/javascript">
-		// 需要左右兩邊可滑動的箭頭
-		// arrows: true,
-		// prevArrow: '<button type="button" class="slick-prev Btn-prev">Previous</button>',
-		// nextArrow: '<button type="button" class="slick-next Btn-next">Next</button>',
-		$(document).ready(function() {
-			$('.responsive').slick({
-				dots : false,
-				infinite : false,
-				speed : 300,
-				slidesToShow : 4,
-				slidesToScroll : 2,
-				responsive : [ {
-					breakpoint : 1024,
-					settings : {
-						// 	    	  畫面中一次輪播的幾張圖片
-						slidesToShow : 3,
-						// 	        左右滑動時，一次更新幾張圖片
-						slidesToScroll : 2,
-						// 	        照片播完時，再重新播放
-						infinite : false,
-						dots : false
-					}
-				}, {
-					breakpoint : 600,
-					settings : {
-						slidesToShow : 2,
-						slidesToScroll : 2
-					}
-				}, {
-					breakpoint : 480,
-					settings : {
-						slidesToShow : 1,
-						slidesToScroll : 1
-					}
-				}
-				// You can unslick at a given breakpoint now by adding:
-				// settings: "unslick"
-				// instead of a settings object
-				]
-			});
-		});
-	</script>
-
-<!-- 	<div class="col-md-4 order-md-2 mb-4"> -->
-<!-- 		<h4 class="d-flex justify-content-between align-items-center mb-3"> -->
-<!-- 			<span class="text-muted">Your cart</span> <span -->
-<!-- 				class="badge badge-secondary badge-pill">3</span> -->
-<!-- 		</h4> -->
-<!-- 		<ul class="list-group mb-3"> -->
-<!-- 			<li -->
-<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
-<!-- 				<div> -->
-<!-- 					<h6 class="my-0">Product name</h6> -->
-<!-- 					<small class="text-muted">Brief description</small> -->
-<!-- 				</div> <span class="text-muted">$12</span> -->
-<!-- 			</li> -->
-<!-- 			<li -->
-<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
-<!-- 				<div> -->
-<!-- 					<h6 class="my-0">Second product</h6> -->
-<!-- 					<small class="text-muted">Brief description</small> -->
-<!-- 				</div> <span class="text-muted">$8</span> -->
-<!-- 			</li> -->
-<!-- 			<li -->
-<!-- 				class="list-group-item d-flex justify-content-between lh-condensed"> -->
-<!-- 				<div> -->
-<!-- 					<h6 class="my-0">Third item</h6> -->
-<!-- 					<small class="text-muted">Brief description</small> -->
-<!-- 				</div> <span class="text-muted">$5</span> -->
-<!-- 			</li> -->
-<!-- 			<li class="list-group-item d-flex justify-content-between bg-light"> -->
-<!-- 				<div class="text-success"> -->
-<!-- 					<h6 class="my-0">Promo code</h6> -->
-<!-- 					<small>EXAMPLECODE</small> -->
-<!-- 				</div> <span class="text-success">-$5</span> -->
-<!-- 			</li> -->
-<!-- 			<li class="list-group-item d-flex justify-content-between"><span>Total -->
-<!-- 					(USD)</span> <strong>$20</strong></li> -->
-<!-- 		</ul> -->
-
-<%-- 		<form class="card p-2"> --%>
-<!-- 			<div class="input-group"> -->
-<!-- 				<input type="text" class="form-control" placeholder="Promo code"> -->
-<!-- 				<div class="input-group-append"> -->
-<!-- 					<button type="submit" class="btn btn-secondary">Redeem</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<%-- 		</form> --%>
-<!-- 	</div> -->
 
 </body>
 

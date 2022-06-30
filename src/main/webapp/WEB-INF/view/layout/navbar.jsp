@@ -26,15 +26,15 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav mr-auto ">
     
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          商品管理
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
-          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-        </div>
-      </li>
+<!--       <li class="nav-item dropdown"> -->
+<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> -->
+<!--           商品管理 -->
+<!--         </a> -->
+<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a> --%>
+<%--           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a> --%>
+<!--         </div> -->
+<!--       </li> -->
 
 		<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
