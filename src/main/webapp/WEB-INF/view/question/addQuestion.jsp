@@ -8,29 +8,27 @@
 <link href="${contextRoot}/css/bootstrap.css" rel="stylesheet">
 
 <div class="container">
-
 	<div class="row justify-content-center">
 		<div class="col-9">
-		<br>
+			<br>
 			<h1 style="text-align: center">常見問題</h1>
-		<br>
+			<br>
 			<div class="card">
 				<div class="card-header" style="font-size: 22px">新增常見問題</div>
 				<div class="card-body">
 					<form:form class="form" method="post"
-						action="${contextRoot}/question/postQuestion" modelAttribute="Question">
+						action="${contextRoot}/question/postQuestion"
+						modelAttribute="Question">
 						<table>
 							<tr>
 								<td><b>選擇問題分類：</b></td>
-								<td>
-									<form:select path="questionCategory">
+								<td><form:select path="questionCategory">
 										<form:option value="-" label="-請選擇-" />
 										<form:options items="${categoryList}" />
-									</form:select>
-								</td>
+									</form:select></td>
 							</tr>
 						</table>
-							<br>
+						<br>
 						<div class="form-group">
 							<div>輸入問題：</div>
 							<form:textarea path="questionTitle" class="form-control" />

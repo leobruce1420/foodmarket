@@ -1,6 +1,8 @@
 package com.foodmarket.app.statistic.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +24,9 @@ public class StatisticService {
 	@Autowired
 	private StatisticRepository statisticDao;
 	
+	
+	
 	public Map<String, Integer> productCount(String productName, Integer sales){
-	//public List<productStatistic> productCount(String productName, Integer sales){
 		
 		List<ProductStatistic> ps_list = statisticDao.findAll();
 		

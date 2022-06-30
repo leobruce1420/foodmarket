@@ -13,8 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.foodmarket.app.member.model.Member;
 
 
-
-
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 	
