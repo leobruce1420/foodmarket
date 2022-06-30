@@ -34,7 +34,8 @@ public class StatisticController {
 	
 	@GetMapping("/productCount")
 	@ResponseBody
-	public Map getStatisticCount(@Param(value="productname") String productname, @Param(value="quantity") Integer quantity){
+	public Map getStatisticCount(){
+//		@Param(value="productname") String productname, @Param(value="quantity") Integer quantity
 		//public List<productStatistic> getStatisticCount(@Param(value="productName") String productName, @Param(value="sales") Integer sales){
 		
 		System.err.println("============== test str ==============");
@@ -45,6 +46,20 @@ public class StatisticController {
 		
 		return rtnMap;
 	}
+	
+	@GetMapping("/productImg")
+	@ResponseBody
+	public Map getProductImg(){
+		
+		System.err.println("============== test str ==============");
+		
+		Map rtnMap = soiService.productImg();
+		
+		System.err.println("============== test end ==============");
+		
+		return rtnMap;
+	}
+	
 
 
 }
