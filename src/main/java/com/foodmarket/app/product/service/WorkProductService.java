@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.model.WorkProductRepository;
@@ -34,9 +36,9 @@ public class WorkProductService {
 	public WorkProduct getLastest() {
 		return productDao.findFirstByOrderByAddedDesc();
 	}
-
+	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 2, Sort.Direction.DESC, "added");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 53, Sort.Direction.DESC, "added");
 
 		Page<WorkProduct> page = productDao.findAll(pgb);
 
@@ -44,43 +46,108 @@ public class WorkProductService {
 	}
 	
 	//商品一個一個排
-	public Page<WorkProduct> findByall(Integer productNumber) {
-		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
-		
-		Page<WorkProduct> page = productDao.findAll(pgb);
-		
-		return page;
-	}
-
+//	public Page<WorkProduct> findByall(Integer productNumber) {
+//		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
+//		
+//		Page<WorkProduct> page = productDao.findAll(pgb);
+//		
+//		return page;
+//	}
+	
+	//ID查詢
 	public WorkProduct findById(Long productid) {
 		Optional<WorkProduct> optional = productDao.findById(productid);
-
+		
 		if (optional.isPresent()) {
 			return optional.get();
-
+			
 		}
 		return null;
 	}
+	//商品查詢種類不分頁
+	public List<WorkProduct> findByProductcategoryKey(String productcategory) {
+		List<WorkProduct> page = productDao.findByProductcategoryKey(productcategory);
 
-	public Page<WorkProduct> findByProductcategoryKey(Integer pageNumber, String productcategory) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "added");
-		Page<WorkProduct> page = productDao.findByProductcategoryKey(pgb, productcategory);
-
-//		if(optionalcategory.isPresent()) {
-//			return optionalcategory.get();
+//		if(page.isPresent()) {
+//			return page.get();
 //			
 //		}
 		return page;
 	}
+	
+	
+	//商品查詢種類分頁
+	public Page<WorkProduct> findByProductcategorypage(String productcategorypage,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+		Page<WorkProduct> page = productDao.findByProductcategorypage(productcategorypage,pgb);
+		
+//		if(page.isPresent()) {
+//			return page.get();
+//			
+//		}
+		return page;
+	}
+	
+	
+	
+	//商品查詢分頁
+	public Page<WorkProduct> findByNamePage(String productname ,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
 
-	public Page<WorkProduct> findByName(Integer pageNumber, String productname) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "added");
-
-		Page<WorkProduct> page = productDao.findByName(pgb, productname);
+		Page<WorkProduct> page = productDao.findByNamePage(productname,pgb);
 
 		return page;
 	}
-//	public WorkProduct findById(Long productid) {
+	
+	//商品點擊查詢不分頁
+	public List<WorkProduct> findByName(String productname) {
+		List<WorkProduct> page = productDao.findByName(productname);
+
+		return page;
+
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
+	}
+	//商品輸入查詢不分頁
+	public List<WorkProduct> findByProductName(String productname) {
+		List<WorkProduct> page = productDao.findByName(productname);
+		
+		return page;
+		
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
+	}
+	
+	
+	//商品前台顯示上架不分頁
+	public List<WorkProduct> findByOn(String takedown) {
+		List<WorkProduct> page = productDao.findByOn(takedown);
+		
+		return page;
+		
+//		if (name.isPresent()) {
+//			return name.get();
+//
+//		}
+//		return null;
+	}
+
+	//商品上架排序分頁
+	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+		
+		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
+		
+		return page;
+	}
+	
+	//	public WorkProduct findById(Long productid) {
 //		Optional<WorkProduct> optional = productDao.findById(productid);
 //		
 //		if(optional.isPresent()) {
@@ -115,10 +182,35 @@ public class WorkProductService {
 //	}
 
 	public void deleteById(Long productid) {
-		productDao.deleteById(productid);
+		 productDao.deleteById(productid);
 
 	}
+	
+	//判斷
+//	public void validate(Object target, Errors errors) {
+//		WorkProduct bean = (WorkProduct) target;
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productname", "", "商品名稱不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productprice", "", "價格欄不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mf", "", "圖不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productdesciption", "", "商品介紹不能空白");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "administrator", "", "庫存數量不能空白");
+//		
+////		Double price = Double.parseDouble(bean.getListPrice());
+//		
+//		if (bean.getProductcategory().equals("0")) {
+//			errors.rejectValue("productcategory","", "必須挑選分類欄");
+//		}
+//		if () {
+//			if (bean.getProductimg().isEmpty()) {
+//				errors.rejectValue("productImage","", "必須挑選圖片");
+//			}
+//		}
+//	}
 
+	
+	
+	
+	//網路範例-------------------------------
 //	public List<WorkProduct> findByName(String productname) {
 //		Session session = sessionfactory.openSession();
 //		

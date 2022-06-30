@@ -75,7 +75,7 @@ public class MemberService implements MemberServiceInterface{
 
 	@Override
 	public Page<Member> findByNamePageable(Integer pageNumber, String name) {
-		Pageable pgb = PageRequest.of(pageNumber-1, 10 ,Sort.Direction.ASC ,"customerName");
+		Pageable pgb = PageRequest.of(pageNumber-1, 5 ,Sort.Direction.ASC ,"customerName");
 		Page<Member> mPage = memberDao.findByName(pgb,name);
 
 		return mPage;
@@ -83,7 +83,7 @@ public class MemberService implements MemberServiceInterface{
 
 	@Override
 	public Page<Member> findAllPageable(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber-1, 10 ,Sort.Direction.ASC ,"customerId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 5 ,Sort.Direction.ASC ,"customerId");
 		Page<Member> mPage = memberDao.findAll(pgb);
 		
 		return mPage;

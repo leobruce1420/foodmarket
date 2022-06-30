@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,7 +18,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
+import com.foodmarket.app.shopcar.entity.ShopCart;
+
 
 @Entity
 @Table(name="product")//srcmail/resources裡application 的 spring.jpa.hibernate.ddl-auto=update
@@ -25,6 +29,7 @@ public class WorkProduct {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="productid")
 	private Long productid;
+	
 	
 	// 若沒寫 columnDefinition ， 預設為 varchar(255)
 	@Column(name="productname", columnDefinition = "nvarchar(30)")
@@ -153,8 +158,29 @@ public class WorkProduct {
 		this.administrator = administrator;
 	}
 
+	public WorkProduct(Long productid, String productname, String productcategory, Integer productprice,
+			String productimg, String administrator, String productdesciption, Integer inventoryquantity,
+			String takedown, Date added) {
+		super();
+		this.productid = productid;
+		this.productname = productname;
+		this.productcategory = productcategory;
+		this.productprice = productprice;
+		this.productimg = productimg;
+		this.administrator = administrator;
+		this.productdesciption = productdesciption;
+		this.inventoryquantity = inventoryquantity;
+		this.takedown = takedown;
+		this.added = added;
+	}
 
-
+	@Override
+	public String toString() {
+		return "WorkProduct [productid=" + productid + ", productname=" + productname + ", productcategory="
+				+ productcategory + ", productprice=" + productprice + ", productimg=" + productimg + ", administrator="
+				+ administrator + ", productdesciption=" + productdesciption + ", inventoryquantity="
+				+ inventoryquantity + ", takedown=" + takedown + ", added=" + added + "]";
+	}
 
 
 }
