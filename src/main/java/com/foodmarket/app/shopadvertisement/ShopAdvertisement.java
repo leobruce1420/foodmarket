@@ -42,7 +42,28 @@ public class ShopAdvertisement {
 	@Column(name="product_id")
 	private String productId;
 	
+	@Column(name="shopUrl")
+	private String shopUrl;
 	
+	@Column(name="onboard")
+	private String onboard;
+	
+	public String getShopUrl() {
+		return shopUrl;
+	}
+
+	public void setShopUrl(String shopUrl) {
+		this.shopUrl = shopUrl;
+	}
+	
+	public String getOnboard() {
+		return onboard;
+	}
+
+	public void setOnboard(String onboard) {
+		this.onboard = onboard;
+	}
+
 	public ShopAdvertisement() {
 	}
 
@@ -115,18 +136,21 @@ public class ShopAdvertisement {
 		this.productId = productId;
 	}
 
-
-	public ShopAdvertisement(String shopAdName, String picture, Date beginDate, Date endDate, String remark,
-			String productId) {
+	
+	
+	public ShopAdvertisement(Integer shopAdId, String shopAdName, String picture, Date beginDate, Date endDate,
+			String remark, String productId, String shopUrl, String onboard) {
 		super();
+		this.shopAdId = shopAdId;
 		this.shopAdName = shopAdName;
 		this.picture = picture;
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.remark = remark;
 		this.productId = productId;
+		this.shopUrl = shopUrl;
+		this.onboard = onboard;
 	}
 
-	
 }
 

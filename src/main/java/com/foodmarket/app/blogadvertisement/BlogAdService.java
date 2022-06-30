@@ -34,4 +34,10 @@ public class BlogAdService {
 	public void deleteById(Integer id) {
 		bDao.deleteById(id);
 	}
+	
+	public List<BlogAdvertisement> findByBoard() {
+		List<BlogAdvertisement> List = bDao.findShopAdByBoard();
+		return List;
+		
+	}
 }

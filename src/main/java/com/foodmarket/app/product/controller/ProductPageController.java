@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
+import com.foodmarket.app.shopadvertisement.ShopAdService;
+import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 @Controller
 public class ProductPageController {
@@ -24,13 +26,18 @@ public class ProductPageController {
 	@Autowired
 	private WorkProductService pmsgService;
 
+	
+	@Autowired
+	private ShopAdService sService;
+
 	// 首頁 分頁全部查詢
 	@GetMapping("/HOME")
 	public String welcomePage(@RequestParam (required=false ,value="takedown")String takedown, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
 		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
 		
-		
+		List<ShopAdvertisement> ad = sService.findByBoard();
+		model.addAttribute("ad",ad);
 		model.addAttribute("page", page);
 		return "index";
 

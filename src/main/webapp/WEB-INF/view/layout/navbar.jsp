@@ -18,6 +18,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " >
+
   <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,9 +26,6 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav mr-auto ">
     
-      <li class="nav-item active">
-      <a class="nav-link active" href="${contextRoot}/HOME">商城首頁 <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           商品管理
@@ -35,21 +33,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
         </div>
       </li>
-<!--       <li class="nav-item dropdown"> -->
-<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> -->
-<!--           會員管理 -->
-<!--         </a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<!--           <a class="dropdown-item" href="#">所有會員訊息</a> -->
-<!--           <a class="dropdown-item" href="#">訊息</a> -->
-<!--           <div class="dropdown-divider"></div> -->
-<!--           <a class="dropdown-item" href="#">ajax</a> -->
-<!--         </div> -->
-<!--       </li> -->
 
 		<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -58,12 +43,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
           <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
-          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
-<<<<<<< HEAD
+
       		<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           常見問題
@@ -71,19 +53,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="${contextRoot}/question/allQuestion">常見問題</a>
           <a class="dropdown-item" href="${contextRoot}/question/addQuestion">新增常見問題</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">ajax</a>
         </div>
       </li>
-=======
-      
->>>>>>> member
-      <li class="nav-item dropdown">
-      <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
-      </li>
-      <li class="nav-item dropdown">
-      <a class="nav-link" href="${contextRoot}/product/add">新增商品訊息</a>
-    </li>
+
     
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
