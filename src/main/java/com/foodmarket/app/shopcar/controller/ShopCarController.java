@@ -140,12 +140,6 @@ public class ShopCarController {
 		return "redirect:/shopCart/all";
 	}
 	
-<<<<<<< HEAD
-//	@GetMapping("shopcart/delete/{id}")
-//	public deleteById(@PathVariable Integer id) {
-//		
-//	}
-=======
 	@PostMapping("shopcart/add") //新增單筆
 	public String addShopCart(Model model) {
 		
@@ -188,5 +182,4 @@ public class ShopCarController {
 		
 		return "shopcart/Item";
 	} 
->>>>>>> 90df862ca3cffb8c97e895c3f120c8ca35a8869d
 }

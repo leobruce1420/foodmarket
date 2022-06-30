@@ -44,11 +44,37 @@ public class BlogAdvertisement {
 	@Column(name="recipeId")
 	private String recipeId;
 	
+	@Column(name="recipeUrl")
+	private String recipeUrl;
+	
+	@Column(name="onboard")
+	private String onboard;
+	
 	
 	public BlogAdvertisement() {
 	}
 
 	
+	public String getRecipeUrl() {
+		return recipeUrl;
+	}
+
+
+	public void setRecipeUrl(String recipeUrl) {
+		this.recipeUrl = recipeUrl;
+	}
+
+
+	public String getOnboard() {
+		return onboard;
+	}
+
+
+	public void setOnboard(String onboard) {
+		this.onboard = onboard;
+	}
+
+
 	public String getPicture() {
 		return picture;
 	}
@@ -119,16 +145,22 @@ public class BlogAdvertisement {
 	}
 
 
-	public BlogAdvertisement(String blogAdName, String picture, Date beginDate, Date endDate, String remark,
-			String recipeId) {
+	public BlogAdvertisement(Integer blogAdId, String blogAdName, String picture, Date beginDate, Date endDate,
+			String remark, String recipeId, String recipeUrl, String onboard) {
 		super();
+		this.blogAdId = blogAdId;
 		this.blogAdName = blogAdName;
 		this.picture = picture;
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.remark = remark;
 		this.recipeId = recipeId;
+		this.recipeUrl = recipeUrl;
+		this.onboard = onboard;
 	}
+
+
+	
 
 
 }

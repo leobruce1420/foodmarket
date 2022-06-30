@@ -44,7 +44,7 @@ public class OrderRecordService {
 		int totalAmount = 0;
 		
 		for(OrderItem item : orderRecord.getOrderItems()) {
-			Integer productId = item.getProductId();
+			Long productId = item.getProductId();
 			Integer quantity = item.getQuantity();
 			WorkProduct product = productDao.findByproductid(Long.valueOf(productId));
 			

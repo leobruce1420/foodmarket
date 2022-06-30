@@ -81,12 +81,30 @@ textarea {
 				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
 					readonly type=text name=remLen size=3 maxlength=3 value="">字
 			</div>
-
+			
 			<div class="div1">
-				<label for="recipeId" class="FormTitle">食譜編號 : </label> <input
-					id="recipeId" name="recipeId" autocomplete="off" required />
+				<!--  <label for="productId" class="FormTitle">商品編號 : </label> <input
+					id="productId" name="productId" autocomplete="off" required /> -->
+					<label for="recipeId">食譜編號 : </label> <select id="recipeId" name="recipeId">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
 			</div>
 
+			<div class="div1">
+				<label for="recipeUrl" class="FormTitle">食譜路徑 : </label> <input
+					id="recipeUrl" name="recipeUrl" autocomplete="off" required />
+			</div>
+			
+			<div class="div1">
+				<!--  <label for="productId" class="FormTitle">商品編號 : </label> <input
+					id="productId" name="productId" autocomplete="off" required /> -->
+					<label for="recipeId">上架狀態 : </label> <select id="onboard" name="onboard">
+					<option value="on">on</option>
+					<option value="off">off</option>
+				</select>
+			</div>
+			
 			<div class="submit">
 				<input type="submit" id="submit" class="btn btn-outline-info" value="確定" />
 				<input class="btn btn-outline-danger" type="button"
