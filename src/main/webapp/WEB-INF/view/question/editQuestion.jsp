@@ -18,22 +18,26 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-9">
-				<h1>常見問題</h1>
+				<br>
+				<h1 style="text-align: center">常見問題</h1>
+				<br>
 				<div class="card">
 					<div class="card-header">修改常見問題</div>
 					<div class="card-body">
 						<form:form class="form" method="post"
-							action="${contextRoot}/question/editQuestion" modelAttribute="Question">
-								<form:input path="id" type="hidden"></form:input>
+							action="${contextRoot}/question/editQuestion"
+							modelAttribute="Question">
+							<form:input path="id" type="hidden"></form:input>
 							<table>
 								<div class="form-group">
-								<tr>
-									<td><b>選擇問題分類：</b></td>
-									<td><form:select path="questionCategory">
-											<form:option value="-" label="-請選擇-" />
-											<form:options items="${categoryList}" />
-										</form:select></td>
-								</tr>
+									<tr>
+										<td><b>選擇問題分類：</b></td>
+										<td><form:select path="questionCategory">
+												<form:option value="-" label="-請選擇-" />
+												<form:options items="${categoryList}" />
+											</form:select></td>
+									</tr>
+								</div>
 							</table>
 							<br>
 							<div class="form-group">
@@ -44,7 +48,6 @@
 								<div>修改回答：</div>
 								<form:textarea path="answer" class="form-control" />
 							</div>
-					</div>
 					<input type="submit" name="submit" value="修改常見問題" />
 
 					</form:form>

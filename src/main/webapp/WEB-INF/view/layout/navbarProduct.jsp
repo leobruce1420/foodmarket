@@ -12,12 +12,12 @@
 <body>
 <div class="container">
 <div class="row justify-content-center">
-<div  class="btn-group btn-group-toggle" role="group" aria-label="Basic example" style="width: 50rem;">
-  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=蔬菜類"><button type="button" class="btn btn-secondary ">蔬菜類</button></a>
-  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=水果類"><button type="button" class="btn btn-secondary ">水果類</button></a>
-  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=肉品"><button type="button" class="btn btn-secondary ">肉品</button></a>
-  <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=海鮮"><button type="button" class="btn btn-secondary ">海鮮</button></a>
-</div>
+<!-- <div  class="btn-group btn-group-toggle" role="group" aria-label="Basic example" style="width: 50rem;"> -->
+<%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=蔬菜類"><button type="button" class="btn btn-secondary ">蔬菜類</button></a> --%>
+<%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=水果類"><button type="button" class="btn btn-secondary ">水果類</button></a> --%>
+<%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=肉品"><button type="button" class="btn btn-secondary ">肉品</button></a> --%>
+<%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=海鮮"><button type="button" class="btn btn-secondary ">海鮮</button></a> --%>
+<!-- </div> -->
 <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 50rem;">
   <label class="btn btn-secondary ">
   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類">
