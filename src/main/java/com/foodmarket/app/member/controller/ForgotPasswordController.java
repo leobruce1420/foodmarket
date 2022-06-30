@@ -93,7 +93,7 @@ public class ForgotPasswordController {
 			}
 		} else {
 			logger.info("無此token或重複使用");
-			return "index";
+			return "redirect:/HOME";
 		}
 	}
 	

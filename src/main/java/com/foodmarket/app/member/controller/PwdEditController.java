@@ -41,7 +41,7 @@ public class PwdEditController {
 			return "member/changePwd";
 		}
 		logger.info("會員編號：" + sessionUId + "嘗試進入 會員編號：" + id + "會員中心");
-		return "index";
+		return "redirect:/HOME";
 	}
 
 	// 檢查舊密碼是否一致

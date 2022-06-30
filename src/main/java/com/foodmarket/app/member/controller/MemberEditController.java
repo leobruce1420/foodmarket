@@ -47,7 +47,7 @@ public class MemberEditController {
 			return "member/memberCenter";	
 		}
 		logger.info("會員編號：" + sessionUId + "嘗試進入 會員編號："+ id + "會員中心");
-		return "index";	
+		return "redirect:/HOME";	
 	}
 	
 	//修改會員資料

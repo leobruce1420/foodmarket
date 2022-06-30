@@ -62,14 +62,14 @@ public class MemberController {
 
 		logger.info("會員編號：" + member.getCustomerId() + " 登入成功 ");
 
-		return "index";
+		return "redirect:/HOME";
 	}
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginUserId");
 		session.removeAttribute("loginUserName");
-		return "index";
+		return "redirect:/HOME";
 	}
 
 	// ===============================機器人驗證==============================================================================================
@@ -185,11 +185,11 @@ public class MemberController {
 				}
 			} else {
 				logger.info("重複驗證! 會員編號：" + rsMember.getCustomerId());
-				return "index";
+				return "redirect:/HOME";
 			}
 		} else {
 			logger.info("無此會員或重複驗證");
-			return "index";
+			return "redirect:/HOME";
 		}
 
 	}
@@ -224,7 +224,7 @@ public class MemberController {
 
 				mail.SendMail(email, title, text);
 
-				return "index";
+				return "redirect:/HOME";
 			} else {
 				logger.info("驗證過的帳號!");
 				m.addAttribute("error", "驗證過的帳號!");
