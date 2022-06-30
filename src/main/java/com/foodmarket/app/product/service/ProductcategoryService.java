@@ -18,32 +18,34 @@ import com.foodmarket.app.product.model.WorkProductRepository;
 
 @Service
 @Transactional
-public class WorkProductService {
+public class ProductcategoryService {
+	
+	
 
 	@Autowired
-	private WorkProductRepository productDao;
+	private WorkProductRepository productcategoryDao;
 
-	public List<WorkProduct> selectAll() {
-		
-		List<WorkProduct> productAll=productDao.findAll();
-		  return productAll;
-	}
-	public void insertProduct(WorkProduct pmsg) {
-		productDao.save(pmsg);
-	}
-
-	@Transactional
-	public WorkProduct getLastest() {
-		return productDao.findFirstByOrderByAddedDesc();
-	}
-	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
-	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-
-		Page<WorkProduct> page = productDao.findAll(pgb);
-
-		return page;
-	}
+//	public List<WorkProduct> selectAll() {
+//		
+//		List<WorkProduct> productAll=productDao.findAll();
+//		  return productAll;
+//	}
+//	public void insertProduct(WorkProduct pmsg) {
+//		productDao.save(pmsg);
+//	}
+//
+//	@Transactional
+//	public WorkProduct getLastest() {
+//		return productDao.findFirstByOrderByAddedDesc();
+//	}
+//	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
+//	public Page<WorkProduct> findByPage(Integer pageNumber) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+//
+//		Page<WorkProduct> page = productDao.findAll(pgb);
+//
+//		return page;
+//	}
 	
 	//商品一個一個排
 //	public Page<WorkProduct> findByall(Integer productNumber) {
@@ -55,97 +57,97 @@ public class WorkProductService {
 //	}
 	
 	//ID查詢
-	public WorkProduct findById(Long productid) {
-		Optional<WorkProduct> optional = productDao.findById(productid);
-		
-		if (optional.isPresent()) {
-			return optional.get();
-			
-		}
-		return null;
-	}
+//	public WorkProduct findById(Long productid) {
+//		Optional<WorkProduct> optional = productDao.findById(productid);
+//		
+//		if (optional.isPresent()) {
+//			return optional.get();
+//			
+//		}
+//		return null;
+//	}
 	//商品查詢種類不分頁
-	public List<WorkProduct> findByProductcategoryKey(String productcategory) {
-		List<WorkProduct> page = productDao.findByProductcategoryKey(productcategory);
+//	public List<WorkProduct> findByProductcategoryKey(String productcategory) {
+//		List<WorkProduct> page = productDao.findByProductcategoryKey(productcategory);
 
 //		if(page.isPresent()) {
 //			return page.get();
 //			
 //		}
-		return page;
-	}
+//		return page;
+//	}
 	
 	
 	//商品查詢種類分頁
-	public Page<WorkProduct> findByProductcategorypage(String productcategorypage,Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findByProductcategorypage(productcategorypage,pgb);
+//	public Page<WorkProduct> findByProductcategorypage(String productcategorypage,Integer pageNumber) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+//		Page<WorkProduct> page = productDao.findByProductcategorypage(productcategorypage,pgb);
 		
 //		if(page.isPresent()) {
 //			return page.get();
 //			
 //		}
-		return page;
-	}
+//		return page;
+//	}
 	
 	
 	
 	//商品查詢分頁
-	public Page<WorkProduct> findByNamePage(String productname ,Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-
-		Page<WorkProduct> page = productDao.findByNamePage(productname,pgb);
-
-		return page;
-	}
+//	public Page<WorkProduct> findByNamePage(String productname ,Integer pageNumber) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+//
+//		Page<WorkProduct> page = productDao.findByNamePage(productname,pgb);
+//
+//		return page;
+//	}
 	
 	//商品點擊查詢不分頁
-	public List<WorkProduct> findByName(String productname) {
-		List<WorkProduct> page = productDao.findByName(productname);
-
-		return page;
+//	public List<WorkProduct> findByName(String productname) {
+//		List<WorkProduct> page = productDao.findByName(productname);
+//
+//		return page;
 
 //		if (name.isPresent()) {
 //			return name.get();
 //
 //		}
 //		return null;
-	}
+//	}
 	//商品輸入查詢不分頁
-	public List<WorkProduct> findByProductName(String productname) {
-		List<WorkProduct> page = productDao.findByName(productname);
-		
-		return page;
+//	public List<WorkProduct> findByProductName(String productname) {
+//		List<WorkProduct> page = productDao.findByName(productname);
+//		
+//		return page;
 		
 //		if (name.isPresent()) {
 //			return name.get();
 //
 //		}
 //		return null;
-	}
+//	}
 	
 	
 	//商品前台顯示上架不分頁
-	public List<WorkProduct> findByOn(String takedown) {
-		List<WorkProduct> page = productDao.findByOn(takedown);
-		
-		return page;
+//	public List<WorkProduct> findByOn(String takedown) {
+//		List<WorkProduct> page = productDao.findByOn(takedown);
+//		
+//		return page;
 		
 //		if (name.isPresent()) {
 //			return name.get();
 //
 //		}
 //		return null;
-	}
+//	}
 
 	//商品上架排序分頁 首頁
-	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "added");
-		
-		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
-		
-		return page;
-	}
+//	public Page<WorkProduct> findByTakeDown(String takedown ,Integer pageNumber) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "added");
+//		
+//		Page<WorkProduct> page = productDao.findByTakeDown(takedown,pgb);
+//		
+//		return page;
+//	}
 	
 	//	public WorkProduct findById(Long productid) {
 //		Optional<WorkProduct> optional = productDao.findById(productid);
@@ -181,10 +183,10 @@ public class WorkProductService {
 //		}
 //	}
 
-	public void deleteById(Long productid) {
-		 productDao.deleteById(productid);
-
-	}
+//	public void deleteById(Long productid) {
+//		 productDao.deleteById(productid);
+//
+//	}
 	
 	//判斷
 //	public void validate(Object target, Errors errors) {

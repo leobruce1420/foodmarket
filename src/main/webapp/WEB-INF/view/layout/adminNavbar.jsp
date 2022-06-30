@@ -95,9 +95,6 @@
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
         </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
-        </li>
       </ul>
     </div>
   </div><!--panel end-->
@@ -116,9 +113,6 @@
         </li>
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-        </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
         </li>
       </ul>
     </div>
@@ -139,9 +133,6 @@
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
         </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
-        </li>
       </ul>
     </div>
   </div><!--panel end-->
@@ -161,9 +152,6 @@
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
         </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
-        </li>
       </ul>
     </div>
   </div><!--panel end-->
@@ -182,9 +170,6 @@
         </li>
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-        </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
         </li>
       </ul>
     </div>
