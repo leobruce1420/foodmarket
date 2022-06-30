@@ -45,7 +45,11 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	public Page<WorkProduct> findByTakeDown(@Param("takedown")String takedown,Pageable pgb);
 	
 	// 用商品上下架關鍵字查詢，無分頁
-	@Query(value = "select * from product where takedown = '上架中'", nativeQuery = true)
+//	@Query(value = "select * from product where takedown = '上架中'", nativeQuery = true)
+//	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
+	
+	// 用商品上下架關鍵字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，無分頁
+	@Query(value = "select * from (select * from product  where takedown = '上架中') as product  inner join productcategorys  on product.productcategoryid = productcategorys.categoryid ", nativeQuery = true)
 	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
 
 	// 用id刪除

@@ -60,7 +60,7 @@ public class WorkProduct {
 	
 	
 	@Column(name="productcategory_id", columnDefinition = "int")
-	private Integer productcategory_id;
+	private productcategory productcategoryid;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
