@@ -92,6 +92,7 @@ public class AdminController {
 			try {
 				Member member = memberService.findById((long) id);
 				if(member!=null) {
+					member.setOrderRecord(null);
 					memberService.deleteById((long) id);
 				}
 				
