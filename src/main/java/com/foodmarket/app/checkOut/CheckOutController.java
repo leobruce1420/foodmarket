@@ -36,7 +36,7 @@ public class CheckOutController {
 	private static final Logger logger = LoggerFactory.getLogger(CheckOutController.class);
 
 	@GetMapping("/goECPay")
-	public void goECPay(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	public String goECPay(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
 		// 要取得訂單資料的bean，資料我先寫死
 		
@@ -54,7 +54,9 @@ public class CheckOutController {
 		obj.setMerchantTradeDate(sdf.format(new Date()));
 		
 		obj.setTotalAmount("450");
-		obj.setTradeDesc("foodMarket");
+		
+		obj.setTradeDesc("foodMarket好食光市場");
+//		obj.setTradeDesc("foodMarket");
 		
 		//obj.setItemName("TestItem");
 		obj.setItemName("50x1#200x2");
@@ -64,6 +66,9 @@ public class CheckOutController {
 		obj.setNeedExtraPaidInfo("N");
 		obj.setRedeem("Y");
 		String form = all.aioCheckOut(obj, null);
+		
+		model.addAttribute("ecpay",form);
+		return "checkOut/goECPay";
 
 //
 //		AllInOne aio = new AllInOne("");
@@ -85,9 +90,9 @@ public class CheckOutController {
 //		aioCceck.setOrderResultURL("http://localhost/foodmarket/checkOut/showHistoryOrder");
 //		
 //	
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/html;charset=UTF-8");
-		out.print(form);
+//		PrintWriter out = response.getWriter();
+//		response.setContentType("text/html;charset=UTF-8");
+//		out.print(form);
 	}
 
 	@PostMapping("/checkOut/returnURL")

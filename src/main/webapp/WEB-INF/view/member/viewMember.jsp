@@ -141,6 +141,7 @@ function deleteOne(id) {
       , async: false
       , success: function(res){
     	  $('#'+id).remove();
+    	  location.reload(true);
       }
     });
   }
