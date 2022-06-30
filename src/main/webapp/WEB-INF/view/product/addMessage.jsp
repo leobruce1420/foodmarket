@@ -4,14 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<div class="container">
+<main role="main" class="col-md-6  ml-sm-auto  ">
+ <h1 class="h1">新增商品頁面</h1>
+</main>
 
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+ <div class="container">
 
 	<div class="row justify-content-center">
 		<div class="col-9">
-			<h1>新增商品頁面</h1>
 			<div class="card">
 				<div class="card-header">請輸入新商品資訊</div>
 				<div class="card-body">
@@ -256,5 +259,6 @@
 	</div>
 
 
+</div>
 </div>
 

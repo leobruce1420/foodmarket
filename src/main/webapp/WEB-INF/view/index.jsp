@@ -64,8 +64,8 @@
 	
 
 
-	<div class="container">
 		<hr />
+	<div class="container">
 
 		<div class=" justify-content-center">
 
@@ -125,7 +125,159 @@
 
 
 
-			<script type="text/javascript">
+			
+					<br />
+					<div id="carouselExampleIndicators" class="carousel slide"
+						data-ride="carousel">
+						<!-- data-interval="false" -->
+						<ol class="carousel-indicators">
+							<li data-target="#carouselExampleIndicators" data-slide-to="0"
+								class="active"></li>
+						</ol>
+						<br />
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<table class="table table-dark">
+									<tr>
+										<td>
+											<div class="card" style="width: 15rem; height: 12rem">
+												<div class="card-body" id="img_data0">
+
+												</div>
+											</div>
+										<td>
+											<div class="card" style="width: 15rem; height: 12rem">
+												<div class="card-body" id="img_data1"></div>
+											</div>
+										</td>
+										<td>
+											<div class="card" style="width: 15rem; height: 12rem">
+												<div class="card-body" id="img_data2">
+												</div>
+											</div>
+										</td>
+										<td>
+											<div class="card" style="width: 15rem; height: 12rem">
+												<div class="card-body" id="img_data3">
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+		
+		
+			<br />
+</div>
+
+			<hr />
+
+			<div>
+				<ul class="responsive">
+					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+						<c:forEach var="workProduct" items="${page.content}">
+							<li>
+				<div class="card-deck text-center">
+<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
+								<div class="card">
+								<div class="card-body">
+								<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" /></a>
+										</div>
+									<div class="card-body">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										
+										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<p class="card-text">$${workProduct.productprice}</p>
+									</div>
+									<div class="card-footer">
+										<button>加入購物車</button>
+<%-- 										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
+<!-- 											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a> -->
+										<%-- 					</form:form> --%>
+									</div>
+								</div>
+					</div>
+							</li>
+						</c:forEach>
+					</c:forEach>
+				</ul>
+			</div>
+			
+			
+			
+			
+			<br />
+			
+			
+			<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+      <c:forEach var="workProduct" items="${page.content}">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm text-center">
+          <div class="card-body ">
+          							<a
+											href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail"
+										src="data:image/image/*;base64,${workProduct.productimg}" alt="image" /></a>
+										</div>
+									<div class="card-body ">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<p class="card-text">$${workProduct.productprice}</p>
+										<div class="card-footer">
+										<button>加入購物車</button>
+<!-- 										<a -->
+<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
+<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
+										</div>
+										<%-- 					</form:form> --%>
+<!-- 									</div> -->
+								</div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+  </div>
+			
+			<div class="row justify-content-center container">
+
+				<div class="col-9">
+					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+						<c:choose>
+							<c:when test="${page.number != pageNumber-1}">
+								<a href="${contextRoot}/HOME?p=${pageNumber}"><c:out
+										value="${pageNumber}" /></a>
+							</c:when>
+
+							<c:otherwise>
+								<c:out value="${pageNumber}" />
+							</c:otherwise>
+
+						</c:choose>
+
+						<c:if test="${pageNumber != page.totalPages}">
+							|
+							</c:if>
+					</c:forEach>
+
+
+				</div>
+			</div>
+
+			<br />
+			</div>
+			</div>
+<hr/>
+			
+</body>
+<script type="text/javascript">
 				// 需要左右兩邊可滑動的箭頭
 				// arrows: true,
 				// prevArrow: '<button type="button" class="slick-prev Btn-prev">Previous</button>',
@@ -287,151 +439,4 @@
 							})
 									
 					</script>
-					<br />
-					<div id="carouselExampleIndicators" class="carousel slide"
-						data-ride="carousel">
-						<!-- data-interval="false" -->
-						<ol class="carousel-indicators">
-							<li data-target="#carouselExampleIndicators" data-slide-to="0"
-								class="active"></li>
-						</ol>
-						<br />
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<table class="table table-dark">
-									<tr>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data0">
-
-												</div>
-											</div>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data1"></div>
-											</div>
-										</td>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data2">
-												</div>
-											</div>
-										</td>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data3">
-												</div>
-											</div>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-		
-		
-			<br />
-</div>
-
-			<hr />
-
-			<div>
-				<ul class="responsive">
-					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-						<c:forEach var="workProduct" items="${page.content}">
-							<li>
-				<div class="card-deck text-center">
-<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
-								<div class="card">
-								<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}">
-									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
-										src="data:image/image/*;base64,${workProduct.productimg}"
-										alt="image" /></a>
-<!-- 										</div> -->
-									<div class="card-body">
-										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
-										
-										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
-										<p class="card-text">$${workProduct.productprice}</p>
-									</div>
-									<div class="card-footer">
-										
-										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}"
-											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a>
-										<%-- 					</form:form> --%>
-									</div>
-<!-- 									</div> -->
-								</div>
-					</div>
-							</li>
-						</c:forEach>
-					</c:forEach>
-				</ul>
-			</div>
-			
-			
-			
-			
-			<br />
-			
-			
-			<div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-      <c:forEach var="workProduct" items="${page.content}">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm text-center">
-<!--           <div class="card" style="width: 18rem; height: 23rem;"> -->
-									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail"
-										src="data:image/image/*;base64,${workProduct.productimg}"
-										alt="image" />
-									<div class="card-body ">
-										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
-										<h5 class="card-title">${workProduct.productname}</h5>
-										<p class="card-text">$${workProduct.productprice}</p>
-										<div class="card-footer">
-										<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
-											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
-										</div>
-										<%-- 					</form:form> --%>
-<!-- 									</div> -->
-								</div>
-          </div>
-        </div>
-        </c:forEach>
-      </div>
-    </div>
-  </div>
-			
-			<div class="row justify-content-center container">
-
-				<div class="col-9">
-					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-						<c:choose>
-							<c:when test="${page.number != pageNumber-1}">
-								<a href="${contextRoot}/HOME?p=${pageNumber}"><c:out
-										value="${pageNumber}" /></a>
-							</c:when>
-
-							<c:otherwise>
-								<c:out value="${pageNumber}" />
-							</c:otherwise>
-
-						</c:choose>
-
-						<c:if test="${pageNumber != page.totalPages}">
-							|
-							</c:if>
-					</c:forEach>
-
-
-				</div>
-			</div>
-
-			<br />
-<hr/>
-			
-</body>
-
 </html>
