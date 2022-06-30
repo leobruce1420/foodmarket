@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -13,12 +13,17 @@
 <title>修改商品</title>
 </head>
 <body>
-	<div class="container">
+
+<main role="main" class="col-md-6  ml-sm-auto  ">
+ <h1 class="h1">修改商品頁面</h1>
+</main>
+
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
 
 
 		<div class="row justify-content-center">
 			<div class="col-9">
-				<h1>修改商品頁面</h1>
 				<div class="card">
 					<div class="card-header">修改商品</div>
 					<div class="card-body">
@@ -53,7 +58,7 @@
 								</div>
 							</div>
 									價格
-									<form:input path="productprice" class="form-control" required/>
+									<form:input path="productprice" class="form-control" />
 									
 					</div> 
 									<br />
@@ -79,14 +84,14 @@
 							<br/>
 										<div>
 								<label class="input-group-text" for="inputGroupSelect01">商品介紹</label>
-								<form:textarea path="productdesciption" class="form-control" required/>
+								<form:textarea path="productdesciption" class="form-control" />
 							</div>
 
 							<br />
 
 							<div>
 								<label class="input-group-text" for="inputGroupSelect01">庫存數量</label>
-								<form:input path="inventoryquantity" class="form-control" required/>
+								<form:input path="inventoryquantity" class="form-control" />
 							</div>
 							
 							<br/>
@@ -175,6 +180,7 @@
 
 			</div>
 
+		</div>
 		</div>
 </body>
 </html>
