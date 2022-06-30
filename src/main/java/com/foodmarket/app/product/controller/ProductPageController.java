@@ -149,16 +149,16 @@ public class ProductPageController {
 	}
 
 //	消費者商品種類查詢無分頁 首頁顯示
-	@GetMapping("/p")
-	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
-			Model m) {
-		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
-		
-		m.addAttribute("workProduct", workProduct);
-		m.addAttribute("productcategory", productcategory);
-		return "index";
-		
-	}
+//	@GetMapping("/p")
+//	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
+//			Model m) {
+//		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+//		
+//		m.addAttribute("workProduct", workProduct);
+//		m.addAttribute("productcategory", productcategory);
+//		return "index";
+//		
+//	}
 
 	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
 	@GetMapping("product/productname")
