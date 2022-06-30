@@ -51,68 +51,83 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark sticky-top" >
-    <a class="navbar-brand" href="${contextRoot}/p">好食光市場</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-auto ">
-      
-        <li class="nav-item active">
-        <a class="nav-link active" href="${contextRoot}/p">管理員首頁 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            商品管理
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
-            <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="${contextRoot}/product/ajax">ajax</a>
-          </div>
-        </li>
-  
+
+  <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav mr-auto ">
+    
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            廣告管理
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
-            <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">ajax</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link" href="${contextRoot}/product/all">所有商品訊息</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link" href="${contextRoot}/product/add">新增商品訊息</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          商品管理
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
+        </div>
+      </li>
+
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          廣告管理
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
+          <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
+        </div>
+      </li>
+
+      		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          常見問題
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/question/allQuestion">常見問題</a>
+          <a class="dropdown-item" href="${contextRoot}/question/addQuestion">新增常見問題</a>
+        </div>
+      </li>
+
+    
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          購物車
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${contextRoot}/orderList/{orderId}">購物明細</a>
+        </div>
       </li>
       
-      
-        
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      
-      <c:choose>
-      <c:when test="${loginUserId != null}">
-        <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/lock/memberCenter/${loginUserId}'">會員中心</button>
-         <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
-      </c:when>
-        
-      <c:otherwise>
-          <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/signUp'">註冊</button>
-         <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/login'">登入</button>
-      </c:otherwise>
-    </c:choose>
-    </div>
+    </ul>
     
-  </nav>
+    
+    <button type="button" class="btn btn-primary mr-sm-2">
+ 購物車
+</button>
+
+
+    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
+      <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+    </form>
+    
+    <c:choose>
+		<c:when test="${loginUserId != null}">
+			<button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/lock/memberCenter/${loginUserId}'">會員中心</button>
+			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/logout'">登出</button>
+		</c:when>
+			
+		<c:otherwise>
+		 	 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/signUp'">註冊</button>
+			 <button class="btn btn-outline-warning my-2 my-sm-0 ml-2" type="button" onclick="location.href='${contextRoot}/login'">登入</button>
+		</c:otherwise>
+	</c:choose>
+  </div>
+  
+</nav>
 
 <div class="container-fluid">
   <div class="row">
