@@ -330,11 +330,49 @@
 		
 		
 			<br />
-
+</div>
 
 			<hr />
-		
+
+			<div>
+				<ul class="responsive">
+					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+						<c:forEach var="workProduct" items="${page.content}">
+							<li>
+				<div class="card-deck text-center">
+<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
+								<div class="card">
+								<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" /></a>
+<!-- 										</div> -->
+									<div class="card-body">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										
+										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<p class="card-text">$${workProduct.productprice}</p>
+									</div>
+									<div class="card-footer">
+										
+										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a>
+										<%-- 					</form:form> --%>
+									</div>
+<!-- 									</div> -->
+								</div>
+					</div>
+							</li>
+						</c:forEach>
+					</c:forEach>
+				</ul>
+			</div>
+			
+			
+			
+			
 			<br />
+			
 			
 			<div class="album py-5 bg-light">
     <div class="container">
