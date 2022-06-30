@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -87,36 +89,55 @@ public class CheckOutController {
 		return "checkOut/goECPay";
 	}
 
-	@PostMapping("/checkOut/returnURL")
-	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo, @RequestParam("RtnCode") int RtnCode,
-			@RequestParam("TradeAmt") int TradeAmt, HttpServletRequest request) {
+	
+	@RequestMapping(path = "/checkOut/returnURL", method = {RequestMethod.GET,RequestMethod.POST})
+	public String returnURL(HttpServletRequest request) {
 		
-		//之後更改流程：==================================================================================================
+		//之後更改流程(暫定不用這支，直接在/checkOut/showHistoryOrder改訂單狀態)：===================================================
+		//因為 請確認特店的 Server URL 連接 port 為 http 80 port 與 https 443 port 我們是8080所以......
 		//1、檢查傳入值
 		//2、更新資料庫的訂單狀態
 		
-		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
-				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
-				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")
-				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.28")
-				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.32")) && RtnCode == 1) {
+		logger.info("test check start");
+		
+		AllInOne all = new AllInOne("");
+		
+		Enumeration<String> attrNamesList = request.getParameterNames();
+		Hashtable<String, String> params = new Hashtable<String, String>();
+		while(attrNamesList.hasMoreElements()) {
+			String para = attrNamesList.nextElement();
+			params.put(para,request.getParameter(para));
+		}
+		
+		if(all.compareCheckMacValue(params)) {
+			//更新資料庫的訂單狀態===========================================================================================
 
-//			//抓訂單id，用id搜尋訂單然後改狀態
-//			String orderIdStr = MerchantTradeNo.substring(8);
-//			int OrderId = Integer.parseInt(orderIdStr);
-//			//findById(OrderId)
-
-			logger.info("test check out ok");
+			if(Integer.parseInt(request.getParameter("RtnCode"))==1 && Integer.parseInt(request.getParameter("SimulatePaid"))==0) {				
+				//order.setStatus(OrderStatus.PAID);
+				logger.info("test check out ok");
+			}else {
+				//order.setStatus(OrderStatus.UNPAID);
+				logger.info("test check out not ok");
+			}
+			return "1|OK";
+			
+		}else {
+			logger.info("test check out not ok");
+			return "";
 		}
 
 	}
 
 	@RequestMapping(path = "/checkOut/showHistoryOrder", method = {RequestMethod.GET,RequestMethod.POST})
 	public String showHistoryOrder(Model model, HttpSession session) {
+		//之後更改流程：==================================================================================================
+		//1、更新資料庫的訂單狀態
+		//2、return回顯示訂單處
+		
+		
 //		Long sessionUId = (Long) session.getAttribute("loginUserId");
 //		Member member = memberService.findById(sessionUId);
 		
-		//透過使用者取得訂單資料並呈現，此處先用index代替
 		logger.info("test check out HistoryOrder");
 		return "index";
 	}
