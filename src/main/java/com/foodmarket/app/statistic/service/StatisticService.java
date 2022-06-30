@@ -30,9 +30,9 @@ public class StatisticService {
 		
 		List<ProductStatistic> ps_list = statisticDao.findAll();
 		
-		System.err.println("============== test ps_list str ==============");
-		System.err.println(ps_list);
-		System.err.println("============== test ps_list end ==============");
+//		System.err.println("============== test ps_list str ==============");
+//		System.err.println(ps_list);
+//		System.err.println("============== test ps_list end ==============");
 		
 		List<ProductStatistic> rtnList = new ArrayList();
 		
@@ -42,13 +42,13 @@ public class StatisticService {
 			
 			// 確認原始資料
 			int id = data.getProductId();
-			System.err.println("ID:" + id);
+//			System.err.println("ID:" + id);
 			
 			String pn = data.getProductName();
-			System.err.println("Product Name:" + pn);
+//			System.err.println("Product Name:" + pn);
 			
 			int s = data.getSales();
-			System.err.println("Sales:" + s);
+//			System.err.println("Sales:" + s);
 			
 			
 			// 取得目前加總
@@ -61,7 +61,7 @@ public class StatisticService {
 			keyMap.put(pn, total_salles);
 		}
 		
-		System.err.println("加總結果:" + keyMap);
+//		System.err.println("加總結果:" + keyMap);
 
 		return keyMap;
 	}
