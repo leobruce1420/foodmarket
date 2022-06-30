@@ -38,66 +38,63 @@ public class CheckOutController {
 	@GetMapping("/goECPay")
 	public String goECPay(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
+		//之後更改流程：==================================================================================================
+		//1、傳入值接結帳的資料
+		//2、把資料更新進資料庫
+		//3、把資料set進對應欄位，到綠界成立訂單
+		
+		
 		// 要取得訂單資料的bean，資料我先寫死
 		
-		
+		//綠界物件
 		AllInOne all = new AllInOne("");
 		AioCheckOutOneTime obj = new AioCheckOutOneTime();
 		
+		//給綠界的訂單號，因不可重複所以抓時間產生
+		//obj.setMerchantTradeNo(nowStr+"fmk"); 在fmk後加我們db的訂單號碼===================================================
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmss");
 		String nowStr = sdf1.format(new Date()).toString();
 		obj.setMerchantTradeNo(nowStr+"fmk");
 		
-		//obj.setMerchantTradeDate("2017/01/01 08:05:23");
+		//給綠界的訂單時間，必須是這個格式
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sdf.setLenient(false);
 		obj.setMerchantTradeDate(sdf.format(new Date()));
 		
+		//總價，>5 && <199999，不可有小數點
 		obj.setTotalAmount("450");
 		
+		//商店名，不用改
 		obj.setTradeDesc("foodMarket好食光市場");
-//		obj.setTradeDesc("foodMarket");
-		
-		//obj.setItemName("TestItem");
+
+		//商品明細，#是換行
 		obj.setItemName("50x1#200x2");
 		
+		//當消費者付款完成後，特店接受綠界的付款結果訊息，並回應接收訊息(文件p28~)
+		//(1) 特店務必判斷檢查碼[CheckMacValue]是否正確，以及是否已經對該筆訂單的付款通知，做過相對應的處理，以免造成交易狀態無法同步的損失。
+		//(2) 若未正確回應 1|OK，系統會隔 5~15 分鐘後重發訊息給特店，當天重複發送四次。
 		obj.setReturnURL("http://localhost:8080/foodmarket/checkOut/returnURL");
+		
+		//當消費者付款完成後，綠界一次性反饋付款結果通知，並將頁面導至特店自製頁面(文件p28~)
 		obj.setOrderResultURL("http://localhost:8080/foodmarket/checkOut/showHistoryOrder");
+		
 		obj.setNeedExtraPaidInfo("N");
 		obj.setRedeem("Y");
 		String form = all.aioCheckOut(obj, null);
 		
+		//因為Content Type 指定為 application/x-www-form-urlencoded，先到jsp再轉綠界成立訂單!
 		model.addAttribute("ecpay",form);
 		return "checkOut/goECPay";
-
-//
-//		AllInOne aio = new AllInOne("");
-//		//AioCheckOutDevide aioCceck = new AioCheckOutDevide();
-//		AioCheckOutOneTime aioCceck = new AioCheckOutOneTime();
-//
-//		aioCceck.setMerchantID("2000132");
-//
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		sdf.setLenient(false);
-//		aioCceck.setMerchantTradeDate(sdf.format(new Date()));
-//
-//		// 要取得訂單資料的bean，資料我先寫死
-//		aioCceck.setTotalAmount("1000");
-//		aioCceck.setTradeDesc("foodMarket 好食光市場");
-//		aioCceck.setItemName("測試結帳收你1000元");
-//		aioCceck.setMerchantTradeNo("202206291447m3");
-//		aioCceck.setReturnURL("http://localhost/foodmarket/checkOut/returnURL");
-//		aioCceck.setOrderResultURL("http://localhost/foodmarket/checkOut/showHistoryOrder");
-//		
-//	
-//		PrintWriter out = response.getWriter();
-//		response.setContentType("text/html;charset=UTF-8");
-//		out.print(form);
 	}
 
 	@PostMapping("/checkOut/returnURL")
 	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo, @RequestParam("RtnCode") int RtnCode,
 			@RequestParam("TradeAmt") int TradeAmt, HttpServletRequest request) {
+		
+		//之後更改流程：==================================================================================================
+		//1、檢查傳入值
+		//2、更新資料庫的訂單狀態
+		
 		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
 				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
 				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")
