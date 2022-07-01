@@ -123,7 +123,7 @@ public class RecipeController {
 	public String insertEditRecipe(@ModelAttribute(name="rec") Recipe rec,HttpSession session) {
 		rService.save(rec);
 
-		return "redirect:/recipe/memberHouse?customerId="+session.getAttribute("loginUserId");
+		return "redirect:/lock/recipe/memberHouse";
 	}
 	
 	@GetMapping("recipe/deleteRecipe")

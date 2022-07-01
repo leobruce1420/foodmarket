@@ -15,6 +15,7 @@
 <style type="text/css">
 	div.backstage{
 	margin-left:20%;
+	margin-right:5%;
 	}
 	*{
 	padding:0;

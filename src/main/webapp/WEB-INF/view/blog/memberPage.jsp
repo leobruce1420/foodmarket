@@ -12,8 +12,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
-button.btn{
+button#timebutton{
+float:left;
+}
+button#likebutton{
 float:right;
 }
 div.container{
@@ -25,10 +27,13 @@ div.container{
 <body>
 
 <div class="container">
+			
+			
+
 	<div class="titleline">
 		<h3>您收藏的食譜</h3>
 	</div>
-	<div class="row justify-content-center" style="background-color:antiquewhite;">
+	<div class="row justify-content-center">
   		<div class="col-9">
 			<div class="row row-cols-1 row-cols-md-3 g-4">
   			<c:forEach var="recipe" items="${page.content}">
@@ -39,7 +44,7 @@ div.container{
         				<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
         					<p class="card-text"><c:out value="${recipe.postTag}" /></p>
         					<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
-        					<p>⌚  ${recipe.cookTime} 
+        					<p> <button id="timebutton" class="btn btn-info" disabled="disabled">⌚ ${recipe.cookTime} </button>
         						<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" disabled="disabled">♥  ${recipe.postLikeTime}</button></a>
        							<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
        						</p>
@@ -54,11 +59,12 @@ div.container{
 	<div class="titleline">
 		<h3>您撰寫的食譜</h3>
 	</div>
-		<table class="table">
+	<div class="row justify-content-center" style="background-color:antiquewhite;">
+		<table class="table" style="margin:20px;">
 		<thead  class="table-dark">
 			<tr><th>食譜分類<th>食譜標題<th>食譜標籤<th>收藏人數<th>烹飪時間<th>份量<th>功能列表</tr>
-		</thead>	
-		<c:forEach var="yourrecipe" items="${yourrecipe.content}">
+		</thead>
+			<c:forEach var="yourrecipe" items="${yourrecipe.content}">
 			<tbody>
 			<tr>
 			<td ><c:out value="${yourrecipe.recipeType}" />
@@ -73,10 +79,9 @@ div.container{
 			</td>
 			</tr>
 			</tbody>   	
-		
 		</c:forEach>
-	</table>
-	
+		</table>
+	</div>
 </div>
   <br><br><br>
 

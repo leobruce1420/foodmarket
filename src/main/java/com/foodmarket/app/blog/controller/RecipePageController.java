@@ -3,6 +3,8 @@ package com.foodmarket.app.blog.controller;
 
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -104,17 +106,32 @@ public class RecipePageController {
 //		return mav;
 //	}
 
-	@GetMapping("/lock/recipe/memberHouse")
+	@GetMapping("lock/recipe/memberHouse")
 	public ModelAndView getMyLikeRecipe(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,
-			@RequestParam("customerId") Long customerId) {
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,HttpSession session) {
+		Object customerId = session.getAttribute("loginUserId");
+		System.out.println(pageNumber);
+		System.out.println(customerId);
+//		int[] likeList = memberLikeRecipeService.getAllLikeRecipeById(customerId);
+		if(memberLikeRecipeService.getAllLikeRecipeById(customerId) != null) {
 		int[] likeList = memberLikeRecipeService.getAllLikeRecipeById(customerId);
 		Page<Recipe> yourrecipe = rService.findForMemberHouse(pageNumber,customerId);
 		Page<Recipe> page = rService.findLikeRecipeById(likeList, pageNumber);
+		
 		mav.getModel().put("likeList", likeList);
 		mav.getModel().put("page", page);
 		mav.getModel().put("yourrecipe", yourrecipe);
-		mav.setViewName("blog/memberPage");
+		}
+		else {
+			pageNumber=null;
+			int[] likeList = null;
+			Page<Recipe> yourrecipe = null;
+			Page<Recipe> page = null;
+			mav.getModel().put("likeList", likeList);
+			mav.getModel().put("page", page);
+			mav.getModel().put("yourrecipe", yourrecipe);
+		}
+		mav.setViewName("/blog/memberPage");
 		return mav;
 	}
 	
