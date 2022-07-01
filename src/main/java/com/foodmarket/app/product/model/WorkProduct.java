@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -55,7 +55,12 @@ public class WorkProduct {
 	@Column(name="takedown", columnDefinition = "nvarchar(5)")
 	private String takedown;
 	
-//	private productcategory productcategoryname;
+	@Column(name="productcategoryId", columnDefinition = "int")
+	private Integer productcategoryId;
+	
+	
+//	@JoinColumn(name = "productcategoryId")
+//	private productcategory categoryId;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用

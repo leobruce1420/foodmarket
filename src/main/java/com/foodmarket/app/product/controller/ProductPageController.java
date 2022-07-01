@@ -50,7 +50,22 @@ public class ProductPageController {
 //		return "index";
 //		
 //	}
-
+//inner join
+//	@GetMapping("product/add")
+//	public String addMessagePage(Model model) {
+////		Util method = new Util();
+//		WorkProduct workProduct = new WorkProduct();
+//		WorkProduct lastestpMsg = pmsgService.getLastest();
+//		List<productcategory> productcategory = pmsgService.findBycategory();
+////		byte[] imgBytes = mf.getBytes();
+////		workProduct.setProductimg(method.decoder(imgBytes));
+//		model.addAttribute("productcategory", productcategory);
+//		model.addAttribute("workProduct", workProduct);
+//		model.addAttribute("lastestpMsg", lastestpMsg);
+//
+//		return "product/addMessage";
+//	}
+	//好的
 	@GetMapping("product/add")
 	public String addMessagePage(Model model) {
 //		Util method = new Util();
@@ -60,7 +75,7 @@ public class ProductPageController {
 //		workProduct.setProductimg(method.decoder(imgBytes));
 		model.addAttribute("workProduct", workProduct);
 		model.addAttribute("lastestpMsg", lastestpMsg);
-
+		
 		return "product/addMessage";
 	}
 
@@ -104,8 +119,9 @@ public class ProductPageController {
 //			@RequestParam(required = false, value = "productcategoryid")Integer  productcategoryid,
 //			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 //		Page<WorkProduct> page = pmsgService.findBycategory(productcategoryid,pageNumber);
-//		
+//		List<productcategory> pcage = pcmsgService.findBycategoryId(productcategoryid);
 //		mav.getModel().put("page", page);
+//		mav.getModel().put("pcage", pcage);
 //		mav.setViewName("product/viewMessages");
 ////		mav.setViewName("index");
 //		return mav;

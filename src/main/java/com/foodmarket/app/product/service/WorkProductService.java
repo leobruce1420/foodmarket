@@ -47,7 +47,7 @@ public class WorkProductService {
 	
 	//商品inner join 測試
 //	public Page<WorkProduct> findBycategory(Integer productcategoryid,Integer productNumber) {
-//		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
+//		Pageable pgb = PageRequest.of(productNumber - 1, 10, Sort.Direction.DESC, "added");
 //		
 //		Page<WorkProduct> page = productDao.findBycategory(productcategoryid,pgb);
 //		
