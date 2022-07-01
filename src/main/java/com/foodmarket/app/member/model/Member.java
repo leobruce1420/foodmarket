@@ -106,9 +106,9 @@ public class Member {
 	@Column(name="ModifiedDate", columnDefinition="datetime", nullable = false) 
 	private Date modifiedDate;
 	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
-	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+//	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
@@ -300,13 +300,13 @@ public class Member {
 		this.modifiedDate = modifiedDate;
 	}
 
-	public Set<Recipe> getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(Set<Recipe> recipe) {
-		this.recipe = recipe;
-	}
+//	public Set<Recipe> getRecipe() {
+//		return recipe;
+//	}
+//
+//	public void setRecipe(Set<Recipe> recipe) {
+//		this.recipe = recipe;
+//	}
 
 	public Set<OrderRecord> getOrderRecord() {
 		return orderRecord;
