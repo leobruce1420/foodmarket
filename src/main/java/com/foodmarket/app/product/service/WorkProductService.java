@@ -45,11 +45,11 @@ public class WorkProductService {
 		return page;
 	}
 	
-	//商品一個一個排
-//	public Page<WorkProduct> findByall(Integer productNumber) {
+	//商品inner join 測試
+//	public Page<WorkProduct> findBycategory(Integer productcategoryid,Integer productNumber) {
 //		Pageable pgb = PageRequest.of(productNumber - 1, 1, Sort.Direction.DESC, "added");
 //		
-//		Page<WorkProduct> page = productDao.findAll(pgb);
+//		Page<WorkProduct> page = productDao.findBycategory(productcategoryid,pgb);
 //		
 //		return page;
 //	}

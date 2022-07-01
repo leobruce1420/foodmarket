@@ -56,9 +56,13 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 //	@Query(value = "select * from (select * from product  where takedown = '上架中') as product  inner join productcategorys  on product.productcategoryid = productcategorys.categoryid ", nativeQuery = true)
 //	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
 
-	// 用商品上下架關鍵字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，無分頁 2
-	@Query(value = "select * from (select * from product  where takedown = '上架中') as product  inner join productcategorys  on product.productcategoryid = productcategorys.categoryid ", nativeQuery = true)
-	public List<ProductcategoryDto> findBycategory(@Param("takedown") String takedown);
+	// 用商品字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，有分頁 2
+	@Query(value = "select *from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true)
+	public Page<WorkProduct> findBycategory(@Param("productcategoryid") Integer productcategoryid,Pageable pgb);
+
+	// 商品種類名稱不能重複，無分頁 2
+	@Query(value = "select count(*) as count from productcategorys	where productcategoryname = '蔬菜類'", nativeQuery = true)
+	public List<WorkProduct> findBycategoryname(@Param("takedown") String takedown);
 
 	// 用id刪除
 	@Transactional

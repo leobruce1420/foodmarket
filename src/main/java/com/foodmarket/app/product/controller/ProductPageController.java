@@ -86,7 +86,7 @@ public class ProductPageController {
 ////		mav.setViewName("index");
 //		return mav;
 //	}
-
+//後台查詢所有 OK
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
@@ -97,6 +97,19 @@ public class ProductPageController {
 //		mav.setViewName("index");
 		return mav;
 	}
+
+	//後台查詢所有 inner join
+//	@GetMapping("product/all")
+//	public ModelAndView viewProducts(ModelAndView mav,
+//			@RequestParam(required = false, value = "productcategoryid")Integer  productcategoryid,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+//		Page<WorkProduct> page = pmsgService.findBycategory(productcategoryid,pageNumber);
+//		
+//		mav.getModel().put("page", page);
+//		mav.setViewName("product/viewMessages");
+////		mav.setViewName("index");
+//		return mav;
+//	}
 
 	// 0622T0024 商品全部查詢
 //	@GetMapping("product/allproduct")

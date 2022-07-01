@@ -55,8 +55,7 @@ public class WorkProduct {
 	@Column(name="takedown", columnDefinition = "nvarchar(5)")
 	private String takedown;
 	
-	@Transient
-	private productcategory categoryid;
+//	private productcategory productcategoryname;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -74,6 +73,16 @@ public class WorkProduct {
 
 	public WorkProduct() {
 	}
+	
+	
+
+//	public productcategory getProductcategoryname() {
+//		return productcategoryname;
+//	}
+//
+//	public void setProductcategoryname(productcategory productcategoryname) {
+//		this.productcategoryname = productcategoryname;
+//	}
 
 	public Long getProductid() {
 		return productid;
