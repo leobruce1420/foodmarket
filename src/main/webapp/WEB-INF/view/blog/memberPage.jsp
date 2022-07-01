@@ -54,6 +54,28 @@ div.container{
 	<div class="titleline">
 		<h3>您撰寫的食譜</h3>
 	</div>
+		<table class="table">
+		<thead  class="table-dark">
+			<tr><th>食譜分類<th>食譜標題<th>食譜標籤<th>收藏人數<th>烹飪時間<th>份量<th>功能列表</tr>
+		</thead>	
+		<c:forEach var="yourrecipe" items="${yourrecipe.content}">
+			<tbody>
+			<tr>
+			<td ><c:out value="${yourrecipe.recipeType}" />
+			<td ><a href="${contextRoot}/recipe/showRecipe?recipePostId=${yourrecipe.recipePostId}"><c:out value="${yourrecipe.postTitle}" /></a>
+			<td ><c:out value="${yourrecipe.postTag}" />
+			<td ><c:out value="${yourrecipe.postLikeTime}" />
+			<td ><c:out value="${yourrecipe.cookTime}" />
+			<td ><c:out value="${yourrecipe.serving}" />
+			<td>
+				<a href="${contextRoot}/recipe/editRecipe?recipePostId=${yourrecipe.recipePostId}"><button class="btn btn-info">編輯</button></a>
+        		<a onclick="return confirm('真的要刪除嗎')"  href="${contextRoot}/recipe/deleteRecipe?recipePostId=${yourrecipe.recipePostId}"><button class="btn btn-danger">刪除</button></a>
+			</td>
+			</tr>
+			</tbody>   	
+		
+		</c:forEach>
+	</table>
 	
 </div>
   <br><br><br>

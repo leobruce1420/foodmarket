@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -13,6 +13,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	div.backstage{
+	margin-left:20%;
+	}
 	*{
 	padding:0;
 	margin:0;
@@ -73,6 +76,7 @@
 
 <div>
 <h2>管理者介面CRUD</h2>
+<div class="backstage">
 <a href="${contextRoot}/recipe/manageradd"><button type="button" class="btn btn-primary btn-lg">新增食譜</button></a>
 搜尋：<input type="search" class="light-table-filter" data-table="table" placeholder="請輸入關鍵字">
 	<table class="table">
@@ -125,7 +129,7 @@
  </div>
 
 </div>
-
+</div>
 
 
 

@@ -64,7 +64,10 @@ div #pullinup{
  						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true"/><br/>
  						<div id="summernote"><h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文</h3></div>
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
- 						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
+ 						<form:input path="postLikeTime" class="form-control" type="hidden"/>
+ 						<form:input path="recipePostId" class="form-control" type="hidden"/>
+ 						<form:input path="modifiedDate" class="form-control" type="hidden"/>
+ 						<form:input path="customerId" class="form-control" type="hidden"/>
   						
   						</div>
   

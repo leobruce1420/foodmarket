@@ -104,7 +104,7 @@ public class RecipePageController {
 //		return mav;
 //	}
 
-	@GetMapping("recipe/memberHouse")
+	@GetMapping("/lock/recipe/memberHouse")
 	public ModelAndView getMyLikeRecipe(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,
 			@RequestParam("customerId") Long customerId) {

@@ -67,6 +67,11 @@ div #pullinup{
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
  						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
+ 						
+ 						
+ 						
+ 						
+ 						
   						
   						</div>
   
