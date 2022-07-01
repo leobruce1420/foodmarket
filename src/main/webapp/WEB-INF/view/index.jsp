@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <jsp:include page="layout/navbar.jsp" />
 <jsp:include page="layout/navbarProduct.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
@@ -194,7 +194,8 @@
 										<p class="card-text">$${workProduct.productprice}</p>
 									</div>
 									<div class="card-footer">
-										<button>加入購物車</button>
+										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
+										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">
 <%-- 										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
 <!-- 											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a> -->
 										<%-- 					</form:form> --%>
@@ -231,7 +232,8 @@
 										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 										<div class="card-footer">
-										<button>加入購物車</button>
+										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
+										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">		
 <!-- 										<a -->
 <%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
 <!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
@@ -332,11 +334,7 @@
 					  $('.carousel').carousel({
 					     interval: 2000
 					  })
-					})
-			
-		</script>
-		
-							<script type="text/javascript">							
+					})					
 
 							
 							$(document).ready(
@@ -437,6 +435,21 @@
 									}
 								})
 							})
-									
-					</script>
+
+function insertProduct(pId) {
+	var id =document.getElementById('productId_'+pId).value;
+		axios({
+			method : 'post',
+			url : '${contextRoot}/shopcart/insert' ,
+			data : {
+				 "productNumber" : 1,
+				 "customerId" : 1 ,
+				 "productId" :id
+			}
+		}).then(function(res) {
+			
+		})
+
+		}
+</script>
 </html>

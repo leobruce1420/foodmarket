@@ -29,7 +29,7 @@ public class OrderRecord {
 	private Integer id;
 	
 	//@Column(name="user_id")
-	private Integer userId;
+	private Long userId;
 	
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -48,6 +48,16 @@ public class OrderRecord {
 	@Transient
 	private List<OrderItem> orderItems = new ArrayList();
 
+	@Transient
+	private String customerName;
+	
+	@Transient
+	private String mobile;
+	
+	@Transient
+	private String address;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -56,11 +66,11 @@ public class OrderRecord {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -102,6 +112,30 @@ public class OrderRecord {
 
 	public void setMember(Member member) {
 		this.member = member;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	
