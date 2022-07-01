@@ -159,7 +159,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${contextRoot}/wishList/${loginUserId}">
               <span data-feather="heart"></span>
               我的收藏
             </a>
