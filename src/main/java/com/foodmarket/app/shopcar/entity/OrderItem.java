@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -21,13 +23,16 @@ public class OrderItem {
 	private Integer id;
 	
 	@Column(name="user_id")
-	private Integer userId;
+	private Long userId;
 
 	@Column(name="order_Record_Id")
 	private Integer orderRecordId;
 	
 	@Transient
 	private String productName;
+	
+	@Transient
+	private Integer productPrice;
 	
 	@Column(name="product_Id")
 	private Integer productId;
@@ -40,7 +45,7 @@ public class OrderItem {
 	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
-
+	
 	@Column(name="modify_date")
 	private LocalDateTime modifyDate;
 	
@@ -55,7 +60,7 @@ public class OrderItem {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
@@ -67,7 +72,7 @@ public class OrderItem {
 		this.productName = productName;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -118,4 +123,14 @@ public class OrderItem {
 	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
+
+	public Integer getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(Integer productPrice) {
+		this.productPrice = productPrice;
+	}
+	
+	
 }

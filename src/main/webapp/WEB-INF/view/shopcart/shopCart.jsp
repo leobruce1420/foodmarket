@@ -51,9 +51,12 @@
 			</td>
 		</tr>
 	</c:forEach>
+	
+	
+	
 	</tbody>
 	</table>
-	
+	<div>總金額:$<c:out  value ="${totalPrice}" /></div>
 	<div class="submitdiv">
 		<input class="insertOrderBtn btn btn-success" type="button" value="送出訂單" onclick="sendOrder()">
 	</div>
@@ -67,15 +70,15 @@ function sendOrder() {
 	shoplist.list = [];
 	var userId = document.getElementById('userId').value;
 
-	document.getElementsByName("shopCartId").forEach(shopCartInput => {
-		var shopCartId = shopCartInput.value;
-		var quantity = document.getElementById("amount_" + shopCartId).value;
-		var productId = document.getElementById("productId_" + shopCartId).value;
-	 	shoplist.list.push({"productId": productId, "quantity": quantity})
+	document.getElementsByName("shopCartId").forEach(shopCartInput => {           
+		var shopCartId = shopCartInput.value;                                     //購物車db每一個商品的id
+		var quantity = document.getElementById("amount_" + shopCartId).value;     //數量
+		var productId = document.getElementById("productId_" + shopCartId).value; //商品的id
+	 	shoplist.list.push({"productId": productId, "quantity": quantity})		  //將數量跟商品id放到list裡面
 	})
 	axios({
 		method : 'post',
-		url : '${contextRoot}/orderItem/save/' + userId,
+		url : '${contextRoot}/orderItem/save/' + userId,       //送shoplist.list的data到OrderItemController的saveRecord方法
 		data : {
 			 "orderItems"  : shoplist.list
 		}
