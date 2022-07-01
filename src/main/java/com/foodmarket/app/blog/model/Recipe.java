@@ -6,22 +6,18 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.foodmarket.app.member.model.Member;
 
 @Entity(name="RrecipeEntity")
 @Table(name="recipe_post")
@@ -31,10 +27,8 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long recipePostId;
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="CustomerId")
-	private Member member;
+	@Column(name="CustomerId")
+	private Long customerId;
 	
 	@Column(name="PostTitle",columnDefinition = "nvarchar(100)")
 	private String postTitle;
@@ -54,6 +48,9 @@ public class Recipe {
 	@Column(name="CookTime")
 	private String cookTime;
 	
+	@Transient
+	private String likeList;
+	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -71,6 +68,9 @@ public class Recipe {
 	@Column(name="Ingredients",columnDefinition = "nvarchar(max)")
 	private String ingredients;
 	
+	@Column(name="RecipeType",columnDefinition = "nvarchar(100)")
+	private String recipeType;
+	
 //	private List<Recipe> managerInsert;
 	
 //	public
@@ -81,6 +81,14 @@ public class Recipe {
 	public Recipe() {
 	}
 
+	public String getRecipeType() {
+		return recipeType;
+	}
+
+	public void setRecipeType(String recipeType) {
+		this.recipeType = recipeType;
+	}
+
 	public Long getRecipePostId() {
 		return recipePostId;
 	}
@@ -89,13 +97,12 @@ public class Recipe {
 		this.recipePostId = recipePostId;
 	}
 
-	
-	public Member getMember() {
-		return member;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getPostTitle() {
@@ -172,17 +179,28 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "Recipe [customerId=" + member.getCustomerId() + ", postTitle=" + postTitle + ", postText=" + postText + ", postTag="
-				+ postTag + ", postLikeTime=" + postLikeTime + ", postImage=" + postImage + ", cookTime=" + cookTime
-				+ ", modifiedDate=" + modifiedDate + ", serving=" + serving + ", ingredients=" + ingredients + "]";
+		return "Recipe [recipePostId=" + recipePostId + ", customerId=" + customerId + ", postTitle=" + postTitle
+				+ ", postText=" + postText + ", postTag=" + postTag + ", postLikeTime=" + postLikeTime + ", postImage="
+				+ postImage + ", cookTime=" + cookTime + ", modifiedDate=" + modifiedDate + ", serving=" + serving
+				+ ", ingredients=" + ingredients + ", recipeType=" + recipeType + "]";
+	}
+
+	public String getLikeList() {
+		return likeList;
+	}
+
+	public void setLikeList(String likeList) {
+		this.likeList = likeList;
 	}
 
 //	@Override
 //	public String toString() {
-//		return "Recipe [CustomerId=" + CustomerId + ", PostTypeId=" + PostTypeId + ", PostTitle=" + PostTitle
-//				+ ", PostText=" + PostText + ", PostTag=" + PostTag + ", PostLikeTime=" + PostLikeTime + ", PostImage="
-//				+ PostImage + ", CookTime=" + CookTime + ", ModifiedDate=" + ModifiedDate + "]";
+//		return "Recipe [customerId=" + customerId + ", postTitle=" + postTitle + ", postText=" + postText + ", postTag="
+//				+ postTag + ", postLikeTime=" + postLikeTime + ", postImage=" + postImage + ", cookTime=" + cookTime
+//				+ ", modifiedDate=" + modifiedDate + ", serving=" + serving + ", ingredients=" + ingredients
+//				+ ", recipeType=" + recipeType + "]";
 //	}
+
 
 //	public List<Recipe> getManagerInsert() {
 //		return managerInsert;
