@@ -48,7 +48,6 @@ public class PwdEditController {
 	@PostMapping("/checkPwd")
 	public ResponseEntity<String> checkPwd(@RequestBody String pwd) {
 		System.out.println(pwd);
-
 		JSONObject ob = new JSONObject(pwd);
 
 		String oldPassword = ob.getString("oldPassword");
