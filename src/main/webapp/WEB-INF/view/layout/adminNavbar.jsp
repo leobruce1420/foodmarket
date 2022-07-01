@@ -159,17 +159,24 @@
    <div class="panel panel-primary leftMenu">
     <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse"
          data-target="#collapseListGroup6" role="tab">
-		<a class="nav-link" href="#"> <span data-feather="trending-up"></span> 報表管理 </a>
+		<a class="nav-link" href="${contextRoot}/statistic"> <span data-feather="file-text"></span> 報表管理 </a>
+    </div>
+  </div><!--panel end-->
+<!--  ==================================================================================================    -->
+   <div class="panel panel-primary leftMenu">
+    <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse"
+         data-target="#collapseListGroup6" role="tab">
+		<a class="nav-link" href="#"> <span data-feather="help-circle"></span> 問題管理 </a>
     </div>
     <!-- .panel-collapse和.collapse標明摺疊元素 .in表示要顯示出來 -->
     <div id="collapseListGroup6" class="panel-collapse collapse in" role="tabpanel"
          aria-labelledby="collapseListGroupHeading6">
       <ul class="list-group">
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/question/addQuestion">新增常見問題</a>
         </li>
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/question/viewAllQuestion">所有常見問題</a>
         </li>
       </ul>
     </div>
