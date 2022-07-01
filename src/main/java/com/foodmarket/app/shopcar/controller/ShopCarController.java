@@ -132,8 +132,6 @@ public class ShopCarController {
 		return reqestList;
 	}
 	
-
-	
 	@GetMapping("shopcart/delete")
 	public String deleteById(@RequestParam("id") Integer id) {
 		shopCartDao.deleteById(id);
@@ -159,17 +157,23 @@ public class ShopCarController {
 	@GetMapping("shopCart/all")
 	public String getAll(Model model){
 		List<ShopCart> shopCarts = shopCartService.findAll();
+		
+		int totalPrice = 0;
+		
 		for(ShopCart shopCart:shopCarts) {
 			Long productId = shopCart.getProductId();
+			int productNumber = shopCart.getProductNumber();
 			WorkProduct product= productService.findById(productId);
 					
-			String productName =product.getProductname();
-			Integer productPrice= product.getProductprice();
+			String productName = product.getProductname();
+			Integer productPrice = product.getProductprice();
+			totalPrice += productNumber*productPrice;
 			shopCart.setProductName(productName);
 			shopCart.setProductPrice(productPrice);
 			
 		}
-		
+		model.addAttribute("totalPrice", totalPrice);
+//		System.out.println("總金額:"+totalPrice);
 //		Session.xxx; //getCustomerId
 
 		Member member = new Member();

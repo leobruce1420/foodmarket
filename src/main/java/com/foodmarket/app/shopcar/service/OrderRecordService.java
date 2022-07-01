@@ -39,7 +39,7 @@ public class OrderRecordService {
 		return orderRecordDao.findAll();
 	}
 	
-	public OrderRecord save(OrderRecord orderRecord, Integer userId) {
+	public OrderRecord save(OrderRecord orderRecord, Long userId) {
 		
 		int totalAmount = 0;
 		
@@ -77,6 +77,10 @@ public class OrderRecordService {
 
 	public OrderRecord getOne(Integer id) {
 		return orderRecordDao.findById(id).get();
+	}
+	
+	public List<OrderRecord> getAll() {
+		return orderRecordDao.findAll();
 	}
 	
 }

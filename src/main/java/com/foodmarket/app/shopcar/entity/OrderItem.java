@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -21,13 +23,16 @@ public class OrderItem {
 	private Integer id;
 	
 	@Column(name="user_id")
-	private Integer userId;
+	private Long userId;
 
 	@Column(name="order_Record_Id")
 	private Integer orderRecordId;
 	
 	@Transient
 	private String productName;
+	
+	@Transient
+	private Integer productPrice;
 	
 	@Column(name="product_Id")
 	private Long productId;
@@ -40,14 +45,14 @@ public class OrderItem {
 	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
-
+	
 	@Column(name="modify_date")
 	private LocalDateTime modifyDate;
 	
 	public OrderItem() {
 	}
 
-	public OrderItem(Integer id, Integer userId, Integer orderRecordId, Long productId, Integer quantity,
+	public OrderItem(Integer id, long userId, Integer orderRecordId, Long productId, Integer quantity,
 			Integer totalAmount, LocalDateTime createDate, LocalDateTime modifyDate) {
 		super();
 		this.id = id;
@@ -75,8 +80,20 @@ public class OrderItem {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Integer getOrderRecordId() {
+		return orderRecordId;
+	}
+
+	public void setOrderRecordId(Integer orderRecordId) {
+		this.orderRecordId = orderRecordId;
 	}
 
 	public String getProductName() {
@@ -87,16 +104,12 @@ public class OrderItem {
 		this.productName = productName;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public Integer getProductPrice() {
+		return productPrice;
 	}
 
-	public Integer getOrderRecordId() {
-		return orderRecordId;
-	}
-
-	public void setOrderRecordId(Integer orderRecordId) {
-		this.orderRecordId = orderRecordId;
+	public void setProductPrice(Integer productPrice) {
+		this.productPrice = productPrice;
 	}
 
 	public Long getProductId() {
@@ -138,9 +151,5 @@ public class OrderItem {
 	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-
-
-	
-	
 	
 }

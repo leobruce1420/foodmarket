@@ -34,8 +34,8 @@ public class OrderItemController {
 	private WorkProductService workProductService;
 	
 	@PostMapping("/orderItem/save/{userId}")
-	@ResponseBody
-	public OrderRecord saveRecord(Model model, @RequestBody OrderRecord orderRecord, @PathVariable Integer userId) {
+	@ResponseBody  //回傳數據
+	public OrderRecord saveRecord(Model model, @RequestBody OrderRecord orderRecord, @PathVariable Long userId) {
 		OrderRecord newOrderRecord = orderRecordService.save(orderRecord, userId);
 		return newOrderRecord;
 	}

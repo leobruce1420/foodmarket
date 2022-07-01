@@ -32,7 +32,17 @@ public class ShopCart {
 	@Transient
 	private Integer productPrice;
 	
+	@Transient
+	private Integer totalPrice;
 	
+	public Integer getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public String getProductName() {
 		return productName;
 	}
