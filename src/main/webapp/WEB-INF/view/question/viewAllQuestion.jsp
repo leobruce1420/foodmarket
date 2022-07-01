@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%-- <jsp:include page="../layout/navbar.jsp" /> --%>
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
-<link href="${contextRoot}/css/question.css" rel="stylesheet">
+<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
+<%-- <link href="${contextRoot}/css/question.css" rel="stylesheet"> --%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

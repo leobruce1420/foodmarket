@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:include page="../layout/adminNavbar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +11,20 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 <script src="${contextRoot}/js/highcharts.src.js"></script>
 <script src="${contextRoot}/js/exporting.src.js"></script>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
 <meta charset="UTF-8">
 <title>PieChart</title>
 
 </head>
 <body>
 	<div>
-		<table class="mytable" id="list_table_json">
-			<thead>
-				<tr>
-					<th>前五大商品</th>
-					<th>販賣數量</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-	<div>AAAAAAAAAAAAAAA</div>
-	<div>
-		<table class="mytable" id="list_table_json1">
-			<thead>
-				<tr>
-					<th>前五大商品</th>
-					<th>販賣數量</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-	<div>
 		<div>
-			<div id="chart1"
-				style="min-width: 450px; height: 550px; margin: 0 auto"></div>
+			<div id="chart1" style="min-width: 450px; height: 550px; margin: 0 auto"></div>
 		</div>
 	</div>
-
 	<script>
 		var rtnMapLabels = [];
 		var rtnMapData = [];
@@ -147,7 +125,6 @@
 												} ]
 
 											});
-
 						});
 
 		const data = {

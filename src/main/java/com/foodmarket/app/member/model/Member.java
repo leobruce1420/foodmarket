@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodmarket.app.blog.model.Recipe;
 import com.foodmarket.app.shopcar.entity.OrderRecord;
+import com.foodmarket.app.wishList.model.WishList;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -105,13 +106,17 @@ public class Member {
 	@Column(name="ModifiedDate", columnDefinition="datetime", nullable = false) 
 	private Date modifiedDate;
 	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
-	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+//	private Set<Recipe> recipe = new LinkedHashSet<Recipe>();
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
 	private Set<OrderRecord> orderRecord = new LinkedHashSet<OrderRecord>();
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+	private Set<WishList> wishList = new LinkedHashSet<WishList>();
 
 
 
@@ -295,13 +300,13 @@ public class Member {
 		this.modifiedDate = modifiedDate;
 	}
 
-	public Set<Recipe> getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(Set<Recipe> recipe) {
-		this.recipe = recipe;
-	}
+//	public Set<Recipe> getRecipe() {
+//		return recipe;
+//	}
+//
+//	public void setRecipe(Set<Recipe> recipe) {
+//		this.recipe = recipe;
+//	}
 
 	public Set<OrderRecord> getOrderRecord() {
 		return orderRecord;

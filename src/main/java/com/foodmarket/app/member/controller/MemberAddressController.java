@@ -39,7 +39,7 @@ public class MemberAddressController {
 			return "member/memberAddress";
 		}
 		logger.info("會員編號：" + sessionUId + "嘗試進入 會員編號：" + id + "常用地址");
-		return "index";
+		return "redirect:/HOME";
 	}
 
 	@PostMapping("/editAddress")

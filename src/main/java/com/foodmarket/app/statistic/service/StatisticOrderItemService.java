@@ -33,9 +33,9 @@ public class StatisticOrderItemService {
 		
 		List<OrderItem> ps_list = soiDao.findAll();
 		
-		System.err.println("============== test ps_list str ==============");
-		System.err.println(ps_list);
-		System.err.println("============== test ps_list end ==============");
+//		System.err.println("============== test ps_list str ==============");
+//		System.err.println(ps_list);
+//		System.err.println("============== test ps_list end ==============");
 		
 		List<ProductStatistic> rtnList = new ArrayList();
 		
@@ -45,14 +45,14 @@ public class StatisticOrderItemService {
 			
 			// 確認原始資料
 			Long productid = data.getProductId();
-			System.err.println("ID:" + productid);
+//			System.err.println("ID:" + productid);
 			
 			WorkProduct wp = spDao.findByproductid(productid);
 			String pn = wp.getProductname();
-			System.err.println("Product Name:" + pn);
+//			System.err.println("Product Name:" + pn);
 			
 			int s = data.getQuantity();
-			System.err.println("Quantity:" + s);
+//			System.err.println("Quantity:" + s);
 			
 			
 			// 取得目前加總
@@ -65,7 +65,7 @@ public class StatisticOrderItemService {
 			keyMap.put(pn, total_salles);
 		}
 		
-		System.err.println("加總結果:" + keyMap);
+//		System.err.println("加總結果:" + keyMap);
 
 		return keyMap;
 	}
@@ -74,9 +74,9 @@ public class StatisticOrderItemService {
 		
 		List<OrderItem> ps_list = soiDao.findAll();
 		
-		System.err.println("============== test ps_list str ==============");
-		System.err.println(ps_list);
-		System.err.println("============== test ps_list end ==============");
+//		System.err.println("============== test ps_list str ==============");
+//		System.err.println(ps_list);
+//		System.err.println("============== test ps_list end ==============");
 		
 		List<ProductStatistic> rtnList = new ArrayList();
 		
@@ -86,14 +86,14 @@ public class StatisticOrderItemService {
 			
 			// 確認原始資料
 			Long productid = data.getProductId();
-			System.err.println("ID:" + productid);
+//			System.err.println("ID:" + productid);
 			
 			WorkProduct wp = spDao.findByproductid(productid);
 			String pi = wp.getProductimg();
-			System.err.println("Product Img:" + pi);
+//			System.err.println("Product Img:" + pi);
 			
 			int s = data.getQuantity();
-			System.err.println("Quantity:" + s);
+//			System.err.println("Quantity:" + s);
 			
 			
 			// 取得目前加總
@@ -106,7 +106,7 @@ public class StatisticOrderItemService {
 			keyMap.put(pi, total_salles);
 		}
 		
-		System.err.println("加總結果:" + keyMap);
+//		System.err.println("加總結果:" + keyMap);
 
 		return keyMap;
 	}
