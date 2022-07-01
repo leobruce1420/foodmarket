@@ -112,7 +112,7 @@ public class ShopCarController {
 		return "shopcart/shopCart";
 	}
 	
-	@PostMapping("shopcart/update") //更新單筆
+	@PostMapping("lock/shopcart/update") //更新單筆
 	@ResponseBody
 	public ShopCart updateShopCart(@RequestBody ShopCart shopCart) {
 		ShopCart dbShopCart = shopCartService.findById(shopCart.getId()); //用網頁傳回的id找出要修改的shopCart
@@ -121,21 +121,21 @@ public class ShopCarController {
 	}
 	
 	
-	@PostMapping("shopcart/insert") //新增單筆
+	@PostMapping("lock/shopcart/insert") //新增單筆
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
 		return shopCartService.save(reqShopCart);
 	}
 	
-	@PostMapping("shopcart/insertAll") //新增多筆
+	@PostMapping("lock/shopcart/insertAll") //新增多筆
 	public List<ShopCart> insertShopCart(@RequestBody List<ShopCart> reqList){
 		List<ShopCart> reqestList = shopCartDao.saveAll(reqList);
 		return reqestList;
 	}
 	
-	@GetMapping("shopcart/delete")
+	@GetMapping("lock/shopcart/delete")
 	public String deleteById(@RequestParam("id") Integer id) {
 		shopCartDao.deleteById(id);
-		return "redirect:/shopCart/all";
+		return "redirect:/lock/shopCart/all";
 	}
 	
 //<<<<<<< HEAD
@@ -154,7 +154,7 @@ public class ShopCarController {
 		return "shopCart";
 	}
 
-	@GetMapping("shopCart/all")
+	@GetMapping("lock/shopCart/all")
 	public String getAll(Model model){
 		List<ShopCart> shopCarts = shopCartService.findAll();
 		

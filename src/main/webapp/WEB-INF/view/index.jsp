@@ -440,14 +440,14 @@ function insertProduct(pId) {
 	var id =document.getElementById('productId_'+pId).value;
 		axios({
 			method : 'post',
-			url : '${contextRoot}/shopcart/insert' ,
+			url : '${contextRoot}/lock/shopcart/insert' ,
 			data : {
 				 "productNumber" : 1,
 				 "customerId" : 1 ,
 				 "productId" :id
 			}
 		}).then(function(res) {
-			
+			alert("已加入購物車");
 		})
 
 		}
