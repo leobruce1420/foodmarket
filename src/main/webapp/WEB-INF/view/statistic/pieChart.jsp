@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:include page="../layout/adminNavbar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,10 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 <script src="${contextRoot}/js/highcharts.src.js"></script>
 <script src="${contextRoot}/js/exporting.src.js"></script>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
 <meta charset="UTF-8">
 <title>PieChart</title>
 

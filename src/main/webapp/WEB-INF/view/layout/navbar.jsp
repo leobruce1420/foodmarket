@@ -47,14 +47,8 @@
       </li>
 
 
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          常見問題
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="${contextRoot}/question/allQuestion">常見問題</a>
-          <a class="dropdown-item" href="${contextRoot}/question/addQuestion">新增常見問題</a>
-        </div>
+       <li class="nav-item">
+			<a class="navbar-brand" href="${contextRoot}/question/allQuestion">常見問題</a>
       </li>
     
     <li class="nav-item dropdown">
