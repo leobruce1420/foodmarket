@@ -17,119 +17,86 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.product.dto.ProductDto;
 import com.foodmarket.app.product.model.WorkProduct;
+import com.foodmarket.app.product.model.productcategory;
+import com.foodmarket.app.product.service.ProductcategoryService;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 @Controller
-public class WorkProductController {
+public class ProductCategoryController {
 
 	@Autowired
-	private WorkProductService pmsgService;
+	private ProductcategoryService pcmsgService;
 	
 	
 	
 
-	// base64
-	@PostMapping("postProduct")
-	public String addMessage(@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
-			 @RequestParam("productprice") Integer productprice,
-			 @RequestParam("productimg") MultipartFile mf,
-			 @RequestParam("productdesciption") String productdesciption,
-			 @RequestParam("administrator") String administrator,
-			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-			 @RequestParam("takedown") String takedown,
-			 @RequestParam("productcategoryId") Integer productcategoryId,Model m) throws  IOException {
-		Util method = new Util();
+	// 商品總類新增
+	@PostMapping("postcategory")
+	public String addProductcategory(@RequestParam("productcategoryname") String productcategoryname, 
+			 @RequestParam("takeon") String takeon,
+			Model m) throws  IOException {
 		
-		try {
+//		try {
 //			if (!pmsgService.checkLoginSession(session)) {
 //				return "AdminLogin";
 //			}
 
 //			request.setCharacterEncoding("UTF-8");
-			WorkProduct workProduct = new WorkProduct();
+			productcategory productcategory = new productcategory();
 
-			workProduct.setProductname(productname);
-			workProduct.setProductcategory(productcategory);
-			workProduct.setProductprice(productprice);
-			workProduct.setAdministrator(administrator);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
-			workProduct.setTakedown(takedown);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
-			workProduct.setInventoryquantity(productcategoryId);
-
-			byte[] imgBytes = mf.getBytes();
-			workProduct.setProductimg(method.encoder(imgBytes));
+			productcategory.setProductcategoryname(productcategoryname);
+			productcategory.setTakeon(takeon);
 
 
-			pmsgService.insertProduct(workProduct);
+
+			pcmsgService.insertproductcategory(productcategory);
 			WorkProduct newpMsg = new WorkProduct();
-			WorkProduct lastestpMsg = pmsgService.getLastest();
-			List<WorkProduct> Products = pmsgService.selectAll();
+			List<productcategory> Products = pcmsgService.selectproductcategoryAll();
 			m.addAttribute("workProduct", newpMsg);
 			m.addAttribute("products", Products);
-			m.addAttribute("lastestpMsg", lastestpMsg);
-			return "product/addMessage";
+			return "productcategory/addMessage";
 
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "product/addMessage";
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return "product/addMessage";
 	}
-
-	@GetMapping("product/editProduct")
-	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+//修改找ID
+	@GetMapping("product/editcategory")
+	public String editcategory(@RequestParam("categoryid") Integer  categoryid, Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
-		WorkProduct pMsg = pmsgService.findById(productid);
+		productcategory pMsg = pcmsgService.findById(categoryid);
 
 		model.addAttribute("pMsg", pMsg);
-		return "product/editMessage";
+		return "product/editcategory";
 	}
-	//修改2加圖片
-	@PostMapping("product/editProduct")
-	public String postMessage(@RequestParam("productid") Long productid, 
-			@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
-			 @RequestParam("productprice") Integer productprice,
-			 @RequestParam("productimg") MultipartFile mf,
-			 @RequestParam("productdesciption") String productdesciption,
-			 @RequestParam("administrator") String administrator,
-			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-			 @RequestParam("takedown") String takedown,Model m) throws IOException {
-		WorkProduct workProduct = pmsgService.findById(productid);
+	//修改商品種類
+	@PostMapping("product/editProductcategory")
+	public String postcategory(@RequestParam("categoryid") Integer categoryid, 
+			@RequestParam("productcategoryname") String productcategoryname, 
+			 @RequestParam("takeon") String takeon,Model m) throws IOException {
+		productcategory productcategory = pcmsgService.findById(categoryid);
 		Util method = new Util();
 //		WorkProduct newworkProduct = new WorkProduct();
 
-		workProduct.setProductname(productname);
-		workProduct.setProductcategory(productcategory);
-		workProduct.setProductprice(productprice);
-		workProduct.setAdministrator(administrator);
-		workProduct.setProductdesciption(productdesciption);
-		workProduct.setInventoryquantity(inventoryquantity);
-		workProduct.setTakedown(takedown);
-		workProduct.setProductdesciption(productdesciption);
-		workProduct.setInventoryquantity(inventoryquantity);
+		productcategory.setProductcategoryname(productcategoryname);
+		productcategory.setTakeon(takeon);
 		
-		if(!mf.isEmpty()) {
-		byte[] imgBytes = mf.getBytes();
-		workProduct.setProductimg(method.encoder(imgBytes));
-		}
-		pmsgService.insertProduct(workProduct);
+		pcmsgService.insertproductcategory(productcategory);
 		
-		List<WorkProduct> pMsg = pmsgService.selectAll();
+		List<productcategory> pMsg = pcmsgService.selectproductcategoryAll();
 		
 		m.addAttribute("pMsg",pMsg);
 		
 		
-		return "redirect:/product/all";
+		return "redirect:/productcategory/all";
 	}
 //	修改
 //	@PostMapping("product/editProduct")
@@ -138,11 +105,11 @@ public class WorkProductController {
 //		
 //		return "redirect:/product/all";
 //	}
-//
-	@GetMapping("product/delete")
-	public String deleteMsg(@RequestParam("productid") Long productid) {
-		pmsgService.deleteById(productid);
-		return "redirect:/product/all";
+// 商品種類刪除
+	@GetMapping("productcategory/delete")
+	public String deleteMsg(@RequestParam("categoryid") Integer categoryid) {
+		pcmsgService.deleteById(categoryid);
+		return "redirect:/productcategory/all";
 	}
 
 //	@PostMapping("api/postProduct")
@@ -178,14 +145,17 @@ public class WorkProductController {
 //	}
 
 //	商品種類查詢
-//	@PostMapping("product/category?productcategory=")
-//	public String queryNameAll(@RequestParam("productcategory") String productname, Model m, HttpSession session) {
-//
-//		
-//		List<WorkProduct> products = pmsgService.findByproductcategory(productname);
-//		m.addAttribute("productname", productname);
-//		return "product/viewoneMessages";
-//	}
+	@PostMapping("productcategory/all")
+	public ModelAndView querycategoryAll(ModelAndView mav,
+			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+
+		
+		Page<productcategory> page = pcmsgService.findByPage(pageNumber);
+		mav.getModel().put("page", page);
+		mav.setViewName("product/viewproductcategory");
+//		mav.setViewName("index");
+		return mav;
+	}
 
 //	@PostMapping("product/uploadfile")
 //	@ResponseBody

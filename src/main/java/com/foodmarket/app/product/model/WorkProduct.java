@@ -59,8 +59,8 @@ public class WorkProduct {
 	private Integer productcategoryId;
 	
 	
-//	@JoinColumn(name = "productcategoryId")
-//	private productcategory categoryId;
+	@JoinColumn(name = "productcategoryId")
+	private productcategory productcategoryBean;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -81,13 +81,22 @@ public class WorkProduct {
 	
 	
 
-//	public productcategory getProductcategoryname() {
-//		return productcategoryname;
-//	}
-//
-//	public void setProductcategoryname(productcategory productcategoryname) {
-//		this.productcategoryname = productcategoryname;
-//	}
+
+	public Integer getProductcategoryId() {
+		return productcategoryId;
+	}
+
+	public void setProductcategoryId(Integer productcategoryId) {
+		this.productcategoryId = productcategoryId;
+	}
+
+	public productcategory getProductcategoryBean() {
+		return productcategoryBean;
+	}
+
+	public void setProductcategoryBean(productcategory productcategoryBean) {
+		this.productcategoryBean = productcategoryBean;
+	}
 
 	public Long getProductid() {
 		return productid;
