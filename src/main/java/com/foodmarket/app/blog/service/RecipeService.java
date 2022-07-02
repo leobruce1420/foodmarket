@@ -69,7 +69,7 @@ public class RecipeService {
 		 return page;
 	 }
 	 
-	 public Page<Recipe>  findForMemberHouse(Integer pageNum,Long customerId) {
+	 public Page<Recipe>  findForMemberHouse(Integer pageNum,Object customerId) {
 		 Pageable pgb = PageRequest.of(pageNum-1, 30, Sort.Direction.DESC, "modifiedDate");
 		 
 		 Page<Recipe> page = recipeDao.findAllByCustomerId(customerId, pgb);

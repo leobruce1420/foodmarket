@@ -90,10 +90,10 @@
          aria-labelledby="collapseListGroupHeading2">
       <ul class="list-group">
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/recipe/manageradd">新增食譜</a>
         </li>
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/recipe/backall">所有食譜訊息</a>
         </li>
       </ul>
     </div>
