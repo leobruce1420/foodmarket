@@ -11,11 +11,9 @@ table{
 	text-align:center;
 }
 
-.submitdiv{
-	text-align:center;
-}
 
-table input{
+
+input{
 	text-align: center;
     border: 1px solid white;
     background: white;
@@ -24,9 +22,4 @@ table input{
 .carTotal{
 	font-size:24px;
 	text-align:right;
-}
-
-.insertOrderBtn{
-	height: 2.5rem;
-	width: 13.125rem;
 }
