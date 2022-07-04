@@ -153,44 +153,52 @@ img {
 
 				<!-- 						</div> -->
 				<!-- 					</div> -->
-				<table class="table">
+				<table class="table table-hover" >
 					<thead class="thead-light">
 						<tr>
-							<th scope="col">商品ID</th>
-							<th scope="col">商品名稱</th>
-							<th scope="col">商品類別</th>
-							<th scope="col">價格</th>
-							<th scope="col">商品圖片</th>
-							<th scope="col">新增日期</th>
-							<th scope="col">商品介紹</th>
-							<th scope="col">庫存數量</th>
-							<th scope="col">上下架</th>
+							<th scope="col" style="text-align: center;">商品ID</th>
+							<th scope="col" style="text-align: center;">商品名稱</th>
+							<th scope="col" style="text-align: center;">商品類別</th>
+							<th scope="col" style="text-align: center;">價格</th>
+							<th scope="col" style="text-align: center;">商品圖片</th>
+							<th scope="col" style="text-align: center;">新增日期</th>
+							<th scope="col" style="text-align: center;">商品介紹</th>
+							<th scope="col" style="text-align: center;">庫存數量</th>
+							<th scope="col" style="text-align: center;">上下架</th>
+<!-- 							<th scope="col">PCID</th> -->
+<!-- 							<th scope="col">CID</th> -->
+<!-- 							<th scope="col" style="text-align: center;">Cname</th> -->
+<!-- 							<th scope="col">C上下架</th> -->
 <!-- 							<th scope="col">修改人員</th> -->
-							<th scope="col">修改</th>
+<!-- 							<th scope="col" style="text-align: center;">功能</th> -->
 						</tr>
 					</thead>
-					<c:forEach var="workProduct" items="${page.content}">
 						<tbody>
+					<c:forEach var="workProduct" items="${page.content}">
 							<tr>
-								<th scope="row"><c:out value="${workProduct.productid}" /></th>
-								<td ><c:out value="${workProduct.productname}" /></td>
-								<td><c:out value="${workProduct.productcategory}" /></td>
-								<td><c:out value="${workProduct.productprice}" /></td>
-								<td>
+								<th style="text-align: center;" scope="row"><c:out value="${workProduct.productid}" /></th>
+								<td style="text-align: center;"><c:out value="${workProduct.productname}" /></td>
+								<td style="text-align: center;"><c:out value="${workProduct.productcategory}" /></td>
+								<td style="text-align: center;"><c:out value="${workProduct.productprice}" /></td>
+								<td style="text-align: center;">
 									<img
 									style="width: 100px; height: 100px;"
 									src="data:image/image/*;base64,${workProduct.productimg}"
 									alt="image" />
 								</td>
-								<td><fmt:formatDate
+								<td style="text-align: center;"><fmt:formatDate
 										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss  EEEE"
 										value="${workProduct.added}" /></td>
 
-								<td><c:out value="${workProduct.productdesciption}" /></td>
-								<td><c:out value="${workProduct.inventoryquantity}" /></td>
-								<td><c:out value="${workProduct.takedown}" /></td>
+								<td style="text-align: center;"><c:out value="${workProduct.productdesciption}" /></td>
+								<td style="text-align: center;"><c:out value="${workProduct.inventoryquantity}" /></td>
+								<td style="text-align: center;"><c:out value="${workProduct.takedown}" /></td>
+<%-- 								<td><c:out value="${workProduct.productcategoryid}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.productcategoryBean.categoryid}" /></td> --%>
+<%-- 								<td style="text-align: center;"><c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td> --%>
+<%-- 								<td><c:out value="${workProduct.productcategoryBean.takeon}" /></td> --%>
 <%-- 								<td><c:out value="${workProduct.administrator}" /></td> --%>
-								<td><div>
+								<td style="text-align: center;"><div>
 										<a
 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button
 												class="btn btn-info">編輯</button></a>
@@ -202,8 +210,8 @@ img {
 									</div>
 									</td>
 							</tr>
-						</tbody>
 					</c:forEach>
+						</tbody>
 				</table>
 
 			</div>
