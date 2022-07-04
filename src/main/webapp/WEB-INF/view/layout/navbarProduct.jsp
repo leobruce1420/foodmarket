@@ -85,6 +85,9 @@ nav {
 					<li class="nav-item dropdown"><a class="nav-link"
 						data-display="static"
 						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
+					<li class="nav-item dropdown"><a class="nav-link"
+						data-display="static"
+						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
 				</ul>
 			</div>
 		</div>
