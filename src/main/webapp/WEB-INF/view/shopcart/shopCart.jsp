@@ -22,7 +22,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<input type="hidden" id="userId" value="${member.customerId}">
+	<input type="hidden" id="userId" value="${loginUserId}">
 	
 	<c:forEach var="product" items="${shopCarts}">
 		<tr>
@@ -53,7 +53,7 @@
 	
 	</tbody>
 	</table>
-	<div>總金額:$<c:out  value ="${totalPrice}" /></div>
+	<div class="carTotal">總金額：$<c:out  value ="${totalPrice}"/> 元</div>
 	<div class="submitdiv">
 		<input class="insertOrderBtn btn btn-success" type="button" value="送出訂單" onclick="sendOrder()">
 	</div>

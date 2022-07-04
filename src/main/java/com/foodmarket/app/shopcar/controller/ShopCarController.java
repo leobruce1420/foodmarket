@@ -3,6 +3,7 @@ package com.foodmarket.app.shopcar.controller;
 import java.util.List;
 
 import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,6 +123,7 @@ public class ShopCarController {
 	
 	
 	@PostMapping("lock/shopcart/insert") //新增單筆
+	@ResponseBody
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
 		return shopCartService.save(reqShopCart);
 	}
@@ -132,7 +134,7 @@ public class ShopCarController {
 		return reqestList;
 	}
 	
-	@GetMapping("lock/shopcart/delete")
+	@GetMapping("lock/shopcart/delete") //刪除購物車裡單筆資料
 	public String deleteById(@RequestParam("id") Integer id) {
 		shopCartDao.deleteById(id);
 		return "redirect:/lock/shopCart/all";
@@ -155,8 +157,10 @@ public class ShopCarController {
 	}
 
 	@GetMapping("lock/shopCart/all")
-	public String getAll(Model model){
-		List<ShopCart> shopCarts = shopCartService.findAll();
+	public String getAll(Model model, HttpSession session){
+		System.out.println(session.getAttribute("loginUserId"));
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(sessionUId);
 		
 		int totalPrice = 0;
 		
@@ -167,7 +171,7 @@ public class ShopCarController {
 					
 			String productName = product.getProductname();
 			Integer productPrice = product.getProductprice();
-			totalPrice += productNumber*productPrice;
+			totalPrice += productNumber * productPrice;
 			shopCart.setProductName(productName);
 			shopCart.setProductPrice(productPrice);
 			
@@ -177,7 +181,7 @@ public class ShopCarController {
 //		Session.xxx; //getCustomerId
 
 		Member member = new Member();
-		member.setCustomerId(1L);
+		member.setCustomerId(sessionUId);
 		
 		model.addAttribute("shopCarts" , shopCarts);
 		model.addAttribute("member" , member);
@@ -187,7 +191,7 @@ public class ShopCarController {
 	
 	
 	@PostMapping("shopCart/item")
-	public String getItem(Model model,Integer customerId) {
+	public String getItem(Model model,Long customerId) {
 		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(customerId);
 		
 		return "shopcart/Item";

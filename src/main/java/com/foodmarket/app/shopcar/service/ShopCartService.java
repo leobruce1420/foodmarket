@@ -27,7 +27,7 @@ public class ShopCartService {
 	}
 	
 	
-	public List<ShopCart> findShopCartByCustomerId(Integer customerId){
+	public List<ShopCart> findShopCartByCustomerId(Long customerId){
 		
 		return shopCartDao.findShopCartByCustomerId(customerId);
 	}
@@ -49,6 +49,10 @@ public class ShopCartService {
 //	}
 	public void deleteById(Integer id) {
 		shopCartDao.deleteById(id);
+	}
+	
+	public void deleteByCustomerId(Long userId) {
+		shopCartDao.deleteByCustomerId(userId);;
 	}
 	
 	
