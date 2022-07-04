@@ -2,6 +2,8 @@ package com.foodmarket.app.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -10,10 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.foodmarket.app.member.model.Member;
+import com.foodmarket.app.member.service.MemberServiceInterface;
 import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.shopadvertisement.ShopAdService;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+import com.foodmarket.app.wishList.model.WishList;
+import com.foodmarket.app.wishList.service.WishListServiceInterface;
 
 
 @Controller
@@ -27,6 +33,12 @@ public class ProductPageController {
 	
 	@Autowired
 	private ShopAdService sService;
+	
+	@Autowired
+	private MemberServiceInterface memberService;
+	
+	@Autowired
+	private WishListServiceInterface wishListService;
 
 	// 首頁 分頁全部查詢
 	@GetMapping("/HOME")
@@ -159,6 +171,38 @@ public class ProductPageController {
 		return "index";
 		
 	}
+	
+//	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
+	@GetMapping("product/product")
+	public String viewProductById(@RequestParam(required = false, value = "productid") long productid, Model m, HttpSession session) {
+		
+		WorkProduct product = pmsgService.findById(productid);
+		
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		
+		//若有登入則檢查是否收藏
+		if(sessionUId != null) {
+			Member member = memberService.findById(sessionUId);
+			WishList listCheck = wishListService.findByMemberAndProduct(member, product);
+			
+			if(listCheck != null) {
+				m.addAttribute("listCheck", true);
+				m.addAttribute("workProduct", product);
+				return "product/viewnameMessagesById";
+			}else {
+				m.addAttribute("listCheck", false);
+				m.addAttribute("workProduct", product);
+				return "product/viewnameMessagesById";
+			}
+			
+		}
+		//沒有登入
+		m.addAttribute("listCheck", false);
+		m.addAttribute("workProduct", product);
+		return "product/viewnameMessagesById";
+		
+	}
+
 
 	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
 	@GetMapping("product/productname")

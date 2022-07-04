@@ -57,7 +57,7 @@ table,td{
 										<h5 class="card-title">${workProduct.productname}</h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 										<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
+											href="${contextRoot}/product/product?productid=${workProduct.productid}"
 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
 										<%-- 					</form:form> --%>
 <!-- 									</div> -->

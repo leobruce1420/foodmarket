@@ -3,13 +3,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <jsp:include page="layout/navbar.jsp" />
 <jsp:include page="layout/navbarProduct.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta charset="UTF-8">
 <title>HOME</title>
 </head>
@@ -132,12 +133,12 @@
 											<div id="name_data0" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>	
 										<td style="text-align: center; padding-left:2px; width:225px">
-											<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%">></div>
+											<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
 											<div id="name_data1" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>
 										<td style="text-align: center; padding: 2px; width:225px">
-											<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%">></div>
-											<div id="name_data2" style="text-align: center;font-size:18px; padding-top:12px"></div>											
+											<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
+											<div id="name_data2" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>
 										<td style="text-align: center; padding: 2px; width:225px">
 											<div id="img_data3"></div>
@@ -162,7 +163,7 @@
 <!-- 								<div class="card-deck mb-4 shadow-sm"> -->
 								<div class="card">
 								<div class="card-body">
-								<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+								<a	href="${contextRoot}/product/product?productid=${workProduct.productid}">
 									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" /></a>
@@ -170,7 +171,7 @@
 									<div class="card-body">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
 										
-										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<h5 class="card-title"><a href="${contextRoot}/product/product?productid=${workProduct.productid}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 									</div>
 									<div class="card-footer">
@@ -203,13 +204,13 @@
           <div class="card mb-4 shadow-sm text-center">
           <div class="card-body ">
           							<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+											href="${contextRoot}/product/product?productid=${workProduct.productid}">
 									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail"
 										src="data:image/image/*;base64,${workProduct.productimg}" alt="image" /></a>
 										</div>
 									<div class="card-body ">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
-										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<h5 class="card-title"><a href="${contextRoot}/product/product?productid=${workProduct.productid}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 										<div class="card-footer">
 										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
