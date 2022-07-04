@@ -40,25 +40,49 @@ table, td {
 							<div class="card-group">
 								<div class="card">
 									<div class="card-body">
-										<img style="width: 400px; height: 400px;"
+										<a
+											href="${contextRoot}/product/product?productid=${workProduct.productid}">
+											<img style="width: 400px; height: 400px;"
 											src="data:image/image/*;base64,${workProduct.productimg}"
 											alt="image" />
+										</a>
 										<hr />
-										<h5 class="card-title">${workProduct.productname}</h5>
+										<a href="${contextRoot}/product/product?productid=${workProduct.productid}">
+										<h5 class="card-title">${workProduct.productname}</h5></a>
 										<p class="card-text">$${workProduct.productprice}</p>
-										<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
-											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										<div class="card-footer">
+										<div class="card-group">
+										<div class="card">
+									<div class="card-body">
+											<input type="hidden" id="productId_${workProduct.productid}"
+												value="${workProduct.productid}"> <input
+												class="insertProductBtn btn btn-success" type="button"
+												value="加入購物車"
+												onclick="insertProduct(${workProduct.productid},${loginUserId})">
+												</div>
+												</div>
+											<div class="card">
+											<div class="card-body">
+												<c:choose>
+													<c:when test="${listCheck == false}">
+														<button type="button"
+															class="btn btn-danger stretched-link"
+															id="list${workProduct.productid}"
+															onclick="listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
+													</c:when>
+													<c:otherwise>
+														<button type="button"
+															class="btn btn-secondary stretched-link"
+															id="list${workProduct.productid}"
+															onclick="listSwich(${workProduct.productid},${loginUserId})">取消收藏</button>
+													</c:otherwise>
+												</c:choose>
 
-										<c:choose>
-											<c:when test="${listCheck == false}">
-											<button type="button" class="btn btn-danger stretched-link" id="list${workProduct.productid}" onclick="listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
-											</c:when>
-											<c:otherwise>
-											<button type="button" class="btn btn-secondary stretched-link" id="list${workProduct.productid}" onclick="listSwich(${workProduct.productid},${loginUserId})">取消收藏</button>
-											</c:otherwise>
-										</c:choose>
-										
+											</div>
+											</div>
+											</div>
+										</div>
+
 									</div>
 
 								</div>
@@ -69,7 +93,7 @@ table, td {
 
 										<h4>商品詳情</h4>
 										<hr />
-										<h5 class="card-title">${workProduct.productdesciption}</h5>
+										<p class="card-text">${workProduct.productdesciption}</p>
 
 
 										<hr />
@@ -86,6 +110,7 @@ table, td {
 										<br />
 									</div>
 
+
 								</div>
 							</div>
 						</div>
@@ -96,31 +121,10 @@ table, td {
 
 		</div>
 	</div>
-	</div>
 
-	<br />
-
-	<div class="container">
-		<div class="col-md-4"></div>
-		<div class="col-md-4 ml-auto">
-			<div class="card-body">
-				<h5 class="card-title">請詳閱以下注意事項</h5>
-				<p class="card-text">
-					※下單即為消費者同意進行無接觸配送方式。<br /> 無接觸配送為貨運司機於指定時間內放置警衛<br />
-					室或電聯客戶於一樓門口取貨（不送上樓不與）<br /> 客人接觸<br /> ※經聯繫收件者三次以上皆無法配送時，視為<br />
-					配送失敗。配送失敗後僅補送一次，若補送失<br /> 敗則回收貨物且不退款<br /> ※依照消費者保護法的規定，生鮮食品不適用<br />
-					7天無條件退貨條款。<br /> ※若您收到的貨品有問題請於24小時內連繫客<br /> 服處理，如收到商品有瑕疵或缺件問題，將採<br />
-					用部分退款。<br /> ※生鮮農產品易受天候因素影響，如品質不佳<br /> 況產生缺貨狀，將更換等值商品，恕不另行通<br />
-					知，敬請見諒。
-				</p>
-			</div>
-		</div>
-	</div>
-	</div>
-</body>
-
-<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script type="text/javascript">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
 
 function listSwich(Pid,Cid){
 	
@@ -158,7 +162,30 @@ function listSwich(Pid,Cid){
 	}
 }
 
+function insertProduct(pId,cId) {
+	if(cId!=null){	
+		var id =document.getElementById('productId_'+pId).value;
+			axios({
+				method : 'post',
+				url : '${contextRoot}/lock/shopcart/insert' ,
+				data : {
+					 "productNumber" : 1,
+					 "customerId" : cId ,
+					 "productId" :id
+				}
+			}).then(function(res) {
+				alert("已加入購物車");
+			})	
+	}else{
+		alert("請先登入")	
+	}
+
+
+		}
+
 
 </script>
+</body>
+
 
 </html>
