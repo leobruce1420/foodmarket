@@ -219,12 +219,7 @@
 										<div class="card-footer">
 										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
 										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">		
-<!-- 										<a -->
-<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
-<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
 										</div>
-										<%-- 					</form:form> --%>
-<!-- 									</div> -->
 								</div>
           </div>
         </div>
@@ -259,7 +254,6 @@
 			</div>
 
 			<br />
-			</div>
 			</div>
 <hr/>
 			
