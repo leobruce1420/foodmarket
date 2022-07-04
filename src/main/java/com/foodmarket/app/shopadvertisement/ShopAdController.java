@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.blogadvertisement.Base64Method;
 import com.foodmarket.app.blogadvertisement.BlogAdvertisement;
@@ -37,15 +39,15 @@ public class ShopAdController {
 		return "advertisement/insertShopAd";
 	}
 	
-	@GetMapping("/shopad/getAll")
-	public String showAllAd(Model m) {
-		
-		List<ShopAdvertisement> ad = sService.getAllAds();
-		
-		m.addAttribute("ad",ad);
-		
-		return "advertisement/getAllShopAd";
-	}
+//	@GetMapping("/shopad/getAll")
+//	public String showAllAd(Model m) {
+//		
+//		List<ShopAdvertisement> ad = sService.getAllAds();
+//		
+//		m.addAttribute("ad",ad);
+//		
+//		return "advertisement/getAllShopAd";
+//	}
 	
 	@GetMapping("/shopad/queryById")
 	public String queryById(@RequestParam("id") Integer id, Model m) {
@@ -72,6 +74,15 @@ public class ShopAdController {
 //		m.addAttribute("ad",ad);
 //		return "index"; 
 //	}
+	
+	@GetMapping("/shopad/getAll")
+	public ModelAndView viewMessages(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+		Page<ShopAdvertisement> page = sService.findByPage(pageNumber);
+		mav.getModel().put("page", page);
+		mav.setViewName("advertisement/getAllShopAd");
+		return mav;
+	}
 	
 	////////////////////////////
 	
