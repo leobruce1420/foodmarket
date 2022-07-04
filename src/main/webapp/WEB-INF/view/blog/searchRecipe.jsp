@@ -68,13 +68,13 @@ float:right;
 
 <script>
 
-const insertdata = document.querySelector('input');
+const insertdata = document.querySelector('.searchtext');
 const post = document.querySelector('#search');
 
-insertdata.addEventListener('input', showValue);
+insertdata.addEventListener('input',showValue);
 function showValue(){
   console.log(this.value);
-  const val = document. querySelector('input'). value;
+  const val = document. querySelector('.searchtext').value;
   console.log(val);
 	post.onclick = function(){
 	window.location.href="http://localhost:8080/foodmarket/recipe/findByTagLike?postTag="+val;
@@ -82,6 +82,7 @@ function showValue(){
 	};
 }
 	
+
 
 </script>
 </body>
