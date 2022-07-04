@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
 
 @Entity(name = "MemberLikeRecipeEntity")
 @Table(name = "customer_like_recipe")

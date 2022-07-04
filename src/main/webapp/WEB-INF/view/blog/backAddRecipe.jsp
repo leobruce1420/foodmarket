@@ -10,7 +10,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Summernote</title>
+  <title>後台新增食譜</title>
 <!--   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 <!--   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <!--   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
@@ -21,7 +21,7 @@ div #pullinup{
 	background-color:rgba(128, 128, 128, 0.199) ;
 	border:dotted 5px;
 	text-align:center;
-    width: 60%;
+    width: 80%;
     height: 30%;
     position: fixed;
   	top: 10%;
@@ -42,13 +42,13 @@ div #pullinup{
   				<div class="card-header" style="background-color: gold">請輸入食譜，管理者輸入data區</div>
  				<div class="card-body">
   
-  					<form:form class="form" method="post" action="${contextRoot}/managerPostRecipe" modelAttribute="recipe">
+  					<form:form id="myform" class="form" method="post" action="${contextRoot}/managerPostRecipe" modelAttribute="recipe">
   
   						<div class="form-group">
   						
  						CustomerId:<form:input path="customerId" class="form-control"/><br/>
  						食譜標題:<form:input path="postTitle" class="form-control"/><br/>
- 						食譜封面圖:(拖曳放入頁面即可，要更換則再次拖入)<form:input path="postImage" class="form-control" id="pullintext" readonly="true" type=""/><br/>
+ 						食譜封面圖:(拖曳放入頁面即可，要更換則再次拖入)<form:input path="postImage" class="form-control" id="pullintext" readonly="true" style="display:none"/><br/>
  							<div id="show" ><img src="" id="showdivimg" style="width: 400px;"></div>
  						食譜種類:<form:select path="recipeType" class="form-control"> 						
 							<form:option value="NONE" label="--- 請選擇 ---"/>
@@ -59,26 +59,30 @@ div #pullinup{
 							<form:option value="泰式料理" label="泰式料理"/>
 							<form:option value="美式料理" label="美式料理"/>
 							<form:option value="日式料理" label="日式料理"/>
-							<form:option value="台式快炒" label="台式快炒"/>
+							<form:option value="台式料理" label="台式料理"/>
+							<form:option value="懶人料理" label="懶人料理"/>
 							<form:option value="義大利料理" label="義大利料理"/>
  						</form:select><br>
  						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字"/><br/>
  						所需食材:<form:input path="ingredients" class="form-control"/><br/>
- 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true" value="原程式碼顯示處"/><br/>
- 						<div id="summernote"><h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文</h3></div>
  						食譜標籤:<form:input path="PostTag" class="form-control"/><br/>
  						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
+ 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" style="display:none"/><br/>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
   						
-  						</div>
   
-  						<input type="submit" name="submit" value="新增食譜">
   
+ 						<div id="summernote"><h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文</h3></div><br>
+
+<!--   						<input class="submitbtn" type="text" name="submit" type="hidden"> -->
+						</div>
  					</form:form>
- 					<br>
-					<button id="edit2" class="btn btn-primary" onclick="edit2()" type="button">修改資料</button>
-					<button id="save2" class="btn btn-primary" onclick="save2()" type="button">儲存按鈕</button>
-    
+ 					
+  						
+  						
+					<button id="edit2" class="btn btn-info" onclick="edit2()" type="button" >修改</button>
+					<button id="save2" class="btn btn-info" onclick="save2()" type="button" >儲存</button>
+  					<button class="btn btn-primary" id="submitbtn" type="submit" form="myform" disabled="disabled">新增食譜</button>
   				</div>
 			</div>
 
@@ -92,6 +96,8 @@ div #pullinup{
   const dropzoneListener = document.querySelector('body');
   const textareashow = document.querySelector('#pullintext');
   const showdiv = document.querySelector('#show');
+  const finAddRecipe = document.querySelector('#submitbtn');
+
   dropzoneListener.addEventListener('dragenter', event => {
 	    event.preventDefault();
 	    console.log('catch zone');
@@ -147,6 +153,8 @@ div #pullinup{
 	  const insertvalue = document.querySelector('#catchSummernote');
 	  insertvalue.readonly='true';
 	  insertvalue.value=markup2;
+	  finAddRecipe.removeAttribute("disabled");
+	  
 	};
 	
 
