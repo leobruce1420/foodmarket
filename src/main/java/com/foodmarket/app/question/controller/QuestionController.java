@@ -1,4 +1,4 @@
-package com.foodmarket.app.question.controller;
+	package com.foodmarket.app.question.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,16 +42,14 @@ public class QuestionController {
 		
 	@PostMapping("question/postQuestion")  //傳資料到資料庫
 	public String addQuestion (@ModelAttribute("Question") Question qus, Model model) {	
-		Question newQs = new Question();  //這行是不是可以不寫???
 		qs.insertQuestion(qus);		
-		model.addAttribute("Question", newQs);  //這行是不是可以不寫???
 		ArrayList<String> categoryList = new ArrayList<>();
 		categoryList.add("產品及服務");
 		categoryList.add("配送物流");
 		categoryList.add("會員申請");
 		categoryList.add("其他");
 		model.addAttribute("categoryList",categoryList);
-		return "question/addQuestion";
+		return "redirect:/question/viewAllQuestion";
 	}
 	
 	@GetMapping("question/allQuestion")

@@ -14,16 +14,20 @@
 <%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 <script src="${contextRoot}/js/highcharts.src.js"></script>
 <script src="${contextRoot}/js/exporting.src.js"></script>
+
 <%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
 <meta charset="UTF-8">
-<title>PieChart</title>
+<title>銷售圓餅圖</title>
 
 </head>
 <body>
-	<div>
-		<div>
-			<div id="chart1" style="min-width: 450px; height: 550px; margin: 0 auto"></div>
+
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
+ 	 <div class="row justify-content-center">
+			<div id="chart1" style="min-width: 750px; height: 550px;"></div>
 		</div>
+	</div>
 	</div>
 	<script>
 		var rtnMapLabels = [];
@@ -31,8 +35,11 @@
 		var rtnMapResult = [];
 		var download
 		var myPieChart;
-		$
-				.get(
+		const data = {
+				labels : rtnMapLabels,
+				datasets : rtnMapData
+			};
+		$.get(
 						"${contextRoot}/productCount",
 						function(rtnMap) {
 							console.log(rtnMap)
@@ -58,18 +65,20 @@
 							}
 							console.log(rtnMapResult)
 
-							Highcharts.setOptions({
-								chart : {
-									style : {
-										fontFamily : 'Times New Roman'
-									}
-								}
-							});
-							$('#chart1')
-									.highcharts(
-											{
+// 							Highcharts.setOptions({
+// 								chart : {
+// 									style : {
+// 										fontFamily : 'Times New Roman'
+// 									}
+// 								}
+// 							});
+							Highcharts.chart('chart1', {
 												chart : {
-													type : 'pie'
+													type : 'pie',
+													spacingTop: 40,
+													style: {
+														fontFamily: 'Calibri Light',
+													}
 												},
 												colors : [ '#ED5565',
 														'#5D9CEC', '#A0D468',
@@ -79,18 +88,16 @@
 														'#a6c96a' ],
 												title : {
 													text : '銷售圓餅圖',
+// 													margin: 25,  //調整title和圖之間的距離
 													style : {
-														color : '#555'
+														color : '#000',
+														
 													}
 												},
-												legend : {
-													layout : 'horizontal',
-													align : 'center',
-													verticalAlign : 'bottom',
-													borderWidth : 0,
-													backgroundColor : '#FFFFFF'
-
-												},
+												exporting: {
+													 sourceWidth: 900,
+												     sourceHeight: 650,
+											    },
 												tooltip : {
 													shared : false,
 													valueSuffix : '件'
@@ -108,7 +115,7 @@
 															style : {
 																color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
 																		|| 'black',
-																width : '60px'
+																width: '60px'
 															}
 														}
 													},
@@ -120,69 +127,21 @@
 													}
 												},
 												series : [ {
+													name : '售出數量',
 													type : 'pie',
-													data : rtnMapResult
+													data : rtnMapResult,
+													size : 350,  //這個是圖的大小
+													dataLabels: {
+									                        style:{
+									                        	fontSize: '18px'  //這個是圓餅圖label的大小
+									                        }                  
+									                   }
 												} ]
 
 											});
 						});
 
-		const data = {
-			labels : rtnMapLabels,
-			datasets : rtnMapData
-		};
-	</script>
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$.ajax({
-						url : '${contextRoot}/productCount',
-						success : function(rtnMap) {
-							var array = [];
-							for ( var key in rtnMap) {
-								array.push({
-									name : key,
-									value : rtnMap[key]
-								});
-							}
-							var sorted = array.sort(function(a, b) {
-								return (a.value < b.value) ? 1
-										: ((b.value < a.value) ? -1 : 0)
-							});
-							
-							sort_data = ''
 
-							// 							for (var key = 0; key < sorted.length; key++) {
-							// 								var obj = sorted[key]
-							// 								console.log(obj)
-							// 								sort_data += '<tr>'
-							// 								sort_data += '<td>' + obj.name + '<td>'
-							// 								sort_data += '<td>' + obj.value + '<td>'
-							// 								sort_data += '<tr>'
-
-							// 							}
-
-							// 							$('#list_table_json').append(sort_data)
-
-							sort_data0 = ''
-							sort_data1 = ''
-							var obj0 = sorted[0]
-							sort_data0 += '<tr>'
-							sort_data0 += '<td>' + obj0.name + '<td>'
-							sort_data0 += '<td>' + obj0.value + '<td>'
-							sort_data0 += '<tr>'
-							$('#list_table_json').append(sort_data0)
-
-							var obj1 = sorted[1]
-							sort_data1 += '<tr>'
-							sort_data1 += '<td>' + obj1.name + '<td>'
-							sort_data1 += '<td>' + obj1.value + '<td>'
-							sort_data1 += '<tr>'
-							$('#list_table_json1').append(sort_data1)
-
-						}
-					})
-				})
 	</script>
 </body>
 </html>

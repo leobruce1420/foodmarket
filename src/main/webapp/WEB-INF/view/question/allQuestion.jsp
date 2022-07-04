@@ -22,16 +22,35 @@
 	<div class="container">
 		<div style="text-align: center">
 			<input id="myQuestion">
-			<button id="submitBtn">查詢
+			<button id="submitBtn">查詢</button>
 		</div>
 			<br/>
 		<div>
-			<div id="1111"></div>
+			<div id="insertData"></div>
 		</div>
 	</div>
-	<div class="container" id="111">
+	<div class="container" id="removeData">
 		<div class="row justify-content-center">
 			<div class="col-9">
+				<div class="card" id="allQuestion">
+					<div class="card-header">會員申請</div>
+					<div class="card-body" >
+						<c:forEach var="Question" items="${allqus}">
+							<c:if test="${Question.questionCategory =='會員申請'}">
+								<button type="button" class="collapsible">
+									<c:out value="${Question.questionTitle}" />
+								</button>
+								<div class="content">
+									<br>
+									<p>
+										<c:out value="${Question.answer}" />
+									</p>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+				</div>
+				<br>
 				<div class="card" id="allQuestion">
 					<div class="card-header">產品及服務</div>
 					<div class="card-body">
@@ -70,25 +89,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="card" id="allQuestion">
-					<div class="card-header">會員申請</div>
-					<div class="card-body" >
-						<c:forEach var="Question" items="${allqus}">
-							<c:if test="${Question.questionCategory =='會員申請'}">
-								<button type="button" class="collapsible">
-									<c:out value="${Question.questionTitle}" />
-								</button>
-								<div class="content">
-									<br>
-									<p>
-										<c:out value="${Question.answer}" />
-									</p>
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
-				</div>
-				<br>
+				
 				<div class="card" id="allQuestion">
 					<div class="card-header">其他</div>
 					<div class="card-body">
@@ -129,8 +130,6 @@
 		$(document).ready(function() {
 			$('#submitBtn').click(function() {
 				var inputTitle = document.getElementById('myQuestion').value;
-				// 				var objectTitle = {"qt": inputTitle};
-				// 				var jsonTitle = JSON.stringify(objectTitle);
 				$.ajax({
 					url : 'http://localhost:8080/foodmarket/json/postQuestion',
 					method : 'post',
@@ -138,7 +137,7 @@
 					dataType : 'json',
 					data : inputTitle,
 					success : function(result) {
-						$("#111").remove()
+						$("#removeData").remove()
 						
 						qus_data = '<div class="container" id="111">'+'<div class="row justify-content-center">'+'<div class="col-9">' + '<div class="card">' + '<div class="card-header">搜尋結果</div>' + '<div class="card-body">'
 						$.each(result, function(index, value) {
@@ -153,7 +152,7 @@
 							qus_data += '</div>'
 						})
 						console.log(qus_data)
-						$('#1111').append(qus_data)
+						$('#insertData').append(qus_data)
 					}	
 				})
 			})
