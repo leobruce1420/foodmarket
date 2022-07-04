@@ -236,6 +236,7 @@ ul.social-network li {
 
 
 		<hr />
+<<<<<<< HEAD
 		<div>
 			<ul class="responsive">
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
@@ -243,6 +244,148 @@ ul.social-network li {
 						<li>
 							<div class="card-deck text-center">
 								<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
+=======
+	<div class="container">
+
+		<div class=" justify-content-center">
+
+
+	
+	<br/>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例標題。</font></font></h1>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輪播的第一張幻燈片的一些具有代表性的佔位符內容。</font></font></p>
+            <p><a class="btn btn-lg btn-primary" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">今天註冊</font></font></a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另一個示例標題。</font></font></h1>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輪播第二張幻燈片的一些代表性佔位符內容。</font></font></p>
+            <p><a class="btn btn-lg btn-primary" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">學到更多</font></font></a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一個更好的措施。</font></font></h1>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此輪播第三張幻燈片的一些代表性佔位符內容。</font></font></p>
+            <p><a class="btn btn-lg btn-primary" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">瀏覽圖庫</font></font></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#myCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以前的</font></font></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#myCarousel" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一個</font></font></span>
+    </button>
+  </div>
+</div>
+	<hr />
+				<div>
+					<img src="${contextRoot}/img/hot.png" style="width:1110px">
+				</div>
+					<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
+						<div style="width:1100px; height: 285	px; margin: 0px auto;">
+						<ul class="responsive_topsale" style="list-style-type: none; padding-left:15px">
+						
+							<li style="text-align: center; width:225px">								
+								<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data0" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div>								
+							</li>	
+							<li style="text-align: center; width:225px">
+								<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data1" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data2" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>											
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data3"></div>
+								<div id="name_data3" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data4"></div>
+								<div id="name_data4" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data5"></div>
+								<div id="name_data5" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data6"></div>
+								<div id="name_data6" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data7"></div>
+								<div id="name_data7" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data8"></div>
+								<div id="name_data8" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data9"></div>
+								<div id="name_data9" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data10"></div>
+								<div id="name_data10" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data11"></div>
+								<div id="name_data11" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data12"></div>
+								<div id="name_data12" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data13"></div>
+								<div id="name_data13" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data14"></div>
+								<div id="name_data14" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li> 
+						</ul>
+					</div>
+				</div>
+
+			
+			
+			<hr />
+			<div>
+				<ul class="responsive">
+					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+						<c:forEach var="workProduct" items="${page.content}">
+							<li>
+				<div class="card-deck text-center">
+<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
+>>>>>>> 62f570b28fcf1e172bcbd71ea33fce3ee7265572
 								<div class="card">
 									<div class="card-body">
 										<a
