@@ -24,6 +24,7 @@ nav {
 
 .img1 {
 	float: left;
+	border-radius: 10px;;
 }
 </style>
 <body>
@@ -63,28 +64,26 @@ nav {
 	<!-- </div> -->
 	<nav class="navbar navbar-dark bg-dark navbar-expand-md" id="main">
 		<div class="img1">
-			<a href="${contextRoot}/HOME"><img
-				src="${contextRoot}/img/logo6.png" width="150px"></a>
+			<a class="nav-link" href="${contextRoot}/HOME"><img
+				src="${contextRoot}/img/logo6.png" width="125px" class="img1"></a>
 		</div>
 		<div class="container">
-
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav w-100 justify-content-between">
-					<li class="nav-item dropdown"><a
-						class="dropdown-toggle nav-link"
+
+					<li class="nav-item dropdown"><a class="nav-link"
 						href="${contextRoot}/product/category?productcategory=蔬菜類">蔬菜類</a>
 
 					</li>
-					<li class="nav-item dropdown"><a
-						class="dropdown-toggle nav-link"
+					<li class="nav-item dropdown"><a class="nav-link"
 						href="${contextRoot}/product/category?productcategory=水果類">水果類</a>
 
 					</li>
-					<li class="nav-item dropdown"><a
-						class="dropdown-toggle nav-link" data-display="static"
+					<li class="nav-item dropdown"><a class="nav-link"
+						data-display="static"
 						href="${contextRoot}/product/category?productcategory=肉品">肉品</a></li>
-					<li class="nav-item dropdown"><a
-						class="dropdown-toggle nav-link" data-display="static"
+					<li class="nav-item dropdown"><a class="nav-link"
+						data-display="static"
 						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
 				</ul>
 			</div>
