@@ -18,17 +18,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.foodmarket.app.blog.dto.RecipeDto;
 import com.foodmarket.app.blog.model.MemberLikeRecipeRepository;
 import com.foodmarket.app.blog.model.Recipe;
 import com.foodmarket.app.blog.model.RecipeType;
 import com.foodmarket.app.blog.service.MemberLikeRecipeServer;
 import com.foodmarket.app.blog.service.RecipeService;
 import com.foodmarket.app.blog.service.RecipeTypeService;
+
 
 
 
@@ -234,8 +236,43 @@ public class RecipeController {
 			rService.insertRecipe(rec);
 			return "redirect:/recipe/all";
 	}
+	
+	@PostMapping("recipe/addRecipeToLike/{recipePostId}")
+	@ResponseBody
+	public Recipe addRecipeToLike(@PathVariable Long recipePostId) {
+		
+		Recipe rec = rService.findById(recipePostId);
+		Integer liketime = rec.getPostLikeTime();
+		System.out.println(rec);
+		System.out.println("文章喜歡人數:"+liketime);
+		liketime++;
+		System.out.println("之後喜歡的人數:"+liketime);
+		rec.setPostLikeTime(liketime);
+		rService.insertRecipe(rec);
+		System.out.println(rec);
+		return rec;
+	}
+	
+	@GetMapping("recipe/cancelRecipeToLike/{recipePostId}")
+	public String cancelRecipeToLike(@PathVariable Long recipePostId,Model model) {
+		
+		Recipe rec = rService.findById(recipePostId);
+		Integer liketime = rec.getPostLikeTime();
+		System.out.println(rec);
+		System.out.println("文章喜歡人數:"+liketime);
+		liketime--;
+		System.out.println("之後喜歡的人數:"+liketime);
+		rec.setPostLikeTime(liketime);
+		rService.insertRecipe(rec);
+		System.out.println(rec);
+		
+		Recipe rec2 = rService.findById(recipePostId);
+		model.addAttribute("rec2", rec2);
+		
+		return "redirect:/recipe/showRecipe?recipePostId="+recipePostId;
+	}
 
-	@GetMapping("recipe/addLikeTimeSearch/{recipePostId}")
+	@PostMapping("recipe/addLikeTimeSearch/{recipePostId}")
 	public String updateRecipeLikeTime2(@PathVariable Long recipePostId) {
 		
 		Recipe rec = rService.findById(recipePostId);
