@@ -19,5 +19,4 @@ public interface StatisticOrderItemRepository extends JpaRepository<OrderItem, I
 	
 	public List<OrderItem> findAll();
 
-	//如果要改productStatistic檔名要注意大小寫，原生SQL好像不管大小寫
 }

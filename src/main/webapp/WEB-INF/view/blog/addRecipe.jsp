@@ -51,6 +51,7 @@ div #pullinup{
 						食譜種類:<form:select path="recipeType" class="form-control"> 						
 							<form:option value="NONE" label="--- 請選擇 ---"/>
 							<form:option value="西餐" label="西餐"/>
+							<form:option value="早午餐" label="早午餐"/>
 							<form:option value="麵包" label="麵包"/>
 							<form:option value="糕點" label="糕點"/>
 							<form:option value="泰式料理" label="泰式料理"/>
@@ -67,6 +68,11 @@ div #pullinup{
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
  						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
+ 						
+ 						
+ 						
+ 						
+ 						
   						
   						</div>
   

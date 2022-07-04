@@ -39,8 +39,8 @@ $(document).ready(function() {
 					+'<img src="'+json.postImage+'" alt="recipeImg"  width="470px" height="340px" float="left">'
 					+'<br><br><br><p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">烹飪時間: '+json.cookTime+'</p>'
 					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">份量: '+json.serving+'人份</p>'
-					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">烹飪時間: '+json.postLikeTime+'</p>'
-					+'<br><p>食材準備:<br>'+json.ingredients+'</p><br>'
+					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">喜歡人數: '+json.postLikeTime+'</p>'
+					+'<br><br><br><br><br><p>食材準備:<br>'+json.ingredients+'</p><br>'
 					+json.postText
 	
 
