@@ -50,7 +50,6 @@ background-color: green;
       	<a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
       		<div class="card-body">
         		<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
-        		<p class="card-text"><c:out value="${recipe.postTag}" /></p>
         		<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
         		<p>⌚  ${recipe.cookTime} 
         			<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" style="display:block">♥  ${recipe.postLikeTime}</button></a>
@@ -72,7 +71,6 @@ background-color: green;
       	<a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
       		<div class="card-body">
         		<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
-        		<p class="card-text"><c:out value="${recipe.postTag}" /></p>
         		<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
         		<p>⌚  ${recipe.cookTime} 
         			<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" style="display:block">♥  ${recipe.postLikeTime}</button></a>
@@ -92,7 +90,7 @@ background-color: green;
   			<c:forEach var="recipeType" items="${recType.content}">
   				<div class="col">
     				<div class="card">
-      					<a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}"><img src="${recipeType.recipeTypeImg}" class="card-img-top" alt="recipeTypeImg"></a>
+      					<a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}"><img src="${recipeType.recipeTypeImg}" class="card-img-top" alt="recipeTypeImg" style="height: 110px"></a>
       						<div class="card-body">
         					<h5 class="card-title"><a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}">${recipeType.recipeTypeTitle}</a></h5>
       						</div>
@@ -105,13 +103,13 @@ background-color: green;
 </div>
 <script>
 
-const insertdata = document.querySelector('input');
+const insertdata = document.querySelector('.searchtext');
 const post = document.querySelector('#search');
 
-insertdata.addEventListener('input', showValue);
+insertdata.addEventListener('input',showValue);
 function showValue(){
   console.log(this.value);
-  const val = document. querySelector('input'). value;
+  const val = document. querySelector('.searchtext').value;
   console.log(val);
 	post.onclick = function(){
 	window.location.href="http://localhost:8080/foodmarket/recipe/findByTagLike?postTag="+val;
