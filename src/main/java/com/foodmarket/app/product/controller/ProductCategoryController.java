@@ -107,12 +107,12 @@ public class ProductCategoryController {
 	//=============================================
 //	前台ID找商品種類 navbar
 	@GetMapping("layout/navbarProduct")
-	public String Productcategory(@RequestParam("categoryid") Integer categoryid,
+	public String Productcategory(@RequestParam(required = false, value ="takeon") String takeon,
 			Model m) {
-		productcategoryBean productcategory = pcmsgService.findById(categoryid);
+		List<productcategoryBean> productcategory = pcmsgService.findByProductCategoryTakeon(takeon);
 
 		m.addAttribute("productcategory", productcategory);
-//		m.addAttribute("categoryid", categoryid);
+		m.addAttribute("takeon", takeon);
 		return "layout/navbarProduct";
 
 	}	

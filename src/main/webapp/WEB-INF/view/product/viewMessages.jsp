@@ -165,11 +165,7 @@ img {
 							<th scope="col" style="text-align: center;">商品介紹</th>
 							<th scope="col" style="text-align: center;">庫存數量</th>
 							<th scope="col" style="text-align: center;">上下架</th>
-<!-- 							<th scope="col">PCID</th> -->
-<!-- 							<th scope="col">CID</th> -->
-<!-- 							<th scope="col" style="text-align: center;">Cname</th> -->
-<!-- 							<th scope="col">C上下架</th> -->
-<!-- 							<th scope="col">修改人員</th> -->
+							<th scope="col" style="text-align: center;">商品種類</th>
 							<th scope="col" style="text-align: center;">功能</th>
 						</tr>
 					</thead>
@@ -193,11 +189,9 @@ img {
 								<td style="text-align: center;"><c:out value="${workProduct.productdesciption}" /></td>
 								<td style="text-align: center;"><c:out value="${workProduct.inventoryquantity}" /></td>
 								<td style="text-align: center;"><c:out value="${workProduct.takedown}" /></td>
-<%-- 								<td><c:out value="${workProduct.productcategoryid}" /></td> --%>
-<%-- 								<td><c:out value="${workProduct.productcategoryBean.categoryid}" /></td> --%>
-<%-- 								<td style="text-align: center;"><c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td> --%>
-<%-- 								<td><c:out value="${workProduct.productcategoryBean.takeon}" /></td> --%>
-<%-- 								<td><c:out value="${workProduct.administrator}" /></td> --%>
+							<c:forEach var="productcategoryBean" items="${page.content}">	
+								<td style="text-align: center;"><c:out value="${productcategoryBean.productcategoryname}" /></td>
+								</c:forEach>
 								<td style="text-align: center;"><div>
 										<a
 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button

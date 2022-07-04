@@ -26,6 +26,16 @@ public interface ProductcategoryRepository extends JpaRepository<productcategory
 	public List<productcategoryBean> findByProductcategoryname(@Param("productcategoryname") String productcategoryname);
 //	return productcategoryDao.findByStoreBean(productcategory);
 
+	//商品種類的上架 無分頁
+	@Query(value = "select * from productcategorys where  takeon = '上架中'", nativeQuery = true)
+	public List<productcategoryBean> findByProductCategoryTakeon(@Param("takeon") String takeon);
+//	return productcategoryDao.findByStoreBean(productcategory);
+
+	//商品種類的上架 分頁
+	@Query(value = "select * from productcategorys where  takeon = '上架中'", nativeQuery = true)
+	public Page<productcategoryBean> findByProductCategoryTakeonPage(@Param("takeon") String takeon,Pageable pgb);
+//	return productcategoryDao.findByStoreBean(productcategory);
+
 //商品種類名稱不能重複蔬菜類，無分頁 2
 	@Query(value = "select count(*) as count from productcategorys	where productcategoryname = '蔬菜類'", nativeQuery = true)
 	public List<productcategoryBean> findBycategoryname(@Param("takeon") String takeon);

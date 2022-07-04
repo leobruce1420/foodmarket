@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <jsp:include page="../layout/navbar.jsp" />
-<%-- <jsp:include page="../layout/navbarProduct.jsp" /> --%>
+<jsp:include page="../layout/navbarProduct.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -35,26 +35,26 @@ table, td {
 <!--     </a> -->
 <!--   </label> -->
 <%--   </c:forEach> --%>
- <label class="btn btn-secondary ">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類">
-    <input type="radio" name="options" id="option1" >蔬菜類
-    </a>
-  </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=水果類">
-    <input type="radio" name="options" id="option2">水果類
-  </a>
-  </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=肉品">
-    <input type="radio" name="options" id="option3">肉品
- </a>
-  </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=海鮮">
-    <input type="radio" name="options" id="option4">海鮮
-  </a>
-  </label>
+<!--  <label class="btn btn-secondary "> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類"> --%>
+<!--     <input type="radio" name="options" id="option1" >蔬菜類 -->
+<!--     </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=水果類"> --%>
+<!--     <input type="radio" name="options" id="option2">水果類 -->
+<!--   </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=肉品"> --%>
+<!--     <input type="radio" name="options" id="option3">肉品 -->
+<!--  </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=海鮮"> --%>
+<!--     <input type="radio" name="options" id="option4">海鮮 -->
+<!--   </a> -->
+<!--   </label> -->
 	<!-- <div class="div1"> -->
 	<!-- 				<label for="id" class="id">單筆商品查詢 : </label> <input type="text" -->
 	<!-- 					id="id" name="id" autocomplete="off" required /><input -->
