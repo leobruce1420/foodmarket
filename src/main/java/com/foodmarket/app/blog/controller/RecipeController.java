@@ -4,6 +4,8 @@ package com.foodmarket.app.blog.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -110,12 +112,20 @@ public class RecipeController {
 		return "redirect:/recipe/backall";
 	}
 	
-	@PostMapping("recipe/editRecipe")
-	public String postEditRecipe(@ModelAttribute(name="rec") Recipe rec) {
-		rService.save(rec);
-		return "redirect:/recipe/backall";
+	@GetMapping("recipe/editRecipe")
+	public String postEditRecipe(@RequestParam("recipePostId") Long recipePostId,Model model) {
+		Recipe rec = rService.findById(recipePostId);
+		model.addAttribute("rec", rec);
+		return "blog/editRecipe";
 	}
 
+	@PostMapping("recipe/editRecipe")
+	public String insertEditRecipe(@ModelAttribute(name="rec") Recipe rec,HttpSession session) {
+		rService.save(rec);
+
+		return "redirect:/lock/recipe/memberHouse";
+	}
+	
 	@GetMapping("recipe/deleteRecipe")
 	public String deleteRecipe(@RequestParam("recipePostId") Long recipePostId) {
 		rService.deleteById(recipePostId);

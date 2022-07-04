@@ -14,10 +14,26 @@ public class ProductcategoryDto implements Serializable{
 	private Integer categoryid;
 	
 	private String productcategoryname;
+
+	private String takeon;
 	
 	public ProductcategoryDto() {
 		
 	}
+	
+	
+
+	public String getTakeon() {
+		return takeon;
+	}
+
+
+
+	public void setTakeon(String takeon) {
+		this.takeon = takeon;
+	}
+
+
 
 	public Integer getCategoryid() {
 		return categoryid;

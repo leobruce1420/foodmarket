@@ -40,7 +40,7 @@
 			
 			<td><img style="width: 100px; height: 100px;" src= "data:image/image/*;base64,${wishList.product.getProductimg()}" alt="image"/></td>
 			
-			<td ><a href="${contextRoot}/product/productname?productname=${wishList.product.getProductname()}">${wishList.product.getProductname()}</a></td>
+			<td ><a href="${contextRoot}/product/product?productid=${wishList.product.getProductid()}">${wishList.product.getProductname()}</a></td>
 
 			<td >${wishList.product.getProductdesciption()}
 			

@@ -26,7 +26,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 	public  Page<Recipe> findLikeRecipeById(@Param("likeList") int[] likeList, Pageable pgb);
 
 	@Query(value = "select * from recipe_post where customerId = :customerId",nativeQuery = true)
-	public Page<Recipe> findAllByCustomerId(Long customerId, Pageable pgb);
+	public Page<Recipe> findAllByCustomerId(Object customerId, Pageable pgb);
 	
 
 }

@@ -10,39 +10,66 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 
-import com.foodmarket.app.product.model.WorkProduct;
-import com.foodmarket.app.product.model.WorkProductRepository;
+import com.foodmarket.app.product.model.ProductcategoryRepository;
+import com.foodmarket.app.product.model.productcategoryBean;
 
 @Service
 @Transactional
-public class ProductcategoryService {
+public class ProductcategoryService  {
 	
 	
 
 	@Autowired
-	private WorkProductRepository productcategoryDao;
+	private ProductcategoryRepository productcategoryDao;
 
-//	public List<WorkProduct> selectAll() {
-//		
-//		List<WorkProduct> productAll=productDao.findAll();
-//		  return productAll;
-//	}
-//	public void insertProduct(WorkProduct pmsg) {
-//		productDao.save(pmsg);
-//	}
-//
+	public List<productcategoryBean> selectproductcategoryAll() {
+		
+		List<productcategoryBean> productcategoryAll = productcategoryDao.findAll();
+		  return productcategoryAll;
+	}
+	
 //	@Transactional
-//	public WorkProduct getLastest() {
-//		return productDao.findFirstByOrderByAddedDesc();
+//	public productcategory getLastest() {
+//		return productcategoryDao.findFirstByOrderByAddedDesc();
 //	}
+	
+	//總類新增
+	public void insertproductcategory(productcategoryBean pcmsg) {
+		productcategoryDao.save(pcmsg);
+	}
+	
+	
+	//ID查詢 商品總類
+		public productcategoryBean findById(Integer categoryid) {
+//			return  productcategoryDao.findBycategoryid(categoryid);
+			Optional<productcategoryBean> optional = productcategoryDao.findById(categoryid);
+			
+			if (optional.isPresent()) {
+				return optional.get();
+				
+			}
+			return null;
+			
+		}
+		//刪除
+		public void deleteById(Integer categoryid) {
+			productcategoryDao.deleteById(categoryid);
+	
+		}
+//		//查詢商品總類分頁
+		public Page<productcategoryBean> findByPage(Integer pageNumber) {
+			Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "categoryid");
+			Page<productcategoryBean> page = productcategoryDao.findAll(pgb);
+
+			return page;
+			}
+
 //	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
-//	public Page<WorkProduct> findByPage(Integer pageNumber) {
+//	public Page<productcategory> findByPage(Integer pageNumber) {
 //		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
 //
-//		Page<WorkProduct> page = productDao.findAll(pgb);
+//		Page<productcategory> page = productcategoryDao.findAll(pgb);
 //
 //		return page;
 //	}
@@ -67,13 +94,13 @@ public class ProductcategoryService {
 //		return null;
 //	}
 	//商品查詢種類不分頁
-//	public List<WorkProduct> findByProductcategoryKey(String productcategory) {
-//		List<WorkProduct> page = productDao.findByProductcategoryKey(productcategory);
-
-//		if(page.isPresent()) {
-//			return page.get();
-//			
-//		}
+//	public List<productcategory> findByProductcategoryKey(String productcategory) {
+//		List<productcategory> page = productcategoryDao.findByProductcategory(productcategory);
+//
+////		if(page.isPresent()) {
+////			return page.get();
+////			
+////		}
 //		return page;
 //	}
 	

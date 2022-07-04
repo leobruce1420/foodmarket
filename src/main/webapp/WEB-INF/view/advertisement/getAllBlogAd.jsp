@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@
 /* } */
 
 .main {
-  width: 80%;
+  width: 65%;
   margin: 20px auto;
 }
 table {
@@ -76,15 +76,26 @@ table tbody tr:last-child td:last-child {
 	<div align="center">
 		<br>
 		<h2>部落格活動資料</h2>
-		<br>
+		<p>
+		<a href="${contextRoot}/blogad/insert">
+			<button type="button" class="btn btn-outline-info">新增活動</button>
+		</a>
+		
+		
+		<div>
+		 
+		
 		<form:form action="${contextRoot}/blogad/queryById" method="get" class="search">
 			<div class="div1">
 				<label for="id" class="id">單筆活動查詢 : </label> <input type="text"
 					id="myInput" name="id" autocomplete="off" class="light-table-filter"
 					data-table="order-table" placeholder="請輸入關鍵字"/>
 			</div>
-			<br>
+			
 		</form:form>
+		
+		
+		</div>
 		<div class="main">
 		<table id="myTable">
 			<thead>
@@ -127,9 +138,7 @@ table tbody tr:last-child td:last-child {
 					</c:forEach>
 		</table>
  		</div>
-		<br> <a href="${contextRoot}/blogad/insert">
-			<button type="button" class="btn btn-outline-info">新增活動</button>
-		</a>
+		
 	</div>
 	<script type="text/javascript">
 // 		(function(document) {

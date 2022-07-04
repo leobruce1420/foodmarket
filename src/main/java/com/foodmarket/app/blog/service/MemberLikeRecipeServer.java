@@ -14,9 +14,9 @@ public interface MemberLikeRecipeServer {
 
 	 List<MemberLikeRecipe> findAllById(Iterable<Long> ids);
 
-	int[] getAllLikeRecipeById(Long customerId);
+	int[] getAllLikeRecipeById(Object customerId);
 
-	Object addLikeTimeByCustomer(Long customerId,Long recipePostId);
+	Object addLikeTimeByCustomer(Object customerId,Long recipePostId);
 
 }
 

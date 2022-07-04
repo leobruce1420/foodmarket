@@ -50,9 +50,10 @@ public class WishListService implements WishListServiceInterface{
 			deleteByMemberAndProduct(member, product);
 			return "取消收藏";
 		}else {
-			wish.setMember(member);
-			wish.setProduct(product);
-			save(wish);
+			WishList newWish = new WishList();
+			newWish.setMember(member);
+			newWish.setProduct(product);
+			save(newWish);
 			return "新增收藏";
 		}
 	}
