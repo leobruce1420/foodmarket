@@ -28,8 +28,8 @@ public class WorkProductController {
 	private ProductcategoryService pcmsgService;
 	
 	
-
-	// base64 join
+//0704==============================================
+	// 新增商品 join
 //	@PostMapping("postProduct")
 //	public String addMessage(@RequestParam("productname") String productname, 
 //			@RequestParam("productcategory")  String productcategory,
@@ -39,7 +39,7 @@ public class WorkProductController {
 //			 @RequestParam("administrator") String administrator,
 //			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 //			 @RequestParam("takedown") String takedown,
-////			 @RequestParam("productcategoryId") Integer productcategoryId,
+//			 @RequestParam("productcategoryId") Integer productcategoryId,
 //			 Model m) throws  IOException {
 //		Util method = new Util();
 //		
@@ -50,7 +50,7 @@ public class WorkProductController {
 //
 ////			request.setCharacterEncoding("UTF-8");
 //			WorkProduct workProduct = new WorkProduct();
-////			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryId);
+//			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryId);
 //			workProduct.setProductname(productname);
 //			workProduct.setProductcategory(productcategory);
 //			workProduct.setProductprice(productprice);
@@ -60,7 +60,7 @@ public class WorkProductController {
 //			workProduct.setTakedown(takedown);
 //			workProduct.setProductdesciption(productdesciption);
 //			workProduct.setInventoryquantity(inventoryquantity);
-////			workProduct.setProductcategoryBean(productcategoryBean);
+//			workProduct.setProductcategoryBean(productcategoryBean);
 //
 //			byte[] imgBytes = mf.getBytes();
 //			workProduct.setProductimg(method.encoder(imgBytes));
@@ -82,7 +82,8 @@ public class WorkProductController {
 //		return "product/addMessage";
 //	}
 	
-	// base64
+	//=================================================================
+	 //新增商品
 		@PostMapping("postProduct")
 		public String addMessage(@RequestParam("productname") String productname, 
 				@RequestParam("productcategory")  String productcategory,

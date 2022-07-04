@@ -19,6 +19,13 @@
 <%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=海鮮"><button type="button" class="btn btn-secondary ">海鮮</button></a> --%>
 <!-- </div> -->
 <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 50rem;">
+   <c:forEach var="productcategory" items="${productcategory}">
+  <label class="btn btn-secondary ">
+  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=${productcategory.productcategoryname}">
+    <input type="radio" name="options" id="option1" >${productcategory.productcategoryname}
+    </a>
+  </label>
+  </c:forEach>
   <label class="btn btn-secondary ">
   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類">
     <input type="radio" name="options" id="option1" >蔬菜類

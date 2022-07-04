@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.model.productcategoryBean;
 import com.foodmarket.app.product.service.ProductcategoryService;
 import com.foodmarket.app.product.util.Util;
@@ -103,6 +104,20 @@ public class ProductCategoryController {
 //		
 //		return "redirect:/product/all";
 //	}
+	//=============================================
+//	前台ID找商品種類 navbar
+	@GetMapping("layout/navbarProduct")
+	public String Productcategory(@RequestParam("categoryid") Integer categoryid,
+			Model m) {
+		productcategoryBean productcategory = pcmsgService.findById(categoryid);
+
+		m.addAttribute("productcategory", productcategory);
+//		m.addAttribute("categoryid", categoryid);
+		return "layout/navbarProduct";
+
+	}	
+	
+	//=============================================
 // 商品種類刪除
 	@GetMapping("productcategory/delete")
 	public String deleteMsg(@RequestParam("categoryid") Integer categoryid) {

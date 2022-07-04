@@ -64,6 +64,17 @@ public class ProductcategoryService  {
 
 			return page;
 			}
+		
+		//商品查詢種類不分頁
+//		public List<productcategoryBean> findByProductcategoryKey(Integer categoryid) {
+//			Optional<productcategoryBean> page = productcategoryDao.findById(categoryid);
+//	
+////			if(page.isPresent()) {
+////				return page.get();
+////				
+////			}
+//			return page;
+//		}
 
 //	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 //	public Page<productcategory> findByPage(Integer pageNumber) {
