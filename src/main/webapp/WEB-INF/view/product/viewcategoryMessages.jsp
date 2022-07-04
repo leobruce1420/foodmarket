@@ -43,6 +43,9 @@ table, td {
 					<div class="container">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 50c184045b7e08bc635c3632a806f68f70a45d05
 						<div class="row">
 
 
@@ -67,12 +70,13 @@ table, td {
 														value="${workProduct.productid}"> <input
 														class="insertProductBtn btn btn-success" type="button"
 														value="加入購物車"
-														onclick="insertProduct('${workProduct.productid}')">
+														onclick="insertProduct(${workProduct.productid},${loginUserId})">
 												</div>
 												<%-- 					</form:form> --%>
 												<!-- 									</div> -->
 										</div>
 									</div>
+<<<<<<< HEAD
 =======
       <div class="row">
 					
@@ -97,6 +101,9 @@ table, td {
 										<%-- 					</form:form> --%>
 <!-- 									</div> -->
 >>>>>>> 6b71fbac6b3439a5e9a36f53c3e89ec4d5c6a745
+=======
+
+>>>>>>> 50c184045b7e08bc635c3632a806f68f70a45d05
 								</div>
 							</c:forEach>
 							<!-- 					<div class="col-12 "> -->
@@ -229,6 +236,7 @@ table, td {
 	
 </body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script type="text/javascript">
 =======
 <!-- 07/01shopcar修改 -->
@@ -252,6 +260,31 @@ function insertProduct(pId) {
 		}).then(function(res) {
 			alert("已加入購物車");
 		})
+=======
+
+<!-- 07/01shopcar修改 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+function insertProduct(pId,cId) {
+	if(cId!=null){	
+		var id =document.getElementById('productId_'+pId).value;
+			axios({
+				method : 'post',
+				url : '${contextRoot}/lock/shopcart/insert' ,
+				data : {
+					 "productNumber" : 1,
+					 "customerId" : cId ,
+					 "productId" :id
+				}
+			}).then(function(res) {
+				alert("已加入購物車");
+			})	
+	}else{
+		alert("請先登入")	
+	}
+
+>>>>>>> 50c184045b7e08bc635c3632a806f68f70a45d05
 
 		}
 </script>

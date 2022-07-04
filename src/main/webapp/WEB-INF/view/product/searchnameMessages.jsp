@@ -71,24 +71,23 @@ table, td {
 
 
 	<hr />
+<script type="text/javascript">
+function insertProduct(pId) {
+	var id =document.getElementById('productId_'+pId).value;
+		axios({
+			method : 'post',
+			url : '${contextRoot}/lock/shopcart/insert' ,
+			data : {
+				 "productNumber" : 1,
+				 "customerId" : 1 ,
+				 "productId" :id
+			}
+		}).then(function(res) {
+			alert("已加入購物車");
+		})
 
-
-
-	<!-- 			<br /> -->
-
-	<!-- 							標題對齊圖 -->
-	<!-- 						<figure class="figure"> -->
-	<!-- 							<img src="..." class="figure-img img-fluid rounded" alt="..."> -->
-	<!-- 							<figcaption class="figure-caption">A caption for the -->
-	<!-- 								above image.</figcaption> -->
-	<!-- 						</figure> -->
-	<!-- 								塗在中間 -->
-	<!-- 						<div class="text-center"> -->
-	<!-- 							<img src="..." class="rounded" alt="..."> -->
-	<!-- 						</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-	<!-- 	</div> -->
+		}
+</script>
 </body>
 
 </html>

@@ -43,7 +43,7 @@ public class OrderItemController {
 		System.out.println("saveRecord");
 		OrderRecord newOrderRecord = orderRecordService.save(orderRecord, userId);
 		
-		shopCartService.deleteByCustomerId(userId.intValue());
+		shopCartService.deleteByCustomerId(userId);
 		
 		return newOrderRecord;
 	}
