@@ -48,14 +48,13 @@ public class StatisticController {
 	@GetMapping("/productImg")
 	@ResponseBody
 	public Map getProductImg(){
-		Map rtnMap = soiService.productImg();		
-		return rtnMap;
-	}
-	
-	@GetMapping("/productId")
-	@ResponseBody
-	public Map getProductId(){
-		Map rtnMap = soiService.productId();		
+		
+//		System.err.println("============== test str ==============");
+		
+		Map rtnMap = soiService.productImg();
+		
+//		System.err.println("============== test end ==============");
+		
 		return rtnMap;
 	}
 	
