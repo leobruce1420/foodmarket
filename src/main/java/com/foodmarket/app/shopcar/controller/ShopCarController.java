@@ -3,6 +3,7 @@ package com.foodmarket.app.shopcar.controller;
 import java.util.List;
 
 import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -156,8 +157,10 @@ public class ShopCarController {
 	}
 
 	@GetMapping("lock/shopCart/all")
-	public String getAll(Model model){
-		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(1);
+	public String getAll(Model model, HttpSession session){
+		System.out.println(session.getAttribute("loginUserId"));
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(sessionUId);
 		
 		int totalPrice = 0;
 		
@@ -178,7 +181,7 @@ public class ShopCarController {
 //		Session.xxx; //getCustomerId
 
 		Member member = new Member();
-		member.setCustomerId(1L);
+		member.setCustomerId(sessionUId);
 		
 		model.addAttribute("shopCarts" , shopCarts);
 		model.addAttribute("member" , member);
@@ -188,7 +191,7 @@ public class ShopCarController {
 	
 	
 	@PostMapping("shopCart/item")
-	public String getItem(Model model,Integer customerId) {
+	public String getItem(Model model,Long customerId) {
 		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(customerId);
 		
 		return "shopcart/Item";
