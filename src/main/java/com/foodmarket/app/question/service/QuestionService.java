@@ -33,7 +33,7 @@ public class QuestionService implements QuestionServiceInterface {
 	}
 	
 	public Page<Question> findByPage(Integer PageNumber) {
-		Pageable pgb = PageRequest.of(PageNumber-1, 4, Sort.Direction.DESC, "questionCategory");
+		Pageable pgb = PageRequest.of(PageNumber-1, 5, Sort.Direction.DESC, "questionCategory");
 		
 		Page<Question> pageQuestion = questionDto.findAll(pgb);
 		

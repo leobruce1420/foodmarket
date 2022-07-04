@@ -832,9 +832,9 @@
                          * @since   2.0
                          */
                         menuItems: [
-//                            'viewFullscreen',
-//                            'printChart',
-//                            'separator',
+                            'viewFullscreen',
+                            'printChart',
+                            'separator',
                             
                             'downloadJPEG',
                             'downloadPDF',
