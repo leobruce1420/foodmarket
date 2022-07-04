@@ -34,8 +34,8 @@ public class productcategoryBean {
 	private String takeon;
 	
 //	@Transient
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "productcategory",cascade =CascadeType.ALL)
-	private List<WorkProduct> products = new LinkedList<WorkProduct>();
+//	@OneToMany(fetch = FetchType.LAZY,mappedBy = "productcategory",cascade =CascadeType.ALL)
+//	private List<WorkProduct> products = new LinkedList<WorkProduct>();
 	
 //	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 //	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -67,16 +67,16 @@ public class productcategoryBean {
 //		this.added = added;
 //	}
 
-	public List<WorkProduct> getProducts() {
-		return products;
-	}
-
-
-
-
-	public void setProducts(List<WorkProduct> products) {
-		this.products = products;
-	}
+//	public List<WorkProduct> getProducts() {
+//		return products;
+//	}
+//
+//
+//
+//
+//	public void setProducts(List<WorkProduct> products) {
+//		this.products = products;
+//	}
 
 
 

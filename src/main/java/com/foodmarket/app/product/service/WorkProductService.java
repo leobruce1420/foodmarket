@@ -40,41 +40,41 @@ public class WorkProductService {
 		
 	}
 	
-	//all join
-		public Optional<WorkProduct> findProductByCategoryid(Integer categoryId){
-			return productDao.findByproductcategoryBean_categoryid(categoryId);
-		}
-		//all join
-		public Page<WorkProduct> findproductBycategoryidPage(Integer categoryid,Integer pageNumber) {
-			Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "categoryId");
-			Page<WorkProduct> page = productDao.findproductBycategoryid(categoryid,pgb);
-
-			return page;
-		}
+//	//all join
+//		public Optional<WorkProduct> findProductByCategoryid(Integer categoryId){
+//			return productDao.findByproductcategoryBean_categoryid(categoryId);
+//		}
+//		//all join
+//		public Page<WorkProduct> findproductBycategoryidPage(Integer categoryid,Integer pageNumber) {
+//			Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "categoryId");
+//			Page<WorkProduct> page = productDao.findproductBycategoryid(categoryid,pgb);
+//
+//			return page;
+//		}
 	
-	//首頁  滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁 inner join
-	public Page<WorkProduct> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findAll(pgb);
-
-		return page;
-	}
-	//all join
-	public Page<WorkProduct> findByPage1(Integer pageNumber,Integer categoryid) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findByproductcategoryBean_categoryid(pgb,categoryid);
-		
-		return page;
-	}
-
-	//首頁  滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
+//	//首頁  滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁 inner join
 //	public Page<WorkProduct> findByPage(Integer pageNumber) {
 //		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-//		
 //		Page<WorkProduct> page = productDao.findAll(pgb);
+//
+//		return page;
+//	}
+//	//all join
+//	public Page<WorkProduct> findByPage1(Integer pageNumber,Integer categoryid) {
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+//		Page<WorkProduct> page = productDao.findByproductcategoryBean_categoryid(pgb,categoryid);
 //		
 //		return page;
 //	}
+
+	//首頁  滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
+	public Page<WorkProduct> findByPage(Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+		
+		Page<WorkProduct> page = productDao.findAll(pgb);
+		
+		return page;
+	}
 	
 	//商品inner join 測試
 //	public Page<WorkProduct> findBycategory(Integer productcategoryid,Integer productNumber) {

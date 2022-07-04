@@ -61,9 +61,9 @@ public class WorkProduct {
 	@Column(name="productcategoryid", columnDefinition = "int")
 	private Integer productcategoryid;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "categoryid")
-	private productcategoryBean productcategoryBean;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "categoryid")
+//	private productcategoryBean productcategoryBean;
 	
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
@@ -87,13 +87,13 @@ public class WorkProduct {
 
 
 
-	public productcategoryBean getProductcategoryBean() {
-		return productcategoryBean;
-	}
-
-	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
-		this.productcategoryBean = productcategoryBean;
-	}
+//	public productcategoryBean getProductcategoryBean() {
+//		return productcategoryBean;
+//	}
+//
+//	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
+//		this.productcategoryBean = productcategoryBean;
+//	}
 
 	public Integer getProductcategoryid() {
 		return productcategoryid;

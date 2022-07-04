@@ -167,10 +167,10 @@ img {
 							<th scope="col" style="text-align: center;">上下架</th>
 <!-- 							<th scope="col">PCID</th> -->
 <!-- 							<th scope="col">CID</th> -->
-							<th scope="col" style="text-align: center;">Cname</th>
+<!-- 							<th scope="col" style="text-align: center;">Cname</th> -->
 <!-- 							<th scope="col">C上下架</th> -->
 <!-- 							<th scope="col">修改人員</th> -->
-							<th scope="col" style="text-align: center;">功能</th>
+<!-- 							<th scope="col" style="text-align: center;">功能</th> -->
 						</tr>
 					</thead>
 						<tbody>
@@ -195,7 +195,7 @@ img {
 								<td style="text-align: center;"><c:out value="${workProduct.takedown}" /></td>
 <%-- 								<td><c:out value="${workProduct.productcategoryid}" /></td> --%>
 <%-- 								<td><c:out value="${workProduct.productcategoryBean.categoryid}" /></td> --%>
-								<td style="text-align: center;"><c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td>
+<%-- 								<td style="text-align: center;"><c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td> --%>
 <%-- 								<td><c:out value="${workProduct.productcategoryBean.takeon}" /></td> --%>
 <%-- 								<td><c:out value="${workProduct.administrator}" /></td> --%>
 								<td style="text-align: center;"><div>

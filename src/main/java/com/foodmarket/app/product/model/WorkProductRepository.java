@@ -77,11 +77,11 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 	@Query(value = "delete from product where productid = :productid", nativeQuery = true)
 	public void deleteproductidByIdSql(@Param("productid") Long productid);
 
-	Page<WorkProduct> findByproductcategoryBean_categoryid(Pageable pageable, Integer categoryid);
-	
-	public Optional<WorkProduct> findByproductcategoryBean_categoryid(Integer categoryid);
-
-	public Page<WorkProduct> findproductBycategoryid(Integer categoryid,Pageable pageable);
+//	Page<WorkProduct> findByproductcategoryBean_categoryid(Pageable pageable, Integer categoryid);
+//	
+//	public Optional<WorkProduct> findByproductcategoryBean_categoryid(Integer categoryid);
+//
+//	public Page<WorkProduct> findproductBycategoryid(Integer categoryid,Pageable pageable);
 
 
 }	

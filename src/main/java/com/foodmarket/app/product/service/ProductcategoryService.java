@@ -57,7 +57,7 @@ public class ProductcategoryService  {
 			productcategoryDao.deleteById(categoryid);
 	
 		}
-		//查詢商品總類分頁
+//		//查詢商品總類分頁
 		public Page<productcategoryBean> findByPage(Integer pageNumber) {
 			Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "categoryid");
 			Page<productcategoryBean> page = productcategoryDao.findAll(pgb);
@@ -65,7 +65,7 @@ public class ProductcategoryService  {
 			return page;
 			}
 
-////	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
+//	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 //	public Page<productcategory> findByPage(Integer pageNumber) {
 //		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
 //

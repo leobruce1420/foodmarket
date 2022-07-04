@@ -112,18 +112,18 @@
 							
 							<br/>
 							
-							<label for="productcategoryBean">商品種類</label>
-				<select  id="select" name="select">
-				<c:forEach var="productcategoryBean" items="${productcategory1}">
+<!-- 							<label for="productcategoryBean">商品種類</label> -->
+<!-- 				<select  id="select" name="select"> -->
+<%-- 				<c:forEach var="productcategoryBean" items="${productcategory1}"> --%>
 <%-- 				<c:choose> --%>
 <%-- 					<c:when test="${product.productCategoryBean.productCategoryId == productCategoryBean.productCategoryId}"> --%>
-					<option  selected="selected" value="${productcategoryBean.categoryId}">${productcategoryBean.productcategoryName}</option>
+<%-- 					<option  selected="selected" value="${productcategoryBean.categoryId}">${productcategoryBean.productcategoryName}</option> --%>
 <%-- 					</c:when> --%>
 <%-- 					<c:otherwise> --%>
 <%-- 					<option value="${productCategoryBean.productCategoryId}">${productCategoryBean.productCategoryName}</option> --%>
 <%-- 				</c:otherwise></c:choose> --%>
-				</c:forEach>
-				</select>
+<%-- 				</c:forEach> --%>
+<!-- 				</select> -->
 							
 							<br/>
 						
