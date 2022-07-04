@@ -130,9 +130,9 @@
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/orderRecord/all">訂單列表</a>
         </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
-        </li>
+<!--         <li class="list-group-item"> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a> --%>
+<!--         </li> -->
       </ul>
     </div>
   </div><!--panel end-->

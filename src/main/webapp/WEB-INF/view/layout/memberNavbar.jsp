@@ -84,23 +84,23 @@
       </li>
 
     
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          購物車
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="${contextRoot}/shopCart/all">購物車</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="${contextRoot}/orderList/{orderId}">購物明細</a>
-        </div>
+<!--     <li class="nav-item dropdown"> -->
+<%--         <a class="nav-link dropdown-toggle" href="${contextRoot}/lock/shopCart/all" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> --%>
+<!--           購物車 -->
+<!--         </a> -->
+<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/lock/shopCart/all">購物車</a> --%>
+<!--           <div class="dropdown-divider"></div> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/lock/orderList/{orderId}">購物明細</a> --%>
+<!--         </div> -->
       </li>
       
     </ul>
     
     
-    <button type="button" class="btn btn-primary mr-sm-2">
+<a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2">
  購物車
-</button>
+</button></a>
 
 
     <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
@@ -147,7 +147,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${contextRoot}/lastestRecord">
               <span data-feather="shopping-cart"></span>
               訂單查詢
             </a>

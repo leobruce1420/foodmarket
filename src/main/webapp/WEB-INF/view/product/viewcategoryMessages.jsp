@@ -56,9 +56,13 @@ table,td{
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
 										<h5 class="card-title">${workProduct.productname}</h5>
 										<p class="card-text">$${workProduct.productprice}</p>
-										<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}"
-											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a>
+										
+										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
+										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">	
+										
+<!-- 										<a -->
+<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
+<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
 										<%-- 					</form:form> --%>
 <!-- 									</div> -->
 								</div>
@@ -221,6 +225,25 @@ table,td{
 			</div>
 		</div>
 	</div>
+	
 </body>
+<!-- 07/01shopcar修改 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+function insertProduct(pId) {
+	var id =document.getElementById('productId_'+pId).value;
+		axios({
+			method : 'post',
+			url : '${contextRoot}/shopcart/insert' ,
+			data : {
+				 "productNumber" : 1,
+				 "customerId" : 1 ,
+				 "productId" :id
+			}
+		}).then(function(res) {
+			alert("已加入購物車");
+		})
 
+		}
+</script>
 </html>
