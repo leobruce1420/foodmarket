@@ -189,9 +189,9 @@ img {
 								<td style="text-align: center;"><c:out value="${workProduct.productdesciption}" /></td>
 								<td style="text-align: center;"><c:out value="${workProduct.inventoryquantity}" /></td>
 								<td style="text-align: center;"><c:out value="${workProduct.takedown}" /></td>
-							<c:forEach var="productcategoryBean" items="${page.content}">	
-								<td style="text-align: center;"><c:out value="${productcategoryBean.productcategoryname}" /></td>
-								</c:forEach>
+<%-- 							<c:forEach var="productcategoryBean" items="${pcage.content}">	 --%>
+								<td style="text-align: center;"><c:out value="${workProduct.productcategoryid}" /></td>
+<%-- 								</c:forEach> --%>
 								<td style="text-align: center;"><div>
 										<a
 											href="${contextRoot}/product/editProduct?productid=${workProduct.productid}"><button

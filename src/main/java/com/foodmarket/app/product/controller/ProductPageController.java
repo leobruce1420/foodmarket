@@ -131,7 +131,8 @@ public class ProductPageController {
 ////		mav.setViewName("index");
 //		return mav;
 //	}
-//後台查詢所有 OK
+//=========================	
+////後台查詢所有 OK
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber){
@@ -144,30 +145,30 @@ public class ProductPageController {
 //		mav.setViewName("index");
 		return mav;
 	}
-
+//========================
 	// 後台查詢所有 inner join
 //	@GetMapping("product/all")
 //	public ModelAndView viewProducts(ModelAndView mav,
-//			@RequestParam(required = false, value = "categoryid")Integer  categoryid,
+////			@RequestParam(required = false, value = "productcategoryname")String productcategoryname,
 //			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-//		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
+////		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
 ////		Optional<WorkProduct> ProductBycategoryId = pmsgService.findProductByCategoryid(productcategoryBean.getCategoryid());
 ////		WorkProduct category = ProductBycategoryId.get();
 ////		Page<WorkProduct> pcage = pmsgService.findByPage1(pageNumber, category.getCategoryid());
-//		Page<WorkProduct> pcage = pmsgService.findproductBycategoryidPage(categoryid,pageNumber);
-//		productcategoryBean pcb = new productcategoryBean();
-//		pcb.setCategoryid(categoryid);
-//		WorkProduct workProduct = new WorkProduct();
-//		workProduct.setProductcategoryid(pcb);
+//		Page<WorkProduct> pcage = pmsgService.findByPage1(pageNumber);
+////		productcategoryBean pcb = new productcategoryBean();
+////		pcb.setCategoryid(productcategoryname);
+////		WorkProduct workProduct = new WorkProduct();
+////		workProduct.setProductcategoryid(pcb);
 //		
-//		mav.getModel().put("page", page);
+////		mav.getModel().put("page", page);
 //		mav.getModel().put("pcage", pcage);
 ////		mav.getModel().put("pcage", pcage);
 //		mav.setViewName("product/viewMessages");
 ////		mav.setViewName("index");
 //		return mav;
 //	}
-
+//==================================
 	// 0622T0024 商品全部查詢
 //	@GetMapping("product/allproduct")
 //	public ModelAndView viewAllProducts(ModelAndView mav,
