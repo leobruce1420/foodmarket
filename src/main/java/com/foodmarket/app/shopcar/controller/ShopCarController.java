@@ -122,6 +122,7 @@ public class ShopCarController {
 	
 	
 	@PostMapping("lock/shopcart/insert") //新增單筆
+	@ResponseBody
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
 		return shopCartService.save(reqShopCart);
 	}
@@ -132,7 +133,7 @@ public class ShopCarController {
 		return reqestList;
 	}
 	
-	@GetMapping("lock/shopcart/delete")
+	@GetMapping("lock/shopcart/delete") //刪除購物車裡單筆資料
 	public String deleteById(@RequestParam("id") Integer id) {
 		shopCartDao.deleteById(id);
 		return "redirect:/lock/shopCart/all";
@@ -156,7 +157,7 @@ public class ShopCarController {
 
 	@GetMapping("lock/shopCart/all")
 	public String getAll(Model model){
-		List<ShopCart> shopCarts = shopCartService.findAll();
+		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(1);
 		
 		int totalPrice = 0;
 		
@@ -167,7 +168,7 @@ public class ShopCarController {
 					
 			String productName = product.getProductname();
 			Integer productPrice = product.getProductprice();
-			totalPrice += productNumber*productPrice;
+			totalPrice += productNumber * productPrice;
 			shopCart.setProductName(productName);
 			shopCart.setProductPrice(productPrice);
 			

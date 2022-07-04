@@ -264,6 +264,7 @@
 <hr/>
 			
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
 				// 需要左右兩邊可滑動的箭頭
 				// arrows: true,
