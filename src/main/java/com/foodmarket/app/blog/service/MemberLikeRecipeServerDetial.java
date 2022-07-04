@@ -22,7 +22,7 @@ public class MemberLikeRecipeServerDetial implements MemberLikeRecipeServer{
 
 
 	@Override
-	public int[] getAllLikeRecipeById(Long customerId) {
+	public int[] getAllLikeRecipeById(Object customerId) {
 		var likeList = memberLikeRecipeDao.getAllLikeRecipeById(customerId);
 
 		String likevaluestring = new String();
@@ -40,7 +40,7 @@ public class MemberLikeRecipeServerDetial implements MemberLikeRecipeServer{
 	}
 
 	@Override
-	public Object addLikeTimeByCustomer(Long customerId,Long recipePostId) {
+	public Object addLikeTimeByCustomer(Object customerId,Long recipePostId) {
 		return memberLikeRecipeDao.save(customerId,recipePostId);
 		
 	}
