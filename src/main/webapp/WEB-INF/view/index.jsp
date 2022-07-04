@@ -14,6 +14,121 @@
 <meta charset="UTF-8">
 <title>HOME</title>
 </head>
+<style>
+footer {
+  background: #16222A;
+  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
+  background: linear-gradient(59deg, #3A6073, #16222A);
+  color: white;
+  margin-top:100px;
+}
+
+footer a {
+  color: #fff;
+  font-size: 14px;
+  transition-duration: 0.2s;
+}
+
+footer a:hover {
+  color: #FA944B;
+  text-decoration: none;
+}
+
+.copy {
+  font-size: 12px;
+  padding: 10px;
+  border-top: 1px solid #FFFFFF;
+}
+
+.footer-middle {
+  padding-top: 2em;
+  color: white;
+}
+
+
+/*SOCİAL İCONS*/
+
+/* footer social icons */
+
+ul.social-network {
+  list-style: none;
+  display: inline;
+  margin-left: 0 !important;
+  padding: 0;
+}
+
+ul.social-network li {
+  display: inline;
+  margin: 0 5px;
+}
+
+
+/* footer social icons */
+
+.social-network a.icoFacebook:hover {
+  background-color: #3B5998;
+}
+
+.social-network a.icoLinkedin:hover {
+  background-color: #007bb7;
+}
+
+.social-network a.icoFacebook:hover i,
+.social-network a.icoLinkedin:hover i {
+  color: #fff;
+}
+
+.social-network a.socialIcon:hover,
+.socialHoverClass {
+  color: #44BCDD;
+}
+
+.social-circle li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.social-circle li i {
+  margin: 0;
+  line-height: 30px;
+  text-align: center;
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.social-circle i {
+  color: #595959;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.social-network a {
+  background-color: #F9F9F9;
+}
+
+</style>
 <body>
 
 	<div class="container">
@@ -70,108 +185,7 @@
 	<hr />
 	<div class="container">
 
-		<div class=" justify-content-center">
-
-
-
-			<br />
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="2" class="active"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption text-left">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">示例標題。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">輪播的第一張幻燈片的一些具有代表性的佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">今天註冊</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">另一個示例標題。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">輪播第二張幻燈片的一些代表性佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">學到更多</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item active">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption text-right">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">一個更好的措施。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">此輪播第三張幻燈片的一些代表性佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">瀏覽圖庫</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-target="#myCarousel" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only"><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">以前的</font></font></span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-target="#myCarousel" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only"><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">下一個</font></font></span>
-				</button>
-			</div>
-		</div>
+		
 		<hr />
 		<div>
 			<img src="${contextRoot}/img/hot.png" style="width: 1110px">
@@ -336,7 +350,7 @@
 
 		<!-- 	頁數顯示 -->
 <div class="w-100"></div>
-	<nav aria-label="Page navigation example">
+	
   		<ul class="pagination justify-content-center">
   		 
   		 <c:choose>
@@ -391,13 +405,63 @@
 		</c:choose>
     
   </ul>
-</nav>
+
 
 		<br>
 
 	</div>
 	<hr />
+<footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>商品專區</h4>
+          <ul class="list-unstyled">
+            <li><a href="${contextRoot}/product/category?productcategory=蔬菜類">蔬菜類</a></li>
+            <li><a href="${contextRoot}/product/category?productcategory=水果類">水果類</a></li>
+            <li><a href="${contextRoot}/product/category?productcategory=肉品">肉品</a></li>
+            <li><a href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>會員專區</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">購物須知</a></li>
+            <li><a href="#">退貨須知</a></li>
+            <li><a href="#">隱私權政策</a></li>
+            <li><a href="#">會員服務條款</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>客服中心</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">常見問題</a></li>
+            <li><a href="#">客服時間：週一至週日 08：00-21：00</a></li>
+            <li><a href="#">客服電話：0800-092-000</a></li>
+          </ul>
+        </div>
+      </div>
+    	
+    </div>
+	<div class="row">
+		<div class="col-md-12 copy">
+			<p class="text-center">&copy; 版權所有好食光市場 Copyright 2022 - GoodTime Market 版權所有，轉載必究</p>
+		</div>
+	</div>
 
+
+  </div>
+  </div>
+</footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
