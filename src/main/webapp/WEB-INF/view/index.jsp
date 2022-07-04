@@ -179,8 +179,11 @@
 										<p class="card-text">$${workProduct.productprice}</p>
 									</div>
 									<div class="card-footer">
-										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">
+													<input type="hidden" id="productId_${workProduct.productid}"
+														value="${workProduct.productid}"> <input
+														class="insertProductBtn btn btn-success" type="button"
+														value="加入購物車"
+														onclick="insertProduct(${workProduct.productid},${loginUserId})">	
 <%-- 										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
 <!-- 											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a> -->
 										<%-- 					</form:form> --%>
@@ -217,8 +220,12 @@
 										<h5 class="card-title"><a href="${contextRoot}/product/product?productid=${workProduct.productid}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 										<div class="card-footer">
-										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">		
+										<input type="hidden"
+														id="productId_${workProduct.productid}"
+														value="${workProduct.productid}"> <input
+														class="insertProductBtn btn btn-success" type="button"
+														value="加入購物車"
+														onclick="insertProduct(${workProduct.productid},${loginUserId})">		
 										</div>
 								</div>
           </div>
@@ -448,19 +455,24 @@
 								})
 							})			
 							
-function insertProduct(pId) {
-	var id =document.getElementById('productId_'+pId).value;
-		axios({
-			method : 'post',
-			url : '${contextRoot}/lock/shopcart/insert' ,
-			data : {
-				 "productNumber" : 1,
-				 "customerId" : 1 ,
-				 "productId" :id
-			}
-		}).then(function(res) {
-			alert("已加入購物車");
-		})
+function insertProduct(pId,cId) {
+	if(cId!=null){	
+		var id =document.getElementById('productId_'+pId).value;
+			axios({
+				method : 'post',
+				url : '${contextRoot}/lock/shopcart/insert' ,
+				data : {
+					 "productNumber" : 1,
+					 "customerId" : cId ,
+					 "productId" :id
+				}
+			}).then(function(res) {
+				alert("已加入購物車");
+			})	
+	}else{
+		alert("請先登入")	
+	}
+
 
 		}
 </script>
