@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@
 	
 
 .main {
-  width: 80%;
+  width: 65%;
   margin: 20px auto;
 }
 table {
@@ -77,7 +77,10 @@ table tbody tr:last-child td:last-child {
 		<h2>商城活動資料</h2>
 		
 		
-		<br>
+		<p>
+		<a href="${contextRoot}/shopad/insert">
+				<button type="button" class="btn btn-outline-info">新增活動</button>
+			</a><br>
 		<form:form action="${contextRoot}/shopad/upload" method="get" class="search">
 			<div class="div1">
 			<label for="id" class="id">單筆活動查詢 : </label> <input type="text"
@@ -132,14 +135,12 @@ table tbody tr:last-child td:last-child {
 
 			</table>
 			</div>
-			<br>
+			
 
 
 		
 		<div>
-			<a href="${contextRoot}/shopad/insert">
-				<button type="button" class="btn btn-outline-info">新增活動</button>
-			</a>
+			
 		</div>
 	</div>
 	<script type="text/javascript">

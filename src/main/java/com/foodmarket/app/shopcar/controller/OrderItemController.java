@@ -33,7 +33,7 @@ public class OrderItemController {
 	@Autowired
 	private WorkProductService workProductService;
 	
-	@PostMapping("/orderItem/save/{userId}")
+	@PostMapping("lock/orderItem/save/{userId}")
 	@ResponseBody  //回傳數據
 	public OrderRecord saveRecord(Model model, @RequestBody OrderRecord orderRecord, @PathVariable Long userId) {
 		OrderRecord newOrderRecord = orderRecordService.save(orderRecord, userId);
@@ -41,7 +41,7 @@ public class OrderItemController {
 	}
 	
 
-	@GetMapping("/orderList/{orderId}")
+	@GetMapping("lock/orderList/{orderId}")
 	public String getOrderList(Model model, @PathVariable Integer orderId){
 		List<OrderItem> orderItems = orderItemService.getByOrderRecordId(orderId);
 

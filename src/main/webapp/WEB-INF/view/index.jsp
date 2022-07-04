@@ -138,7 +138,7 @@
 										</td>
 										<td style="text-align: center; padding: 2px; width:225px">
 											<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
-											<div id="name_data2" style="text-align: center;font-size:18px; padding-top:12px"></div>											
+											<div id="name_data2" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>
 										<td style="text-align: center; padding: 2px; width:225px">
 											<div id="img_data3"></div>
@@ -453,14 +453,14 @@ function insertProduct(pId) {
 	var id =document.getElementById('productId_'+pId).value;
 		axios({
 			method : 'post',
-			url : '${contextRoot}/shopcart/insert' ,
+			url : '${contextRoot}/lock/shopcart/insert' ,
 			data : {
 				 "productNumber" : 1,
 				 "customerId" : 1 ,
 				 "productId" :id
 			}
 		}).then(function(res) {
-			
+			alert("已加入購物車");
 		})
 
 		}
