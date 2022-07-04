@@ -22,7 +22,6 @@ table, td {
 }
 </style>
 <head>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta charset="UTF-8">
 <title>前台點擊商品查詢商品</title>
 </head>
@@ -51,24 +50,6 @@ table, td {
 										<a href="${contextRoot}/product/product?productid=${workProduct.productid}">
 										<h5 class="card-title">${workProduct.productname}</h5></a>
 										<p class="card-text">$${workProduct.productprice}</p>
-<<<<<<< HEAD
-<!-- 										<a -->
-<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
-<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
-											
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="event.stopPropagation();insertProduct(${workProduct.productid})">	
-										
-										<div class="card" style="width: 107px;">
-										<c:choose>
-											<c:when test="${listCheck == false}">
-											<button type="button" class="btn btn-danger stretched-link" id="list${workProduct.productid}" onclick="event.stopPropagation();listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
-											</c:when>
-											<c:otherwise>
-											<button type="button" class="btn btn-secondary stretched-link" id="list${workProduct.productid}" onclick="event.stopPropagation();listSwich(${workProduct.productid},${loginUserId})">取消收藏</button>
-											</c:otherwise>
-										</c:choose>
-										</div>
-=======
 										<div class="card-footer">
 										<div class="card-group">
 										<div class="card">
@@ -103,10 +84,9 @@ table, td {
 										</div>
 
 									</div>
->>>>>>> 6bcf8f030491fc5f509166b54c16ac3c6af03426
 
 								</div>
-								</div>
+
 
 								<div class="card">
 									<div class="card-body">
@@ -142,35 +122,9 @@ table, td {
 		</div>
 	</div>
 
-<<<<<<< HEAD
-	<br />
-	</div>
-</body>
-
-<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-=======
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
->>>>>>> 6bcf8f030491fc5f509166b54c16ac3c6af03426
-
-function insertProduct(pId) {
-// 	var id =document.getElementById('productId_'+pId).value;
-		axios({
-			method : 'post',
-			url : '${contextRoot}/lock/shopcart/insert' ,
-			data : {
-				 "productNumber" : 1,
-				 "customerId" : 1 ,
-				 "productId" :pId
-			}
-		}).then(function(res) {
-			alert("已加入購物車");
-		})
-
-		}
-
 function listSwich(Pid,Cid){
 	
 	if(Cid != null){
@@ -184,7 +138,6 @@ function listSwich(Pid,Cid){
 		var params = {"productId":''+productId,"userId":''+ userId};
 		
 		console.log(params)
-
 	    $.ajax({
 	      type: "post"
 	      , url: "http://localhost:8080/foodmarket/wishList/addOrCancel"
@@ -206,7 +159,6 @@ function listSwich(Pid,Cid){
 		alert("請先登入")	
 	}
 }
-
 function insertProduct(pId,cId) {
 	if(cId!=null){	
 		var id =document.getElementById('productId_'+pId).value;
@@ -224,13 +176,7 @@ function insertProduct(pId,cId) {
 	}else{
 		alert("請先登入")	
 	}
-
-
 		}
-
-
-
-
 </script>
 </body>
 
