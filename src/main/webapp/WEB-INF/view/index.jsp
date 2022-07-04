@@ -129,32 +129,102 @@
 					<img src="${contextRoot}/img/hot.png" style="width:1110px">
 				</div>
 					
-				<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
-								<table style="width:1100px; height: 275px; margin: 0px auto;">
-									<tr style="background-color: rgb(250, 250, 250);">
-										<td style="text-align: center; padding: 2px; width:225px">
-											<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
-											<div id="name_data0" style="text-align: center; font-size:18px; padding-top:12px"></div>
-										</td>	
-										<td style="text-align: center; padding-left:2px; width:225px">
-											<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
-											<div id="name_data1" style="text-align: center; font-size:18px; padding-top:12px"></div>
-										</td>
-										<td style="text-align: center; padding: 2px; width:225px">
-											<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
-											<div id="name_data2" style="text-align: center; font-size:18px; padding-top:12px"></div>
-										</td>
-										<td style="text-align: center; padding: 2px; width:225px">
-											<div id="img_data3"></div>
-											<div id="name_data3" style="text-align: center;font-size:18px; padding-top:12px"></div>
-										</td>
-										<td style="text-align: center; padding: 2px; width:225px">
-											<div id="img_data4"></div>
-											<div id="name_data4" style="text-align: center;font-size:18px; padding-top:12px"></div>
-										</td>
-									</tr>
-								</table>
+<!-- 				<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px">  -->
+<!-- 					<table style="width:1100px; height: 300px; margin: 0px auto;"> -->
+<!-- 						<tr> -->
+<!-- 							<td style="text-align: center; width:225px;padding-left:10px"> -->
+								
+<%-- 								<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
+<!-- 								<div id="name_data0" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div> -->
+								
+<!-- 							</td>	 -->
+<!-- 							<td style="text-align: center; width:225px"> -->
+<%-- 								<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
+<!-- 								<div id="name_data1" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div> -->
+<!-- 							</td> -->
+<!-- 							<td style="text-align: center; width:225px"> -->
+<%-- 								<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
+<!-- 								<div id="name_data2" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>											 -->
+<!-- 							</td> -->
+<!-- 							<td style="text-align: center; width:225px"> -->
+<!-- 								<div id="img_data3"></div> -->
+<!-- 								<div id="name_data3" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div> -->
+<!-- 							</td> -->
+<!-- 							<td style="text-align: center; width:225px"> -->
+<!-- 								<div id="img_data4"></div> -->
+<!-- 								<div id="name_data4" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					</table> -->
+<!-- 				</div> -->
+					<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
+						<div style="width:1100px; height: 285	px; margin: 0px auto;">
+						<ul class="responsive_topsale" style="list-style-type: none; padding-left:15px">
+						
+							<li style="text-align: center; width:225px">								
+								<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data0" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div>								
+							</li>	
+							<li style="text-align: center; width:225px">
+								<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data1" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:0; left:-10; width:28%"></div>
+								<div id="name_data2" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>											
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data3"></div>
+								<div id="name_data3" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data4"></div>
+								<div id="name_data4" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data5"></div>
+								<div id="name_data5" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data6"></div>
+								<div id="name_data6" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data7"></div>
+								<div id="name_data7" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data8"></div>
+								<div id="name_data8" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data9"></div>
+								<div id="name_data9" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data10"></div>
+								<div id="name_data10" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data11"></div>
+								<div id="name_data11" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data12"></div>
+								<div id="name_data12" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data13"></div>
+								<div id="name_data13" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li>
+							<li style="text-align: center; width:225px">
+								<div id="img_data14"></div>
+								<div id="name_data14" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>
+							</li> 
+						</ul>
+					</div>
 				</div>
+
 			
 			
 			<hr />
@@ -321,139 +391,375 @@
 					  $('.carousel').carousel({
 					     interval: 2000
 					  })
-					})					
+					})	
+					
+				$('.responsive_topsale').slick({
+					  slidesToShow: 5,
+					  slidesToScroll: 5,
+					  autoplay: true,		
+					  autoplaySpeed: 3000,
+					});	
+					
 
-									$(document).ready(
-							function() {
-								$.ajax({
-									url : '${contextRoot}/productCount',
-									success : function(
-											rtnMap) {
-										var array = [];
-										for ( var key in rtnMap) {
-											array.push({
-												name : key,
-												value : rtnMap[key]
-										});
-										}
-										var name_sorted = array.sort(function(a, b) {
-											return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
-										});
+				$(document).ready(
+					function() {
+						$.ajax({
+							url : '${contextRoot}/productCount',
+							success : function(rtnMap) {
+								var array = [];
+								for ( var key in rtnMap) {
+									array.push({
+										name : key,
+										value : rtnMap[key]
+								});
+								}
+								var name_sorted = array.sort(function(a, b) {
+									return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
+								});
+								$(document).ready(
+									function() {
+										$.ajax({
+											url : '${contextRoot}/productImg',
+											success : function(rtnMap) {
+												var array = [];
+												for ( var key in rtnMap) {
+													array.push({
+														name : key,
+														value : rtnMap[key]
+												});
+												}
+												console.log(name_sorted)
+												var img_sorted = array.sort(function(a, b) {
+													return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
+												});
+												$(document).ready(
+														function() {
+															$.ajax({
+																url : '${contextRoot}/productId',
+																success : function(rtnMap) {
+																	var array = [];
+																	for ( var key in rtnMap) {
+																		array.push({
+																			name : key,
+																			value : rtnMap[key]
+																	});
+																	}
+																	var id_sorted = array.sort(function(a, b) {
+																		return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
+																	});
+																	console.log(id_sorted)
+																	console.log(id_sorted[0].name)
+												
+												
+												
+												name_data0 = ''
+												img_data0 = ''
+												id_data0 = ''
+												var id_obj0 = id_sorted[0]
+												var img_obj0 = img_sorted[0]
+												var name_obj0 = name_sorted[0]
+												img_data0 += '<a href="${contextRoot}/product/product?productid='
+												img_data0 += id_obj0.name
+												img_data0 += '">'
+												img_data0 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data0 += img_obj0.name
+												img_data0 += '">'
+												img_data0 += '</a>'
+												$('#img_data0').append(img_data0)
 
+												name_data1 = ''
+												img_data1 = ''
+												id_data1 = ''
+												var id_obj1 = id_sorted[1]
+												var img_obj1 = img_sorted[1]
+												var name_obj1 = name_sorted[1]
+												img_data1 += '<a href="${contextRoot}/product/product?productid='
+												img_data1 += id_obj1.name
+												img_data1 += '">'
+												img_data1 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data1 += img_obj1.name
+												img_data1 += '">'
+												img_data1 += '</a>'
+												$('#img_data1').append(img_data1)
+												
+												name_data2 = ''
+												img_data2 = ''
+												id_data2 = ''
+												var id_obj2 = id_sorted[2]
+												var img_obj2 = img_sorted[2]
+												var name_obj2 = name_sorted[2]
+												img_data2 += '<a href="${contextRoot}/product/product?productid='
+												img_data2 += id_obj2.name
+												img_data2 += '">'
+												img_data2 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data2 += img_obj2.name
+												img_data2 += '"alt="image">'
+												img_data2 += '</a>'
+												$('#img_data2').append(img_data2)
+												
+												name_data3 = ''
+												img_data3 = ''
+												id_data3 = ''
+												var id_obj3 = id_sorted[3]
+												var img_obj3 = img_sorted[3]
+												var name_obj3 = name_sorted[3]
+												img_data3 += '<a href="${contextRoot}/product/product?productid='
+												img_data3 += id_obj3.name
+												img_data3 += '">'
+												img_data3 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data3 += img_obj3.name
+												img_data3 += '"alt="image">'
+												img_data3 += '</a>'
+												$('#img_data3').append(img_data3)
+												
+												name_data4 = ''
+												img_data4 = ''
+												id_data4 = ''
+												var id_obj4 = id_sorted[4]
+												var img_obj4 = img_sorted[4]
+												var name_obj4 = name_sorted[4]
+												img_data4 += '<a href="${contextRoot}/product/product?productid='
+												img_data4 += id_obj4.name
+												img_data4 += '">'
+												img_data4 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data4 += img_obj4.name
+												img_data4 += '"alt="image">'
+												img_data4 += '</a>'
+												$('#img_data4').append(img_data4)
+												
+												name_data5 = ''
+												img_data5 = ''
+												id_data5 = ''
+												var id_obj5 = id_sorted[5]
+												var img_obj5 = img_sorted[5]
+												var name_obj5 = name_sorted[5]
+												img_data5 += '<a href="${contextRoot}/product/product?productid='
+												img_data5 += id_obj5.name
+												img_data5 += '">'
+												img_data5 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data5 += img_obj5.name
+												img_data5 += '"alt="image">'
+												img_data5 += '</a>'
+												$('#img_data5').append(img_data5)
+												
+												name_data6 = ''
+												img_data6 = ''
+												id_data6 = ''
+												var id_obj6 = id_sorted[6]
+												var img_obj6 = img_sorted[6]
+												var name_obj6 = name_sorted[6]
+												img_data6 += '<a href="${contextRoot}/product/product?productid='
+												img_data6 += id_obj6.name
+												img_data6 += '">'
+												img_data6 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data6 += img_obj6.name
+												img_data6 += '"alt="image">'
+												img_data6 += '</a>'
+												$('#img_data6').append(img_data6)
+												
+												name_data7 = ''
+												img_data7 = ''
+												id_data7 = ''
+												var id_obj7 = id_sorted[7]
+												var img_obj7 = img_sorted[7]
+												var name_obj7 = name_sorted[7]
+												img_data7 += '<a href="${contextRoot}/product/product?productid='
+												img_data7 += id_obj7.name
+												img_data7 += '">'
+												img_data7 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data7 += img_obj7.name
+												img_data7 += '"alt="image">'
+												img_data7 += '</a>'
+												$('#img_data7').append(img_data7)
+												
+												name_data8 = ''
+												img_data8 = ''
+												id_data8 = ''
+												var id_obj8 = id_sorted[8]
+												var img_obj8 = img_sorted[8]
+												var name_obj8 = name_sorted[8]
+												img_data8 += '<a href="${contextRoot}/product/product?productid='
+												img_data8 += id_obj8.name
+												img_data8 += '">'
+												img_data8 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data8 += img_obj8.name
+												img_data8 += '"alt="image">'
+												img_data8 += '</a>'
+												$('#img_data8').append(img_data8)
+												
+												name_data9 = ''
+												img_data9 = ''
+												id_data9 = ''
+												var id_obj9 = id_sorted[9]
+												var img_obj9 = img_sorted[9]
+												var name_obj9 = name_sorted[9]
+												img_data9 += '<a href="${contextRoot}/product/product?productid='
+												img_data9 += id_obj9.name
+												img_data9 += '">'
+												img_data9 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data9 += img_obj9.name
+												img_data9 += '"alt="image">'
+												img_data9 += '</a>'
+												$('#img_data9').append(img_data9)
+												
+												name_data10 = ''
+												img_data10 = ''
+												id_data10 = ''
+												var id_obj10 = id_sorted[10]
+												var img_obj10 = img_sorted[10]
+												var name_obj10 = name_sorted[10]
+												img_data10 += '<a href="${contextRoot}/product/product?productid='
+												img_data10 += id_obj10.name
+												img_data10 += '">'
+												img_data10 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data10 += img_obj10.name
+												img_data10 += '"alt="image">'
+												img_data10 += '</a>'
+												$('#img_data10').append(img_data10)
+												
+												name_data11 = ''
+												img_data11 = ''
+												id_data11 = ''
+												var id_obj11 = id_sorted[11]
+												var img_obj11 = img_sorted[11]
+												var name_obj11 = name_sorted[11]
+												img_data11 += '<a href="${contextRoot}/product/product?productid='
+												img_data11 += id_obj11.name
+												img_data11 += '">'
+												img_data11 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data11 += img_obj11.name
+												img_data11 += '"alt="image">'
+												img_data11 += '</a>'
+												$('#img_data11').append(img_data11)
+												
+												name_data12 = ''
+												img_data12 = ''
+												id_data12 = ''
+												var id_obj12 = id_sorted[12]
+												var img_obj12 = img_sorted[12]
+												var name_obj12 = name_sorted[12]
+												img_data12 += '<a href="${contextRoot}/product/product?productid='
+												img_data12 += id_obj12.name
+												img_data12 += '">'
+												img_data12 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data12 += img_obj12.name
+												img_data12 += '"alt="image">'
+												img_data12 += '</a>'
+												$('#img_data12').append(img_data12)
+												
+												name_data13 = ''
+												img_data13 = ''
+												id_data13 = ''
+												var id_obj13 = id_sorted[13]
+												var img_obj13 = img_sorted[13]
+												var name_obj13 = name_sorted[13]
+												img_data13 += '<a href="${contextRoot}/product/product?productid='
+												img_data13 += id_obj13.name
+												img_data13 += '">'
+												img_data13 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data13 += img_obj13.name
+												img_data13 += '"alt="image">'
+												img_data13 += '</a>'
+												$('#img_data13').append(img_data13)
+												
+												name_data14 = ''
+												img_data14 = ''
+												id_data14 = ''
+												var id_obj14 = id_sorted[14]
+												var img_obj14 = img_sorted[14]
+												var name_obj14 = name_sorted[14]
+												img_data14 += '<a href="${contextRoot}/product/product?productid='
+												img_data14 += id_obj14.name
+												img_data14 += '">'
+												img_data14 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+												img_data14 += img_obj14.name
+												img_data14 += '"alt="image">'
+												img_data14 += '</a>'
+												$('#img_data14').append(img_data14)
 	
-										$(document).ready(
-												function() {
-													$.ajax({
-														url : '${contextRoot}/productImg',
-														success : function(
-																rtnMap) {
-															var array = [];
-															for ( var key in rtnMap) {
-																array.push({
-																	name : key,
-																	value : rtnMap[key]
-															});
-															}
-															console.log(name_sorted)
-															var img_sorted = array.sort(function(a, b) {
-																return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
-															});
-															name_data0 = ''
-															img_data0 = ''
-															var img_obj0 = img_sorted[0]
-															var name_obj0 = name_sorted[0]
-															img_data0 += '<a href="${contextRoot}/product/productname?productname='
-															img_data0 += name_obj0.name
-															img_data0 += '">'
-															img_data0 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
-															img_data0 += img_obj0.name
-															img_data0 += '">'
-															img_data0 += '</a>'
-															$('#img_data0').append(img_data0)
-
-															name_data1 = ''
-															img_data1 = ''
-															var img_obj1 = img_sorted[1]
-															var name_obj1 = name_sorted[1]
-															img_data1 += '<a href="${contextRoot}/product/productname?productname='
-															img_data1 += name_obj1.name
-															img_data1 += '">'
-															img_data1 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
-															img_data1 += img_obj1.name
-															img_data1 += '">'
-															img_data1 += '</a>'
-															$('#img_data1').append(img_data1)
-															
-															name_data2 = ''
-															img_data2 = ''
-															var img_obj2 = img_sorted[2]
-															var name_obj2 = name_sorted[2]
-															img_data2 += '<a href="${contextRoot}/product/productname?productname='
-															img_data2 += name_obj2.name
-															img_data2 += '">'
-															img_data2 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
-															img_data2 += img_obj2.name
-															img_data2 += '"alt="image">'
-															img_data2 += '</a>'
-															$('#img_data2').append(img_data2)
-															
-															name_data3 = ''
-															img_data3 = ''
-															var img_obj3 = img_sorted[3]
-															var name_obj3 = name_sorted[3]
-															img_data3 += '<a href="${contextRoot}/product/productname?productname='
-															img_data3 += name_obj3.name
-															img_data3 += '">'
-															img_data3 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
-															img_data3 += img_obj3.name
-															img_data3 += '"alt="image">'
-															img_data3 += '</a>'
-															$('#img_data3').append(img_data3)
-															
-															name_data4 = ''
-															img_data4 = ''
-															var img_obj4 = img_sorted[4]
-															var name_obj4 = name_sorted[4]
-															img_data4 += '<a href="${contextRoot}/product/productname?productname='
-															img_data4 += name_obj4.name
-															img_data4 += '">'
-															img_data4 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
-															img_data4 += img_obj4.name
-															img_data4 += '"alt="image">'
-															img_data4 += '</a>'
-															$('#img_data4').append(img_data4)
-															
-															
-															name0 = ''
-																var name_obj0 = name_sorted[0]
-																name0 += name_obj0.name
-																$('#name_data0').append(name0)	
-																
-															name1 = ''
-																var name_obj1 = name_sorted[1]
-																name1 += name_obj1.name
-																$('#name_data1').append(name1)	
-																
-															name2 = ''
-																var name_obj2 = name_sorted[2]
-																name2 += name_obj2.name
-																$('#name_data2').append(name2)	
-																
-															name3 = ''
-																var name_obj3 = name_sorted[3]
-																name3 += name_obj3.name
-																$('#name_data3').append(name3)	
-																
-															name4 = ''
-																var name_obj4 = name_sorted[4]
-																name4 += name_obj4.name
-																$('#name_data4').append(name4)	
-														}
-													})
-												})	
-									}
-								})
-							})			
+												name0 = ''
+													var name_obj0 = name_sorted[0]
+													name0 += name_obj0.name
+													$('#name_data0').append(name0)	
+													
+												name1 = ''
+													var name_obj1 = name_sorted[1]
+													name1 += name_obj1.name
+													$('#name_data1').append(name1)	
+													
+												name2 = ''
+													var name_obj2 = name_sorted[2]
+													name2 += name_obj2.name
+													$('#name_data2').append(name2)	
+													
+												name3 = ''
+													var name_obj3 = name_sorted[3]
+													name3 += name_obj3.name
+													$('#name_data3').append(name3)	
+													
+												name4 = ''
+													var name_obj4 = name_sorted[4]
+													name4 += name_obj4.name
+													$('#name_data4').append(name4)	
+													
+												name5 = ''
+													var name_obj5 = name_sorted[5]
+													name5 += name_obj5.name
+													$('#name_data5').append(name5)	
+														
+												name6 = ''
+													var name_obj6 = name_sorted[6]
+													name6 += name_obj6.name
+													$('#name_data6').append(name6)	
+													
+												name7 = ''
+													var name_obj7 = name_sorted[7]
+													name7 += name_obj7.name
+													$('#name_data7').append(name7)	
+													
+												name8 = ''
+													var name_obj8 = name_sorted[8]
+													name8 += name_obj8.name
+													$('#name_data8').append(name8)	
+													
+												name9 = ''
+													var name_obj9 = name_sorted[9]
+													name9 += name_obj9.name
+													$('#name_data9').append(name9)	
+												
+												name10 = ''
+													var name_obj10 = name_sorted[10]
+													name10 += name_obj10.name
+													$('#name_data10').append(name10)	
+													
+												name11 = ''
+													var name_obj11 = name_sorted[11]
+													name11 += name_obj11.name
+													$('#name_data11').append(name11)
+												
+												name12 = ''
+													var name_obj12 = name_sorted[12]
+													name12 += name_obj12.name
+													$('#name_data12').append(name12)
+												
+												name13 = ''
+													var name_obj13 = name_sorted[13]
+													name13 += name_obj13.name
+													$('#name_data13').append(name13)
+												
+												name14 = ''
+													var name_obj14 = name_sorted[14]
+													name14 += name_obj14.name
+													$('#name_data14').append(name14)
+											}
+										})
+									})	
+								}
+							})
+						})
+							}
+						})
+					})
 							
 function insertProduct(pId,cId) {
 	if(cId!=null){	
