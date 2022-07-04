@@ -1,0 +1,9 @@
+diff a/src/main/java/com/foodmarket/app/statistic/controller/StatisticController.java b/src/main/java/com/foodmarket/app/statistic/controller/StatisticController.java	(rejected hunks)
+@@ -57,6 +57,7 @@
+ 		return rtnMap;
+ 	}
+ 	
++	@GetMapping("/productId")
+ 	@ResponseBody
+ 	public Map getProductId(){
+ 		Map rtnMap = soiService.productId();		
