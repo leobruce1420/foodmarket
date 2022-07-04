@@ -57,15 +57,15 @@
     </ul>
     
     
- <a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2">
- 購物車
-</button></a>
+<%--  <a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2"> --%>
+<!--  購物車 -->
+<!-- </button></a> -->
 
 
-    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
-      <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-    </form>
+<%--     <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get"> --%>
+<!--       <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required> -->
+<!--       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button> -->
+<!--     </form> -->
     
     <c:choose>
 		<c:when test="${loginUserId != null}">

@@ -26,6 +26,52 @@ nav {
 	float: left;
 	border-radius: 10px;;
 }
+
+/* /搜尋欄位/ */
+form {
+	margin: 15px;
+}
+input {
+	outline: none;
+}
+
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=search] {
+	padding: 9px 10px 9px 32px;
+	width: 45px;
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	
+	-webkit-border-radius: 10em;
+	   -moz-border-radius: 10em;
+	        border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	   -moz-transition: all .5s;
+	        transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	   -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	        box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+/* /按鈕/ */
+.btn-round-2 {
+  border-radius: 20px;
+}
 </style>
 <body>
 	<!-- <div class="container"> -->
@@ -85,9 +131,18 @@ nav {
 					<li class="nav-item dropdown"><a class="nav-link"
 						data-display="static"
 						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
+
 				</ul>
 			</div>
+
 		</div>
+		<a href="${contextRoot}/lock/shopCart/all"><img src="img/shopcart.png"></a>
+		<form action="${contextRoot}/product/searchproductname" method="get">
+			<input  type="search" placeholder="Search"
+				aria-label="Search" id="productname" name="productname"
+				autocomplete="off" required>
+			<button class="btn btn-success btn-round-2" type="submit">搜尋</button>
+		</form>
 	</nav>
 	<br>
 
