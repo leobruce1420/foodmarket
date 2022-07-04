@@ -22,7 +22,6 @@ table, td {
 }
 </style>
 <head>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta charset="UTF-8">
 <title>前台點擊商品查詢商品</title>
 </head>
@@ -41,38 +40,60 @@ table, td {
 							<div class="card-group">
 								<div class="card">
 									<div class="card-body">
-										<img style="width: 400px; height: 400px;"
+										<a
+											href="${contextRoot}/product/product?productid=${workProduct.productid}">
+											<img style="width: 400px; height: 400px;"
 											src="data:image/image/*;base64,${workProduct.productimg}"
 											alt="image" />
+										</a>
 										<hr />
-										<h5 class="card-title">${workProduct.productname}</h5>
+										<a href="${contextRoot}/product/product?productid=${workProduct.productid}">
+										<h5 class="card-title">${workProduct.productname}</h5></a>
 										<p class="card-text">$${workProduct.productprice}</p>
-<!-- 										<a -->
-<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
-<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
-											
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="event.stopPropagation();insertProduct(${workProduct.productid})">	
-										
-										<div class="card" style="width: 107px;">
-										<c:choose>
-											<c:when test="${listCheck == false}">
-											<button type="button" class="btn btn-danger stretched-link" id="list${workProduct.productid}" onclick="event.stopPropagation();listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
-											</c:when>
-											<c:otherwise>
-											<button type="button" class="btn btn-secondary stretched-link" id="list${workProduct.productid}" onclick="event.stopPropagation();listSwich(${workProduct.productid},${loginUserId})">取消收藏</button>
-											</c:otherwise>
-										</c:choose>
+										<div class="card-footer">
+										<div class="card-group">
+										<div class="card">
+									<div class="card-body">
+											<input type="hidden" id="productId_${workProduct.productid}"
+												value="${workProduct.productid}"> <input
+												class="insertProductBtn btn btn-success" type="button"
+												value="加入購物車"
+												onclick="insertProduct(${workProduct.productid},${loginUserId})">
+												</div>
+												</div>
+											<div class="card">
+											<div class="card-body">
+												<c:choose>
+													<c:when test="${listCheck == false}">
+														<button type="button"
+															class="btn btn-danger stretched-link"
+															id="list${workProduct.productid}"
+															onclick="listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
+													</c:when>
+													<c:otherwise>
+														<button type="button"
+															class="btn btn-secondary stretched-link"
+															id="list${workProduct.productid}"
+															onclick="listSwich(${workProduct.productid},${loginUserId})">取消收藏</button>
+													</c:otherwise>
+												</c:choose>
+
+											</div>
+											</div>
+											</div>
 										</div>
 
+									</div>
+
 								</div>
-								</div>
+
 
 								<div class="card">
 									<div class="card-body">
 
 										<h4>商品詳情</h4>
 										<hr />
-										<h5 class="card-title">${workProduct.productdesciption}</h5>
+										<p class="card-text">${workProduct.productdesciption}</p>
 
 
 										<hr />
@@ -89,6 +110,7 @@ table, td {
 										<br />
 									</div>
 
+
 								</div>
 							</div>
 						</div>
@@ -99,30 +121,10 @@ table, td {
 
 		</div>
 	</div>
-	</div>
 
-	<br />
-	</div>
-</body>
-
-<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-
-function insertProduct(pId) {
-// 	var id =document.getElementById('productId_'+pId).value;
-		axios({
-			method : 'post',
-			url : '${contextRoot}/lock/shopcart/insert' ,
-			data : {
-				 "productNumber" : 1,
-				 "customerId" : 1 ,
-				 "productId" :pId
-			}
-		}).then(function(res) {
-			alert("已加入購物車");
-		})
-
-		}
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
 
 function listSwich(Pid,Cid){
 	
@@ -160,9 +162,30 @@ function listSwich(Pid,Cid){
 	}
 }
 
+function insertProduct(pId,cId) {
+	if(cId!=null){	
+		var id =document.getElementById('productId_'+pId).value;
+			axios({
+				method : 'post',
+				url : '${contextRoot}/lock/shopcart/insert' ,
+				data : {
+					 "productNumber" : 1,
+					 "customerId" : cId ,
+					 "productId" :id
+				}
+			}).then(function(res) {
+				alert("已加入購物車");
+			})	
+	}else{
+		alert("請先登入")	
+	}
 
+
+		}
 
 
 </script>
+</body>
+
 
 </html>
