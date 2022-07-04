@@ -138,8 +138,8 @@
 					data : inputTitle,
 					success : function(result) {
 						$("#removeData").remove()
-						
-						qus_data = '<div class="container" id="111">'+'<div class="row justify-content-center">'+'<div class="col-9">' + '<div class="card">' + '<div class="card-header">搜尋結果</div>' + '<div class="card-body">'
+						console.log(result)
+						qus_data = '<div class="container" id="removeData">'+'<div class="row justify-content-center">'+'<div class="col-9">' + '<div class="card">' + '<div class="card-header">搜尋結果</div>' + '<div class="card-body">'
 						$.each(result, function(index, value) {
 							qus_data += '<button type="button" class="collapsible">'
 							qus_data += value.questionTitle
