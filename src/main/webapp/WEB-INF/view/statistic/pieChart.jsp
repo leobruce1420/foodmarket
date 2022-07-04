@@ -21,33 +21,10 @@
 </head>
 <body>
 	<div>
-		<table class="mytable" id="list_table_json">
-			<thead>
-				<tr>
-					<th>前五大商品</th>
-					<th>販賣數量</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-	<div>AAAAAAAAAAAAAAA</div>
-	<div>
-		<table class="mytable" id="list_table_json1">
-			<thead>
-				<tr>
-					<th>前五大商品</th>
-					<th>販賣數量</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-	<div>
 		<div>
-			<div id="chart1"
-				style="min-width: 450px; height: 550px; margin: 0 auto"></div>
+			<div id="chart1" style="min-width: 450px; height: 550px; margin: 0 auto"></div>
 		</div>
 	</div>
-
 	<script>
 		var rtnMapLabels = [];
 		var rtnMapData = [];
@@ -148,7 +125,6 @@
 												} ]
 
 											});
-
 						});
 
 		const data = {
