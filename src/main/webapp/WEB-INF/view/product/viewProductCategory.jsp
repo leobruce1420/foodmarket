@@ -175,9 +175,6 @@ img {
 
 		<hr />
 
-
-
-
 </body>
 
 </html>

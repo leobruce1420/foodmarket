@@ -22,7 +22,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<input type="hidden" id="userId" value="${member.customerId}">
+	<input type="hidden" id="userId" value="${loginUserId}">
 	
 	<c:forEach var="product" items="${shopCarts}">
 		<tr>

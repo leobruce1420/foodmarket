@@ -15,8 +15,8 @@ import com.foodmarket.app.shopcar.entity.ShopCart;
 public interface ShopCartDao extends JpaRepository<ShopCart, Integer>{
 
 	@Query("from ShopCart where customerId = :customerId")
-	public List<ShopCart> findShopCartByCustomerId(@Param("customerId") Integer customerId);
+	public List<ShopCart> findShopCartByCustomerId(@Param("customerId") Long customerId);
 	
 	
-	public void deleteByCustomerId(Integer customerId);
+	public void deleteByCustomerId(Long customerId);
 }
