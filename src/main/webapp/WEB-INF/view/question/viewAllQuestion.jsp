@@ -15,63 +15,77 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<br />
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-15">
-				<table class="table">
-					<thead class="thead-light">
-						<tr>
-							<th scope="col" style="text-align: center">問題類別</th>
-							<th scope="col" style="text-align: center">常見問題</th>
-							<th scope="col" style="text-align: center">問題回答</th>
-							<th scope="col" style="text-align: center">修改</th>
-							<th scope="col" style="text-align: center">刪除</th>
-						</tr>
-					</thead>
-						<tbody>
-						<c:forEach var="Question" items="${pageQuestion.content}">
-							<tr>
-								<th scope="row" style="text-align: center"><c:out value="${Question.questionCategory}" /></th>
-								<td style="max-width:300px"><c:out value="${Question.questionTitle}" /></td>
-								<td style="max-width:300px"><c:out value="${Question.answer}" /></td>
-								<td><a
-									href="${contextRoot}/question/editQuestion?id=${Question.id}"><button
-											class="btn btn-warning">修改</button></a></td>
-								<td><a onclick="return confirm('真的要刪除嗎')"
-									href="${contextRoot}/question/deleteQuestion?id=${Question.id}"><button
-											class="btn btn-danger">刪除</button></a></td>
+	<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-15">
+					<br>
+					<h1 style="text-align: center">所有常見問題</h1>
+					<br>
+					<div class="col-15" style="font-size:18px">
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="text-align: center">問題類別</th>
+									<th scope="col" style="text-align: center">常見問題</th>
+									<th scope="col" style="text-align: center">問題回答</th>
+									<th scope="col" style="text-align: center">修改</th>
+									<th scope="col" style="text-align: center">刪除</th>
 								</tr>
-						</c:forEach>
-						</tbody>
-				</table>
-			</div>
-		</div>
+							</thead>
+							<tbody>
+								<c:forEach var="Question" items="${pageQuestion.content}">
+									<tr>
+										<th scope="row" style="text-align: center"><c:out
+												value="${Question.questionCategory}" /></th>
+										<td style="max-width: 300px"><c:out
+												value="${Question.questionTitle}" /></td>
+										<td style="max-width: 300px"><c:out
+												value="${Question.answer}" /></td>
+										<td><a
+											href="${contextRoot}/question/editQuestion?id=${Question.id}"><button
+													class="btn btn-warning">修改</button></a></td>
+										<td><a onclick="return confirm('真的要刪除嗎')"
+											href="${contextRoot}/question/deleteQuestion?id=${Question.id}"><button
+													class="btn btn-danger">刪除</button></a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				</div>
+				</div>
+				<div
+					class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+					<div class="container-fluid">
 
+						<div class="row justify-content-center">
 
-		<div class="row justify-content-center">
+							<div class="col-9">
+								<c:forEach var="pageNumber" begin="1"
+									end="${pageQuestion.totalPages}">
+									<c:choose>
+										<c:when test="${pageQuestion.number != pageNumber-1}">
+											<a
+												href="${contextRoot}/question/viewAllQuestion?p=${pageNumber}"><c:out
+													value="${pageNumber}" /></a>
+										</c:when>
 
-			<div class="col-9">
-				<c:forEach var="pageNumber" begin="1"
-					end="${pageQuestion.totalPages}">
-					<c:choose>
-						<c:when test="${pageQuestion.number != pageNumber-1}">
-							<a href="${contextRoot}/question/viewAllQuestion?p=${pageNumber}"><c:out
-									value="${pageNumber}" /></a>
-						</c:when>
+										<c:otherwise>
+											<c:out value="${pageNumber}" />
+										</c:otherwise>
 
-						<c:otherwise>
-							<c:out value="${pageNumber}" />
-						</c:otherwise>
+									</c:choose>
 
-					</c:choose>
-
-					<c:if test="${pageNumber != pageQuestion.totalPages}">
+									<c:if test="${pageNumber != pageQuestion.totalPages}">
 							|
 							</c:if>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
 </body>
 </html>

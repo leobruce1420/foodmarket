@@ -125,7 +125,11 @@
   </div>
 </div>
 	<hr />
-				<div >
+				<div>
+					<img src="${contextRoot}/img/hot.png" style="width:1110px">
+				</div>
+					
+				<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
 								<table style="width:1100px; height: 275px; margin: 0px auto;">
 									<tr style="background-color: rgb(250, 250, 250);">
 										<td style="text-align: center; padding: 2px; width:225px">
@@ -150,8 +154,8 @@
 										</td>
 									</tr>
 								</table>
-							</div>
-
+				</div>
+			
 			
 			<hr />
 			<div>

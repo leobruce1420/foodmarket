@@ -7,11 +7,13 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.css" rel="stylesheet">
 
-<div class="container">
+
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-9">
 			<br>
-			<h1 style="text-align: center">常見問題</h1>
+			<h1 style="text-align: center">新增常見問題</h1>
 			<br>
 			<div class="card">
 				<div class="card-header" style="font-size: 22px">新增常見問題</div>
@@ -39,7 +41,7 @@
 						</div>
 						<input type="submit" name="submit" value="新增常見問題" />
 					</form:form>
-
+					</div>
 				</div>
 			</div>
 

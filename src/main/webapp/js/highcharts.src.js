@@ -4989,7 +4989,7 @@
                  *         Styled mode
                  *
                  * @type      {Highcharts.CSSObject}
-                 * @default   {highcharts|highmaps} { "color": "#333333", "fontSize": "30px" }
+                 * @default   {highcharts|highmaps} { "color": "#333333", "fontSize": "10px" }
                  * @default   {highstock} { "color": "#333333", "fontSize": "30px" }
                  * @apioption title.style
                  */
@@ -5852,7 +5852,7 @@
                     /**
                      * @ignore
                      */
-                    fontSize: '12px',
+                    fontSize: '18px',
                     /**
                      * @ignore
                      */
@@ -6869,7 +6869,7 @@
                     /** @internal */
                     cursor: 'default',
                     /** @internal */
-                    fontSize: '12px',
+                    fontSize: '18px',
                     /** @internal */
                     whiteSpace: 'nowrap'
                 },
@@ -6982,7 +6982,7 @@
                     /** @internal */
                     color: "#999999" /* neutralColor40 */,
                     /** @internal */
-                    fontSize: '9px'
+                    fontSize: '18px'
                 },
                 /**
                  * The text for the credits label.
@@ -30941,7 +30941,7 @@
                 var style = name === 'title' ? {
                         fontWeight: 'bold',
                         color: "#333333" /* neutralColor80 */,
-                        fontSize: this.options.isStock ? '16px' : '32px' // #2944
+                        fontSize: this.options.isStock ? '16px' : '40px' // #2944  //這是改title字型大小的
                     } : {
                         color: "#666666" /* neutralColor60 */
                     };
@@ -35115,7 +35115,7 @@
                  */
                 style: {
                     /** @internal */
-                    fontSize: '20px',
+                    fontSize: '18px',  //這是改lable字型大小的
                     /** @internal */
                     fontWeight: 'bold',
                     /** @internal */

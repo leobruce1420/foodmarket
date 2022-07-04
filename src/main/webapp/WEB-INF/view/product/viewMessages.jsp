@@ -170,7 +170,7 @@ img {
 <!-- 							<th scope="col" style="text-align: center;">Cname</th> -->
 <!-- 							<th scope="col">C上下架</th> -->
 <!-- 							<th scope="col">修改人員</th> -->
-<!-- 							<th scope="col" style="text-align: center;">功能</th> -->
+							<th scope="col" style="text-align: center;">功能</th>
 						</tr>
 					</thead>
 						<tbody>
