@@ -1,5 +1,6 @@
 package com.foodmarket.app.shopcar.controller;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +37,11 @@ public class OrderRecordController {
 	private WorkProductService productService;
 	
 	
-	@GetMapping("/orderRecord/all")
+	@GetMapping("orderRecord/all")
 	public String getAllRecord(Model model) {
 		List<OrderRecord> orderRecords = orderRecordService.getAll();
-		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
 		for(OrderRecord orderRecord:orderRecords) {
 			Long userId = orderRecord.getUserId();
 			Member member = memberRepository.findById(userId).get();
@@ -49,7 +51,7 @@ public class OrderRecordController {
 			orderRecord.setCustomerName(customerName);
 			orderRecord.setMobile(mobile);
 			orderRecord.setAddress(address);
-
+			orderRecord.setCreateDateStr(dtf.format(orderRecord.getCreateDate()));
 		}
 		
 		model.addAttribute("orderRecords" , orderRecords);
@@ -76,4 +78,28 @@ public class OrderRecordController {
 		model.addAttribute("orderItems" , orderItems);
 		return "order/itemList";
 	}
+	
+	@GetMapping("/lastestRecord")
+	public String getLastRecord(Model model) {
+		
+		OrderRecord lastestRecord= orderRecordService.getLastest();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		lastestRecord.setCreateDateStr(dtf.format(lastestRecord.getCreateDate()));
+		List<OrderItem> orderItems= orderItemService.getByOrderRecordId(lastestRecord.getId());
+		for(OrderItem orderItem:orderItems) {
+			Long productId = orderItem.getProductId();
+			WorkProduct product= productService.findById(productId);
+					
+			String productName = product.getProductname();
+			Integer productPrice = product.getProductprice();
+			
+			orderItem.setProductName(productName);
+			orderItem.setProductPrice(productPrice);
+		
+		}
+		model.addAttribute("lastestRecord",lastestRecord);
+		model.addAttribute("orderItems" , orderItems);
+		return "order/lastestRecord";
+	}
+	
 }

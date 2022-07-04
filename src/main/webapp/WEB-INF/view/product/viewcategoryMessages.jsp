@@ -42,6 +42,7 @@ table, td {
 				<div class="album py-3 bg-light">
 					<div class="container">
 
+<<<<<<< HEAD
 						<div class="row">
 
 
@@ -72,6 +73,30 @@ table, td {
 												<!-- 									</div> -->
 										</div>
 									</div>
+=======
+      <div class="row">
+					
+						
+						<c:forEach var="workProduct" items="${workProduct}">
+						<div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+						<img style="width: 100%; height: 100%;"
+										src="data:image/image/*;base64,${workProduct.productimg}"
+										alt="image" />
+									<div class="card-body">
+										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
+										<h5 class="card-title">${workProduct.productname}</h5>
+										<p class="card-text">$${workProduct.productprice}</p>
+							
+										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
+										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">	
+										
+<!-- 										<a -->
+<%-- 											href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
+<!-- 											id="frontdesk" class="btn btn-primary stretched-link">加入購物車</a> -->
+										<%-- 					</form:form> --%>
+<!-- 									</div> -->
+>>>>>>> 6b71fbac6b3439a5e9a36f53c3e89ec4d5c6a745
 								</div>
 							</c:forEach>
 							<!-- 					<div class="col-12 "> -->
@@ -201,13 +226,24 @@ table, td {
 			</div>
 		</div>
 	</div>
+	
 </body>
+<<<<<<< HEAD
 <script type="text/javascript">
+=======
+<!-- 07/01shopcar修改 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+>>>>>>> 6b71fbac6b3439a5e9a36f53c3e89ec4d5c6a745
 function insertProduct(pId) {
 	var id =document.getElementById('productId_'+pId).value;
 		axios({
 			method : 'post',
+<<<<<<< HEAD
 			url : '${contextRoot}/lock/shopcart/insert' ,
+=======
+			url : '${contextRoot}/shopcart/insert' ,
+>>>>>>> 6b71fbac6b3439a5e9a36f53c3e89ec4d5c6a745
 			data : {
 				 "productNumber" : 1,
 				 "customerId" : 1 ,

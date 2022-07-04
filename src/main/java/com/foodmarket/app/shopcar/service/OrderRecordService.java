@@ -1,6 +1,7 @@
 package com.foodmarket.app.shopcar.service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -48,6 +49,8 @@ public class OrderRecordService {
 			Integer quantity = item.getQuantity();
 			WorkProduct product = productDao.findByproductid(Long.valueOf(productId));
 			
+
+			
 			int productPrice = product.getProductprice();
 			item.setTotalAmount(productPrice * quantity);
 			item.setUserId(userId);
@@ -80,7 +83,11 @@ public class OrderRecordService {
 	}
 	
 	public List<OrderRecord> getAll() {
-		return orderRecordDao.findAll();
+		return orderRecordDao.findAllDesc();
+	}
+	
+	public OrderRecord getLastest() {
+		return orderRecordDao.findFirstByOrderByCreateDateDesc();
 	}
 	
 }

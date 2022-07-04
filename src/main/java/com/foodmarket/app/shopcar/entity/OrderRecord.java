@@ -42,6 +42,9 @@ public class OrderRecord {
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	
+	@Transient
+	private String createDateStr;
+	
 	@Column(name="modify_date")
 	private LocalDateTime modifyDate;
 	
@@ -137,8 +140,14 @@ public class OrderRecord {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
+
+	public String getCreateDateStr() {
+		return createDateStr;
+	}
+
+	public void setCreateDateStr(String createDateStr) {
+		this.createDateStr = createDateStr;
+	}
 	
 
 }
