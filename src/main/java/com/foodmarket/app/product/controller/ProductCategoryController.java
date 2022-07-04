@@ -1,31 +1,20 @@
 package com.foodmarket.app.product.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.foodmarket.app.product.dto.ProductDto;
-import com.foodmarket.app.product.model.WorkProduct;
-import com.foodmarket.app.product.model.productcategory;
+import com.foodmarket.app.product.model.productcategoryBean;
 import com.foodmarket.app.product.service.ProductcategoryService;
-import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.product.util.Util;
-import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
 @Controller
 public class ProductCategoryController {
@@ -37,7 +26,7 @@ public class ProductCategoryController {
 	
 
 	// 商品總類新增
-	@PostMapping("postcategory")
+	@PostMapping("postCategory")
 	public String addProductcategory(@RequestParam("productcategoryname") String productcategoryname, 
 			 @RequestParam("takeon") String takeon,
 			Model m) throws  IOException {
@@ -48,7 +37,7 @@ public class ProductCategoryController {
 //			}
 
 //			request.setCharacterEncoding("UTF-8");
-			productcategory productcategory = new productcategory();
+		productcategoryBean productcategory = new productcategoryBean();
 
 			productcategory.setProductcategoryname(productcategoryname);
 			productcategory.setTakeon(takeon);
@@ -56,11 +45,11 @@ public class ProductCategoryController {
 
 
 			pcmsgService.insertproductcategory(productcategory);
-			WorkProduct newpMsg = new WorkProduct();
-			List<productcategory> Products = pcmsgService.selectproductcategoryAll();
-			m.addAttribute("workProduct", newpMsg);
+			productcategoryBean newpMsg = new productcategoryBean();
+			List<productcategoryBean> Products = pcmsgService.selectproductcategoryAll();
+			m.addAttribute("productcategory", newpMsg);
 			m.addAttribute("products", Products);
-			return "productcategory/addMessage";
+			return "product/addCategory";
 
 //		} catch (UnsupportedEncodingException e) {
 //			// TODO Auto-generated catch block
@@ -68,21 +57,30 @@ public class ProductCategoryController {
 //		}
 //		return "product/addMessage";
 	}
+	//新增商品總類
+	@GetMapping("productcategory/add")
+	public String addCategoryPage(Model model) {
+		productcategoryBean productcategory = new productcategoryBean();
+		model.addAttribute("productcategory", productcategory);
+		
+		return "product/addCategory";
+	}
+	
 //修改找ID
-	@GetMapping("product/editcategory")
+	@GetMapping("product/editCategory")
 	public String editcategory(@RequestParam("categoryid") Integer  categoryid, Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
-		productcategory pMsg = pcmsgService.findById(categoryid);
+		productcategoryBean pMsg = pcmsgService.findById(categoryid);
 
 		model.addAttribute("pMsg", pMsg);
-		return "product/editcategory";
+		return "product/editCategory";
 	}
 	//修改商品種類
-	@PostMapping("product/editProductcategory")
+	@PostMapping("product/editCategory")
 	public String postcategory(@RequestParam("categoryid") Integer categoryid, 
 			@RequestParam("productcategoryname") String productcategoryname, 
 			 @RequestParam("takeon") String takeon,Model m) throws IOException {
-		productcategory productcategory = pcmsgService.findById(categoryid);
+		productcategoryBean productcategory = pcmsgService.findById(categoryid);
 		Util method = new Util();
 //		WorkProduct newworkProduct = new WorkProduct();
 
@@ -91,7 +89,7 @@ public class ProductCategoryController {
 		
 		pcmsgService.insertproductcategory(productcategory);
 		
-		List<productcategory> pMsg = pcmsgService.selectproductcategoryAll();
+		List<productcategoryBean> pMsg = pcmsgService.selectproductcategoryAll();
 		
 		m.addAttribute("pMsg",pMsg);
 		
@@ -145,14 +143,14 @@ public class ProductCategoryController {
 //	}
 
 //	商品種類查詢
-	@PostMapping("productcategory/all")
+	@GetMapping("productcategory/all")
 	public ModelAndView querycategoryAll(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 
 		
-		Page<productcategory> page = pcmsgService.findByPage(pageNumber);
+		Page<productcategoryBean> page = pcmsgService.findByPage(pageNumber);
 		mav.getModel().put("page", page);
-		mav.setViewName("product/viewproductcategory");
+		mav.setViewName("product/viewProductCategory");
 //		mav.setViewName("index");
 		return mav;
 	}

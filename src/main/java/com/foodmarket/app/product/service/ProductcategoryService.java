@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.foodmarket.app.product.model.ProductcategoryRepository;
-import com.foodmarket.app.product.model.WorkProduct;
-import com.foodmarket.app.product.model.productcategory;
+import com.foodmarket.app.product.model.productcategoryBean;
 
 @Service
 @Transactional
@@ -24,9 +23,9 @@ public class ProductcategoryService  {
 	@Autowired
 	private ProductcategoryRepository productcategoryDao;
 
-	public List<productcategory> selectproductcategoryAll() {
+	public List<productcategoryBean> selectproductcategoryAll() {
 		
-		List<productcategory> productcategoryAll = productcategoryDao.findAll();
+		List<productcategoryBean> productcategoryAll = productcategoryDao.findAll();
 		  return productcategoryAll;
 	}
 	
@@ -36,14 +35,15 @@ public class ProductcategoryService  {
 //	}
 	
 	//總類新增
-	public void insertproductcategory(productcategory pcmsg) {
+	public void insertproductcategory(productcategoryBean pcmsg) {
 		productcategoryDao.save(pcmsg);
 	}
 	
+	
 	//ID查詢 商品總類
-		public productcategory findById(Integer categoryid) {
+		public productcategoryBean findById(Integer categoryid) {
 //			return  productcategoryDao.findBycategoryid(categoryid);
-			Optional<productcategory> optional = productcategoryDao.findById(categoryid);
+			Optional<productcategoryBean> optional = productcategoryDao.findById(categoryid);
 			
 			if (optional.isPresent()) {
 				return optional.get();
@@ -58,9 +58,9 @@ public class ProductcategoryService  {
 	
 		}
 		//查詢商品總類分頁
-		public Page<productcategory> findByPage(Integer pageNumber) {
+		public Page<productcategoryBean> findByPage(Integer pageNumber) {
 			Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.ASC, "categoryid");
-			Page<productcategory> page = productcategoryDao.findAll(pgb);
+			Page<productcategoryBean> page = productcategoryDao.findAll(pgb);
 
 			return page;
 			}

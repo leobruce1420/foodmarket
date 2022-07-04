@@ -4,10 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,12 +58,13 @@ public class WorkProduct {
 	@Column(name="takedown", columnDefinition = "nvarchar(5)")
 	private String takedown;
 	
-	@Column(name="productcategoryId", columnDefinition = "int")
-	private Integer productcategoryId;
+	@Column(name="productcategoryid", columnDefinition = "int")
+	private Integer productcategoryid;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "categoryid")
+	private productcategoryBean productcategoryBean;
 	
-	@JoinColumn(name = "productcategoryId")
-	private productcategory productcategoryBean;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -82,21 +86,30 @@ public class WorkProduct {
 	
 
 
-	public Integer getProductcategoryId() {
-		return productcategoryId;
-	}
 
-	public void setProductcategoryId(Integer productcategoryId) {
-		this.productcategoryId = productcategoryId;
-	}
-
-	public productcategory getProductcategoryBean() {
+	public productcategoryBean getProductcategoryBean() {
 		return productcategoryBean;
 	}
 
-	public void setProductcategoryBean(productcategory productcategoryBean) {
+	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
 		this.productcategoryBean = productcategoryBean;
 	}
+
+	public Integer getProductcategoryid() {
+		return productcategoryid;
+	}
+
+	public void setProductcategoryid(Integer productcategoryid) {
+		this.productcategoryid = productcategoryid;
+	}
+
+//	public productcategory getProductcategoryBean() {
+//		return productcategoryBean;
+//	}
+//
+//	public void setProductcategoryBean(productcategory productcategoryBean) {
+//		this.productcategoryBean = productcategoryBean;
+//	}
 
 	public Long getProductid() {
 		return productid;
