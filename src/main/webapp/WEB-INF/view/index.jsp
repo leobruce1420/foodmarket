@@ -128,35 +128,6 @@
 				<div>
 					<img src="${contextRoot}/img/hot.png" style="width:1110px">
 				</div>
-					
-<!-- 				<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px">  -->
-<!-- 					<table style="width:1100px; height: 300px; margin: 0px auto;"> -->
-<!-- 						<tr> -->
-<!-- 							<td style="text-align: center; width:225px;padding-left:10px"> -->
-								
-<%-- 								<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
-<!-- 								<div id="name_data0" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div> -->
-								
-<!-- 							</td>	 -->
-<!-- 							<td style="text-align: center; width:225px"> -->
-<%-- 								<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
-<!-- 								<div id="name_data1" style="text-align: center; font-size:18px;font-weight: bold; padding-top:12px"></div> -->
-<!-- 							</td> -->
-<!-- 							<td style="text-align: center; width:225px"> -->
-<%-- 								<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div> --%>
-<!-- 								<div id="name_data2" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div>											 -->
-<!-- 							</td> -->
-<!-- 							<td style="text-align: center; width:225px"> -->
-<!-- 								<div id="img_data3"></div> -->
-<!-- 								<div id="name_data3" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div> -->
-<!-- 							</td> -->
-<!-- 							<td style="text-align: center; width:225px"> -->
-<!-- 								<div id="img_data4"></div> -->
-<!-- 								<div id="name_data4" style="text-align: center;font-size:18px;font-weight: bold; padding-top:12px"></div> -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</table> -->
-<!-- 				</div> -->
 					<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
 						<div style="width:1100px; height: 285	px; margin: 0px auto;">
 						<ul class="responsive_topsale" style="list-style-type: none; padding-left:15px">

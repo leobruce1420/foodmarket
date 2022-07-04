@@ -32,6 +32,11 @@ public class StatisticController {
 		return "statistic/pieChart";
 	}
 	
+//	@GetMapping("/statistic")
+//	public String productCountCategory() {
+//		return "statistic/productCountCategory";
+//	}
+//	
 	@GetMapping("/productCount")
 	@ResponseBody
 	public Map getStatisticCount(){
