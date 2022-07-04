@@ -46,6 +46,10 @@ public class OrderItem {
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	
+	@Transient
+	private String createDateStr;
+
+	
 	@Column(name="modify_date")
 	private LocalDateTime modifyDate;
 	
@@ -70,6 +74,14 @@ public class OrderItem {
 		return "OrderItem [id=" + id + ", userId=" + userId + ", orderRecordId=" + orderRecordId + ", productId="
 				+ productId + ", quantity=" + quantity + ", totalAmount=" + totalAmount + ", createDate=" + createDate
 				+ ", modifyDate=" + modifyDate + "]";
+	}
+
+	public String getCreateDateStr() {
+		return createDateStr;
+	}
+
+	public void setCreateDateStr(String createDateStr) {
+		this.createDateStr = createDateStr;
 	}
 
 	public Integer getId() {

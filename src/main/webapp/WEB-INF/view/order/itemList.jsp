@@ -3,7 +3,7 @@
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%-- <jsp:include page="../layout/navbar.jsp" />  --%>
+<%-- <jsp:include page="../layout/navbar.jsp" /> --%>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -20,15 +20,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="items" items="${orderItems}">
-		<tr>
-			<th>商品名稱 :<input type="text" value="${items.productName}" disabled></th>
-			<td>數量 :<input type="text" value="${items.quantity}" disabled></td>
-			<td>單價:<input type="text" value="${items.productPrice}" disabled></td>
-			<td>小計:<input type="text" value="${items.totalAmount}" disabled></td>
-		</tr>
-		<br>
-			
-	</c:forEach>
+
+<div class="container">
+
+	<table class="table table-bordered border-primary">
+		<thead>
+			<tr class="table-secondary">
+				<th class="prod_item">產品名稱</th>
+				<th class="prod_name">數量</th>
+				<th class="prod_name">單價</th>
+				<th class="prod_name">小計</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach var="items" items="${orderItems}">
+			<tr>
+				<td><input type="text" value="${items.productName}" disabled></td>
+				<td><input type="text" value="${items.quantity}" disabled></td>
+				<td><input type="text" value="${items.productPrice}" disabled></td>
+				<td><input type="text" value="${items.totalAmount}" disabled></td>
+			</tr>
+			<br>
+				
+		</c:forEach>
+		
+		
+		</tbody>
+	</table>
+</div>
+	
 </body>
 </html>

@@ -51,5 +51,9 @@ public class ShopCartService {
 		shopCartDao.deleteById(id);
 	}
 	
+	public void deleteByCustomerId(Integer userId) {
+		shopCartDao.deleteByCustomerId(userId);;
+	}
+	
 	
 }

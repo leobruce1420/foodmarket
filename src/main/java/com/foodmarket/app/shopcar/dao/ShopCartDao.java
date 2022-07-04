@@ -2,6 +2,7 @@ package com.foodmarket.app.shopcar.dao;
 
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +18,5 @@ public interface ShopCartDao extends JpaRepository<ShopCart, Integer>{
 	public List<ShopCart> findShopCartByCustomerId(@Param("customerId") Integer customerId);
 	
 	
+	public void deleteByCustomerId(Integer customerId);
 }
