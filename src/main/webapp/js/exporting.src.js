@@ -835,10 +835,10 @@
                             'viewFullscreen',
                             'printChart',
                             'separator',
-                            'downloadPNG',
+                            
                             'downloadJPEG',
                             'downloadPDF',
-                            'downloadSVG'
+                            
                         ]
                     }
                 },
@@ -1251,7 +1251,7 @@
                     /** @ignore-option */
                     background: 'none',
                     /** @ignore-option */
-                    fontSize: isTouchDevice ? '14px' : '11px',
+                    fontSize: isTouchDevice ? '14px' : '20px',
                     /** @ignore-option */
                     transition: 'background 250ms, color 250ms'
                 },

@@ -3,13 +3,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <jsp:include page="layout/navbar.jsp" />
 <jsp:include page="layout/navbarProduct.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta charset="UTF-8">
 <title>HOME</title>
 </head>
@@ -122,57 +123,41 @@
       <span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一個</font></font></span>
     </button>
   </div>
-
-
-
-			
-					<br />
-					<div id="carouselExampleIndicators" class="carousel slide"
-						data-ride="carousel">
-						<!-- data-interval="false" -->
-						<ol class="carousel-indicators">
-							<li data-target="#carouselExampleIndicators" data-slide-to="0"
-								class="active"></li>
-						</ol>
-						<br />
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<table class="table table-dark">
-									<tr>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data0">
-
-												</div>
-											</div>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data1"></div>
-											</div>
+</div>
+	<hr />
+				<div>
+					<img src="${contextRoot}/img/hot.png" style="width:1110px">
+				</div>
+					
+				<div style="background-color: rgb(255, 145, 129);  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px"> 
+								<table style="width:1100px; height: 275px; margin: 0px auto;">
+									<tr style="background-color: rgb(250, 250, 250);">
+										<td style="text-align: center; padding: 2px; width:225px">
+											<div id="img_data0" style="position: relative"><img src="${contextRoot}/img/top1.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
+											<div id="name_data0" style="text-align: center; font-size:18px; padding-top:12px"></div>
+										</td>	
+										<td style="text-align: center; padding-left:2px; width:225px">
+											<div id="img_data1" style="position: relative"><img src="${contextRoot}/img/top2.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
+											<div id="name_data1" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data2">
-												</div>
-											</div>
+										<td style="text-align: center; padding: 2px; width:225px">
+											<div id="img_data2" style="position: relative"><img src="${contextRoot}/img/top3.png" style="position: absolute; top:-15; left:-15; width:35%"></div>
+											<div id="name_data2" style="text-align: center; font-size:18px; padding-top:12px"></div>
 										</td>
-										<td>
-											<div class="card" style="width: 15rem; height: 12rem">
-												<div class="card-body" id="img_data3">
-												</div>
-											</div>
+										<td style="text-align: center; padding: 2px; width:225px">
+											<div id="img_data3"></div>
+											<div id="name_data3" style="text-align: center;font-size:18px; padding-top:12px"></div>
+										</td>
+										<td style="text-align: center; padding: 2px; width:225px">
+											<div id="img_data4"></div>
+											<div id="name_data4" style="text-align: center;font-size:18px; padding-top:12px"></div>
 										</td>
 									</tr>
 								</table>
-							</div>
-						</div>
-		
-		
-			<br />
-</div>
-
+				</div>
+			
+			
 			<hr />
-
 			<div>
 				<ul class="responsive">
 					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
@@ -182,7 +167,7 @@
 <!-- 								<div class="card-deck mb-4 shadow-sm"> -->
 								<div class="card">
 								<div class="card-body">
-								<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+								<a	href="${contextRoot}/product/product?productid=${workProduct.productid}">
 									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail card-img-top"
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" /></a>
@@ -190,7 +175,7 @@
 									<div class="card-body">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
 										
-										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<h5 class="card-title"><a href="${contextRoot}/product/product?productid=${workProduct.productid}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 									</div>
 									<div class="card-footer">
@@ -223,13 +208,13 @@
           <div class="card mb-4 shadow-sm text-center">
           <div class="card-body ">
           							<a
-											href="${contextRoot}/product/productname?productname=${workProduct.productname}">
+											href="${contextRoot}/product/product?productid=${workProduct.productid}">
 									<img style="width: 100%; height: 100%;" class="rounded mx-auto d-block img-thumbnail"
 										src="data:image/image/*;base64,${workProduct.productimg}" alt="image" /></a>
 										</div>
 									<div class="card-body ">
 										<%-- 					<form:form action="${contextRoot}/product/productname" method="get"> --%>
-										<h5 class="card-title"><a href="${contextRoot}/product/productname?productname=${workProduct.productname}">${workProduct.productname}</a></h5>
+										<h5 class="card-title"><a href="${contextRoot}/product/product?productid=${workProduct.productid}">${workProduct.productname}</a></h5>
 										<p class="card-text">$${workProduct.productprice}</p>
 										<div class="card-footer">
 										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
@@ -336,8 +321,7 @@
 					  })
 					})					
 
-							
-							$(document).ready(
+									$(document).ready(
 							function() {
 								$.ajax({
 									url : '${contextRoot}/productCount',
@@ -353,12 +337,6 @@
 										var name_sorted = array.sort(function(a, b) {
 											return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0)
 										});
-										
-										name_data0 = ''
-// 										var name_obj0 = name_sorted[0]
-// 										name_data0 += '<tr style="color:rgb(0, 0, 0)">'
-// 										name_data0 += '<td style="color:rgb(0, 0, 0)">' + name_obj0.name + '<td>'
-// 										name_data0 += '<td style="color:rgb(0, 0, 0)">' + name_obj0.value + '<td>'
 
 	
 										$(document).ready(
@@ -385,9 +363,9 @@
 															img_data0 += '<a href="${contextRoot}/product/productname?productname='
 															img_data0 += name_obj0.name
 															img_data0 += '">'
-															img_data0 += '<img style="width: 80%;" class="rounded mx-auto d-block img-thumbnail card-img-top" src="data:image/image/*;base64,' 
+															img_data0 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
 															img_data0 += img_obj0.name
-															img_data0 += '"alt="image">'
+															img_data0 += '">'
 															img_data0 += '</a>'
 															$('#img_data0').append(img_data0)
 
@@ -398,9 +376,9 @@
 															img_data1 += '<a href="${contextRoot}/product/productname?productname='
 															img_data1 += name_obj1.name
 															img_data1 += '">'
-															img_data1 += '<img style="width: 80%;" class="rounded mx-auto d-block img-thumbnail card-img-top" src="data:image/image/*;base64,' 
+															img_data1 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
 															img_data1 += img_obj1.name
-															img_data1 += '"alt="image">'
+															img_data1 += '">'
 															img_data1 += '</a>'
 															$('#img_data1').append(img_data1)
 															
@@ -411,7 +389,7 @@
 															img_data2 += '<a href="${contextRoot}/product/productname?productname='
 															img_data2 += name_obj2.name
 															img_data2 += '">'
-															img_data2 += '<img style="width: 80%;" class="rounded mx-auto d-block img-thumbnail card-img-top" src="data:image/image/*;base64,' 
+															img_data2 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
 															img_data2 += img_obj2.name
 															img_data2 += '"alt="image">'
 															img_data2 += '</a>'
@@ -424,18 +402,57 @@
 															img_data3 += '<a href="${contextRoot}/product/productname?productname='
 															img_data3 += name_obj3.name
 															img_data3 += '">'
-															img_data3 += '<img style="width: 80%;" class="rounded mx-auto d-block img-thumbnail card-img-top" src="data:image/image/*;base64,' 
+															img_data3 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
 															img_data3 += img_obj3.name
 															img_data3 += '"alt="image">'
 															img_data3 += '</a>'
 															$('#img_data3').append(img_data3)
+															
+															name_data4 = ''
+															img_data4 = ''
+															var img_obj4 = img_sorted[4]
+															var name_obj4 = name_sorted[4]
+															img_data4 += '<a href="${contextRoot}/product/productname?productname='
+															img_data4 += name_obj4.name
+															img_data4 += '">'
+															img_data4 += '<img style="width: 200px; margin: 0, 10px" src="data:image/image/*;base64,' 
+															img_data4 += img_obj4.name
+															img_data4 += '"alt="image">'
+															img_data4 += '</a>'
+															$('#img_data4').append(img_data4)
+															
+															
+															name0 = ''
+																var name_obj0 = name_sorted[0]
+																name0 += name_obj0.name
+																$('#name_data0').append(name0)	
+																
+															name1 = ''
+																var name_obj1 = name_sorted[1]
+																name1 += name_obj1.name
+																$('#name_data1').append(name1)	
+																
+															name2 = ''
+																var name_obj2 = name_sorted[2]
+																name2 += name_obj2.name
+																$('#name_data2').append(name2)	
+																
+															name3 = ''
+																var name_obj3 = name_sorted[3]
+																name3 += name_obj3.name
+																$('#name_data3').append(name3)	
+																
+															name4 = ''
+																var name_obj4 = name_sorted[4]
+																name4 += name_obj4.name
+																$('#name_data4').append(name4)	
 														}
 													})
-												})
+												})	
 									}
 								})
-							})
-
+							})			
+							
 function insertProduct(pId) {
 	var id =document.getElementById('productId_'+pId).value;
 		axios({
