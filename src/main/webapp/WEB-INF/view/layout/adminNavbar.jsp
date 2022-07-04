@@ -128,7 +128,7 @@
          aria-labelledby="collapseListGroupHeading4">
       <ul class="list-group">
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/orderRecord/all">訂單列表</a>
         </li>
         <li class="list-group-item">
           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
@@ -147,10 +147,10 @@
          aria-labelledby="collapseListGroupHeading5">
       <ul class="list-group">
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/blogad/getAll">部落格廣告</a>
         </li>
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a>
+          <a class="dropdown-item" href="${contextRoot}/shopad/getAll">商城廣告</a>
         </li>
       </ul>
     </div>
