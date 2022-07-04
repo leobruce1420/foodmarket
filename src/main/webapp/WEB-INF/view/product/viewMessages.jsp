@@ -227,30 +227,89 @@ img {
 
 	</div>
 	
-	<div class="row justify-content-center container">
+<!-- 	<div class="row justify-content-center container"> -->
 
-		<div class="col-9">
-			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-				<c:choose>
-					<c:when test="${page.number != pageNumber-1}">
-						<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out
-								value="${pageNumber}" /></a>
-					</c:when>
+<!-- 		<div class="col-9"> -->
+<%-- 			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+<%-- 				<c:choose> --%>
+<%-- 					<c:when test="${page.number != pageNumber-1}"> --%>
+<%-- 						<a href="${contextRoot}/product/all?p=${pageNumber}"><c:out --%>
+<%-- 								value="${pageNumber}" /></a> --%>
+<%-- 					</c:when> --%>
 
-					<c:otherwise>
-						<c:out value="${pageNumber}" />
-					</c:otherwise>
+<%-- 					<c:otherwise> --%>
+<%-- 						<c:out value="${pageNumber}" /> --%>
+<%-- 					</c:otherwise> --%>
 
-				</c:choose>
+<%-- 				</c:choose> --%>
 
-				<c:if test="${pageNumber != page.totalPages}">
-							|
-							</c:if>
-			</c:forEach>
+<%-- 				<c:if test="${pageNumber != page.totalPages}"> --%>
+<!-- 							| -->
+<%-- 							</c:if> --%>
+<%-- 			</c:forEach> --%>
 
 
-		</div>
-		</div>
+<!-- 		</div> -->
+<!-- 		</div> -->
+		
+		<!-- 	頁數顯示 -->
+<div class="w-100"></div>
+	<nav aria-label="Page navigation example">
+  		<ul class="pagination justify-content-center">
+  		 
+  		 <c:choose>
+			<c:when test="${page.number == 0}">
+			<li class="page-item disabled">
+			 	<a class="page-link" href="#" aria-label="Previous">
+        		<span aria-hidden="true">&laquo;</span>
+      			</a>
+      		</li>
+			</c:when>
+			
+			<c:otherwise>
+			<li class="page-item">
+			 	<a class="page-link" href="${contextRoot}/product/all?p=${page.number+1 -1}" aria-label="Previous">
+        		<span aria-hidden="true">&laquo;</span>
+      			</a>
+      		</li>
+			</c:otherwise>		
+		</c:choose>
+
+    	
+  		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+   		<c:choose>
+   		
+			<c:when test="${pageNumber == page.number+1}">
+			 <li class="page-item disabled"><a class="page-link" href="${contextRoot}/product/all?p=${pageNumber}"><c:out value="${pageNumber}" /></a></li>
+			</c:when>
+			
+			<c:otherwise>
+			<li class="page-item"><a class="page-link" href="${contextRoot}/product/all?p=${pageNumber}"><c:out value="${pageNumber}" /></a></li>
+			</c:otherwise>
+			
+		</c:choose>
+   		</c:forEach>
+   		
+   		<c:choose>
+			<c:when test="${page.number == page.totalPages-1}">
+			 <li class="page-item disabled">
+     		 	<a class="page-link" href="#" aria-label="Next">
+        	 	<span aria-hidden="true">&raquo;</span>
+      		 	</a>
+    		 </li>
+			</c:when>
+			
+			<c:otherwise>
+			<li class="page-item">
+     		 	<a class="page-link" href="${contextRoot}/product/all?p=${page.number +2}" aria-label="Next">
+        	 	<span aria-hidden="true">&raquo;</span>
+      		 	</a>
+    		</li>
+			</c:otherwise>		
+		</c:choose>
+    
+  </ul>
+</nav>
 	</div>
 
 		<br />

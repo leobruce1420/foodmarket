@@ -58,7 +58,7 @@ table, td {
 								<p class="card-text">$${workProduct.productprice}</p>
 								<div class="card-footer">
 										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct('${workProduct.productid}')">		
+										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct(${workProduct.productid},${loginUserId})">		
 										</div>
 							</div>
 						</div>
@@ -71,23 +71,29 @@ table, td {
 
 
 	<hr />
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
-function insertProduct(pId) {
-	var id =document.getElementById('productId_'+pId).value;
-		axios({
-			method : 'post',
-			url : '${contextRoot}/lock/shopcart/insert' ,
-			data : {
-				 "productNumber" : 1,
-				 "customerId" : 1 ,
-				 "productId" :id
-			}
-		}).then(function(res) {
-			alert("已加入購物車");
-		})
+function insertProduct(pId,cId) {
+	if(cId!=null){	
+		var id =document.getElementById('productId_'+pId).value;
+			axios({
+				method : 'post',
+				url : '${contextRoot}/lock/shopcart/insert' ,
+				data : {
+					 "productNumber" : 1,
+					 "customerId" : cId ,
+					 "productId" :id
+				}
+			}).then(function(res) {
+				alert("已加入購物車");
+			})	
+	}else{
+		alert("請先登入")	
+	}
+
 
 		}
 </script>
-</body>
 
 </html>
