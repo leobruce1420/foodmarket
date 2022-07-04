@@ -65,7 +65,7 @@ nav {
 	<nav class="navbar navbar-dark bg-dark navbar-expand-md" id="main">
 		<div class="img1">
 			<a class="nav-link" href="${contextRoot}/HOME"><img
-				src="${contextRoot}/img/logo6.png" width="125px" class="img1"></a>
+				src="${contextRoot}/img/logo6.png" width="150px" class="img1"></a>
 		</div>
 		<div class="container">
 			<div class="collapse navbar-collapse" id="navcol-1">
@@ -82,9 +82,6 @@ nav {
 					<li class="nav-item dropdown"><a class="nav-link"
 						data-display="static"
 						href="${contextRoot}/product/category?productcategory=肉品">肉品</a></li>
-					<li class="nav-item dropdown"><a class="nav-link"
-						data-display="static"
-						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
 					<li class="nav-item dropdown"><a class="nav-link"
 						data-display="static"
 						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
