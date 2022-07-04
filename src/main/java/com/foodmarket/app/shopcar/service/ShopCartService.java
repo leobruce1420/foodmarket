@@ -55,5 +55,7 @@ public class ShopCartService {
 		shopCartDao.deleteByCustomerId(userId);;
 	}
 	
-	
+	public ShopCart findByproductId(Long productId){
+		return shopCartDao.findByProductId(productId);
+	}
 }

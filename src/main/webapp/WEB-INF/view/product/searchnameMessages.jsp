@@ -57,8 +57,13 @@ table, td {
 								</h5>
 								<p class="card-text">$${workProduct.productprice}</p>
 								<div class="card-footer">
-										<input type="hidden" id="productId_${workProduct.productid}" value="${workProduct.productid}">
-										<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct(${workProduct.productid},${loginUserId})">		
+
+														<input type="hidden"id="productId_${workProduct.productid}"
+														value="${workProduct.productid}"> <input
+														class="insertProductBtn btn btn-success" type="button"
+														value="加入購物車"
+														onclick="insertProduct(${workProduct.productid},${loginUserId})">	
+
 										</div>
 							</div>
 						</div>
@@ -71,7 +76,7 @@ table, td {
 
 
 	<hr />
-</body>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
 function insertProduct(pId,cId) {
@@ -95,5 +100,5 @@ function insertProduct(pId,cId) {
 
 		}
 </script>
-
+</body>
 </html>

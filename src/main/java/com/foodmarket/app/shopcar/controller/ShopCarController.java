@@ -125,6 +125,18 @@ public class ShopCarController {
 	@PostMapping("lock/shopcart/insert") //新增單筆
 	@ResponseBody
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
+		List<ShopCart> shopCarts = shopCartService.findAll();
+		for(ShopCart shopCart:shopCarts) {
+			Long productId = shopCart.getProductId();
+			if(reqShopCart.getProductId() == productId) {
+				ShopCart product = shopCartService.findByproductId(reqShopCart.getProductId());
+				product.setProductNumber(product.getProductNumber() + 1);
+				shopCartService.save(product);
+				return null;
+			}
+		
+		}
+		
 		return shopCartService.save(reqShopCart);
 	}
 	

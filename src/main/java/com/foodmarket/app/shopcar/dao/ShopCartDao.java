@@ -19,4 +19,6 @@ public interface ShopCartDao extends JpaRepository<ShopCart, Integer>{
 	
 	
 	public void deleteByCustomerId(Long customerId);
+	
+	public ShopCart findByProductId(Long productId);
 }
