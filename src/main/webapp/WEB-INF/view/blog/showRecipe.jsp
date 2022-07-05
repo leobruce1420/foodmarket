@@ -27,7 +27,7 @@
 		</div>
 	</div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
 					+'<br><br><br><p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">烹飪時間: '+json.cookTime+'</p>'
 					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">份量: '+json.serving+'人份</p>'
 					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">喜歡人數: '+json.postLikeTime+'</p>'
-					+'<br><br><br><br><br><p>食材準備:<br>'+json.ingredients+'</p><br>'
+					+'<br><br><br><br><br><p>食材準備:<br>'+json.ingredients+'<input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertProduct({${loginUserId})"/></p><br>'
 					+json.postText
 					+'<br><br><br><br><div style="text-align: center"><a href="${contextRoot}/recipe/all" ><p>返回食譜首頁</p></a></div>';
 					
@@ -106,7 +106,37 @@ $(document).ready(function() {
 });
 
 
+function insertProduct(cId) {
+	 if(cId!=null){ 
 
+	   axios({
+	    method : 'post',
+	    url : '${contextRoot}/lock/shopcart/insertAll' ,
+	    data :  
+	    	[{
+	    	    "productNumber" : 1,
+	    	    "customerId" : cId ,
+	    	    "productId" :51
+	    	  },
+	    	  {
+	    		  "productNumber" : 1,
+	    	      "customerId" : cId ,
+	    	      "productId" :19
+	    	  },
+	    	  {
+	    		  "productNumber" : 1,
+	    	      "customerId" : cId ,
+	    	      "productId" :1
+	    	  }]
+	    
+	   }).then(function(res) {
+	    alert("已加入購物車");
+	   }) 
+	 }else{
+	  alert("請先登入") 
+	 }
+
+	  }
   
 
 

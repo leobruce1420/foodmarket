@@ -34,7 +34,7 @@ public class RecipeTypeServiceDetial implements RecipeTypeService{
 	
 	@Override
 	 public Page<RecipeType>  findByPage(Integer pageNum) {
-		 Pageable pgb = PageRequest.of(pageNum-1, 10, Sort.Direction.ASC, "recipeTypeId");
+		 Pageable pgb = PageRequest.of(pageNum-1, 20, Sort.Direction.ASC, "recipeTypeId");
 		 
 		 Page<RecipeType> page = recipeTypeDao.findAll(pgb);
 		 

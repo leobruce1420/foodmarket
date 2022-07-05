@@ -19,11 +19,7 @@ div.col.card h-100{
 button.btn{
 float:right;
 }
-.ad-wall{
-height: 300px;
-width:100%;
-background-color: green;
-}
+
  div.search{
 		margin:10px auto;
 		text-align:center;
@@ -34,7 +30,7 @@ background-color: green;
 </head>
 <body>
 <br>
-<div class="ad-wall"></div>
+
 <div class="container">
 <div class="search">
 搜尋：<input class="searchtext" type="text" placeholder="請輸入關鍵字">
@@ -86,11 +82,11 @@ background-color: green;
   
   
   	<h5>想不到要煮甚麼嗎?可以用以下分類搜尋唷</h5>
-  		<div class="row row-cols-1 row-cols-md-5 g-3">
+  		<div class="row row-cols-1 row-cols-md-4 g-3">
   			<c:forEach var="recipeType" items="${recType.content}">
   				<div class="col">
     				<div class="card">
-      					<a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}"><img src="${recipeType.recipeTypeImg}" class="card-img-top" alt="recipeTypeImg" style="height: 110px"></a>
+      					<a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}"><img src="${recipeType.recipeTypeImg}" class="card-img-top" alt="recipeTypeImg" style="height: 180px"></a>
       						<div class="card-body">
         					<h5 class="card-title"><a href="${contextRoot}/recipe/search?recipeType=${recipeType.recipeTypeTitle}">${recipeType.recipeTypeTitle}</a></h5>
       						</div>

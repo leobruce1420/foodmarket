@@ -78,9 +78,9 @@
 <div>
 <h2>管理者介面CRUD</h2>
 <div class="backstage">
-<a href="${contextRoot}/recipe/manageradd"><button type="button" class="btn btn-primary btn-lg">新增食譜</button></a>
-搜尋：<input type="search" class="light-table-filter" data-table="table" placeholder="請輸入關鍵字">
-	<table class="table">
+<%-- <a href="${contextRoot}/recipe/manageradd"><button type="button" class="btn btn-primary btn-lg">新增食譜</button></a> --%>
+搜尋：<input type="search" class="light-table-filter" data-table="table" placeholder="請輸入關鍵字"><br>
+	<br><table class="table">
 		<thead  class="table-dark">
 			<tr><th>食譜Id<th>使用者Id<th>食譜分類<th>食譜標題<th>食譜標籤<th>收藏人數<th>烹飪時間<th>份量<th>創建時間<th>功能列表</tr>
 		</thead>	
