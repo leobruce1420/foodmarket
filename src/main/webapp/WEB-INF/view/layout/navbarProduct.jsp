@@ -46,7 +46,7 @@ input::-webkit-search-cancel-button {
 	display: none; 
 }
 input[type=search] {
-	padding: 9px 10px 9px 32px;
+	padding: 9px 10px 9px 25px;
 	width: 45px;
 	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
 	border: solid 1px #ccc;
@@ -131,12 +131,14 @@ input[type=search]:focus {
 					<li class="nav-item dropdown"><a class="nav-link"
 						data-display="static"
 						href="${contextRoot}/product/category?productcategory=海鮮">海鮮</a></li>
-
+					<li class="nav-item dropdown"><a class="nav-link"
+						data-display="static"
+						href="${contextRoot}/lock/shopCart/all"><img src="${contextRoot}/img/shopcart.png"></a></li>
 				</ul>
 			</div>
 
 		</div>
-		<a href="${contextRoot}/lock/shopCart/all"><img src="img/shopcart.png"></a>
+<%-- 		<a href="${contextRoot}/lock/shopCart/all"><img src="${contextRoot}/img/shopcart.png"></a> --%>
 		<form action="${contextRoot}/product/searchproductname" method="get">
 			<input  type="search" placeholder="Search"
 				aria-label="Search" id="productname" name="productname"
