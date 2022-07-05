@@ -3,6 +3,7 @@ package com.foodmarket.app.shopcar.controller;
 import java.util.List;
 
 import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -112,7 +113,7 @@ public class ShopCarController {
 		return "shopcart/shopCart";
 	}
 	
-	@PostMapping("shopcart/update") //更新單筆
+	@PostMapping("lock/shopcart/update") //更新單筆
 	@ResponseBody
 	public ShopCart updateShopCart(@RequestBody ShopCart shopCart) {
 		ShopCart dbShopCart = shopCartService.findById(shopCart.getId()); //用網頁傳回的id找出要修改的shopCart
@@ -121,21 +122,34 @@ public class ShopCarController {
 	}
 	
 	
-	@PostMapping("shopcart/insert") //新增單筆
+	@PostMapping("lock/shopcart/insert") //新增單筆
+	@ResponseBody
 	public ShopCart insertShopCart(@RequestBody ShopCart reqShopCart) {
+		List<ShopCart> shopCarts = shopCartService.findAll();
+		for(ShopCart shopCart:shopCarts) {
+			Long productId = shopCart.getProductId();
+			if(reqShopCart.getProductId() == productId) {
+				ShopCart product = shopCartService.findByproductId(reqShopCart.getProductId());
+				product.setProductNumber(product.getProductNumber() + 1);
+				shopCartService.save(product);
+				return null;
+			}
+		
+		}
+		
 		return shopCartService.save(reqShopCart);
 	}
 	
-	@PostMapping("shopcart/insertAll") //新增多筆
+	@PostMapping("lock/shopcart/insertAll") //新增多筆
 	public List<ShopCart> insertShopCart(@RequestBody List<ShopCart> reqList){
 		List<ShopCart> reqestList = shopCartDao.saveAll(reqList);
 		return reqestList;
 	}
 	
-	@GetMapping("shopcart/delete")
+	@GetMapping("lock/shopcart/delete") //刪除購物車裡單筆資料
 	public String deleteById(@RequestParam("id") Integer id) {
 		shopCartDao.deleteById(id);
-		return "redirect:/shopCart/all";
+		return "redirect:/lock/shopCart/all";
 	}
 	
 //<<<<<<< HEAD
@@ -154,9 +168,11 @@ public class ShopCarController {
 		return "shopCart";
 	}
 
-	@GetMapping("shopCart/all")
-	public String getAll(Model model){
-		List<ShopCart> shopCarts = shopCartService.findAll();
+	@GetMapping("lock/shopCart/all")
+	public String getAll(Model model, HttpSession session){
+		System.out.println(session.getAttribute("loginUserId"));
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(sessionUId);
 		
 		int totalPrice = 0;
 		
@@ -167,7 +183,7 @@ public class ShopCarController {
 					
 			String productName = product.getProductname();
 			Integer productPrice = product.getProductprice();
-			totalPrice += productNumber*productPrice;
+			totalPrice += productNumber * productPrice;
 			shopCart.setProductName(productName);
 			shopCart.setProductPrice(productPrice);
 			
@@ -177,7 +193,7 @@ public class ShopCarController {
 //		Session.xxx; //getCustomerId
 
 		Member member = new Member();
-		member.setCustomerId(1L);
+		member.setCustomerId(sessionUId);
 		
 		model.addAttribute("shopCarts" , shopCarts);
 		model.addAttribute("member" , member);
@@ -187,7 +203,7 @@ public class ShopCarController {
 	
 	
 	@PostMapping("shopCart/item")
-	public String getItem(Model model,Integer customerId) {
+	public String getItem(Model model,Long customerId) {
 		List<ShopCart> shopCarts = shopCartService.findShopCartByCustomerId(customerId);
 		
 		return "shopcart/Item";

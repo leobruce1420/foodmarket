@@ -21,7 +21,7 @@ public class ShopCart {
 	private Integer productNumber;
 
 	@Column(name = "customer_id")
-	private Integer customerId;
+	private Long customerId;
 
 	@Column(name = "product_id")
 	private Long productId;
@@ -67,11 +67,11 @@ public class ShopCart {
 		this.productNumber = productNumber;
 	}
 
-	public Integer getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 

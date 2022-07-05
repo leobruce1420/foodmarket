@@ -146,9 +146,9 @@ public class MemberController {
 		String title = "foodmarket會員驗證信";
 		String text = "您好，請點擊下方連結啟動完整會員功能<br>" + "<a href = 'http://localhost:8080/foodmarket/authMailCheck/" + token
 				+ "'>" + "http://localhost:8080/foodmarket/authMailCheck/" + token + "</a>";
-		// 轉為登入狀態
-		session.setAttribute("loginUserId", rsMember.getCustomerId());
-		session.setAttribute("loginUserName", rsMember.getCustomerName());
+//		// 轉為登入狀態
+//		session.setAttribute("loginUserId", rsMember.getCustomerId());
+//		session.setAttribute("loginUserName", rsMember.getCustomerName());
 
 		// 在db新增authToken及到期日
 		rsMember.setAuthToken(token);

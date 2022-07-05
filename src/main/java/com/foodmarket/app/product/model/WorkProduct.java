@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,7 +19,6 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.foodmarket.app.shopcar.entity.ShopCart;
 
 
 @Entity
@@ -58,9 +58,13 @@ public class WorkProduct {
 	@Column(name="takedown", columnDefinition = "nvarchar(5)")
 	private String takedown;
 	
+	@Column(name="productcategoryid", columnDefinition = "int")
+	private Integer productcategoryid;
 	
-//	@Column(name="productcategoryid", columnDefinition = "int")
-//	private productcategory categoryid;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "categoryid")
+//	private productcategoryBean productcategoryBean;
+	
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -78,6 +82,34 @@ public class WorkProduct {
 
 	public WorkProduct() {
 	}
+	
+	
+
+
+
+//	public productcategoryBean getProductcategoryBean() {
+//		return productcategoryBean;
+//	}
+//
+//	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
+//		this.productcategoryBean = productcategoryBean;
+//	}
+
+	public Integer getProductcategoryid() {
+		return productcategoryid;
+	}
+
+	public void setProductcategoryid(Integer productcategoryid) {
+		this.productcategoryid = productcategoryid;
+	}
+
+//	public productcategory getProductcategoryBean() {
+//		return productcategoryBean;
+//	}
+//
+//	public void setProductcategoryBean(productcategory productcategoryBean) {
+//		this.productcategoryBean = productcategoryBean;
+//	}
 
 	public Long getProductid() {
 		return productid;

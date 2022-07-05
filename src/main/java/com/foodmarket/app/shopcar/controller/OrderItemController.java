@@ -1,5 +1,6 @@
 package com.foodmarket.app.shopcar.controller;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.foodmarket.app.shopcar.entity.OrderRecord;
 import com.foodmarket.app.shopcar.entity.ShopCart;
 import com.foodmarket.app.shopcar.service.OrderItemService;
 import com.foodmarket.app.shopcar.service.OrderRecordService;
+import com.foodmarket.app.shopcar.service.ShopCartService;
 
 @Controller
 public class OrderItemController {
@@ -29,25 +31,34 @@ public class OrderItemController {
 	@Autowired
 	private OrderRecordService orderRecordService;
 	
+	@Autowired
+	private ShopCartService shopCartService;
 	
 	@Autowired
 	private WorkProductService workProductService;
 	
-	@PostMapping("/orderItem/save/{userId}")
+	@PostMapping("lock/orderItem/save/{userId}")
 	@ResponseBody  //回傳數據
 	public OrderRecord saveRecord(Model model, @RequestBody OrderRecord orderRecord, @PathVariable Long userId) {
+		System.out.println("saveRecord");
 		OrderRecord newOrderRecord = orderRecordService.save(orderRecord, userId);
+		
+		shopCartService.deleteByCustomerId(userId);
+		
 		return newOrderRecord;
 	}
 	
 
-	@GetMapping("/orderList/{orderId}")
+	@GetMapping("lock/orderList/{orderId}")
 	public String getOrderList(Model model, @PathVariable Integer orderId){
 		List<OrderItem> orderItems = orderItemService.getByOrderRecordId(orderId);
-
+		
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		orderItems.forEach(o -> {
 			WorkProduct product = workProductService.findById(Long.valueOf(o.getProductId()));
 			o.setProductName(product.getProductname());
+			o.setCreateDateStr(dtf.format(o.getCreateDate()));
 		});
 		
 		Member member = new Member();

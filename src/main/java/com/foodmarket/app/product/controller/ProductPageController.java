@@ -2,6 +2,8 @@ package com.foodmarket.app.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -10,10 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.foodmarket.app.member.model.Member;
+import com.foodmarket.app.member.service.MemberServiceInterface;
 import com.foodmarket.app.product.model.WorkProduct;
+import com.foodmarket.app.product.service.ProductcategoryService;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.shopadvertisement.ShopAdService;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+import com.foodmarket.app.wishList.model.WishList;
+import com.foodmarket.app.wishList.service.WishListServiceInterface;
 
 
 @Controller
@@ -21,14 +28,35 @@ public class ProductPageController {
 
 	@Autowired
 	private WorkProductService pmsgService;
-//	@Autowired
-//	private ProductcategoryService pcmsgService;
+	@Autowired
+	private ProductcategoryService pcmsgService;
 
 	
 	@Autowired
 	private ShopAdService sService;
+	
+	@Autowired
+	private MemberServiceInterface memberService;
+	
+	@Autowired
+	private WishListServiceInterface wishListService;
 
-	// 首頁 分頁全部查詢
+	// 首頁 分頁全部查詢 inner join 測試
+//	@GetMapping("/HOME")
+//	public String welcomePage(@RequestParam (required=false ,value="takedown")String takedown, 
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
+//		Page<WorkProduct> page = pmsgService.findByTakeDown(takedown,pageNumber);
+//		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
+//		List<ShopAdvertisement> ad = sService.findByBoard();
+//		model.addAttribute("ad",ad);
+//		model.addAttribute("productcategory", productcategory);
+////		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
+//
+//		model.addAttribute("page", page);
+//		return "index";
+//
+//	}
+//	// 首頁 分頁全部查詢
 	@GetMapping("/HOME")
 	public String welcomePage(@RequestParam (required=false ,value="takedown")String takedown, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber,Model model) {
@@ -36,12 +64,12 @@ public class ProductPageController {
 		
 		List<ShopAdvertisement> ad = sService.findByBoard();
 		model.addAttribute("ad",ad);
-
+		
 //		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
-
+		
 		model.addAttribute("page", page);
 		return "index";
-
+		
 	}
 	// 舊的
 //	@GetMapping("/p")
@@ -50,7 +78,22 @@ public class ProductPageController {
 //		return "index";
 //		
 //	}
-
+//inner join
+//	@GetMapping("product/add")
+//	public String addcategoryPage(Model model) {
+////		Util method = new Util();
+//		WorkProduct workProduct = new WorkProduct();
+//		WorkProduct lastestpMsg = pmsgService.getLastest();
+//		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
+////		byte[] imgBytes = mf.getBytes();
+////		workProduct.setProductimg(method.decoder(imgBytes));
+//		model.addAttribute("productcategory", productcategory);
+//		model.addAttribute("workProduct", workProduct);
+//		model.addAttribute("lastestpMsg", lastestpMsg);
+//
+//		return "product/addMessage";
+//	}
+	//好的
 	@GetMapping("product/add")
 	public String addMessagePage(Model model) {
 //		Util method = new Util();
@@ -60,7 +103,7 @@ public class ProductPageController {
 //		workProduct.setProductimg(method.decoder(imgBytes));
 		model.addAttribute("workProduct", workProduct);
 		model.addAttribute("lastestpMsg", lastestpMsg);
-
+		
 		return "product/addMessage";
 	}
 
@@ -86,7 +129,7 @@ public class ProductPageController {
 ////		mav.setViewName("index");
 //		return mav;
 //	}
-
+//後台查詢所有 OK
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
@@ -98,17 +141,40 @@ public class ProductPageController {
 		return mav;
 	}
 
-	// 0622T0024 商品全部查詢
-//	@GetMapping("product/allproduct")
-//	public ModelAndView  viewAllProducts(ModelAndView mav, 
-//			@RequestParam(name="to", defaultValue = "1") Integer productNumber) {
-//		List<WorkProduct> allpro = pmsgService.selectAll();
+	//後台查詢所有 inner join
+//	@GetMapping("product/all")
+//	public ModelAndView viewProducts(ModelAndView mav,
+//			@RequestParam(required = false, value = "categoryid")Integer  categoryid,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+//		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
+////		Optional<WorkProduct> ProductBycategoryId = pmsgService.findProductByCategoryid(productcategoryBean.getCategoryid());
+////		WorkProduct category = ProductBycategoryId.get();
+////		Page<WorkProduct> pcage = pmsgService.findByPage1(pageNumber, category.getCategoryid());
+//		Page<WorkProduct> pcage = pmsgService.findproductBycategoryidPage(categoryid,pageNumber);
+//		productcategoryBean pcb = new productcategoryBean();
+//		pcb.setCategoryid(categoryid);
+//		WorkProduct workProduct = new WorkProduct();
+//		workProduct.setProductcategoryid(pcb);
 //		
-//		mav.getModel().put("allpro", allpro);
+//		mav.getModel().put("page", page);
+//		mav.getModel().put("pcage", pcage);
+////		mav.getModel().put("pcage", pcage);
 //		mav.setViewName("product/viewMessages");
 ////		mav.setViewName("index");
 //		return mav;
 //	}
+
+	// 0622T0024 商品全部查詢
+	@GetMapping("product/allproduct")
+	public ModelAndView  viewAllProducts(ModelAndView mav, 
+			@RequestParam(name="to", defaultValue = "1") Integer productNumber) {
+		List<WorkProduct> allpro = pmsgService.selectAll();
+		
+		mav.getModel().put("allpro", allpro);
+		mav.setViewName("product/viewMessages");
+//		mav.setViewName("index");
+		return mav;
+	}
 
 	// 種類查詢分頁
 //	@GetMapping("product/category")
@@ -148,17 +214,49 @@ public class ProductPageController {
 
 	}
 
-//	消費者商品種類查詢無分頁 首頁顯示
-	@GetMapping("/p")
-	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
-			Model m) {
-		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+//	消費者商品種類查詢無分頁 首頁顯示(舊版)
+//	@GetMapping("/p")
+//	public String homeProductcategory(@RequestParam (required=false ,value="productcategory")String productcategory,
+//			Model m) {
+//		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+//		
+//		m.addAttribute("workProduct", workProduct);
+//		m.addAttribute("productcategory", productcategory);
+//		return "index";
+//		
+//	}
+//	
+//	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
+	@GetMapping("product/product")
+	public String viewProductById(@RequestParam(required = false, value = "productid") long productid, Model m, HttpSession session) {
 		
-		m.addAttribute("workProduct", workProduct);
-		m.addAttribute("productcategory", productcategory);
-		return "index";
+		WorkProduct product = pmsgService.findById(productid);
+		
+		Long sessionUId = (Long) session.getAttribute("loginUserId");
+		
+		//若有登入則檢查是否收藏
+		if(sessionUId != null) {
+			Member member = memberService.findById(sessionUId);
+			WishList listCheck = wishListService.findByMemberAndProduct(member, product);
+			
+			if(listCheck != null) {
+				m.addAttribute("listCheck", true);
+				m.addAttribute("workProduct", product);
+				return "product/viewnameMessagesById";
+			}else {
+				m.addAttribute("listCheck", false);
+				m.addAttribute("workProduct", product);
+				return "product/viewnameMessagesById";
+			}
+			
+		}
+		//沒有登入
+		m.addAttribute("listCheck", false);
+		m.addAttribute("workProduct", product);
+		return "product/viewnameMessagesById";
 		
 	}
+
 
 	// 消費者點擊商品名稱只顯示單一商品不分頁 測試
 	@GetMapping("product/productname")

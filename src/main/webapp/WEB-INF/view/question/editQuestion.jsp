@@ -15,8 +15,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row justify-content-center">
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
+ <div class="container-fluid">
+	<div class="row justify-content-center">
 			<div class="col-9">
 				<br>
 				<h1 style="text-align: center">常見問題</h1>
@@ -53,7 +54,8 @@
 					</form:form>
 				</div>
 			</div>
-
+		</div>
+		
 		</div>
 	</div>
 	</div>
