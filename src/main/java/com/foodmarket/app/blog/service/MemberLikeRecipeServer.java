@@ -18,5 +18,14 @@ public interface MemberLikeRecipeServer {
 
 	Object addLikeTimeByCustomer(Object customerId,Long recipePostId);
 
+
+
+	MemberLikeRecipe saveYourLikeRecipe(Object customerId, Long recipePostId);
+
+	void testSaveYourLikeRecipe(MemberLikeRecipe mlr);
+
+	void testDeleteYourLikeRecipe(Long customerId, Long recipePostId);
+	
+
 }
 
