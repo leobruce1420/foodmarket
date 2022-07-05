@@ -52,7 +52,9 @@ public class MemberEditController {
 	
 	//修改會員資料
 	@PostMapping("/updateCustomer")
-	public String updateCustomer(@ModelAttribute("member") Member member, @RequestParam(name="img" ,required=false) MultipartFile mf, Model m, HttpSession session, RedirectAttributes redirectAttributes) throws IOException {
+	public String updateCustomer(@ModelAttribute("member") Member member, 
+								 @RequestParam(name="img" ,required=false) String mf, 
+								 Model m, HttpSession session, RedirectAttributes redirectAttributes) throws IOException {
 
 		Member datamember = memberService.findById(member.getCustomerId());
 		String pwd = datamember.getPassword();
@@ -61,22 +63,39 @@ public class MemberEditController {
 		//修改時間
 		member.setModifiedDate(new Date());
 		
+//舊版		
+//		if(!mf.isEmpty()) {
+//			String imgType = mf.getOriginalFilename().substring(mf.getOriginalFilename().indexOf(".")+1); 
+//			if(imgType.equals("png")) {
+//				member.setImgType(imgType);
+//			}else {
+//				member.setImgType("jpeg");
+//			}
+//			
+//			byte[] imgBytes = mf.getBytes();
+//			String file = util.encoder(imgBytes);
+//			member.setImgFile(file);
+//		}else {
+//			member.setImgType(datamember.getImgType());
+//			member.setImgFile(datamember.getImgFile());
+//		}
 		
-		if(!mf.isEmpty()) {
-			String imgType = mf.getOriginalFilename().substring(mf.getOriginalFilename().indexOf(".")+1); 
-			if(imgType.equals("png")) {
-				member.setImgType(imgType);
-			}else {
-				member.setImgType("jpeg");
-			}
+		//裁切版圖片上傳
+		if(!mf.isBlank() && mf.length()>22) {
+			logger.info(mf);
+			member.setImgFile(mf.split(",")[1]);
+			logger.info(mf.split(",")[1]);
 			
-			byte[] imgBytes = mf.getBytes();
-			String file = util.encoder(imgBytes);
-			member.setImgFile(file);
+			int start = mf.indexOf("/");
+			int end = mf.indexOf(";");
+			String imgType = mf.substring(start, end);
+			logger.info(imgType);
+			member.setImgType(imgType);
 		}else {
 			member.setImgType(datamember.getImgType());
 			member.setImgFile(datamember.getImgFile());
 		}
+		
 		
 		
 		Member rsMember = memberService.updateCustomer(member);
