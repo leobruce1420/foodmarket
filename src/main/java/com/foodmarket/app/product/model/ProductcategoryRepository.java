@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductcategoryRepository extends JpaRepository<productcategoryBean, Integer> {
 
 	// 用新增時間排序
-//	public productcategory findFirstByOrderByAddedDesc();
+	public List<productcategoryBean> findFirstByOrderByCategoryidAsc();
 
 	// 用Id查詢
 	public List<productcategoryBean> findBycategoryid(Integer categoryid);
