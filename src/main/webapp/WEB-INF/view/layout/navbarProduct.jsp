@@ -71,6 +71,17 @@
   .btn-round-2 {
     border-radius: 20px;
   }
+
+/* /購物車數量顯示/  */
+#lblCartCount {
+    font-size: 15px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 3px;
+    vertical-align: top;
+    margin-left: -10px;
+} 
+
   </style>
 <body>
 
@@ -107,9 +118,18 @@
         </div>
   
       </div>
+      
+      
+    
+    
 	<a class="nav-link" data-display="static" href="${contextRoot}/lock/shopCart/all">
 		<img src="${contextRoot}/img/shopcart.png">
+	 	<span class='badge badge-warning' id='lblCartCount'> 5 </span>
 	</a>
+
+      
+    
+    
       
       <form action="${contextRoot}/product/searchproductname" method="get">
         <input  type="search" placeholder="Search"
@@ -141,6 +161,8 @@
   
       // 監聽滾動事件
       window.addEventListener('scroll', fixNav);
+      
+     
     </script>
 </body>
 </html>
