@@ -45,7 +45,7 @@ public class BlogAdService {
 	}
 	
 	public Page<BlogAdvertisement> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber-1, 3 );
+		Pageable pgb = PageRequest.of(pageNumber-1, 5 );
 		
 		Page<BlogAdvertisement> page = bDao.findAll(pgb);
 		

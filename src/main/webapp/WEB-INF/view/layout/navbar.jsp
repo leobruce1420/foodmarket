@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-
+<link rel="icon" type="image/*" sizes="192x192" href="${contextRoot}/img/logo5.png" />
 <title>好食光市場</title>
 
 </head>

@@ -86,7 +86,8 @@
 <!--     </a> -->
 <!--   </label> -->
 <%--   </c:forEach>  --%>
-<!-- </div> --><!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
 <!-- </div> -->
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-md" id="main">

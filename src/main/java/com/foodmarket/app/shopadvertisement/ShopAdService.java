@@ -46,7 +46,7 @@ public class ShopAdService {
 	}
 	
 	public Page<ShopAdvertisement> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber-1, 3 );
+		Pageable pgb = PageRequest.of(pageNumber-1, 5 );
 		
 		Page<ShopAdvertisement> page = sDao.findAll(pgb);
 		
