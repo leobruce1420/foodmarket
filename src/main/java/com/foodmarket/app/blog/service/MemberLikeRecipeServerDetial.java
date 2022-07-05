@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.foodmarket.app.blog.model.MemberLikeRecipe;
 import com.foodmarket.app.blog.model.MemberLikeRecipeRepository;
+import com.foodmarket.app.member.model.Member;
+import com.foodmarket.app.product.model.WorkProduct;
 
 
 
@@ -51,9 +53,27 @@ public class MemberLikeRecipeServerDetial implements MemberLikeRecipeServer{
 		return null;
 	}
 
+	@Override
+	public MemberLikeRecipe saveYourLikeRecipe(Object customerId,Long recipePostId) {
+		return null;
+	};
+
+	@Override
+	public void testSaveYourLikeRecipe(MemberLikeRecipe mlr) {
+		memberLikeRecipeDao.save(mlr);
+	}
 
 
+	@Override
+	public void testDeleteYourLikeRecipe(Long customerId,Long recipePostId) {
+		memberLikeRecipeDao.deleteByCustomerIdAndRecipePostId(customerId,recipePostId);
+	}
 
+//	@Override
+//	public void deleteByMemberAndProduct(Member member, WorkProduct product) {
+//		dao.deleteByMemberAndProduct(member, product);
+//		
+//	}
 
 	
 	
