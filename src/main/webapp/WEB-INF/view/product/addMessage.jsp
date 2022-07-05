@@ -48,8 +48,24 @@
 									</form:select>
 								</div>
 							</div>
+							
+<!-- 							<br/> -->
+							
+<!-- 							<div> -->
+<!-- 								<div class="input-group mb-3"> -->
+<!-- 									<div class="input-group-prepend"> -->
+<!-- 										<label class="input-group-text" for="inputGroupSelect01">商品類別</label> -->
+<!-- 									</div> -->
+<%-- 									<form:select class="custom-select" id="inputGroupSelect01" --%>
+<%-- 										<c:forEach var="productcategorytakeon"items="${productcategorytakeon}"> --%>
+<%-- 									<option value="${productcategorytakeon.productcategoryname}">${productcategorytakeon.productcategoryname}</option> --%>
+									
+<%-- 								</c:forEach> --%>
+<%--  									</form:select>  --%>
+<!-- 								</div> -->
+<!-- 							</div> -->
 
-							<br />
+<!-- 							<br /> -->
 
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">

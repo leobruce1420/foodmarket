@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.foodmarket.app.product.model.ProductcategoryRepository;
+import com.foodmarket.app.product.model.WorkProduct;
 import com.foodmarket.app.product.model.productcategoryBean;
 
 @Service
@@ -64,6 +65,41 @@ public class ProductcategoryService  {
 
 			return page;
 			}
+		
+		//商品種類前台顯示上架不分頁
+		public List<productcategoryBean> findByProductCategoryTakeon(String takeon) {
+			List<productcategoryBean> page = productcategoryDao.findByProductCategoryTakeon(takeon);
+			
+			return page;
+		}
+		
+		//商品種類前台顯示上架分頁
+//		public Page<productcategoryBean> findByProductCategoryTakeonPage(String takeon,Integer pageNumber) {
+//			Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "categoryid");
+//			Page<productcategoryBean> cpage = productcategoryDao.findByProductCategoryTakeonPage(takeon,pgb);
+//			
+//			return cpage;
+//		}
+		
+		//商品上架排序分頁 首頁
+		public Page<productcategoryBean> findByProductCategoryTakeonPage(String takeon ,Integer pageNumber) {
+			Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "categoryid");
+			
+			Page<productcategoryBean> page = productcategoryDao.findByProductCategoryTakeonPage(takeon,pgb);
+			
+			return page;
+		}
+		
+		//商品查詢種類不分頁
+//		public List<productcategoryBean> findByProductcategoryKey(Integer categoryid) {
+//			Optional<productcategoryBean> page = productcategoryDao.findById(categoryid);
+//	
+////			if(page.isPresent()) {
+////				return page.get();
+////				
+////			}
+//			return page;
+//		}
 
 //	//滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 //	public Page<productcategory> findByPage(Integer pageNumber) {

@@ -33,7 +33,6 @@ public class productcategoryBean {
 	@Column(name="takeon", columnDefinition = "nvarchar(10)")
 	private String takeon;
 	
-//	@Transient
 //	@OneToMany(fetch = FetchType.LAZY,mappedBy = "productcategory",cascade =CascadeType.ALL)
 //	private List<WorkProduct> products = new LinkedList<WorkProduct>();
 	

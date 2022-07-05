@@ -55,13 +55,13 @@ public interface WorkProductRepository extends JpaRepository<WorkProduct, Long> 
 //	public List<WorkProduct> findByOn(@Param("takedown") String takedown);
 
 	// 用商品字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，有分頁 2
-//	@Query(value = "select *from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true)
-//	public Page<WorkProduct> findByproductBean_productCategoryBean(@Param("productcategoryid") Integer productcategoryid,Pageable pgb);
+	@Query(value = "select *from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true)
+	public Page<WorkProduct> findByproductBean_productCategoryBean(Pageable pgb);
 
 	// 用商品字查詢商品資料庫商品種類ID與商品種類資料庫的種類ID，有分頁 2
-	@Query(value = "select *from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true,
-	countQuery = "select count(productid) from product p inner join productcategorys pg  on p.productcategoryid = pg.categoryid ")
-	public Page<WorkProduct> findByproductBean_productCategoryBean(Pageable pgb);
+//	@Query(value = "select *from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true,
+//	countQuery = "select count(productid) from product p inner join productcategorys pg  on p.productcategoryid = pg.categoryid ")
+//	public Page<WorkProduct> findByproductBean_productCategoryBean(Pageable pgb);
 
 	// 列出商品與種類類似ID的商品種類，有分頁
 //	@Query(value = "select productcategoryname from product p 	inner join productcategorys pg  on p.productcategoryid = pg.categoryid", nativeQuery = true)

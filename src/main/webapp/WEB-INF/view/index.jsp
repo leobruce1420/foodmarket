@@ -15,8 +15,15 @@
 <title>HOME</title>
 </head>
 <body>
-
+<br/>
 	<div class="container">
+	
+	<br/>
+ 
+
+	
+	
+	<br/>
 
 		<div class="carousel slide" data-ride="carousel" id="carousel-demo">
 			<ol class="carousel-indicators">
@@ -67,112 +74,9 @@
 
 
 
-	<hr />
+	<br />
 	<div class="container">
 
-		<div class=" justify-content-center">
-
-
-
-			<br />
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="2" class="active"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption text-left">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">示例標題。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">輪播的第一張幻燈片的一些具有代表性的佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">今天註冊</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">另一個示例標題。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">輪播第二張幻燈片的一些代表性佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">學到更多</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item active">
-						<svg class="bd-placeholder-img" width="100%" height="100%"
-							xmlns="http://www.w3.org/2000/svg" role="img" aria-label="：  "
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title> </title><rect width="100%" height="100%" fill="#777"></rect>
-							<text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-
-						<div class="container">
-							<div class="carousel-caption text-right">
-								<h1>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">一個更好的措施。</font></font>
-								</h1>
-								<p>
-									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">此輪播第三張幻燈片的一些代表性佔位符內容。</font></font>
-								</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#"><font
-										style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">瀏覽圖庫</font></font></a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-target="#myCarousel" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only"><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">以前的</font></font></span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-target="#myCarousel" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only"><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">下一個</font></font></span>
-				</button>
-			</div>
-		</div>
-		<hr />
 		<div>
 			<img src="${contextRoot}/img/hot.png" style="width: 1110px">
 		</div>
@@ -223,6 +127,7 @@
 
 		<hr />
 		<div>
+		<h1 class="text-center">最新商品</h1>
 			<ul class="responsive">
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 					<c:forEach var="workProduct" items="${page.content}">
