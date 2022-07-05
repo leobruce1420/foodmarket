@@ -61,7 +61,7 @@ public class WorkProduct {
 	@Column(name="productcategoryid", columnDefinition = "int")
 	private Integer productcategoryid;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.EAGER)
 //	@JoinColumn(name = "categoryid")
 //	private productcategoryBean productcategoryBean;
 	
@@ -103,13 +103,6 @@ public class WorkProduct {
 		this.productcategoryid = productcategoryid;
 	}
 
-//	public productcategory getProductcategoryBean() {
-//		return productcategoryBean;
-//	}
-//
-//	public void setProductcategoryBean(productcategory productcategoryBean) {
-//		this.productcategoryBean = productcategoryBean;
-//	}
 
 	public Long getProductid() {
 		return productid;

@@ -19,26 +19,33 @@
 <%--   <a class="dropdown-item" href="${contextRoot}/product/category?productcategory=海鮮"><button type="button" class="btn btn-secondary ">海鮮</button></a> --%>
 <!-- </div> -->
 <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 50rem;">
+   <c:forEach var="productcategorytakeon" items="${productcategorytakeon}">
   <label class="btn btn-secondary ">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類">
-    <input type="radio" name="options" id="option1" >蔬菜類
+  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=${productcategorytakeon.productcategoryname}">
+    <input type="radio" name="options" id="option1" >${productcategorytakeon.productcategoryname}
     </a>
   </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=水果類">
-    <input type="radio" name="options" id="option2">水果類
-  </a>
-  </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=肉品">
-    <input type="radio" name="options" id="option3">肉品
- </a>
-  </label>
-  <label class="btn btn-secondary">
-  <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=海鮮">
-    <input type="radio" name="options" id="option4">海鮮
-  </a>
-  </label>
+  </c:forEach>
+<!--   <label class="btn btn-secondary "> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=蔬菜類"> --%>
+<!--     <input type="radio" name="options" id="option1" >蔬菜類 -->
+<!--     </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=水果類"> --%>
+<!--     <input type="radio" name="options" id="option2">水果類 -->
+<!--   </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=肉品"> --%>
+<!--     <input type="radio" name="options" id="option3">肉品 -->
+<!--  </a> -->
+<!--   </label> -->
+<!--   <label class="btn btn-secondary"> -->
+<%--   <a class="dropdown-item list-group-item list-group-item-action list-group-item-success" href="${contextRoot}/product/category?productcategory=海鮮"> --%>
+<!--     <input type="radio" name="options" id="option4">海鮮 -->
+<!--   </a> -->
+<!--   </label> -->
   
   
 </div>
