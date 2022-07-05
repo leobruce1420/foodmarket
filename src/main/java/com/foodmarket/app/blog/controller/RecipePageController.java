@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -76,14 +78,17 @@ public class RecipePageController {
 		return "blog/backAddRecipe";
 	}
 	
-	@GetMapping("recipe/add")
-	public String addRecipePage(Model model) {
+	@GetMapping("lock/recipe/add")
+	public String addRecipePage(Model model,HttpSession session) {
+		Object customerId = session.getAttribute("loginUserId");
 		Recipe recipe = new Recipe();
-		
 		model.addAttribute("recipe", recipe);
+		model.addAttribute("customerId", customerId);
 		
 		return "blog/addRecipe";
 	}
+	
+
 	
 	@GetMapping("recipe/richAdd")
 	public String richAddRecipe(Model model) {

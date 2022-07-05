@@ -59,13 +59,13 @@ public class WorkProductService {
 //
 //		return page;
 //	}
-//	//all join
-//	public Page<WorkProduct> findByPage1(Integer pageNumber,Integer categoryid) {
-//		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-//		Page<WorkProduct> page = productDao.findByproductcategoryBean_categoryid(pgb,categoryid);
-//		
-//		return page;
-//	}
+	//all join
+	public Page<WorkProduct> findByPage1(Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
+		Page<WorkProduct> page = productDao.findByproductBean_productCategoryBean(pgb);
+		
+		return page;
+	}
 
 	//首頁  滑動圖有幾張就要幾張一頁 一般分頁要幾個一頁
 	public Page<WorkProduct> findByPage(Integer pageNumber) {

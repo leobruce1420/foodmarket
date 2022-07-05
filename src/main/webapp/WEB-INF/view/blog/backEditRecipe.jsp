@@ -9,7 +9,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Summernote</title>
+  <title>後台修改食譜</title>
 <!--   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 <!--   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <!--   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
@@ -20,7 +20,7 @@ div #pullinup{
 	background-color:rgba(128, 128, 128, 0.199) ;
 	border:dotted 5px;
 	text-align:center;
-    width: 60%;
+    width: 80%;
     height: 30%;
     position: fixed;
   	top: 10%;
@@ -40,7 +40,7 @@ div #pullinup{
   				<div class="card-header" style="background-color: gold">就是多了customerId能輸入啦</div>
  				<div class="card-body">
   
-  					<form:form class="form" method="post" modelAttribute="rec" action="${contextRoot}/recipe/backEditRecipe">
+  					<form:form id="myform" class="form" method="post" modelAttribute="rec" action="${contextRoot}/recipe/backEditRecipe">
   
   						<div class="form-group">
   						
@@ -57,27 +57,28 @@ div #pullinup{
 							<form:option value="泰式料理" label="泰式料理"/>
 							<form:option value="美式料理" label="美式料理"/>
 							<form:option value="日式料理" label="日式料理"/>
-							<form:option value="台式快炒" label="台式快炒"/>
+							<form:option value="台式料理" label="台式料理"/>
+							<form:option value="懶人料理" label="懶人料理"/>
 							<form:option value="義大利料理" label="義大利料理"/>
  						</form:select><br>
  						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字"/><br/>
  						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
  						所需食材:<form:input path="ingredients" class="form-control"/><br/>
  						
- 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true"/><br/>
- 						<div id="summernote"><h1>重新編輯文章</h1></div>
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
+ 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" style="display:none"/><br/>
+ 						<div id="summernote"><h4>若要重新編輯文章，請在此輸入</h4><br><h4>編輯完成後請按儲存，再按修改完成至後台</h4><br><h4>不用修改內文請直接按修改完成至後台</h4></div>
  						<form:input path="postLikeTime" class="form-control" type="hidden"/>
  						<form:input path="recipePostId" class="form-control" type="hidden"/>
  						<form:input path="modifiedDate" class="form-control" type="hidden"/>
   						</div>
-  						<input type="submit" name="submit" value="修改食譜">
+  						
  					</form:form>
  					
  					<br>
-					<button id="edit2" class="btn btn-primary" onclick="edit2()" type="button">修改資料</button>
-					<button id="save2" class="btn btn-primary" onclick="save2()" type="button">儲存按鈕</button>
- 					
+					<button id="edit2" class="btn btn-info" onclick="edit2()" type="button">修改</button>
+					<button id="save2" class="btn btn-info" onclick="save2()" type="button">儲存</button>
+ 					<button id="submitbtn" class="btn btn-primary" type="submit" form="myform">修改完成</button>
  					
   				</div>
 			</div>
@@ -92,6 +93,7 @@ div #pullinup{
   const img = document.querySelector('#showdivimg');
   const imgbeforesrc = img.src;
   const insertvalue = document.querySelector('#catchSummernote');
+
   dropzoneListener.addEventListener('dragenter', event => {
 	    event.preventDefault();
 	    console.log('catch zone');
@@ -140,6 +142,7 @@ const markup2 = $('#summernote').summernote('code');
   console.log(markup2);
   insertvalue.readonly='true';
   insertvalue.value=markup2;
+
 };
 
 

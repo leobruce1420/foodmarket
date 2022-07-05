@@ -28,60 +28,66 @@ public class WorkProductController {
 	private ProductcategoryService pcmsgService;
 	
 	
+//0704==============================================
+	// 新增商品 join
+	@PostMapping("postProduct")
+	public String addMessage(@RequestParam("productname") String productname, 
+			@RequestParam("productcategory")  String productcategory,
+			 @RequestParam("productprice") Integer productprice,
+			 @RequestParam("productimg") MultipartFile mf,
+			 @RequestParam("productdesciption") String productdesciption,
+			 @RequestParam("administrator") String administrator,
+			 @RequestParam("inventoryquantity") Integer inventoryquantity,
+			 @RequestParam("takedown") String takedown,
+			 @RequestParam("productcategoryid") Integer productcategoryid,
+			 @RequestParam(required = false, value = "takeon") String takeon,
+			 Model m) throws  IOException {
+		Util method = new Util();
+		
+		try {
+//			if (!pmsgService.checkLoginSession(session)) {
+//				return "AdminLogin";
+//			}
 
-	// base64 join
-//	@PostMapping("postProduct")
-//	public String addMessage(@RequestParam("productname") String productname, 
-//			@RequestParam("productcategory")  String productcategory,
-//			 @RequestParam("productprice") Integer productprice,
-//			 @RequestParam("productimg") MultipartFile mf,
-//			 @RequestParam("productdesciption") String productdesciption,
-//			 @RequestParam("administrator") String administrator,
-//			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-//			 @RequestParam("takedown") String takedown,
-//			 @RequestParam("productcategoryId") Integer productcategoryId,Model m) throws  IOException {
-//		Util method = new Util();
-//		
-//		try {
-////			if (!pmsgService.checkLoginSession(session)) {
-////				return "AdminLogin";
-////			}
-//
-////			request.setCharacterEncoding("UTF-8");
-//			WorkProduct workProduct = new WorkProduct();
-//			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryId);
-//			workProduct.setProductname(productname);
-//			workProduct.setProductcategory(productcategory);
-//			workProduct.setProductprice(productprice);
-//			workProduct.setAdministrator(administrator);
-//			workProduct.setProductdesciption(productdesciption);
-//			workProduct.setInventoryquantity(inventoryquantity);
-//			workProduct.setTakedown(takedown);
-//			workProduct.setProductdesciption(productdesciption);
-//			workProduct.setInventoryquantity(inventoryquantity);
+//			request.setCharacterEncoding("UTF-8");
+			WorkProduct workProduct = new WorkProduct();
+//			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
+			workProduct.setProductname(productname);
+			workProduct.setProductcategory(productcategory);
+			workProduct.setProductprice(productprice);
+			workProduct.setAdministrator(administrator);
+			workProduct.setProductdesciption(productdesciption);
+			workProduct.setInventoryquantity(inventoryquantity);
+			workProduct.setTakedown(takedown);
+			workProduct.setProductdesciption(productdesciption);
+			workProduct.setInventoryquantity(inventoryquantity);
+			workProduct.setProductcategoryid(productcategoryid);
 //			workProduct.setProductcategoryBean(productcategoryBean);
-//
-//			byte[] imgBytes = mf.getBytes();
-//			workProduct.setProductimg(method.encoder(imgBytes));
-//
-//
-//			pmsgService.insertProduct(workProduct);
-//			WorkProduct newpMsg = new WorkProduct();
-//			WorkProduct lastestpMsg = pmsgService.getLastest();
-//			List<WorkProduct> Products = pmsgService.selectAll();
-//			m.addAttribute("workProduct", newpMsg);
-//			m.addAttribute("products", Products);
-//			m.addAttribute("lastestpMsg", lastestpMsg);
-//			return "product/addMessage";
-//
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return "product/addMessage";
-//	}
+
+			byte[] imgBytes = mf.getBytes();
+			workProduct.setProductimg(method.encoder(imgBytes));
+
+
+			pmsgService.insertProduct(workProduct);
+			WorkProduct newpMsg = new WorkProduct();
+			WorkProduct lastestpMsg = pmsgService.getLastest();
+			List<WorkProduct> Products = pmsgService.selectAll();
+			List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+			m.addAttribute("productcategorytakeon", productcategorytakeon);
+			m.addAttribute("workProduct", newpMsg);
+			m.addAttribute("products", Products);
+			m.addAttribute("lastestpMsg", lastestpMsg);
+			return "product/addMessage";
+
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "product/addMessage";
+	}
 	
-	// base64
+	//=================================================================
+	 //新增商品
 //		@PostMapping("postProduct")
 //		public String addMessage(@RequestParam("productname") String productname, 
 //				@RequestParam("productcategory")  String productcategory,
@@ -91,7 +97,8 @@ public class WorkProductController {
 //				 @RequestParam("administrator") String administrator,
 //				 @RequestParam("inventoryquantity") Integer inventoryquantity,
 //				 @RequestParam("takedown") String takedown,
-//				 @RequestParam("productcategoryId") Integer productcategoryId,Model m) throws  IOException {
+//			  // @RequestParam("productcategoryId") Integer productcategoryId,
+//	             Model m) throws  IOException {
 //			Util method = new Util();
 //			
 //			try {
@@ -111,7 +118,7 @@ public class WorkProductController {
 //				workProduct.setTakedown(takedown);
 //				workProduct.setProductdesciption(productdesciption);
 //				workProduct.setInventoryquantity(inventoryquantity);
-//				workProduct.setInventoryquantity(productcategoryId);
+////				workProduct.setInventoryquantity(productcategoryId);
 //
 //				byte[] imgBytes = mf.getBytes();
 //				workProduct.setProductimg(method.encoder(imgBytes));
@@ -132,7 +139,7 @@ public class WorkProductController {
 //			}
 //			return "product/addMessage";
 //		}
-//
+
 	@GetMapping("product/editProduct")
 	public String editMessage(@RequestParam("productid") Long productid, Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
