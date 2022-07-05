@@ -31,8 +31,8 @@ public class ProductcategoryService  {
 	}
 	
 //	@Transactional
-//	public productcategory getLastest() {
-//		return productcategoryDao.findFirstByOrderByAddedDesc();
+//	public productcategoryBean getLastestcategory() {
+//		return productcategoryDao.findFirstByOrderByCategoryidAsc();
 //	}
 	
 	//總類新增
@@ -88,6 +88,11 @@ public class ProductcategoryService  {
 			Page<productcategoryBean> page = productcategoryDao.findByProductCategoryTakeonPage(takeon,pgb);
 			
 			return page;
+		}
+
+		public List<productcategoryBean> getList() {
+			// TODO Auto-generated method stub
+			return productcategoryDao.findFirstByOrderByCategoryidAsc();
 		}
 		
 		//商品查詢種類不分頁

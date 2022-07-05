@@ -81,33 +81,35 @@ public class ProductPageController {
 //		
 //	}
 //inner join
+	@GetMapping("product/add")
+	public String addcategoryPage(@RequestParam(required = false, value = "takeon") String takeon,
+			Model model) {
+//		Util method = new Util();
+		WorkProduct workProduct = new WorkProduct();
+		WorkProduct lastestpMsg = pmsgService.getLastest();
+		List<productcategoryBean> lastestpcMsg = pcmsgService.getList();
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		
+		model.addAttribute("productcategorytakeon", productcategorytakeon);
+		model.addAttribute("workProduct", workProduct);
+		model.addAttribute("lastestpMsg", lastestpMsg);
+		model.addAttribute("lastestpcMsg", lastestpcMsg);
+		model.addAttribute("productcategoryBean", new productcategoryBean());
+		return "product/addMessage";
+	}
+	// 好的
 //	@GetMapping("product/add")
-//	public String addcategoryPage(Model model) {
+//	public String addMessagePage(Model model) {
 ////		Util method = new Util();
 //		WorkProduct workProduct = new WorkProduct();
 //		WorkProduct lastestpMsg = pmsgService.getLastest();
-//		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
 ////		byte[] imgBytes = mf.getBytes();
 ////		workProduct.setProductimg(method.decoder(imgBytes));
-//		model.addAttribute("productcategory", productcategory);
 //		model.addAttribute("workProduct", workProduct);
 //		model.addAttribute("lastestpMsg", lastestpMsg);
 //
 //		return "product/addMessage";
 //	}
-	// 好的
-	@GetMapping("product/add")
-	public String addMessagePage(Model model) {
-//		Util method = new Util();
-		WorkProduct workProduct = new WorkProduct();
-		WorkProduct lastestpMsg = pmsgService.getLastest();
-//		byte[] imgBytes = mf.getBytes();
-//		workProduct.setProductimg(method.decoder(imgBytes));
-		model.addAttribute("workProduct", workProduct);
-		model.addAttribute("lastestpMsg", lastestpMsg);
-
-		return "product/addMessage";
-	}
 
 	// 測試
 //	@GetMapping("/p")
@@ -314,7 +316,8 @@ public class ProductPageController {
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, ModelAndView m) {
 		Page<WorkProduct> page = pmsgService.findByNamePage(productname, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		m.getModel().put("productcategorytakeon", productcategorytakeon);
 		m.getModel().put("page", cpage);
 		m.getModel().put("page", page);
 		m.setViewName("product/viewMessages");
