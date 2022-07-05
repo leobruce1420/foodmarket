@@ -15,10 +15,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -61,11 +63,23 @@ public class WorkProduct {
 	@Column(name="productcategoryid", columnDefinition = "int")
 	private Integer productcategoryid;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "categoryid")
+	@Transient
+	private String productcategoryname;
+	
+//	@JsonIgnore
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "categoryid",nullable = false)
 //	private productcategoryBean productcategoryBean;
 	
 	
+	public String getProductcategoryname() {
+		return productcategoryname;
+	}
+
+	public void setProductcategoryname(String productcategoryname) {
+		this.productcategoryname = productcategoryname;
+	}
+
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
 	@Temporal(TemporalType.TIMESTAMP)

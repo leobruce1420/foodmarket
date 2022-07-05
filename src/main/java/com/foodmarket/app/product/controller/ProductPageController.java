@@ -80,7 +80,7 @@ public class ProductPageController {
 //		return "index";
 //		
 //	}
-//inner join
+//inner join===========================================================
 	@GetMapping("product/add")
 	public String addcategoryPage(@RequestParam(required = false, value = "takeon") String takeon,
 			Model model) {
@@ -97,6 +97,20 @@ public class ProductPageController {
 		model.addAttribute("productcategoryBean", new productcategoryBean());
 		return "product/addMessage";
 	}
+	//=================================================================
+//	@GetMapping("product/add")
+//	public ModelAndView addcategoryPage(ModelAndView mav,
+//			@RequestParam(required = false, value = "takeon") String takeon) {
+//		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//
+//		mav.getModel().put("productcategorytakeon", productcategorytakeon);
+//		mav.setViewName("product/addMessage");
+////		mav.setViewName("index");
+//		return mav;
+//	}
+	
+	
+	//==============================================================
 	// 好的
 //	@GetMapping("product/add")
 //	public String addMessagePage(Model model) {
