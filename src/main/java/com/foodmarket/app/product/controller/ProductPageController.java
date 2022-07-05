@@ -135,10 +135,13 @@ public class ProductPageController {
 ////後台查詢所有 OK
 	@GetMapping("product/all")
 	public ModelAndView viewProducts(ModelAndView mav,
+			@RequestParam(required = false, value = "takeon") String takeon,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber){
 		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByPage(pageNumber);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//		model.addAttribute("productcategorytakeon", productcategorytakeon);
+		mav.getModel().put("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("page", cpage);
 		mav.getModel().put("page", page);
 		mav.setViewName("product/viewMessages");
@@ -202,7 +205,9 @@ public class ProductPageController {
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		Page<WorkProduct> page = pmsgService.findByProductcategorypage(productcategory, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//		model.addAttribute("productcategorytakeon", productcategorytakeon);
+		mav.getModel().put("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("page", cpage);
 		mav.getModel().put("page", page);
 		mav.setViewName("product/viewMessages");

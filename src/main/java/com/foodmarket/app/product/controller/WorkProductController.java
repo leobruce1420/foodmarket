@@ -40,6 +40,7 @@ public class WorkProductController {
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 			 @RequestParam("takedown") String takedown,
 			 @RequestParam("productcategoryid") Integer productcategoryid,
+			 @RequestParam(required = false, value = "takeon") String takeon,
 			 Model m) throws  IOException {
 		Util method = new Util();
 		
@@ -50,7 +51,7 @@ public class WorkProductController {
 
 //			request.setCharacterEncoding("UTF-8");
 			WorkProduct workProduct = new WorkProduct();
-			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
+//			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
 			workProduct.setProductname(productname);
 			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
@@ -71,6 +72,8 @@ public class WorkProductController {
 			WorkProduct newpMsg = new WorkProduct();
 			WorkProduct lastestpMsg = pmsgService.getLastest();
 			List<WorkProduct> Products = pmsgService.selectAll();
+			List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+			m.addAttribute("productcategorytakeon", productcategorytakeon);
 			m.addAttribute("workProduct", newpMsg);
 			m.addAttribute("products", Products);
 			m.addAttribute("lastestpMsg", lastestpMsg);
