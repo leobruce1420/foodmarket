@@ -7,6 +7,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.foodmarket.app.member.model.Member;
@@ -88,6 +92,13 @@ public class OrderRecordService {
 	
 	public OrderRecord getLastest() {
 		return orderRecordDao.findFirstByOrderByCreateDateDesc();
+	}
+	
+	public Page<OrderRecord> findByPage(Integer pageNumber){
+		Pageable pgb = PageRequest.of(pageNumber-1,12,Sort.Direction.DESC,"createDate");
+		
+		 Page<OrderRecord> page = orderRecordDao.findAll(pgb);
+		return page;
 	}
 	
 }
