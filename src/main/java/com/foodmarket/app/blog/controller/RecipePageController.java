@@ -88,17 +88,6 @@ public class RecipePageController {
 		return "blog/addRecipe";
 	}
 	
-
-	
-	@GetMapping("recipe/richAdd")
-	public String richAddRecipe(Model model) {
-		Recipe recipe = new Recipe();
-		
-		model.addAttribute("recipe", recipe);
-		
-		return "blog/addRecipeRichText2";
-	}
-	
 	
 //	@GetMapping("recipe/findByTagLike")
 //	public ModelAndView findByTagLike(ModelAndView mav, 

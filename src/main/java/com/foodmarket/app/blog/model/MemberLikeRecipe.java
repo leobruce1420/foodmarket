@@ -1,45 +1,54 @@
 package com.foodmarket.app.blog.model;
 
-import java.io.Serializable;
 
-import javax.persistence.Embeddable;
+
+import javax.persistence.Column;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
+
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity(name = "MemberLikeRecipeEntity")
 @Table(name = "customer_like_recipe")
-@IdClass(MemberLikeRecipeMultiKeysClass.class)
-@Embeddable
-public class MemberLikeRecipe implements Serializable{
+public class MemberLikeRecipe {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="customerRecipeId")
+	private Long customerRecipeId;
+	
+	@JsonIgnore
+	@Column(name = "customerId")
 	private Long customerId;
 	
+	@JsonIgnore
+	@Column(name = "recipePostId")
 	private Long recipePostId;
-	
-	  @Id
-	  public Long getCustomerId(){
-	    return this.customerId;
-	  }
 
-	  @Id
-	  public Long getRecipePostId(){
-	    return this.recipePostId;
-	  }
-	  
-//	  @Transient
-//		private String likeList;
+	public Long getCustomerRecipeId() {
+		return customerRecipeId;
+	}
 
+	public void setCustomerRecipeId(Long customerRecipeId) {
+		this.customerRecipeId = customerRecipeId;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
 
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
+	}
+
+	public Long getRecipePostId() {
+		return recipePostId;
 	}
 
 	public void setRecipePostId(Long recipePostId) {
@@ -48,20 +57,9 @@ public class MemberLikeRecipe implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MemberLikeRecipe{" +
-		        "customerId=" + customerId +
-		        ", recipePostId='" + recipePostId + '\'' +
-		        '}';
-		  }
-	
-
-//	public String getLikeList() {
-//		return likeList;
-//	}
-//
-//	public void setLikeList(String likeList) {
-//		this.likeList = likeList;
-//	}
+		return "MemberLikeRecipe [customerRecipeId=" + customerRecipeId + ", customerId=" + customerId
+				+ ", recipePostId=" + recipePostId + "]";
+	}
 
 	public MemberLikeRecipe() {
 	}

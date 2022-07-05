@@ -46,7 +46,7 @@ div #pullinup{
   						
  						新增文章使用者Id:<form:input path="customerId" class="form-control"/><br/>
  						食譜標題:<form:input path="postTitle" class="form-control"/><br/>
- 						食譜封面圖:(拖曳放入頁面即可，要更換則再次拖入)<form:input path="postImage" class="form-control" id="pullintext" readonly="true" type=""/><br/>
+ 						食譜封面圖:(拖曳放入頁面即可，要更換則再次拖入)<form:input path="postImage" class="form-control" id="pullintext" readonly="true" type="hidden"/><br/>
  							<div id="show" ><img src="" id="showdivimg" style="width: 400px;"></div>
  						食譜種類:<form:select path="recipeType" class="form-control"> 						
 							<form:option value="NONE" label="--- 請選擇 ---"/>
@@ -67,7 +67,7 @@ div #pullinup{
  						
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
  						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" style="display:none"/><br/>
- 						<div id="summernote"><h4>若要重新編輯文章，請在此輸入</h4><br><h4>編輯完成後請按儲存，再按修改完成至後台</h4><br><h4>不用修改內文請直接按修改完成至後台</h4></div>
+ 						<div id="summernote"></div>
  						<form:input path="postLikeTime" class="form-control" type="hidden"/>
  						<form:input path="recipePostId" class="form-control" type="hidden"/>
  						<form:input path="modifiedDate" class="form-control" type="hidden"/>
@@ -76,8 +76,6 @@ div #pullinup{
  					</form:form>
  					
  					<br>
-					<button id="edit2" class="btn btn-info" onclick="edit2()" type="button">修改</button>
-					<button id="save2" class="btn btn-info" onclick="save2()" type="button">儲存</button>
  					<button id="submitbtn" class="btn btn-primary" type="submit" form="myform">修改完成</button>
  					
   				</div>
@@ -131,28 +129,28 @@ div #pullinup{
 	      console.log(img)
 	    });
 	  });
-  const edit2 = function() {
-	  $('#summernote').summernote({focus: true});
-	};
-
-const save2 = function() {
-const markup2 = $('#summernote').summernote('code');
-  $('#summernote').summernote('destroy');
-  console.log('ok');
-  console.log(markup2);
-  insertvalue.readonly='true';
-  insertvalue.value=markup2;
-
-};
-
-
-
-$(document).ready(function() {
-  $('#summernote').summernote();
-  img.src=textareashow.value;
-//  console.log("原本的src:"+textareashow.value);
   
-});
+  $(document).ready(function() {
+	  console.log(textareashow.value);
+		img.src=textareashow.value;
+		// onChange callback
+		  $('#summernote').summernote({
+			  height: 150,
+			  placeholder: '<h4>若要重新編輯文章，請在此輸入</h4><br><h4>編輯完成後請按儲存，再按修改完成至後台</h4><br><h4>不用修改內文請直接按修改完成至後台</h4>',
+			  callbacks: {
+		      onChange: function(contents, $editable) {
+		        console.log('onChange:', contents, $editable);
+		        const insertvalue2 = document.querySelector('#catchSummernote');
+		        insertvalue2.value=contents;
+		      }
+		    }
+		  });
+
+		  // summernote.change
+		  $('#summernote').on('summernote.change', function(we, contents, $editable) {
+		    console.log('summernote\'s content is changed.');
+		  });
+		});
 </script>
 
 </body>

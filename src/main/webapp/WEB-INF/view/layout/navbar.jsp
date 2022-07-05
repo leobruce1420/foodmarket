@@ -11,10 +11,11 @@
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick.css"/>
 <!-- // Add the new slick-theme.css if you want the default styling -->
 <link rel="stylesheet" type="text/css" href="${contextRoot}/css/slick-theme.css"/>
-
+<link rel="icon" type="image/*" sizes="192x192" href="${contextRoot}/img/logo5.png" />
 <title>好食光市場</title>
 
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " >
@@ -56,15 +57,15 @@
     </ul>
     
     
- <a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2">
- 購物車
-</button></a>
+<%--  <a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2"> --%>
+<!--  購物車 -->
+<!-- </button></a> -->
 
 
-    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
-      <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-    </form>
+<%--     <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get"> --%>
+<!--       <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required> -->
+<!--       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button> -->
+<!--     </form> -->
     
     <c:choose>
 		<c:when test="${loginUserId != null}">

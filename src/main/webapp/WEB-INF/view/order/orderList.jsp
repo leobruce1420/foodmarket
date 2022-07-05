@@ -19,7 +19,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>訂單明細</h1>
+	<h1>完成訂單</h1>
 
 <div class="container">
 	<c:forEach var="item" items="${orderItems}" begin="0" end="0">
@@ -43,7 +43,9 @@
 	
 	</tbody>
 	</table>
-	<%-- </c:forEach> --%>
+ <a href="${contextRoot}/HOME"><button type="button" class="btn btn-primary mr-sm-2">
+ 繼續購物
+</button></a>
 </div>
 
 </body>
