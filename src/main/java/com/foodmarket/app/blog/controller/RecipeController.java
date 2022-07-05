@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.foodmarket.app.blog.dto.RecipeDto;
-import com.foodmarket.app.blog.model.MemberLikeRecipeRepository;
+
 import com.foodmarket.app.blog.model.Recipe;
 import com.foodmarket.app.blog.model.RecipeType;
 import com.foodmarket.app.blog.service.MemberLikeRecipeServer;
@@ -125,6 +124,12 @@ public class RecipeController {
 	public String insertEditRecipe(@ModelAttribute(name="rec") Recipe rec,HttpSession session) {
 		rService.save(rec);
 
+		return "redirect:/lock/recipe/memberHouse";
+	}
+	
+	@GetMapping("recipe/deleteOwnRecipe")
+	public String deleteOwnRecipe(@RequestParam("recipePostId") Long recipePostId) {
+		rService.deleteById(recipePostId);
 		return "redirect:/lock/recipe/memberHouse";
 	}
 	
