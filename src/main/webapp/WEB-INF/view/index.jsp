@@ -121,7 +121,7 @@
 					</td>
 				</tr>
 			</table>
-			<br/>
+			<br />
 		</div>
 
 
@@ -154,13 +154,13 @@
 										<p class="card-text">$${workProduct.productprice}</p>
 									</div>
 									<div class="card-footer">
-													<input type="hidden" id="productId_${workProduct.productid}"
-														value="${workProduct.productid}"> <input
-														class="insertProductBtn btn btn-success" type="button"
-														value="加入購物車"
-														onclick="insertProduct(${workProduct.productid},${loginUserId})">	
-<%-- 										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
-<!-- 											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a> -->
+										<input type="hidden" id="productId_${workProduct.productid}"
+											value="${workProduct.productid}"> <input
+											class="insertProductBtn btn btn-success" type="button"
+											value="加入購物車"
+											onclick="insertProduct(${workProduct.productid},${loginUserId})">
+										<%-- 										<a	href="${contextRoot}/product/productname?productname=${workProduct.productname}" --%>
+										<!-- 											id="frontdesk" class="btn btn-primary stretched-link ">加入購物車</a> -->
 										<%-- 					</form:form> --%>
 									</div>
 								</div>
@@ -212,97 +212,95 @@
 			</div>
 		</div>
 
-<!-- 		<div class="row justify-content-center container"> -->
+		<!-- 		<div class="row justify-content-center container"> -->
 
-<!-- 			<div class="col-9"> -->
-<%-- 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
-<%-- 							<a href="${contextRoot}/HOME?p=${pageNumber}"><c:out --%>
-<%-- 									value="${pageNumber}" /></a> --%>
-<%-- 						</c:when> --%>
+		<!-- 			<div class="col-9"> -->
+		<%-- 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+		<%-- 					<c:choose> --%>
+		<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
+		<%-- 							<a href="${contextRoot}/HOME?p=${pageNumber}"><c:out --%>
+		<%-- 									value="${pageNumber}" /></a> --%>
+		<%-- 						</c:when> --%>
 
-<%-- 						<c:otherwise> --%>
-<%-- 							<c:out value="${pageNumber}" /> --%>
-<%-- 						</c:otherwise> --%>
+		<%-- 						<c:otherwise> --%>
+		<%-- 							<c:out value="${pageNumber}" /> --%>
+		<%-- 						</c:otherwise> --%>
 
-<%-- 					</c:choose> --%>
+		<%-- 					</c:choose> --%>
 
-<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
-<!-- 							| -->
-<%-- 							</c:if> --%>
-<%-- 				</c:forEach> --%>
+		<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
+		<!-- 							| -->
+		<%-- 							</c:if> --%>
+		<%-- 				</c:forEach> --%>
 
 
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
 
 		<br />
 
 		<!-- 	頁數顯示 -->
-<div class="w-100"></div>
-	<nav aria-label="Page navigation example">
-  		<ul class="pagination justify-content-center">
-  		 
-  		 <c:choose>
-			<c:when test="${page.number == 0}">
-			<li class="page-item disabled">
-			 	<a class="page-link" href="#" aria-label="Previous">
-        		<span aria-hidden="true">&laquo;</span>
-      			</a>
-      		</li>
-			</c:when>
-			
-			<c:otherwise>
-			<li class="page-item">
-			 	<a class="page-link" href="${contextRoot}/HOME?p=${page.number+1 -1}" aria-label="Previous">
-        		<span aria-hidden="true">&laquo;</span>
-      			</a>
-      		</li>
-			</c:otherwise>		
-		</c:choose>
+		<div class="w-100"></div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
 
-    	
-  		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-   		<c:choose>
-   		
-			<c:when test="${pageNumber == page.number+1}">
-			 <li class="page-item disabled"><a class="page-link" href="${contextRoot}/HOME?p=${pageNumber}"><c:out value="${pageNumber}" /></a></li>
-			</c:when>
-			
-			<c:otherwise>
-			<li class="page-item"><a class="page-link" href="${contextRoot}/HOME?p=${pageNumber}"><c:out value="${pageNumber}" /></a></li>
-			</c:otherwise>
-			
-		</c:choose>
-   		</c:forEach>
-   		
-   		<c:choose>
-			<c:when test="${page.number == page.totalPages-1}">
-			 <li class="page-item disabled">
-     		 	<a class="page-link" href="#" aria-label="Next">
-        	 	<span aria-hidden="true">&raquo;</span>
-      		 	</a>
-    		 </li>
-			</c:when>
-			
-			<c:otherwise>
-			<li class="page-item">
-     		 	<a class="page-link" href="${contextRoot}/HOME?p=${page.number +2}" aria-label="Next">
-        	 	<span aria-hidden="true">&raquo;</span>
-      		 	</a>
-    		</li>
-			</c:otherwise>		
-		</c:choose>
-    
-  </ul>
-</nav>
+				<c:choose>
+					<c:when test="${page.number == 0}">
+						<li class="page-item disabled"><a class="page-link" href="#"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="${contextRoot}/HOME?p=${page.number+1 -1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:otherwise>
+				</c:choose>
+
+
+				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+					<c:choose>
+
+						<c:when test="${pageNumber == page.number+1}">
+							<li class="page-item disabled"><a class="page-link"
+								href="${contextRoot}/HOME?p=${pageNumber}"><c:out
+										value="${pageNumber}" /></a></li>
+						</c:when>
+
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="${contextRoot}/HOME?p=${pageNumber}"><c:out
+										value="${pageNumber}" /></a></li>
+						</c:otherwise>
+
+					</c:choose>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${page.number == page.totalPages-1}">
+						<li class="page-item disabled"><a class="page-link" href="#"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="${contextRoot}/HOME?p=${page.number +2}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</ul>
+		</nav>
 
 		<br>
 
 	</div>
 	<hr />
-
+	
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
@@ -514,5 +512,6 @@ function insertProduct(pId,cId) {
 
 
 		}
+
 </script>
 </html>
