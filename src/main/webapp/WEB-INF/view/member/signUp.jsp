@@ -11,7 +11,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
 <title>會員註冊</title>
-<script>window.verifyCallback = verifyCallback;</script>
+
 </head>
 <body>
 
@@ -96,6 +96,7 @@ let nameChecked = false;
 let mobileChecked = false;
 let mailChecked = false;
 let pswChecked = false;
+window.verifyCallback = verifyCallback;
 	
 // 到後端進行機器人驗證	
 function verifyCallback(token) {
@@ -132,7 +133,7 @@ function checkRobot(){
     }
 }
 
-$('#customerName').blur(function checkName(){
+$('#customerName').keyup(function checkName(){
 	var nameInput = $('#customerName').val();
 	var pattern = new RegExp("^[a-zA-Z\u4E00-\u9FA5]+$");
 	
@@ -154,7 +155,7 @@ $('#customerName').blur(function checkName(){
 	
 });
 
-$('#mobile').blur(function(){
+$('#mobile').keyup(function(){
 	var mobileInput = $('#mobile').val();
 	var pattern = /^09\d{2}?\d{3}?\d{3}$/;
 	
@@ -175,7 +176,7 @@ $('#mobile').blur(function(){
 	
 });
 
-$('#mail').blur(function(){
+$('#mail').keyup(function(){
 	var mailInput = $('#mail').val();
 	var pattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,4})*$/;
 
@@ -218,7 +219,7 @@ $('#mail').blur(function(){
 		}	
 });
 
-$('#password').blur(function(){
+$('#password').keyup(function(){
 	var pswInput = $('#password').val();
 // 	var pattern = new RegExp("^[0~9a-zA-Z!@#$%^&*]+$");
 	var pattern = new RegExp("^[A-Za-z0-9]+$");

@@ -24,7 +24,7 @@
       	<span class="form-text text-muted" id="count_up_timer">5秒後將自動跳轉至首頁</span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/'">返回首頁</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/HOME'">返回首頁</button>
       </div>
     </div>
   </div>
