@@ -125,7 +125,6 @@ table, td {
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
-
 function listSwich(Pid,Cid){
 	
 	if(Cid != null){
@@ -139,7 +138,6 @@ function listSwich(Pid,Cid){
 		var params = {"productId":''+productId,"userId":''+ userId};
 		
 		console.log(params)
-
 	    $.ajax({
 	      type: "post"
 	      , url: "http://localhost:8080/foodmarket/wishList/addOrCancel"
@@ -161,7 +159,6 @@ function listSwich(Pid,Cid){
 		alert("請先登入")	
 	}
 }
-
 function insertProduct(pId,cId) {
 	if(cId!=null){	
 		var id =document.getElementById('productId_'+pId).value;
@@ -179,11 +176,7 @@ function insertProduct(pId,cId) {
 	}else{
 		alert("請先登入")	
 	}
-
-
 		}
-
-
 </script>
 </body>
 
