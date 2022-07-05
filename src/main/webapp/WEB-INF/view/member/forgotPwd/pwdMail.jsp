@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
       	<h4><span class="badge badge-secondary badge-danger">請在30分鐘內完成密碼修改！</span></h4>
-      	<span class="form-text text-muted">5秒後將自動跳轉至首頁</span>
+      	<span class="form-text text-muted" id="count_up_timer">5秒後將自動跳轉至首頁</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/'">返回首頁</button>
@@ -38,12 +38,17 @@
 		$('#myModal').modal('show')
 		
 		
-		var timeout = setTimeout(toIndex, 5000);
-		
-		function toIndex() {
-			window.location.href='${contextRoot}/';
-		}
+		var timerVariable = setInterval(countDownTimer, 1000);
+		var totalSeconds = 0;
 
+		function countDownTimer() {
+  		++totalSeconds;
+  		if(totalSeconds < 5){
+  			$("#count_up_timer")[0].innerHTML = 5-totalSeconds+'秒後將自動跳轉至首頁';
+  		}else{
+  			window.location.href='${contextRoot}/HOME';	
+  		}
+		}
 	})
 	
 </script>
