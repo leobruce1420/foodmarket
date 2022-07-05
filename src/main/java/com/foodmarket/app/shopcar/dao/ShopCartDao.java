@@ -21,4 +21,9 @@ public interface ShopCartDao extends JpaRepository<ShopCart, Integer>{
 	public void deleteByCustomerId(Long customerId);
 	
 	public ShopCart findByProductId(Long productId);
+	
+//	@Query(value="select * from shop_cart where ;",nativeQuery = true)
+//	public List<ShopCart> findByShopCartNum();
+		
+	
 }
