@@ -80,6 +80,7 @@ var searchInput = document.getElementById('searchInput')
 var trArray = document.querySelectorAll('tbody tr')
 
 
+// var createDate = document.getElementById('recordDate_'+${records.createDateStr).value;
 
 function inputText(){
 	var inputVal = document.getElementById("searchInput").value; //抓到輸入框裡面的值
