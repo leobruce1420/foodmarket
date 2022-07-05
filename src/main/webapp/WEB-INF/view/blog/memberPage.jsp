@@ -64,13 +64,12 @@ div.container{
   			<c:forEach var="recipe" items="${page.content}">
   				<div class="col">
     				<div class="card h-100" style="margin:10px 0px;" id="${recipe.recipePostId}">
-      				<a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
+      				<a href="${contextRoot}/recipe/showHouseRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
         			<div class="card-body">
-        				<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
+        				<h5 class="card-title"><a href="${contextRoot}/recipe/showHouseRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
         					<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
         					<p> <button id="timebutton" class="btn btn-info" disabled="disabled">⌚ ${recipe.cookTime} </button>
-        						<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" disabled="disabled">♥  ${recipe.postLikeTime}</button></a>
-       							<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
+        						<button id="likebutton" class="btn btn-info" disabled="disabled">♥  ${recipe.postLikeTime}</button>
        						</p>
       					</div>
       				</div>

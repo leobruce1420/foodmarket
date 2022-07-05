@@ -16,10 +16,12 @@
 div.col.card h-100{
 	height:800px;
 }
-button.btn{
+button#timebutton{
+float:left;
+}
+button#likebutton{
 float:right;
 }
-
  div.search{
 		margin:10px auto;
 		text-align:center;
@@ -47,9 +49,9 @@ float:right;
       		<div class="card-body">
         		<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
         		<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
-        		<p>⌚  ${recipe.cookTime} 
-        			<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" style="display:block">♥  ${recipe.postLikeTime}</button></a>
-       				<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
+        		<p>
+        			<button id="timebutton" class="btn btn-warning" style="display:block" disabled="disabled">⌚ ${recipe.cookTime} </button> 
+        			<button id="likebutton" class="btn btn-warning" style="display:block" disabled="disabled">♥  ${recipe.postLikeTime}</button>
        			</p>
       		</div>
     	</div>
@@ -68,9 +70,9 @@ float:right;
       		<div class="card-body">
         		<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
         		<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
-        		<p>⌚  ${recipe.cookTime} 
-        			<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" style="display:block">♥  ${recipe.postLikeTime}</button></a>
-       				<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
+        		<p>
+        			<button id="timebutton" class="btn btn-warning" style="display:block" disabled="disabled">⌚ ${recipe.cookTime} </button> 
+        			<button id="likebutton" class="btn btn-warning" style="display:block" disabled="disabled">♥  ${recipe.postLikeTime}</button>
        			</p>
       		</div>
     	</div>

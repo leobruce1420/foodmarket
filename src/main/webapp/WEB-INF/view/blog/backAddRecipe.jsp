@@ -66,13 +66,13 @@ div #pullinup{
  						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字"/><br/>
  						所需食材:<form:input path="ingredients" class="form-control"/><br/>
  						食譜標籤:<form:input path="PostTag" class="form-control"/><br/>
- 						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
+ 						烹飪時間:<form:input path="cookTime" class="form-control" placeholder="ex:40分鐘"/><br/>
  						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" style="display:none"/><br/>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
   						
   
   
- 						<div id="summernote"><h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文</h3></div><br>
+ 						<div id="summernote"></div><br>
 
 <!--   						<input class="submitbtn" type="text" name="submit" type="hidden"> -->
 						</div>
@@ -80,9 +80,7 @@ div #pullinup{
  					
   						
   						
-					<button id="edit2" class="btn btn-info" onclick="edit2()" type="button" >修改</button>
-					<button id="save2" class="btn btn-info" onclick="save2()" type="button" >儲存</button>
-  					<button class="btn btn-primary" id="submitbtn" type="submit" form="myform" disabled="disabled">新增食譜</button>
+  					<button class="btn btn-primary" id="submitbtn" type="submit" form="myform">新增食譜</button>
   				</div>
 			</div>
 
@@ -141,28 +139,25 @@ div #pullinup{
 	  });
   
   
-	const edit2 = function() {
-		  $('#summernote').summernote({focus: true});
-		};
-
-	const save2 = function() {
-	const markup2 = $('#summernote').summernote('code');
-	  $('#summernote').summernote('destroy');
-	  console.log('ok');
-	  console.log(markup2);
-	  const insertvalue = document.querySelector('#catchSummernote');
-	  insertvalue.readonly='true';
-	  insertvalue.value=markup2;
-	  finAddRecipe.removeAttribute("disabled");
-	  
-	};
-	
-
-	
   $(document).ready(function() {
-      $('#summernote').summernote();
-		
-	});
+		// onChange callback
+		  $('#summernote').summernote({
+			  height: 300,
+			  placeholder: '<h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文<br></h3>',
+			  callbacks: {
+		      onChange: function(contents, $editable) {
+		        console.log('onChange:', contents, $editable);
+		        const insertvalue2 = document.querySelector('#catchSummernote');
+		        insertvalue2.value=contents;
+		      }
+		    }
+		  });
+
+		  // summernote.change
+		  $('#summernote').on('summernote.change', function(we, contents, $editable) {
+		    console.log('summernote\'s content is changed.');
+		  });
+		});
 </script>
 </body>
 </html>
