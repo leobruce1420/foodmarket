@@ -8,8 +8,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"></link>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" rel="stylesheet"></link>
 <meta charset="UTF-8">
 <title>會員中心選單</title>
+<style>
+	#oldImg{
+		margin:0px
+	}
+	.croppie-container .cr-boundary{
+		margin:0px
+	}
+	
+	.croppie-container .cr-slider-wrap {
+    width: 75%;
+    margin:0px;
+	text-align:left
+	}
+
+</style>
 </head>
 <body>	
 
@@ -79,21 +96,46 @@
     <div class="w-100"></div>
     
 <!--     圖片 -->
-	<div class="form-group col-md-5">
-      <label for="img">頭像</label>
-      <span id="mobilemsg" class="badge badge-secondary badge-danger"></span>
-      <div class="w-100"></div>
-      <c:choose>
+<!-- 	<div class="form-group col-md-8"> -->
+<!--       <label for="img">頭像</label> -->
+<!--       <span id="mobilemsg" class="badge badge-secondary badge-danger"></span> -->
+<!--       <div class="w-100"></div> -->
+<%--       <c:choose> --%>
+<%--     	<c:when test="${member.imgFile != null}"> --%>
+<%--         	  <img id="blah" alt="your image" src= "data:image/${member.imgType};base64,${member.imgFile}" width="200" height="200" /> --%>
+<%--     	</c:when> --%>
+<%--     	<c:otherwise> --%>
+<%--          	  <img id="blah" alt="your image" src="${contextRoot}/img/member01.png" width="100" height="100" />	 --%>
+<%--     	</c:otherwise> --%>
+<%-- 	</c:choose> --%>
+<!-- 	  <input type="file" name = "img" accept=".png,.jpg,.jpeg" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">	 -->
+<!--     </div>    -->
+<!--     圖片 -->
+
+<!--     圖片test -->
+	<div class="form-group col-md-8">
+ 		<label for="dbImg">頭像</label>
+		<label class="btn btn-info"><input id="upload_img" style="display:none;" type="file" accept="image/*"><i class="fa fa-photo"></i> 上傳圖片</label>
+
+		<c:choose>
     	<c:when test="${member.imgFile != null}">
-        	  <img id="blah" alt="your image" src= "data:image/${member.imgType};base64,${member.imgFile}" width="100" height="100" />
+    		  <div id="dbImg">
+        	  <img id="blah" alt="your image" src= "data:image/${member.imgType};base64,${member.imgFile}" width="200" height="200" />
+        	  </div>
     	</c:when>
     	<c:otherwise>
-         	  <img id="blah" alt="your image" src="${contextRoot}/img/member01.png" width="100" height="100" />	
+    		  <div id="dbImg">
+         	  <img id="blah" alt="your image" src="${contextRoot}/img/member01.png" width="200" height="200" />	
+         	  </div>	  
     	</c:otherwise>
-	</c:choose>
-	  <input type="file" name = "img" accept=".png,.jpg,.jpeg" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">	
-    </div>   
-<!--     圖片 -->
+		</c:choose>
+		
+		<div id="oldImg" style="display:none;"></div>
+		<div id="newImg"></div>
+		<input class="" type="Hidden" id="img" name="img" value="">
+	</div>  
+<!--     圖片test -->
+
 </div>
 
 <div class="form-row justify-content-start mt-4">
@@ -131,6 +173,7 @@
 </c:if>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
 
 <script type="text/javascript">
 
@@ -205,6 +248,82 @@ function lock(){
 		$('#submit').attr("disabled", true);
 	}
 }
+//	================================================================
+(function($) {
+	var width_crop = 200, // 圖片裁切寬度 px 值
+	height_crop = 200, // 圖片裁切高度 px 值
+	type_crop = "square", // 裁切形狀: square 為方形, circle 為圓形
+	width_preview = 250, // 預覽區塊寬度 px 值
+	height_preview = 250, // 預覽區塊高度 px 值
+	compress_ratio = 0.85, // 圖片壓縮比例 0~1
+	type_img = "png", // 圖檔格式 jpeg png webp
+	oldImg = new Image(),
+	myCrop, file, oldImgDataUrl;
+
+	// 裁切初始參數設定
+	myCrop = $("#oldImg").croppie({
+	viewport: { // 裁切區塊
+	width: width_crop,
+	height: height_crop,
+	type: type_crop
+	},
+	boundary: { // 預覽區塊
+	width: width_preview,
+	height: height_preview
+	}
+	});
+
+	function readFile(input) {
+	if (input.files && input.files[0]){
+	file = input.files[0];
+	} else {
+	alert("瀏覽器不支援此功能！建議使用最新版本 Chrome");
+	return;
+	}
+
+	if (file.type.indexOf("image") == 0) {
+	var reader = new FileReader();
+
+	reader.onload = function(e) {
+	oldImgDataUrl = e.target.result;
+	oldImg.src = oldImgDataUrl; // 載入 oldImg 取得圖片資訊
+	myCrop.croppie("bind", {
+	url: oldImgDataUrl
+	});
+	};
+
+	reader.readAsDataURL(file);
+	} else {
+	alert("您上傳的不是圖檔！");
+	}
+	}
+
+	function displayCropImg(src) {
+		$("#img").val(src);	
+	var html = "<img src='" + src + "' />";
+	$("#newImg").html(html);
+	}
+
+	$("#upload_img").on("change", function() {
+	$("#oldImg").show();
+	$("#dbImg").hide();
+	readFile(this);
+	});
+
+
+	$("#submit").on("click", function() {
+	myCrop.croppie("result", {
+	type: "canvas",
+	format: type_img,
+	quality: compress_ratio
+	}).then(function(src) {
+	displayCropImg(src);
+	});
+	});
+	})(jQuery);
+// 	================================================================
+
+
 </script>
 
 </body>

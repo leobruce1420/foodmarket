@@ -30,125 +30,133 @@ public class WorkProductController {
 	
 //0704==============================================
 	// 新增商品 join
-	@PostMapping("postProduct")
-	public String addMessage(@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
-			 @RequestParam("productprice") Integer productprice,
-			 @RequestParam("productimg") MultipartFile mf,
-			 @RequestParam("productdesciption") String productdesciption,
-			 @RequestParam("administrator") String administrator,
-			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-			 @RequestParam("takedown") String takedown,
-			 @RequestParam("productcategoryid") Integer productcategoryid,
-			 @RequestParam(required = false, value = "takeon") String takeon,
-			 Model m) throws  IOException {
-		Util method = new Util();
-		
-		try {
-//			if (!pmsgService.checkLoginSession(session)) {
-//				return "AdminLogin";
-//			}
-
-//			request.setCharacterEncoding("UTF-8");
-			WorkProduct workProduct = new WorkProduct();
-//			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
-			workProduct.setProductname(productname);
-			workProduct.setProductcategory(productcategory);
-			workProduct.setProductprice(productprice);
-			workProduct.setAdministrator(administrator);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
-			workProduct.setTakedown(takedown);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
-			workProduct.setProductcategoryid(productcategoryid);
-//			workProduct.setProductcategoryBean(productcategoryBean);
-
-			byte[] imgBytes = mf.getBytes();
-			workProduct.setProductimg(method.encoder(imgBytes));
-
-
-			pmsgService.insertProduct(workProduct);
-			WorkProduct newpMsg = new WorkProduct();
-			WorkProduct lastestpMsg = pmsgService.getLastest();
-			List<WorkProduct> Products = pmsgService.selectAll();
-			List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
-			m.addAttribute("productcategorytakeon", productcategorytakeon);
-			m.addAttribute("workProduct", newpMsg);
-			m.addAttribute("products", Products);
-			m.addAttribute("lastestpMsg", lastestpMsg);
-			return "product/addMessage";
-
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "product/addMessage";
-	}
+//	@PostMapping("postProduct")
+//	public String addMessage(@RequestParam("productname") String productname, 
+//			@RequestParam("productcategory")  String productcategory,
+//			 @RequestParam("productprice") Integer productprice,
+//			 @RequestParam("productimg") MultipartFile mf,
+//			 @RequestParam("productdesciption") String productdesciption,
+//			 @RequestParam("administrator") String administrator,
+//			 @RequestParam("inventoryquantity") Integer inventoryquantity,
+//			 @RequestParam("takedown") String takedown,
+//			 @RequestParam("categoryid") Integer categoryid,
+//			 @RequestParam(required = false, value = "takeon") String takeon,
+//			 Model m) throws  IOException {
+//		Util method = new Util();
+//		
+//		try {
+////			if (!pmsgService.checkLoginSession(session)) {
+////				return "AdminLogin";
+////			}
+//
+////			request.setCharacterEncoding("UTF-8");
+//			WorkProduct workProduct = new WorkProduct();
+////			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
+////			productcategoryBean productcategoryBean = new productcategoryBean();
+//			workProduct.setProductname(productname);
+//			workProduct.setProductcategory(productcategory);
+//			workProduct.setProductprice(productprice);
+//			workProduct.setAdministrator(administrator);
+//			workProduct.setProductdesciption(productdesciption);
+//			workProduct.setInventoryquantity(inventoryquantity);
+//			workProduct.setTakedown(takedown);
+//			workProduct.setProductdesciption(productdesciption);
+//			workProduct.setInventoryquantity(inventoryquantity);
+//			workProduct.setProductcategoryid(categoryid);
+////			workProduct.setProductcategoryBean(productcategoryBean);
+//
+//			byte[] imgBytes = mf.getBytes();
+//			workProduct.setProductimg(method.encoder(imgBytes));
+//
+//
+//			pmsgService.insertProduct(workProduct);
+//			WorkProduct newpMsg = new WorkProduct();
+//			WorkProduct lastestpMsg = pmsgService.getLastest();
+////			List<productcategoryBean> lastestpcMsg = pcmsgService.getList();
+//			List<WorkProduct> Products = pmsgService.selectAll();
+//			List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//			
+//			m.addAttribute("productcategorytakeon", productcategorytakeon);
+//			m.addAttribute("workProduct", newpMsg);
+//			m.addAttribute("products", Products);
+//			m.addAttribute("lastestpMsg", lastestpMsg);
+////			m.addAttribute("lastestpcMsg", lastestpcMsg);
+//			return "product/addMessage";
+//
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return "product/addMessage";
+//	}
 	
 	//=================================================================
 	 //新增商品
-//		@PostMapping("postProduct")
-//		public String addMessage(@RequestParam("productname") String productname, 
-//				@RequestParam("productcategory")  String productcategory,
-//				 @RequestParam("productprice") Integer productprice,
-//				 @RequestParam("productimg") MultipartFile mf,
-//				 @RequestParam("productdesciption") String productdesciption,
-//				 @RequestParam("administrator") String administrator,
-//				 @RequestParam("inventoryquantity") Integer inventoryquantity,
-//				 @RequestParam("takedown") String takedown,
-//			  // @RequestParam("productcategoryId") Integer productcategoryId,
-//	             Model m) throws  IOException {
-//			Util method = new Util();
-//			
-//			try {
-////				if (!pmsgService.checkLoginSession(session)) {
-////					return "AdminLogin";
-////				}
-//
-////				request.setCharacterEncoding("UTF-8");
-//				WorkProduct workProduct = new WorkProduct();
-//
-//				workProduct.setProductname(productname);
-//				workProduct.setProductcategory(productcategory);
-//				workProduct.setProductprice(productprice);
-//				workProduct.setAdministrator(administrator);
-//				workProduct.setProductdesciption(productdesciption);
-//				workProduct.setInventoryquantity(inventoryquantity);
-//				workProduct.setTakedown(takedown);
-//				workProduct.setProductdesciption(productdesciption);
-//				workProduct.setInventoryquantity(inventoryquantity);
-////				workProduct.setInventoryquantity(productcategoryId);
-//
-//				byte[] imgBytes = mf.getBytes();
-//				workProduct.setProductimg(method.encoder(imgBytes));
-//
-//
-//				pmsgService.insertProduct(workProduct);
-//				WorkProduct newpMsg = new WorkProduct();
-//				WorkProduct lastestpMsg = pmsgService.getLastest();
-//				List<WorkProduct> Products = pmsgService.selectAll();
-//				m.addAttribute("workProduct", newpMsg);
-//				m.addAttribute("products", Products);
-//				m.addAttribute("lastestpMsg", lastestpMsg);
-//				return "product/addMessage";
-//
-//			} catch (UnsupportedEncodingException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			return "product/addMessage";
-//		}
+		@PostMapping("postProduct")
+		public String addMessage(@RequestParam("productname") String productname, 
+				@RequestParam("productcategory")  String productcategory,
+				 @RequestParam("productprice") Integer productprice,
+				 @RequestParam("productimg") MultipartFile mf,
+				 @RequestParam("productdesciption") String productdesciption,
+				 @RequestParam("administrator") String administrator,
+				 @RequestParam("inventoryquantity") Integer inventoryquantity,
+				 @RequestParam("takedown") String takedown,
+			  // @RequestParam("productcategoryId") Integer productcategoryId,
+	             Model m) throws  IOException {
+			Util method = new Util();
+			
+			try {
+//				if (!pmsgService.checkLoginSession(session)) {
+//					return "AdminLogin";
+//				}
 
+//				request.setCharacterEncoding("UTF-8");
+				WorkProduct workProduct = new WorkProduct();
+
+				workProduct.setProductname(productname);
+				workProduct.setProductcategory(productcategory);
+				workProduct.setProductprice(productprice);
+				workProduct.setAdministrator(administrator);
+				workProduct.setProductdesciption(productdesciption);
+				workProduct.setInventoryquantity(inventoryquantity);
+				workProduct.setTakedown(takedown);
+				workProduct.setProductdesciption(productdesciption);
+				workProduct.setInventoryquantity(inventoryquantity);
+//				workProduct.setInventoryquantity(productcategoryId);
+
+				byte[] imgBytes = mf.getBytes();
+				workProduct.setProductimg(method.encoder(imgBytes));
+
+
+				pmsgService.insertProduct(workProduct);
+				WorkProduct newpMsg = new WorkProduct();
+				WorkProduct lastestpMsg = pmsgService.getLastest();
+				List<WorkProduct> Products = pmsgService.selectAll();
+				m.addAttribute("workProduct", newpMsg);
+				m.addAttribute("products", Products);
+				m.addAttribute("lastestpMsg", lastestpMsg);
+				return "product/addMessage";
+
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "product/addMessage";
+		}
+	//========================================================
+//  join
 	@GetMapping("product/editProduct")
-	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+	public String editMessage(@RequestParam("productid") Long productid,
+			@RequestParam(required = false, value = "takeon") String takeon,
+			Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
 		WorkProduct pMsg = pmsgService.findById(productid);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		model.addAttribute("pMsg", pMsg);
 		return "product/editMessage";
 	}
-	//修改2加圖片
+	//join
 	@PostMapping("product/editProduct")
 	public String postMessage(@RequestParam("productid") Long productid, 
 			@RequestParam("productname") String productname, 
@@ -158,7 +166,10 @@ public class WorkProductController {
 			 @RequestParam("productdesciption") String productdesciption,
 			 @RequestParam("administrator") String administrator,
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-			 @RequestParam("takedown") String takedown,Model m) throws IOException {
+			 @RequestParam("takedown") String takedown,
+			 @RequestParam("productcategoryid") Integer productcategoryid,
+			 @RequestParam(required = false, value = "takeon") String takeon,
+			 Model m) throws IOException {
 		WorkProduct workProduct = pmsgService.findById(productid);
 		Util method = new Util();
 //		WorkProduct newworkProduct = new WorkProduct();
@@ -172,6 +183,7 @@ public class WorkProductController {
 		workProduct.setTakedown(takedown);
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
+		workProduct.setInventoryquantity(productcategoryid);
 		
 		if(!mf.isEmpty()) {
 		byte[] imgBytes = mf.getBytes();
@@ -180,7 +192,9 @@ public class WorkProductController {
 		pmsgService.insertProduct(workProduct);
 		
 		List<WorkProduct> pMsg = pmsgService.selectAll();
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 		
+		m.addAttribute("productcategorytakeon", productcategorytakeon);
 		m.addAttribute("pMsg",pMsg);
 		
 		
@@ -199,6 +213,67 @@ public class WorkProductController {
 		pmsgService.deleteById(productid);
 		return "redirect:/product/all";
 	}
+	//=======================================
+////  OK
+//	@GetMapping("product/editProduct")
+//	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+////		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
+//		WorkProduct pMsg = pmsgService.findById(productid);
+//		
+//		model.addAttribute("pMsg", pMsg);
+//		return "product/editMessage";
+//	}
+//	//OK
+//	@PostMapping("product/editProduct")
+//	public String postMessage(@RequestParam("productid") Long productid, 
+//			@RequestParam("productname") String productname, 
+//			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productprice") Integer productprice,
+//			@RequestParam("productimg") MultipartFile mf,
+//			@RequestParam("productdesciption") String productdesciption,
+//			@RequestParam("administrator") String administrator,
+//			@RequestParam("inventoryquantity") Integer inventoryquantity,
+//			@RequestParam("takedown") String takedown,Model m) throws IOException {
+//		WorkProduct workProduct = pmsgService.findById(productid);
+//		Util method = new Util();
+////		WorkProduct newworkProduct = new WorkProduct();
+//		
+//		workProduct.setProductname(productname);
+//		workProduct.setProductcategory(productcategory);
+//		workProduct.setProductprice(productprice);
+//		workProduct.setAdministrator(administrator);
+//		workProduct.setProductdesciption(productdesciption);
+//		workProduct.setInventoryquantity(inventoryquantity);
+//		workProduct.setTakedown(takedown);
+//		workProduct.setProductdesciption(productdesciption);
+//		workProduct.setInventoryquantity(inventoryquantity);
+//		
+//		if(!mf.isEmpty()) {
+//			byte[] imgBytes = mf.getBytes();
+//			workProduct.setProductimg(method.encoder(imgBytes));
+//		}
+//		pmsgService.insertProduct(workProduct);
+//		
+//		List<WorkProduct> pMsg = pmsgService.selectAll();
+//		
+//		m.addAttribute("pMsg",pMsg);
+//		
+//		
+//		return "redirect:/product/all";
+//	}
+////	//修改
+////	@PostMapping("product/editProduct")
+////	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {
+////		pmsgService.insertProduct(pMsg);
+////		
+////		return "redirect:/product/all";
+////	}
+//	
+//	@GetMapping("product/delete")
+//	public String deleteMsg(@RequestParam("productid") Long productid) {
+//		pmsgService.deleteById(productid);
+//		return "redirect:/product/all";
+//	}
 
 //	@PostMapping("api/postProduct")
 //	@ResponseBody
