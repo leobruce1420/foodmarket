@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.member.model.Member;
 import com.foodmarket.app.member.repository.MemberRepository;
@@ -35,6 +38,29 @@ public class OrderRecordController {
 	
 	@Autowired
 	private WorkProductService productService;
+	
+	@GetMapping("record/page")
+	public ModelAndView viewRecord(ModelAndView mav,
+			@RequestParam(name="p",defaultValue ="1") Integer pageNumber) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		Page<OrderRecord> page = orderRecordService.findByPage(pageNumber);
+		for(OrderRecord orderRecord:page) {
+			Long userId = orderRecord.getUserId();
+			Member member = memberRepository.findById(userId).get();
+			String customerName = member.getCustomerName();
+			String mobile = member.getMobile();
+			String address = member.getAdress1();
+			orderRecord.setCustomerName(customerName);
+			orderRecord.setMobile(mobile);
+			orderRecord.setAddress(address);
+			orderRecord.setCreateDateStr(dtf.format(orderRecord.getCreateDate()));
+		}
+		mav.getModel().put("page", page);
+		mav.setViewName("order/record2");
+		return mav;
+	}
+	
+	
 	
 	
 	@GetMapping("orderRecord/all")

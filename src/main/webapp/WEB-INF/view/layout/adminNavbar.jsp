@@ -134,7 +134,7 @@
          aria-labelledby="collapseListGroupHeading4">
       <ul class="list-group">
         <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/orderRecord/all">訂單列表</a>
+          <a class="dropdown-item" href="${contextRoot}/record/page">訂單列表</a>
         </li>
 <!--         <li class="list-group-item"> -->
 <%--           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a> --%>

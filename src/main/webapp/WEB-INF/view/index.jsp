@@ -353,6 +353,7 @@ ul.social-network li {
 		<!-- 	頁數顯示 -->
 		<div class="w-100"></div>
 
+
 		<ul class="pagination justify-content-center">
 
 			<c:choose>
@@ -407,10 +408,13 @@ ul.social-network li {
 		</ul>
 
 
+		
+
 		<br>
 
 	</div>
 	<hr />
+
 	<footer class="mainfooter" role="contentinfo">
 		<div class="footer-middle">
 			<div class="container">
@@ -464,6 +468,7 @@ ul.social-network li {
 			</div>
 		</div>
 	</footer>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
@@ -670,6 +675,7 @@ function insertProduct(pId,cId) {
 		alert("請先登入")	
 	}
 		}
+
 </script>
 <script>
 window.onscroll = scrollFunction; //每當畫面捲動觸發一次

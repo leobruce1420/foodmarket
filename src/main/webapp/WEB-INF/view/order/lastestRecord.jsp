@@ -28,7 +28,7 @@
 	<tbody>
 	<c:forEach var="items" items="${orderItems}">
 		<tr>
-			<th><input type="text" value="${items.productName}" disabled></th>
+			<th><input type="text" value="${items.productName}" disabled size="40"></th>
 			<td><input type="text" value="${items.quantity}" disabled></td>
 			<td><input type="text" value="${items.productPrice}" disabled></td>
 			<td><input type="text" value="${items.totalAmount}" disabled></td>

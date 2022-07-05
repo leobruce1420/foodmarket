@@ -50,10 +50,10 @@ table, td {
 										<a href="${contextRoot}/product/product?productid=${workProduct.productid}">
 										<h5 class="card-title">${workProduct.productname}</h5></a>
 										<p class="card-text">$${workProduct.productprice}</p>
-										<div class="card-footer">
-										<div class="card-group">
-										<div class="card">
-									<div class="card-body">
+										<div class="card-footer" style="background-color: rgba(0,0,0,0);">
+										<div class="card-group text-center" >
+										<div class="card"  style="border: 0px;" >
+									<div class="card-body" >
 											<input type="hidden" id="productId_${workProduct.productid}"
 												value="${workProduct.productid}"> <input
 												class="insertProductBtn btn btn-success" type="button"
@@ -61,12 +61,12 @@ table, td {
 												onclick="insertProduct(${workProduct.productid},${loginUserId})">
 												</div>
 												</div>
-											<div class="card">
+											<div class="card"  style="border: 0px;">
 											<div class="card-body">
 												<c:choose>
 													<c:when test="${listCheck == false}">
 														<button type="button"
-															class="btn btn-danger stretched-link"
+															class="btn btn-danger stretched-link "
 															id="list${workProduct.productid}"
 															onclick="listSwich(${workProduct.productid},${loginUserId})">收藏商品</button>
 													</c:when>
