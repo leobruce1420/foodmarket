@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>個人頁面</title>
 <style type="text/css">
 button#timebutton{
 float:left;
@@ -28,34 +28,6 @@ div.container{
 
 <div class="container">
 			
-			
-
-	<div class="titleline">
-		<h3>您收藏的食譜</h3>
-	</div>
-	<div class="row justify-content-center">
-  		<div class="col-9">
-			<div class="row row-cols-1 row-cols-md-3 g-4">
-  			<c:forEach var="recipe" items="${page.content}">
-  				<div class="col">
-    				<div class="card h-100" style="margin:10px 0px;" id="${recipe.recipePostId}">
-      				<a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
-        			<div class="card-body">
-        				<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
-        					<p class="card-text"><c:out value="${recipe.postTag}" /></p>
-        					<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
-        					<p> <button id="timebutton" class="btn btn-info" disabled="disabled">⌚ ${recipe.cookTime} </button>
-        						<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" disabled="disabled">♥  ${recipe.postLikeTime}</button></a>
-       							<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
-       						</p>
-      					</div>
-      				</div>
-				</div>
-			</c:forEach>
-			</div>
-		</div>
-	</div>
-	<br>
 	<div class="titleline">
 		<h3>您撰寫的食譜</h3>
 	</div>
@@ -75,13 +47,40 @@ div.container{
 			<td ><c:out value="${yourrecipe.serving}" />
 			<td>
 				<a href="${contextRoot}/recipe/editRecipe?recipePostId=${yourrecipe.recipePostId}"><button class="btn btn-info">編輯</button></a>
-        		<a onclick="return confirm('真的要刪除嗎')"  href="${contextRoot}/recipe/deleteRecipe?recipePostId=${yourrecipe.recipePostId}"><button class="btn btn-danger">刪除</button></a>
+        		<a onclick="return confirm('真的要刪除嗎')"  href="${contextRoot}/recipe/deleteOwnRecipe?recipePostId=${yourrecipe.recipePostId}"><button class="btn btn-danger">刪除</button></a>
 			</td>
 			</tr>
 			</tbody>   	
 		</c:forEach>
 		</table>
+	</div>		
+<br>
+	<div class="titleline">
+		<h3>您收藏的食譜</h3>
 	</div>
+	<div class="row justify-content-center">
+  		<div class="col-9">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+  			<c:forEach var="recipe" items="${page.content}">
+  				<div class="col">
+    				<div class="card h-100" style="margin:10px 0px;" id="${recipe.recipePostId}">
+      				<a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><img src="${recipe.postImage}" class="card-img-top" alt="recipeImg"  height="175px"></a>
+        			<div class="card-body">
+        				<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
+        					<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
+        					<p> <button id="timebutton" class="btn btn-info" disabled="disabled">⌚ ${recipe.cookTime} </button>
+        						<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeView/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" disabled="disabled">♥  ${recipe.postLikeTime}</button></a>
+       							<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
+       						</p>
+      					</div>
+      				</div>
+				</div>
+			</c:forEach>
+			</div>
+		</div>
+	</div>
+
+
 </div>
   <br><br><br>
 
