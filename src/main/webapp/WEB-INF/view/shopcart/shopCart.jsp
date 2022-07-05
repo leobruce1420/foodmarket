@@ -9,8 +9,8 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/shopcar.css" rel="stylesheet" />
 <h1>購物車清單</h1>
-<div class="container">
-
+<div class="row justify-content-center">
+<div class="col-9">
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -58,7 +58,7 @@
 		<input class="insertOrderBtn btn btn-success" type="button" value="送出訂單" onclick="sendOrder()">
 	</div>
 </div>
-
+</div>
 <script>
 
 function sendOrder() {

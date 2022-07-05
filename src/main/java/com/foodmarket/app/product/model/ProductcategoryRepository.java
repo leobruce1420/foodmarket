@@ -16,14 +16,24 @@ import org.springframework.stereotype.Repository;
 public interface ProductcategoryRepository extends JpaRepository<productcategoryBean, Integer> {
 
 	// 用新增時間排序
-//	public productcategory findFirstByOrderByAddedDesc();
+	public List<productcategoryBean> findFirstByOrderByCategoryidAsc();
 
 	// 用Id查詢
 	public List<productcategoryBean> findBycategoryid(Integer categoryid);
 
 //商品種類的上架
-	@Query(value = "select * from productcategory where productcategoryname like %:productcategoryname% and takeon = '上架中'", nativeQuery = true)
-	public List<productcategoryBean> findByProductcategory(@Param("productcategoryname") String productcategoryname);
+	@Query(value = "select * from productcategorys where productcategoryname like %:productcategoryname% and takeon = '上架中'", nativeQuery = true)
+	public List<productcategoryBean> findByProductcategoryname(@Param("productcategoryname") String productcategoryname);
+//	return productcategoryDao.findByStoreBean(productcategory);
+
+	//商品種類的上架 無分頁
+	@Query(value = "select * from productcategorys where  takeon = '上架中'", nativeQuery = true)
+	public List<productcategoryBean> findByProductCategoryTakeon(@Param("takeon") String takeon);
+//	return productcategoryDao.findByStoreBean(productcategory);
+
+	//商品種類的上架 分頁
+	@Query(value = "select * from productcategorys where  takeon = '上架中'", nativeQuery = true)
+	public Page<productcategoryBean> findByProductCategoryTakeonPage(@Param("takeon") String takeon,Pageable pgb);
 //	return productcategoryDao.findByStoreBean(productcategory);
 
 //商品種類名稱不能重複蔬菜類，無分頁 2

@@ -3,7 +3,7 @@
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%-- <jsp:include page="../layout/navbar.jsp" /> --%>
+<jsp:include page="../layout/adminNavbar.jsp" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -20,9 +20,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<div class="container">
-
+<h1>訂單明細</h1>
+<div class="row justify-content-center">
+<div class="col-7">
 	<table class="table table-bordered border-primary">
 		<thead>
 			<tr class="table-secondary">
@@ -47,6 +47,7 @@
 		
 		</tbody>
 	</table>
+	</div>
 </div>
 	
 </body>

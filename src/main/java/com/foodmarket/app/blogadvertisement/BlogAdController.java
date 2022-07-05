@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
 
@@ -34,15 +36,15 @@ public class BlogAdController {
 		return "advertisement/insertBlogAd";
 	}
 	
-	@GetMapping("/blogad/getAll")
-	public String showAllAd(Model m) {
-		
-		List<BlogAdvertisement> ad = bService.getAllAds();
-		
-		m.addAttribute("ad",ad);
-		
-		return "advertisement/getAllBlogAd";
-	}
+//	@GetMapping("/blogad/getAll")
+//	public String showAllAd(Model m) {
+//		
+//		List<BlogAdvertisement> ad = bService.getAllAds();
+//		
+//		m.addAttribute("ad",ad);
+//		
+//		return "advertisement/getAllBlogAd";
+//	}
 	
 	@GetMapping("/blogad/queryById")
 	public String queryById(@RequestParam("id") Integer id, Model m) {
@@ -70,6 +72,15 @@ public class BlogAdController {
 		List<BlogAdvertisement> ad = bService.findByBoard();
 		m.addAttribute("ad",ad);
 		return "index"; 
+	}
+	
+	@GetMapping("/blogad/getAll")
+	public ModelAndView viewMessages(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+		Page<BlogAdvertisement> page = bService.findByPage(pageNumber);
+		mav.getModel().put("page", page);
+		mav.setViewName("advertisement/getAllBlogAd");
+		return mav;
 	}
 	
 	///////////////////////////////////////////

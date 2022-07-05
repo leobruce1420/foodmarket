@@ -48,8 +48,33 @@
 									</form:select>
 								</div>
 							</div>
+							
+<!-- 							<br/> -->
+							
+<!-- 							<div> -->
+<%-- 							<form:form class="form" method="post" --%>
+<%-- 						action="${contextRoot}/postProduct" modelAttribute="productcategoryBean" --%>
+<%-- 						enctype="multipart/form-data"> --%>
+<!-- 								<div class="input-group mb-3"> -->
+<!-- 									<div class="input-group-prepend"> -->
+<!-- 										<label class="input-group-text" for="inputGroupSelect01">商品類別</label> -->
+<!-- 									</div> -->
+<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="categoryid"> --%>
+<!-- 									<option value="蔬菜類">蔬菜類</option> -->
+<%-- 										<c:forEach var="productcategorytakeon" items="${productcategorytakeon}">  --%>
+<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
+<%-- 								</c:forEach>  --%>
+<%--  									</form:select>   --%>
+<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="productcategoryid"> --%>
+<!-- 									<option value="蔬菜類">蔬菜類</option> -->
+<%-- 										<form:options var="productcategorytakeon" items="${productcategorytakeon}" itemLabel="productcategoryid" itemValue="productcategoryid" htmlEscape="false"/>  --%>
+<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
+<%--  									</form:select>   --%>
+<!-- 								</div> -->
+<%-- 								</form:form> --%>
+<!-- 							</div> -->
 
-							<br />
+<!-- 							<br /> -->
 
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">

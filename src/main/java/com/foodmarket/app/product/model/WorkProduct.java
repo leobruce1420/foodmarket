@@ -103,13 +103,6 @@ public class WorkProduct {
 		this.productcategoryid = productcategoryid;
 	}
 
-//	public productcategory getProductcategoryBean() {
-//		return productcategoryBean;
-//	}
-//
-//	public void setProductcategoryBean(productcategory productcategoryBean) {
-//		this.productcategoryBean = productcategoryBean;
-//	}
 
 	public Long getProductid() {
 		return productid;

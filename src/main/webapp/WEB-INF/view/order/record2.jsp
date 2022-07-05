@@ -14,7 +14,6 @@
 
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <link href="${contextRoot}/css/shopcar.css" rel="stylesheet" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +23,8 @@
 <body>
 <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
  <div class="container">
-  <h1>後台訂單列表</h1>
- 
+<h1>後台訂單列表</h1>
 <div><input id="searchInput" oninput="inputText()" type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入..."></div>
-
 <table class="order-table">
 <thead>
 <tr>
@@ -41,7 +38,7 @@
 </tr>
 </thead>
 <tbody>
-	<c:forEach var="records" items="${orderRecords}">
+	<c:forEach var="records" items="${page.content}">
 		<tr id="${records.id}" >
 			<th><input type="text" id="recordsId" value="${records.id}" readonly size="5"></th>
 			<th><input type="text" id="recordDate_${records.createDateStr}" value="${records.createDateStr}" readonly></th>
@@ -54,9 +51,25 @@
 		</tr>
 			
 	</c:forEach>
+	
 </tbody>	
 	</table>
+	<div class="pageNumber">
+		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+		<c:choose>
+		<c:when test="${page.number != pageNumber-1}">
+			<a href="${contextRoot}/record/page?p=${pageNumber}"><c:out value="${pageNumber}" /></a>
+		</c:when>
+		<c:otherwise>
+		<c:out value="${pageNumber}" />
+		</c:otherwise>
+		</c:choose>
+		<c:if test="${pageNumber != page.totalPages}">
+		|
+		</c:if>
+		</c:forEach>
 	</div>
+		</div>
 	</div>
 </body>
 <script>
@@ -67,6 +80,7 @@ var searchInput = document.getElementById('searchInput')
 var trArray = document.querySelectorAll('tbody tr')
 
 
+// var createDate = document.getElementById('recordDate_'+${records.createDateStr).value;
 
 function inputText(){
 	var inputVal = document.getElementById("searchInput").value; //抓到輸入框裡面的值
@@ -86,11 +100,7 @@ function inputText(){
 		}
 	}
 
-
-	
 }
-
-
 
 </script>
 </html>

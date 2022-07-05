@@ -28,5 +28,35 @@ table input{
 
 .insertOrderBtn{
 	height: 2.5rem;
-	width: 13.125rem;
+	width: 10rem;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.container{
+	margin-left: 0 !important;
+    max-width: 1200px;
+    
+}
+
+#searchInput{
+	margin-bottom:20px;
+}
+
+.pageNumber{
+	text-align:center;
+}
+
+.container2{
+	margin-left: 0 !important;
+    max-width: 1000px;
+    margin:auto;
+    }
