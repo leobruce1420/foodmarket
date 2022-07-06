@@ -66,7 +66,7 @@ table, td {
 		<div class="row justify-content-center text-center">
 			<%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
 
-			<div class="col-18">
+			<div class="col-12">
 
 				<div class="album py-3 bg-light">
 					<div class="container">

@@ -41,7 +41,7 @@ public class WorkProductController {
 			 @RequestParam("administrator") String administrator,
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 			 @RequestParam("takedown") String takedown,
-//			 @RequestParam("productcategoryid") Integer productcategoryid,
+			 @RequestParam("productcategoryid") Integer productcategoryid,
 			 @RequestParam(required = false, value = "takeon") String takeon,
 			 Model m) throws  IOException {
 		Util method = new Util();
@@ -55,7 +55,10 @@ public class WorkProductController {
 			WorkProduct workProduct = new WorkProduct();
 //			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
 //			productcategoryBean cateB = pcmsgService.findById(categoryid);
-//			productcategoryBean productcategoryBean = new productcategoryBean();
+			productcategoryBean productcategoryBean = new productcategoryBean();
+			
+			productcategoryBean.setCategoryid(productcategoryid);
+			
 			workProduct.setProductname(productname);
 			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
@@ -67,7 +70,7 @@ public class WorkProductController {
 			workProduct.setInventoryquantity(inventoryquantity);
 //			workProduct.setProductcategoryid(productcategoryid);
 //			workProduct.setProductcategoryBean(productcategoryBean);
-//			workProduct.setProductcategoryBean(cateB);
+			workProduct.setProductcategoryBean(productcategoryBean);
 
 			byte[] imgBytes = mf.getBytes();
 			workProduct.setProductimg(method.encoder(imgBytes));
@@ -194,7 +197,6 @@ public class WorkProductController {
 		workProduct.setTakedown(takedown);
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
-		workProduct.setInventoryquantity(productcategoryid);
 		
 		if(!mf.isEmpty()) {
 		byte[] imgBytes = mf.getBytes();

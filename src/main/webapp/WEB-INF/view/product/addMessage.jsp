@@ -53,15 +53,15 @@
 								<br />
 
 								<div>
-									<form:form class="form" method="post"
- 										action="${contextRoot}/postProduct" 
-										modelAttribute="WorkProduct" 
-										enctype="multipart/form-data"> 
+<%-- 									<form:form class="form" method="post" --%>
+<%--  										action="${contextRoot}/postProduct"  --%>
+<%-- 										modelAttribute="WorkProduct"  --%>
+<%-- 										enctype="multipart/form-data">  --%>
 									<div class="input-group mb-3"> 
 											<div class="input-group-prepend"> 
 												<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
 											</div>
-											<select class="custom-select" id="takeon" name="takeon">
+											<select class="custom-select" id="productcategoryid" name="productcategoryid">
 												<c:forEach var="productcategorytakeon"
  													items="${productcategorytakeon}"> 
 													<c:choose> 
@@ -71,7 +71,7 @@
 																value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> 
  														</c:when> 
 														<c:otherwise> 
-															<option value="${productcategorytakeon.categoryid}" label="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> 
+															<option value="${productcategorytakeon.categoryid}" >${productcategorytakeon.productcategoryname}</option> 
 														</c:otherwise>
  													</c:choose> 
 
@@ -89,7 +89,7 @@
 											<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
 											<%--  									</form:select>   --%>
 										</div>
-									</form:form>
+<%-- 									</form:form> --%>
 								</div>
 
 								<br />
@@ -280,6 +280,7 @@
 									<th scope="col">商品介紹</th>
 									<th scope="col">庫存數量</th>
 									<th scope="col">上下架</th>
+									<th scope="col">商品類別</th>
 									<!-- 								<th scope="col">修改人員</th> -->
 								</tr>
 							</thead>
@@ -300,6 +301,8 @@
 								<td><c:out value="${lastestpMsg.productdesciption}" /></td>
 								<td><c:out value="${lastestpMsg.inventoryquantity}" /></td>
 								<td><c:out value="${lastestpMsg.takedown}" /></td>
+								<td style="text-align: center;">
+								<c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td>
 							</tr>
 						</table>
 					</div>

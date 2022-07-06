@@ -63,22 +63,22 @@ public class WorkProduct {
 	@Column(name="productcategoryid", columnDefinition = "int")
 	private Integer productcategoryid;
 	
-	@Transient
-	private String productcategoryname;
+//	@Transient
+//	private String productcategoryname;
 	
-//	@JsonIgnore
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "categoryid",nullable = false)
-//	private productcategoryBean productcategoryBean;
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "categoryid",nullable = false)
+	private productcategoryBean productcategoryBean;
 	
 	
-	public String getProductcategoryname() {
-		return productcategoryname;
-	}
-
-	public void setProductcategoryname(String productcategoryname) {
-		this.productcategoryname = productcategoryname;
-	}
+//	public String getProductcategoryname() {
+//		return productcategoryname;
+//	}
+//
+//	public void setProductcategoryname(String productcategoryname) {
+//		this.productcategoryname = productcategoryname;
+//	}
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -101,13 +101,13 @@ public class WorkProduct {
 
 
 
-//	public productcategoryBean getProductcategoryBean() {
-//		return productcategoryBean;
-//	}
-//
-//	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
-//		this.productcategoryBean = productcategoryBean;
-//	}
+	public productcategoryBean getProductcategoryBean() {
+		return productcategoryBean;
+	}
+
+	public void setProductcategoryBean(productcategoryBean productcategoryBean) {
+		this.productcategoryBean = productcategoryBean;
+	}
 
 	public Integer getProductcategoryid() {
 		return productcategoryid;

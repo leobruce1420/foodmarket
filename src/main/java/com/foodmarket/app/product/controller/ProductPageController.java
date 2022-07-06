@@ -156,7 +156,6 @@ public class ProductPageController {
 		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByPage(pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
-//		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("page", cpage);
 		mav.getModel().put("page", page);
@@ -244,13 +243,13 @@ public class ProductPageController {
 //	}
 //	消費者商品種類查詢無分頁 跳頁顯示 join
 	@GetMapping("product/category")
-	public String viewProductcategory(@RequestParam(required = false, value = "productcategory") String productcategory,
+	public String viewProductcategory(@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon, Model m) {
-		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(categoryid);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 		m.addAttribute("productcategorytakeon", productcategorytakeon);
 		m.addAttribute("workProduct", workProduct);
-		m.addAttribute("productcategory", productcategory);
+		m.addAttribute("categoryid", categoryid);
 		return "product/viewcategoryMessages";
 
 	}

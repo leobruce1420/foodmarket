@@ -96,8 +96,8 @@ public class WorkProductService {
 		return null;
 	}
 	//商品查詢種類不分頁
-	public List<WorkProduct> findByProductcategoryKey(String productcategory) {
-		List<WorkProduct> page = productDao.findByProductcategoryKey(productcategory);
+	public List<WorkProduct> findByProductcategoryKey(Integer categoryid) {
+		List<WorkProduct> page = productDao.findByProductcategoryKey(categoryid);
 
 //		if(page.isPresent()) {
 //			return page.get();

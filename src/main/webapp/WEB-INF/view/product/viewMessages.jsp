@@ -133,13 +133,6 @@ img {
 					</form:form>
 					<br />
 				</div>
-				<%-- 	<form:form action="${contextRoot}/product/productid" method="get"> --%>
-				<!-- 	<div class="div1"> -->
-				<!-- 				<label for="id" class="id">商品ID查詢 : </label>  -->
-				<!-- 				<input type="text" id="name" name="productid" autocomplete="off" required /> -->
-				<!-- 				<input type="submit" value="查詢"> -->
-				<!-- 			</div> -->
-				<%-- 			</form:form> --%>
 
 				<hr />
 
@@ -148,18 +141,6 @@ img {
 				<hr />
 
 				<div class="col-18">
-
-					<!-- 					<div class="card"> -->
-					<!-- 						<div class="card-header"> -->
-					<!-- 							最新訊息(時間) -->
-					<%-- 							<fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-					<%-- 								value="${workMessage.added}" /> --%>
-					<!-- 						</div> -->
-					<!-- 						<div class="card-body"> -->
-					<%-- 							<c:out value="${workMessage.text}" /> --%>
-
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 					<table class="table table-hover">
 						<thead class="thead-light">
 							<tr>
@@ -203,7 +184,9 @@ img {
 											value="${workProduct.takedown}" /></td>
 									<%-- 							<c:forEach var="productcategoryBean" items="${pcage.content}">	 --%>
 									<td style="text-align: center;"><c:out
-											value="${workProduct.productcategoryid}" /></td>
+											value="${workProduct.productcategoryBean.productcategoryname}" /></td>
+											
+<%-- 											<c:out value="${workProduct.productcategoryBean.productcategoryname}"></c:out> --%>
 									<%-- 								</c:forEach> --%>
 									<td style="text-align: center;"><div>
 											<a
