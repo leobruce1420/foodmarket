@@ -94,7 +94,7 @@ public class ProductPageController {
 		model.addAttribute("workProduct", workProduct);
 		model.addAttribute("lastestpMsg", lastestpMsg);
 		model.addAttribute("lastestpcMsg", lastestpcMsg);
-		model.addAttribute("productcategoryBean", new productcategoryBean());
+//		model.addAttribute("productcategoryBean", new productcategoryBean());
 		return "product/addMessage";
 	}
 	//=================================================================

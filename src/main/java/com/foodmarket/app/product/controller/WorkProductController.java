@@ -172,7 +172,7 @@ public class WorkProductController {
 	@PostMapping("product/editProduct")
 	public String postMessage(@RequestParam("productid") Long productid, 
 			@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productcategory")  String productcategory,
 			 @RequestParam("productprice") Integer productprice,
 			 @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam("productdesciption") String productdesciption,
@@ -190,7 +190,7 @@ public class WorkProductController {
 		
 //		productcategoryBean.setCategoryid(productcategoryid);
 		workProduct.setProductname(productname);
-		workProduct.setProductcategory(productcategory);
+//		workProduct.setProductcategory(productcategory);
 		workProduct.setProductprice(productprice);
 		workProduct.setAdministrator(administrator);
 		workProduct.setProductdesciption(productdesciption);
