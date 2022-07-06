@@ -60,8 +60,9 @@ public class WorkProduct {
 	@Column(name="takedown", columnDefinition = "nvarchar(5)")
 	private String takedown;
 	
-	@Column(name="productcategoryid", columnDefinition = "int")
-	private Integer productcategoryid;
+	@Transient
+	@Column(name="categoryid", columnDefinition = "int")
+	private Integer categoryid;
 	
 //	@Transient
 //	private String productcategoryname;
@@ -109,14 +110,15 @@ public class WorkProduct {
 		this.productcategoryBean = productcategoryBean;
 	}
 
-	public Integer getProductcategoryid() {
-		return productcategoryid;
+
+
+	public Integer getCategoryid() {
+		return categoryid;
 	}
 
-	public void setProductcategoryid(Integer productcategoryid) {
-		this.productcategoryid = productcategoryid;
+	public void setCategoryid(Integer categoryid) {
+		this.categoryid = categoryid;
 	}
-
 
 	public Long getProductid() {
 		return productid;

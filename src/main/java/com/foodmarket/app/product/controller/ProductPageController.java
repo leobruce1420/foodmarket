@@ -215,10 +215,10 @@ public class ProductPageController {
 //	管理員商品種類查詢分頁 測試
 	@GetMapping("product/productcategory")
 	public ModelAndView Productcategory(ModelAndView mav,
-			@RequestParam(required = false, value = "productcategory") String productcategory,
+			@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		Page<WorkProduct> page = pmsgService.findByProductcategorypage(productcategory, pageNumber);
+		Page<WorkProduct> page = pmsgService.findByProductcategorypage(categoryid, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 //		model.addAttribute("productcategorytakeon", productcategorytakeon);

@@ -34,7 +34,7 @@ public class WorkProductController {
 	// 新增商品 join
 	@PostMapping("postProduct")
 	public String addMessage(@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productcategory")  String productcategory,
 			 @RequestParam("productprice") Integer productprice,
 			 @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam("productdesciption") String productdesciption,
@@ -60,14 +60,12 @@ public class WorkProductController {
 			productcategoryBean.setCategoryid(productcategoryid);
 			
 			workProduct.setProductname(productname);
-			workProduct.setProductcategory(productcategory);
+//			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
 			workProduct.setAdministrator(administrator);
 			workProduct.setProductdesciption(productdesciption);
 			workProduct.setInventoryquantity(inventoryquantity);
 			workProduct.setTakedown(takedown);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
 //			workProduct.setProductcategoryid(productcategoryid);
 //			workProduct.setProductcategoryBean(productcategoryBean);
 			workProduct.setProductcategoryBean(productcategoryBean);
@@ -181,13 +179,16 @@ public class WorkProductController {
 			 @RequestParam("administrator") String administrator,
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 			 @RequestParam("takedown") String takedown,
-			 @RequestParam("productcategoryid") Integer productcategoryid,
+//			 @RequestParam("categoryid") Integer categoryid,
 			 @RequestParam(required = false, value = "takeon") String takeon,
 			 Model m) throws IOException {
 		WorkProduct workProduct = pmsgService.findById(productid);
 		Util method = new Util();
 //		WorkProduct newworkProduct = new WorkProduct();
-
+//		newworkProduct.setCategoryid(categoryid);
+//		productcategoryBean productcategoryBean = new productcategoryBean();
+		
+//		productcategoryBean.setCategoryid(productcategoryid);
 		workProduct.setProductname(productname);
 		workProduct.setProductcategory(productcategory);
 		workProduct.setProductprice(productprice);
@@ -195,8 +196,8 @@ public class WorkProductController {
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
 		workProduct.setTakedown(takedown);
-		workProduct.setProductdesciption(productdesciption);
-		workProduct.setInventoryquantity(inventoryquantity);
+//		workProduct.setProductcategoryid(productcategoryid);
+//		workProduct.setProductcategoryBean(productcategoryBean);
 		
 		if(!mf.isEmpty()) {
 		byte[] imgBytes = mf.getBytes();

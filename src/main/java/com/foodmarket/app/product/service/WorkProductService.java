@@ -108,9 +108,9 @@ public class WorkProductService {
 	
 	
 	//商品查詢種類分頁
-	public Page<WorkProduct> findByProductcategorypage(String productcategorypage,Integer pageNumber) {
+	public Page<WorkProduct> findByProductcategorypage(Integer categoryid,Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "added");
-		Page<WorkProduct> page = productDao.findByProductcategorypage(productcategorypage,pgb);
+		Page<WorkProduct> page = productDao.findByProductcategorypage(categoryid,pgb);
 		
 //		if(page.isPresent()) {
 //			return page.get();

@@ -56,6 +56,18 @@
 <!-- 										<option value="海鮮">海鮮</option> -->
 <%-- 									</form:select> --%>
 								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
+									</div>
+									<form:input class="form-control" id="inputGroupSelect01"
+										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>
+<!-- 										<option value="蔬菜類">蔬菜類</option> -->
+<!-- 										<option value="水果類">水果類</option> -->
+<!-- 										<option value="肉品">肉品</option> -->
+<!-- 										<option value="海鮮">海鮮</option> -->
+<%-- 									</form:select> --%>
+								</div>
 							</div>
 									價格
 									<form:input path="productprice" class="form-control" />

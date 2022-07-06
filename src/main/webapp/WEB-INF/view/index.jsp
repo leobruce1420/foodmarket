@@ -427,7 +427,7 @@ ul.social-network li {
 								<c:forEach var="productcategorytakeon"
 									items="${productcategorytakeon}">
 									<li><a
-										href="${contextRoot}/product/category?productcategory=${productcategorytakeon.productcategoryname}">${productcategorytakeon.productcategoryname}</a></li>
+										href="${contextRoot}/product/category?categoryid=${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</a></li>
 								</c:forEach>
 							</ul>
 						</div>

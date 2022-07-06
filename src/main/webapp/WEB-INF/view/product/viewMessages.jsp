@@ -117,7 +117,7 @@ img {
 								<c:forEach var="productcategorytakeon"
 									items="${productcategorytakeon}">
 									<a class="dropdown-item "
-										href="${contextRoot}/product/productcategory?productcategory=${productcategorytakeon.productcategoryname}">
+										href="${contextRoot}/product/productcategory?categoryid=${productcategorytakeon.categoryid}">
 										${productcategorytakeon.productcategoryname} </a>
 								</c:forEach>
 <!-- 								<a class="dropdown-item" -->
@@ -147,13 +147,13 @@ img {
 								<th scope="col" style="text-align: center;">商品ID</th>
 								<th scope="col" style="text-align: center;">商品名稱</th>
 								<th scope="col" style="text-align: center;">商品類別</th>
+<!-- 								<th scope="col" style="text-align: center;">商品類別</th> -->
 								<th scope="col" style="text-align: center;">價格</th>
 								<th scope="col" style="text-align: center;">商品圖片</th>
 								<th scope="col" style="text-align: center;">新增日期</th>
 								<th scope="col" style="text-align: center;">商品介紹</th>
 								<th scope="col" style="text-align: center;">庫存數量</th>
 								<th scope="col" style="text-align: center;">上下架</th>
-								<th scope="col" style="text-align: center;">商品種類</th>
 								<th scope="col" style="text-align: center;">功能</th>
 							</tr>
 						</thead>
@@ -165,7 +165,9 @@ img {
 									<td style="text-align: center;"><c:out
 											value="${workProduct.productname}" /></td>
 									<td style="text-align: center;"><c:out
-											value="${workProduct.productcategory}" /></td>
+											value="${workProduct.productcategoryBean.productcategoryname}" /></td>
+<%-- 									<td style="text-align: center;"><c:out --%>
+<%-- 											value="${workProduct.productcategory}" /></td> --%>
 									<td style="text-align: center;"><c:out
 											value="${workProduct.productprice}" /></td>
 									<td style="text-align: center;"><img
@@ -183,8 +185,6 @@ img {
 									<td style="text-align: center;"><c:out
 											value="${workProduct.takedown}" /></td>
 									<%-- 							<c:forEach var="productcategoryBean" items="${pcage.content}">	 --%>
-									<td style="text-align: center;"><c:out
-											value="${workProduct.productcategoryBean.productcategoryname}" /></td>
 											
 <%-- 											<c:out value="${workProduct.productcategoryBean.productcategoryname}"></c:out> --%>
 									<%-- 								</c:forEach> --%>

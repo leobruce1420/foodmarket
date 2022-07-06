@@ -6,6 +6,19 @@
 
 <jsp:include page="../layout/adminNavbar.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<script>
+	$(function() {
+		$("#autokeyin").click(function() {
+			document.getElementById("productname").value = "逗貓棒";
+			document.getElementById("categoryid").selectedIndex = "1";
+			document.getElementById("productprice").value = "200";
+			document.getElementById("takedown").selectedIndex = "0";
+			document.getElementById("productdesciption").value = "逗貓棒";
+		});
+	});
+
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <main role="main" class="col-md-6  ml-sm-auto  ">
 	<h1 class="h1">新增商品頁面</h1>
 </main>
@@ -14,6 +27,63 @@
 	class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
 	<div class="container">
 
+		<br />
+
+		<p />
+
+		<div class="row justify-content-center">
+			<div class="col-9">
+
+				<div class="card">
+					<div class="card-header">最新新增商品資訊</div>
+					<div class="card-body">
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">商品名稱</th>
+									<th scope="col">商品類別</th>
+									<th scope="col">價格</th>
+									<th scope="col">商品圖片</th>
+									<th scope="col">新增日期</th>
+									<th scope="col">商品介紹</th>
+									<th scope="col">庫存數量</th>
+									<th scope="col">上下架</th>
+									<!-- 									<th scope="col">商品類別</th> -->
+									<!-- 								<th scope="col">修改人員</th> -->
+								</tr>
+							</thead>
+							<tr>
+								<td><c:out value="${lastestpMsg.productname}" /></td>
+								<%-- 								<td><c:out value="${lastestpMsg.productcategory}" /></td> --%>
+								<td style="text-align: center;"><c:out
+										value="${lastestpMsg.productcategoryBean.productcategoryname}" /></td>
+								<td><c:out value="${lastestpMsg.productprice}" /></td>
+								<td>
+									<%--       <c:out value="${lastestpMsg.productimg}" /> --%> <img
+									style="width: 100px; height: 100px;"
+									src="data:image/image/*;base64,${lastestpMsg.productimg}"
+									alt="image" />
+								</td>
+								<td><fmt:formatDate
+										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
+										value="${lastestpMsg.added}" /></td>
+								<%-- 							<td><c:out value="${lastestpMsg.administrator}" /></td> --%>
+								<td><c:out value="${lastestpMsg.productdesciption}" /></td>
+								<td><c:out value="${lastestpMsg.inventoryquantity}" /></td>
+								<td><c:out value="${lastestpMsg.takedown}" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+		<br />
+
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card">
@@ -21,9 +91,9 @@
 					<div class="card-body">
 
 						<%--   <form:form class="form" method="post" action="${contextRoot}/postMessage" modelAttribute="workMessages"> --%>
-						<form:form class="form" method="post"
+						<form:form class="form" method="post" 
 							action="${contextRoot}/postProduct" modelAttribute="workProduct"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" id="test2">
 
 							<div class="form-group">
 								<div>
@@ -31,65 +101,67 @@
 										<label class="input-group-text" for="inputGroupSelect01">商品名稱</label>
 										<%--   <form:textarea path="text" class="form-control"/> --%>
 										<%--   <form:textarea path="productname" class="form-control"/> --%>
-										<form:input path="productname" class="form-control" />
+										<form:input path="productname" id="productname"
+											class="form-control" />
 									</div>
 								</div>
 								<br />
+								<!-- 								<div> -->
+								<!-- 									<div class="input-group mb-3"> -->
+								<!-- 										<div class="input-group-prepend"> -->
+								<!-- 											<label class="input-group-text" for="inputGroupSelect01">商品類別</label> -->
+								<!-- 										</div> -->
+								<%-- 										<form:select class="custom-select" id="inputGroupSelect01" --%>
+								<%-- <%-- 											path="productcategory"> --%>
+								<%-- 											<option value="蔬菜類">蔬菜類</option> --%>
+								<%-- 											<option value="水果類">水果類</option> --%>
+								<%-- 											<option value="肉品">肉品</option> --%>
+								<%-- 											<option value="海鮮">海鮮</option> --%>
+								<%-- <%-- 										</form:select> --%>
+								<%-- 									</div> --%>
+								<!-- 								</div> -->
+
+								<!-- 								<br /> -->
+
 								<div>
+									<%-- 									<form:form class="form" method="post" --%>
+									<%--  										action="${contextRoot}/postProduct"  --%>
+									<%-- 										modelAttribute="WorkProduct"  --%>
+									<%-- 										enctype="multipart/form-data">  --%>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
 										</div>
-										<form:select class="custom-select" id="inputGroupSelect01"
-											path="productcategory">
-											<option value="蔬菜類">蔬菜類</option>
-											<option value="水果類">水果類</option>
-											<option value="肉品">肉品</option>
-											<option value="海鮮">海鮮</option>
-										</form:select>
+										<select class="custom-select" id="categoryid"
+											name="productcategoryid">
+											<c:forEach var="productcategorytakeon"
+												items="${productcategorytakeon}">
+												<c:choose>
+													<c:when
+														test="${WorkProduct.productcategoryid == productcategorytakeon.categoryid}">
+														<option selected="selected"
+															value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>
+													</c:otherwise>
+												</c:choose>
+
+												<%-- 													<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>  --%>
+											</c:forEach>
+										</select>
+										<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="categoryid"> --%>
+										<%-- 										<c:forEach var="productcategorytakeon" items="${productcategorytakeon}">  --%>
+										<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
+										<%-- 								</c:forEach>  --%>
+										<%--  									</form:select>   --%>
+										<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="productcategoryid"> --%>
+										<!-- 									<option value="蔬菜類">蔬菜類</option> -->
+										<%-- 										<form:options var="productcategorytakeon" items="${productcategorytakeon}" itemLabel="productcategoryid" itemValue="productcategoryid" htmlEscape="false"/>  --%>
+										<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
+										<%--  									</form:select>   --%>
 									</div>
-								</div>
-
-								<br />
-
-								<div>
-<%-- 									<form:form class="form" method="post" --%>
-<%--  										action="${contextRoot}/postProduct"  --%>
-<%-- 										modelAttribute="WorkProduct"  --%>
-<%-- 										enctype="multipart/form-data">  --%>
-									<div class="input-group mb-3"> 
-											<div class="input-group-prepend"> 
-												<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
-											</div>
-											<select class="custom-select" id="productcategoryid" name="productcategoryid">
-												<c:forEach var="productcategorytakeon"
- 													items="${productcategorytakeon}"> 
-													<c:choose> 
-														<c:when 
-															test="${WorkProduct.productcategoryid == productcategorytakeon.categoryid}"> 
-															<option selected="selected"
-																value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> 
- 														</c:when> 
-														<c:otherwise> 
-															<option value="${productcategorytakeon.categoryid}" >${productcategorytakeon.productcategoryname}</option> 
-														</c:otherwise>
- 													</c:choose> 
-
-<%-- 													<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>  --%>
-												</c:forEach> 
- 											</select> 
-											<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="categoryid"> --%>
-											<%-- 										<c:forEach var="productcategorytakeon" items="${productcategorytakeon}">  --%>
-											<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
-											<%-- 								</c:forEach>  --%>
-											<%--  									</form:select>   --%>
-											<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="productcategoryid"> --%>
-											<!-- 									<option value="蔬菜類">蔬菜類</option> -->
-											<%-- 										<form:options var="productcategorytakeon" items="${productcategorytakeon}" itemLabel="productcategoryid" itemValue="productcategoryid" htmlEscape="false"/>  --%>
-											<%-- 									<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
-											<%--  									</form:select>   --%>
-										</div>
-<%-- 									</form:form> --%>
+									<%-- 									</form:form> --%>
 								</div>
 
 								<br />
@@ -98,7 +170,8 @@
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">價格</label>
 									</div>
-									<form:input path="productprice" class="form-control" />
+									<form:input path="productprice" id="productprice"
+										class="form-control" />
 								</div>
 								<!-- 							價格 -->
 								<%-- 							<form:input path="productprice" class="form-control" /> --%>
@@ -110,12 +183,12 @@
 								<div>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text" for="inputGroupSelect01">上下架</label>
+											<label class="input-group-text" for="takedown">上下架</label>
 										</div>
-										<form:select class="custom-select" id="inputGroupSelect01"
+										<form:select class="custom-select" id="takedown"
 											path="takedown">
-											<option value="上架中">上架</option>
-											<option value="已下架">下架</option>
+											<option value="上架中">直接上架</option>
+											<option value="已下架">暫不上架</option>
 										</form:select>
 									</div>
 								</div>
@@ -143,14 +216,15 @@
 
 								<div>
 									<label class="input-group-text" for="inputGroupSelect01">商品介紹</label>
-									<form:textarea path="productdesciption" class="form-control" />
+									<form:textarea path="productdesciption" id="productdesciption"
+										class="form-control" />
 								</div>
 
 								<br />
 
 								<div>
 									<label class="input-group-text" for="inputGroupSelect01">庫存數量</label>
-									<form:input path="inventoryquantity" class="form-control" />
+									<form:input path="inventoryquantity" id="" class="form-control" />
 								</div>
 
 								<br />
@@ -220,99 +294,39 @@
 
 							</div>
 							<br />
-							<input type="submit" name="submit" value="新增商品">
+							<input id="test" class="btn btn-primary" type="submit" 
+								value="新增商品">
 
 						</form:form>
+						<div class="btn-group d-flex" role="group">
+							<button id="autokeyin" class="btn btn-light" type="submit">輸入商品資訊</button>
+						</div>
 
+						<script>
+							document.getElementById('test').addEventListener(
+									'click', function() {
+										event.preventDefault();
+										Swal.fire({
+											position : 'center',
+											icon : 'success',
+											title : '商品新增完成',
+											showConfirmButton : false,
+											timer : 2000
+										}).then(function(isConfirm) {
+											if (isConfirm) {
+												$("#test2").submit();
+											}
+										})
+									})
+ 					</script>  
 					</div>
-					<!-- 				<table class="table"> -->
-					<!-- 					<thead class="thead-light"> -->
-					<!-- 						<tr> -->
-					<!-- 							<th scope="col">#</th> -->
-					<!-- 							<th scope="col">First</th> -->
-					<!-- 							<th scope="col">Last</th> -->
-					<!-- 							<th scope="col">Handle</th> -->
-					<!-- 						</tr> -->
-					<!-- 					</thead> -->
-					<!-- 					<tbody> -->
-					<!-- 						<tr> -->
-					<!-- 							<th scope="row">1</th> -->
-					<!-- 							<td>Mark</td> -->
-					<!-- 							<td>Otto</td> -->
-					<!-- 							<td>@mdo</td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<th scope="row">2</th> -->
-					<!-- 							<td>Jacob</td> -->
-					<!-- 							<td>Thornton</td> -->
-					<!-- 							<td>@fat</td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<th scope="row">3</th> -->
-					<!-- 							<td>Larry</td> -->
-					<!-- 							<td>the Bird</td> -->
-					<!-- 							<td>@twitter</td> -->
-					<!-- 						</tr> -->
-					<!-- 					</tbody> -->
-					<!-- 				</table> -->
 				</div>
 
 			</div>
 
 		</div>
 
-		<p />
 
-		<div class="row justify-content-center">
-			<div class="col-9">
-
-				<div class="card">
-					<div class="card-header">最新新增商品資訊</div>
-					<div class="card-body">
-						<table class="table">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">商品名稱</th>
-									<th scope="col">商品類別</th>
-									<th scope="col">價格</th>
-									<th scope="col">商品圖片</th>
-									<th scope="col">新增日期</th>
-									<th scope="col">商品介紹</th>
-									<th scope="col">庫存數量</th>
-									<th scope="col">上下架</th>
-									<th scope="col">商品類別</th>
-									<!-- 								<th scope="col">修改人員</th> -->
-								</tr>
-							</thead>
-							<tr>
-								<td><c:out value="${lastestpMsg.productname}" /></td>
-								<td><c:out value="${lastestpMsg.productcategory}" /></td>
-								<td><c:out value="${lastestpMsg.productprice}" /></td>
-								<td>
-									<%--       <c:out value="${lastestpMsg.productimg}" /> --%> <img
-									style="width: 100px; height: 100px;"
-									src="data:image/image/*;base64,${lastestpMsg.productimg}"
-									alt="image" />
-								</td>
-								<td><fmt:formatDate
-										pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE"
-										value="${lastestpMsg.added}" /></td>
-								<%-- 							<td><c:out value="${lastestpMsg.administrator}" /></td> --%>
-								<td><c:out value="${lastestpMsg.productdesciption}" /></td>
-								<td><c:out value="${lastestpMsg.inventoryquantity}" /></td>
-								<td><c:out value="${lastestpMsg.takedown}" /></td>
-								<td style="text-align: center;">
-								<c:out value="${workProduct.productcategoryBean.productcategoryname}" /></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-
-
-
-			</div>
-
-		</div>
 
 
 	</div>

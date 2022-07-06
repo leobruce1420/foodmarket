@@ -76,7 +76,7 @@ table, td {
 
 							<c:forEach var="workProduct" items="${workProduct}">
 								<div class="col-md-4">
-									<div class="card mb-4 shadow-sm text-center">
+									<div class="card-group mb-4 shadow-sm text-center  h-100">
 										<div class="card-body ">
 											<a
 												href="${contextRoot}/product/product?productid=${workProduct.productid}">
