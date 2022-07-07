@@ -980,7 +980,8 @@ function insertProduct(pId,cId) {
 // 				location.reload();
 			})	
 	}else{
-		alert("請先登入")	
+		alert("請先登入");
+		location.href='${contextRoot}/login';
 	}
 		}
 

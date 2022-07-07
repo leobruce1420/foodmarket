@@ -5,10 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../layout/adminNavbar.jsp" />
 
-<<<<<<< HEAD
+
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-=======
->>>>>>> d6717ff9badee137d7602dcf5033f64e5060ca24
+
 
 <!DOCTYPE html>
 <html>
@@ -21,10 +20,7 @@
 
 <%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" /> --%>
 <link href="${contextRoot}/css/shopcar.css" rel="stylesheet" />
-<<<<<<< HEAD
 
-=======
->>>>>>> d6717ff9badee137d7602dcf5033f64e5060ca24
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
