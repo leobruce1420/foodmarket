@@ -89,7 +89,7 @@ function checkRobot(){
     }
 }
 
-$('#mail').blur(function(){
+$('#mail').keyup(function(){
 	var mailInput = $('#mail').val();
 	var pattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,4})*$/;
 
