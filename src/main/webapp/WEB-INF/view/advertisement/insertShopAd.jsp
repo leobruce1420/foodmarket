@@ -89,8 +89,8 @@
 					<input type="submit" id="submit" class="btn btn-outline-info"
 						value="確定" /> <input class="btn btn-outline-danger" type="button"
 						name="back" value="返回" onClick="javascript:history.back()">
-						<a href="${contextRoot}/info/insert"><input class="btn btn-outline-success" type="button"
-						name="back" value="輸入"></a>
+						<input class="btn btn-outline-success" type="button" id="input"
+						name="back" value="輸入">
 				</div>
 			</form:form>
 		</div>
@@ -116,6 +116,12 @@
 				form.remLen.value = maxLen - form.remark.value.length;
 		}
 		//
+		
+		$('#input').click(function(){
+    		$('#shopAdName').val('石斑感謝祭');
+    		$('#remark').val('一人一石斑，救救產銷班');
+    		$('#shopUrl').val('gfshrjset');    		
+    	})
 	</script>
 </body>
 </html>
