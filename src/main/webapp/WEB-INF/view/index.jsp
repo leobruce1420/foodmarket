@@ -15,6 +15,22 @@
 <title>HOME</title>
 </head>
 <style>
+html { 
+            			height: 100%; 
+     					} 
+                    body {
+                        background-image: url("<c:url value="/img/image4.jpg"/>");
+                        background-repeat: no-repeat;
+                        background-attachment:fixed;
+                        background-position: 50% 50%;
+                        background-size: 100% 100%;
+                    }
+/*                背景滿版    */
+
+                    .swiper-container {
+                        width: 830px;
+                        height: 370px;
+                    }
 footer {
 	background: #16222A;
 	background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
