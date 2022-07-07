@@ -48,8 +48,8 @@ table, td {
 	<!-- 					type="submit" value="查詢"> -->
 	<!-- 			</div> -->
 	<br />
-<div class="container">
-	<div class="album py-5 bg-light">
+<div class="container"style="background-color:transparent">
+	<div class="album py-5 "style="background-color:transparent">
 		<div class="container">
 			<div class="row">
 
