@@ -84,7 +84,7 @@ public class ProductPageController {
 //		return "index";
 //		
 //	}
-//inner join
+//inner join===========================================================
 	@GetMapping("product/add")
 	public String addcategoryPage(@RequestParam(required = false, value = "takeon") String takeon,
 			Model model) {
@@ -98,9 +98,23 @@ public class ProductPageController {
 		model.addAttribute("workProduct", workProduct);
 		model.addAttribute("lastestpMsg", lastestpMsg);
 		model.addAttribute("lastestpcMsg", lastestpcMsg);
-		model.addAttribute("productcategoryBean", new productcategoryBean());
+//		model.addAttribute("productcategoryBean", new productcategoryBean());
 		return "product/addMessage";
 	}
+	//=================================================================
+//	@GetMapping("product/add")
+//	public ModelAndView addcategoryPage(ModelAndView mav,
+//			@RequestParam(required = false, value = "takeon") String takeon) {
+//		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//
+//		mav.getModel().put("productcategorytakeon", productcategorytakeon);
+//		mav.setViewName("product/addMessage");
+////		mav.setViewName("index");
+//		return mav;
+//	}
+	
+	
+	//==============================================================
 	// 好的
 //	@GetMapping("product/add")
 //	public String addMessagePage(Model model) {
@@ -146,7 +160,6 @@ public class ProductPageController {
 		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByPage(pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
-//		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("page", cpage);
 		mav.getModel().put("page", page);
@@ -206,10 +219,10 @@ public class ProductPageController {
 //	管理員商品種類查詢分頁 測試
 	@GetMapping("product/productcategory")
 	public ModelAndView Productcategory(ModelAndView mav,
-			@RequestParam(required = false, value = "productcategory") String productcategory,
+			@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		Page<WorkProduct> page = pmsgService.findByProductcategorypage(productcategory, pageNumber);
+		Page<WorkProduct> page = pmsgService.findByProductcategorypage(categoryid, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 //		model.addAttribute("productcategorytakeon", productcategorytakeon);
@@ -234,13 +247,13 @@ public class ProductPageController {
 //	}
 //	消費者商品種類查詢無分頁 跳頁顯示 join
 	@GetMapping("product/category")
-	public String viewProductcategory(@RequestParam(required = false, value = "productcategory") String productcategory,
+	public String viewProductcategory(@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon, Model m) {
-		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(categoryid);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 		m.addAttribute("productcategorytakeon", productcategorytakeon);
 		m.addAttribute("workProduct", workProduct);
-		m.addAttribute("productcategory", productcategory);
+		m.addAttribute("categoryid", categoryid);
 		return "product/viewcategoryMessages";
 
 	}

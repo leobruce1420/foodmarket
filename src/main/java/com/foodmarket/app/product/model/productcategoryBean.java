@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="productcategorys")//srcmail/resources裡application 的 spring.jpa.hibernate.ddl-auto=update
@@ -33,8 +35,9 @@ public class productcategoryBean {
 	@Column(name="takeon", columnDefinition = "nvarchar(10)")
 	private String takeon;
 	
-//	@OneToMany(fetch = FetchType.LAZY,mappedBy = "productcategory",cascade =CascadeType.ALL)
-//	private List<WorkProduct> products = new LinkedList<WorkProduct>();
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "productcategoryBean",cascade =CascadeType.ALL)
+	private List<WorkProduct> products = new LinkedList<WorkProduct>();
 	
 //	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 //	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") // Spring MVC 用
@@ -66,16 +69,16 @@ public class productcategoryBean {
 //		this.added = added;
 //	}
 
-//	public List<WorkProduct> getProducts() {
-//		return products;
-//	}
-//
-//
-//
-//
-//	public void setProducts(List<WorkProduct> products) {
-//		this.products = products;
-//	}
+	public List<WorkProduct> getProducts() {
+		return products;
+	}
+
+
+
+
+	public void setProducts(List<WorkProduct> products) {
+		this.products = products;
+	}
 
 
 

@@ -77,7 +77,7 @@ img {
 	</main>
 	<div
 		class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
-		<div class="container">
+		<div class="container-fluid">
 
 
 			<div class="row justify-content-center">
@@ -117,7 +117,7 @@ img {
 								<c:forEach var="productcategorytakeon"
 									items="${productcategorytakeon}">
 									<a class="dropdown-item "
-										href="${contextRoot}/product/productcategory?productcategory=${productcategorytakeon.productcategoryname}">
+										href="${contextRoot}/product/productcategory?categoryid=${productcategorytakeon.categoryid}">
 										${productcategorytakeon.productcategoryname} </a>
 								</c:forEach>
 <!-- 								<a class="dropdown-item" -->
@@ -133,13 +133,6 @@ img {
 					</form:form>
 					<br />
 				</div>
-				<%-- 	<form:form action="${contextRoot}/product/productid" method="get"> --%>
-				<!-- 	<div class="div1"> -->
-				<!-- 				<label for="id" class="id">商品ID查詢 : </label>  -->
-				<!-- 				<input type="text" id="name" name="productid" autocomplete="off" required /> -->
-				<!-- 				<input type="submit" value="查詢"> -->
-				<!-- 			</div> -->
-				<%-- 			</form:form> --%>
 
 				<hr />
 
@@ -148,31 +141,19 @@ img {
 				<hr />
 
 				<div class="col-18">
-
-					<!-- 					<div class="card"> -->
-					<!-- 						<div class="card-header"> -->
-					<!-- 							最新訊息(時間) -->
-					<%-- 							<fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E EEEE" --%>
-					<%-- 								value="${workMessage.added}" /> --%>
-					<!-- 						</div> -->
-					<!-- 						<div class="card-body"> -->
-					<%-- 							<c:out value="${workMessage.text}" /> --%>
-
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 					<table class="table table-hover">
 						<thead class="thead-light">
 							<tr>
 								<th scope="col" style="text-align: center;">商品ID</th>
 								<th scope="col" style="text-align: center;">商品名稱</th>
 								<th scope="col" style="text-align: center;">商品類別</th>
+<!-- 								<th scope="col" style="text-align: center;">商品類別</th> -->
 								<th scope="col" style="text-align: center;">價格</th>
 								<th scope="col" style="text-align: center;">商品圖片</th>
 								<th scope="col" style="text-align: center;">新增日期</th>
 								<th scope="col" style="text-align: center;">商品介紹</th>
 								<th scope="col" style="text-align: center;">庫存數量</th>
 								<th scope="col" style="text-align: center;">上下架</th>
-								<th scope="col" style="text-align: center;">商品種類</th>
 								<th scope="col" style="text-align: center;">功能</th>
 							</tr>
 						</thead>
@@ -184,7 +165,9 @@ img {
 									<td style="text-align: center;"><c:out
 											value="${workProduct.productname}" /></td>
 									<td style="text-align: center;"><c:out
-											value="${workProduct.productcategory}" /></td>
+											value="${workProduct.productcategoryBean.productcategoryname}" /></td>
+<%-- 									<td style="text-align: center;"><c:out --%>
+<%-- 											value="${workProduct.productcategory}" /></td> --%>
 									<td style="text-align: center;"><c:out
 											value="${workProduct.productprice}" /></td>
 									<td style="text-align: center;"><img
@@ -202,8 +185,8 @@ img {
 									<td style="text-align: center;"><c:out
 											value="${workProduct.takedown}" /></td>
 									<%-- 							<c:forEach var="productcategoryBean" items="${pcage.content}">	 --%>
-									<td style="text-align: center;"><c:out
-											value="${workProduct.productcategoryid}" /></td>
+											
+<%-- 											<c:out value="${workProduct.productcategoryBean.productcategoryname}"></c:out> --%>
 									<%-- 								</c:forEach> --%>
 									<td style="text-align: center;"><div>
 											<a
