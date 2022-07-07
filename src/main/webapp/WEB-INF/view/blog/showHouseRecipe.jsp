@@ -13,19 +13,47 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/recipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
+	div.recipe_details ul {
+		background: rgb(61, 61, 61);
+		display: flex;
+		flex-wrap: wrap;
+		margin:24px 0;
+		padding: 12px 5%;
+	}
 
+	div.recipe_details ul li {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		min-width: 33%;
+		padding: 24px;
+		color:	#E6B800;
+	}
+	td.ingredients{
+	min-width:350px;
+	max-width:350px;
+	padding:10px;
+	}
 
 </style>
 </head>
 <body>
+<div class="background">
  <div class="row justify-content-center">
-  	<div class="col-4" style="border: solid;margin-top:10px;">
+  	<div class="col-4" style="border: solid;margin-top:10px;background-color: white;">
 		<div id="showarea">
 			<div id="showvalue">
 			輸入方塊
 			</div>
 		</div>
 	</div>
+ </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
@@ -40,11 +68,13 @@ $(document).ready(function() {
 		el.innerHTML = '<h1>'+json.postTitle+'</h1><br>'
 // 					+'<button id="likebutton" class="btn btn-info" style="display:block">♥  '+json.postLikeTime+' 把食譜加入收藏</button><br>'
 					+'<button id="disLikeButton" class="btn btn-danger" style="display:block">♥  '+json.postLikeTime+' 移除收藏</button><br>'
-					+'<img src="'+json.postImage+'" alt="recipeImg"  width="470px" height="340px" float="left">'
-					+'<br><br><br><p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">烹飪時間: '+json.cookTime+'</p>'
-					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">份量: '+json.serving+'人份</p>'
-					+'<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">喜歡人數: '+json.postLikeTime+'</p>'
-					+'<br><br><br><br><br><p>食材準備:<br>'+json.ingredients+' <input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertManyProduct(${loginUserId})">'
+					+'<img src="'+json.postImage+'" alt="recipeImg"  width="480px" height="340px" float="left">'
+					+'<div class="recipe_details">'
+					+'<ul><li><span>預計份量</span>'+json.serving+'</li>'
+					+'<li><span>烹飪時間</span>'+json.cookTime+'</li>'
+					+'<li><span>收藏人數</span>'+json.postLikeTime+'</li>'
+					+'</ul></div>'
+					+'<table>食材準備:<td class="ingredients">'+json.ingredients+'</td><td><input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertManyProduct(${loginUserId})"></td></table>'
 					+json.postText
 					+'<br><br><br><br><div style="text-align: center"><a href="${contextRoot}/lock/recipe/memberHouse" ><p>返回個人頁面</p></a></div>';
 					
@@ -86,12 +116,14 @@ $(document).ready(function() {
 		        console.log("按下討厭按鈕的"+result)
 		          recipe_data = ''
 		          recipe_data += '<h1>'+result.postTitle+'</h1><br>'
-		          recipe_data +='<button id="likebutton" class="btn btn-info" style="display:block">♥  '+result.postLikeTime+' 移除收藏</button><br>'
-		          recipe_data +='<img src="'+result.postImage+'" alt="recipeImg"  width="470px" height="340px" float="left">'
-		          recipe_data +='<br><br><br><p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">烹飪時間: '+result.cookTime+'</p>'
-		          recipe_data +='<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">份量: '+result.serving+'人份</p>'
-		          recipe_data +='<p style="border: thick double #32a1ce;padding:20px;float:left;margin-left:10px">喜歡人數: '+result.postLikeTime+'</p>'
-		          recipe_data +='<br><br><br><br><br><p>食材準備:<br>'+result.ingredients+' <input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertManyProduct(${loginUserId})">'
+		          recipe_data +='<button id="likebutton" class="btn btn-info" style="display:block">♥  '+result.postLikeTime+' 把食譜加入收藏</button><br>'
+		          recipe_data +='<img src="'+result.postImage+'" alt="recipeImg"  width="480px" height="340px" float="left">'
+		          recipe_data +='<div class="recipe_details">'
+			      recipe_data +='<ul><li><span>預計份量</span>'+json.serving+'</li>'
+			      recipe_data +='<li><span>烹飪時間</span>'+json.cookTime+'</li>'
+			      recipe_data +='<li><span>收藏人數</span>'+json.postLikeTime+'</li>'
+			      recipe_data +='</ul></div>'
+			      recipe_data +='<table>食材準備:<td class="ingredients">'+json.ingredients+'</td><td><input class="insertProductBtn btn btn-success" type="button" value="加入購物車" onclick="insertManyProduct(${loginUserId})"></td></table>'
 		          recipe_data += result.postText;
 		          recipe_data +='<br><br><br><br><div style="text-align: center"><a href="${contextRoot}/lock/recipe/memberHouse" ><p>返回個人頁面</p></a></div>';
 
