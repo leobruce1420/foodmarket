@@ -16,6 +16,11 @@
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style>
+div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/writeRecipeBackGroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
 div #pullinup{
 	background-color:rgba(128, 128, 128, 0.199) ;
 	border:dotted 5px;
@@ -31,13 +36,14 @@ div #pullinup{
 </style>
 </head>
 <body>
+<div class="background">
 <div class="container">
 <div id="pullinup"><h2>新增封面照請拖曳至此</h2></div>
 	<div class="row justify-content-center">
 		<div class="col-9">
- 		 <h1>修改食譜頁面<br>這裡是管理者介面</h1>
+ 		 
 			<div class="card">
-  				<div class="card-header" style="background-color: gold">就是多了customerId能輸入啦</div>
+  				
  				<div class="card-body">
   
   					<form:form id="myform" class="form" method="post" modelAttribute="rec" action="${contextRoot}/recipe/backEditRecipe">
@@ -65,10 +71,10 @@ div #pullinup{
  						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
  						所需食材:<form:input path="ingredients" class="form-control"/><br/>
  						
+ 						喜歡人次:<form:input path="postLikeTime" class="form-control" /><br/>
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
  						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" style="display:none"/><br/>
  						<div id="summernote"></div>
- 						<form:input path="postLikeTime" class="form-control" type="hidden"/>
  						<form:input path="recipePostId" class="form-control" type="hidden"/>
  						<form:input path="modifiedDate" class="form-control" type="hidden"/>
   						</div>
@@ -82,6 +88,7 @@ div #pullinup{
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <script>
   const dropzone = document.querySelector('#pullinup');
@@ -136,7 +143,7 @@ div #pullinup{
 		// onChange callback
 		  $('#summernote').summernote({
 			  height: 150,
-			  placeholder: '<h4>若要重新編輯文章，請在此輸入</h4><br><h4>編輯完成後請按儲存，再按修改完成至後台</h4><br><h4>不用修改內文請直接按修改完成至後台</h4>',
+			  placeholder: '<h4>若要重新編輯文章，請在此輸入</h4><br><h4>不用修改內文請直接按修改完成至後台</h4>',
 			  callbacks: {
 		      onChange: function(contents, $editable) {
 		        console.log('onChange:', contents, $editable);

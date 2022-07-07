@@ -16,6 +16,11 @@
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style>
+div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/writeRecipeBackGroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
 div #pullinup{
 	background-color:rgba(128, 128, 128, 0.199) ;
 	border:dotted 5px ;
@@ -31,14 +36,14 @@ div #pullinup{
 </style>
 </head>
 <body>
-
+<div class="background">
 <div class="container">
 <div id="pullinup"><h2>新增封面照請拖曳至此</h2></div>
 	<div class="row justify-content-center">
 		<div class="col-9">
- 		 <h1>新增食譜頁面<br>這裡是一般使用者</h1>
+ 		 
 			<div class="card">
-  				<div class="card-header" style="background-color: gold">請輸入食譜，使用者輸入data區</div>
+  				
  				<div class="card-body">
   
   					<form:form id="myform" class="form" method="post" action="${contextRoot}/postRecipe" modelAttribute="recipe">
@@ -91,6 +96,7 @@ div #pullinup{
 
 	</div>
 
+</div>
 </div>
 <script>
   const dropzone = document.querySelector('#pullinup');
