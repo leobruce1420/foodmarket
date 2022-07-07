@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/navbarRecipe.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>個人頁面</title>
 <style type="text/css">
-div.background{
+body{
 /* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
  	background: gray url("/foodmarket/img/viewRecipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
 	background-attachment: fixed
@@ -34,7 +34,7 @@ div.container{
 <div class="container">
 			
 	<div class="titleline">
-		<h3>您撰寫的食譜</h3>
+		<h3 style="text-align:center;background-color: mediumseagreen" >您撰寫的食譜</h3>
 	</div>
 	<div class="row justify-content-center" style="background-color:antiquewhite;">
 		<table class="table" style="margin:20px;">
@@ -60,11 +60,11 @@ div.container{
 		</table>
 	</div>		
 <br>
-	<div class="titleline">
-		<h3>您收藏的食譜</h3>
-	</div>
 	<div class="row justify-content-center">
   		<div class="col-9">
+	<div class="titleline">
+		<h3 style="text-align:center;background-color: mediumseagreen">您收藏的食譜</h3>
+	</div>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
   			<c:forEach var="recipe" items="${page.content}">
   				<div class="col">

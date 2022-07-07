@@ -40,10 +40,13 @@
 		
 
        <li class="nav-item">
-			<a class="navbar-brand" href="${contextRoot}/question/allQuestion">常見問題</a>
-      </li>
-           <li class="nav-item">
 			<a class="navbar-brand" href="${contextRoot}/recipe/all">食譜</a>
+      </li>
+      <li class="nav-item">
+			<a class="navbar-brand" href="${contextRoot}/lock/recipe/add">新增食譜</a>
+      </li>
+      <li class="nav-item">
+			<a class="navbar-brand" href="${contextRoot}/lock/recipe/memberHouse">個人食譜</a>
       </li>
 <!--     <li class="nav-item dropdown"> -->
 <%--         <a class="nav-link dropdown-toggle" href="${contextRoot}/lock/shopCart/all" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> --%>

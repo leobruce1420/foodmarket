@@ -140,7 +140,7 @@ public class ShopCarController {
 		return shopCartService.save(reqShopCart);
 	}
 	
-	@PostMapping("shopcart/insertAll") //新增多筆
+	@PostMapping("lock/shopcart/insertAll") //新增多筆
 	@ResponseBody
 	public List<ShopCart> insertShopCart(@RequestBody List<ShopCart> reqList){
 		List<ShopCart> reqestList = shopCartDao.saveAll(reqList);
