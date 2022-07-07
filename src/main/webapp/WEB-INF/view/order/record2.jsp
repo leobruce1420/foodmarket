@@ -5,18 +5,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../layout/adminNavbar.jsp" />
 
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
+<!DOCTYPE html>
+<html>
+<head>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <link href="${contextRoot}/css/shopcar.css" rel="stylesheet" />
-<!DOCTYPE html>
-<html>
-<head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
