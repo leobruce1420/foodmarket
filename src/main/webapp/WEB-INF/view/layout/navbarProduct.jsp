@@ -124,9 +124,11 @@
     
 	<a class="nav-link" data-display="static" href="${contextRoot}/lock/shopCart/all">
 		<img src="${contextRoot}/img/shopcart.png">
-	 	<span class='badge badge-warning' id='lblCartCount'> 
-	 	2
-	 	</span>
+<!-- 	 	<span class='badge badge-warning' id='lblCartCount'>  -->
+	 	
+<%-- 	 	<c:out value="${totalNum}"></c:out> --%>
+	 
+<!-- 	 	</span> -->
 	</a>
 
       

@@ -658,6 +658,13 @@ ul.social-network li {
 							})			
 							
 function insertProduct(pId,cId) {
+	
+// 	var shopList = {};
+// 	shopList.list =[];
+//  	shoplist.list.push({"pId":pId })				
+	
+// 	console.log(shoplist.list.length);
+	
 	if(cId!=null){	
 		var id =document.getElementById('productId_'+pId).value;
 			axios({
@@ -670,6 +677,7 @@ function insertProduct(pId,cId) {
 				}
 			}).then(function(res) {
 				alert("已加入購物車");
+// 				location.reload();
 			})	
 	}else{
 		alert("請先登入")	
