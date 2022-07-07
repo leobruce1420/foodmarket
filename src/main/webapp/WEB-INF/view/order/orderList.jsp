@@ -43,9 +43,12 @@
 	
 	</tbody>
 	</table>
+	<br>
+<div style="text-align:center">	
  <a href="${contextRoot}/HOME"><button type="button" class="btn btn-primary mr-sm-2">
  繼續購物
 </button></a>
+</div>
 </div>
 
 </body>
