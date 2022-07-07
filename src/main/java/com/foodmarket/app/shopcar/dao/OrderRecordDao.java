@@ -19,4 +19,6 @@ public interface OrderRecordDao extends JpaRepository<OrderRecord, Integer>{
 	
 	public OrderRecord findFirstByOrderByCreateDateDesc();
 	
+	@Query("from OrderRecord where UserId = :UserId order by create_date Desc")
+	public List<OrderRecord> findByUserId(Long UserId);
 }

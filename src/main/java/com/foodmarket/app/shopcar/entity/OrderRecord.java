@@ -60,6 +60,14 @@ public class OrderRecord {
 	@Transient
 	private String address;
 	
+	@Transient
+	private String productName;
+	
+	@Transient
+	private Integer productPrice;
+	
+	@Transient
+	private Integer quantity;
 	
 	public Integer getId() {
 		return id;
@@ -147,6 +155,30 @@ public class OrderRecord {
 
 	public void setCreateDateStr(String createDateStr) {
 		this.createDateStr = createDateStr;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public Integer getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(Integer productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 

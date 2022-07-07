@@ -138,7 +138,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/lastestRecord">
+            <a class="nav-link" href="${contextRoot}/user/records">
               <span data-feather="shopping-cart"></span>
               訂單查詢
             </a>
