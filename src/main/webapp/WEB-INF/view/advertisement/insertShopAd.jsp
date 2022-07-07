@@ -38,20 +38,20 @@
 				<div class="form-row">
 					<div class="col-6">
 						<label for="createDate" class="FormTitle">活動開始日期 : </label> <input
-							type="date" id="date" name="beginDate" max="2022-06-10" required
-							class="form-control" />
+							type="date" id="date" name="beginDate" max="2022-06-30" required
+							class="form-control" autocomplete="off"/>
 					</div>
 
 					<div class="col-6">
 						<label for="endDate" class="FormTitle">活動結束日期 : </label> <input
-							type="date" id="date" name="endDate" max="2022-06-10" required
-							class="form-control" />
+							type="date" id="date" name="endDate" max="2022-06-30" required
+							class="form-control" autocomplete="off"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="productId" class="FormTitle">商品路徑 : </label> <input
 						id="shopUrl" name="shopUrl" autocomplete="off" required
-						class="form-control" />
+						class="form-control" autocomplete="off"/>
 				</div>
 
 				<div class="form-group">
@@ -59,7 +59,7 @@
 					<textarea id="remark" name="remark" rows="4" cols="50"
 						onKeyDown="checkMaxInput(this.form)"
 						onKeyUp="checkMaxInput(this.form)" placeholder="輸入限制25字" required
-						class="form-control">${ad.remark}</textarea>
+						class="form-control" autocomplete="off">${ad.remark}</textarea>
 					<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
 						readonly type=text name=remLen size=3 maxlength=3 value="">字
 				</div>
@@ -89,6 +89,8 @@
 					<input type="submit" id="submit" class="btn btn-outline-info"
 						value="確定" /> <input class="btn btn-outline-danger" type="button"
 						name="back" value="返回" onClick="javascript:history.back()">
+						<a href="${contextRoot}/info/insert"><input class="btn btn-outline-success" type="button"
+						name="back" value="輸入"></a>
 				</div>
 			</form:form>
 		</div>

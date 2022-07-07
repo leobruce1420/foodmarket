@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.foodmarket.app.blogadvertisement.Base64Method;
 import com.foodmarket.app.blogadvertisement.BlogAdvertisement;
 
+
 @Controller
 public class ShopAdController {
 	@Autowired
