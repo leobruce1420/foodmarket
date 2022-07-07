@@ -23,24 +23,36 @@ table, td, th {
 			$("#autokeyin")
 					.click(
 							function() {
-								document.getElementById("productname").value = "青蔥：1包200g";
+								document.getElementById("productname").value = "松花溏心皮蛋220g(4入)";
 								document.getElementById("categoryid").selectedIndex = "4";
-								document.getElementById("productprice").value = "139";
+								document.getElementById("productprice").value = "86";
 								document.getElementById("takedown").selectedIndex = "1";
-								document.getElementById("productdesciption").value = "青蔥：1包(200g ±10%)";
-								document.getElementById("inventoryquantity").value = "10000";
+								document.getElementById("productdesciption").value = "嚴選鴨蛋遵循古法製成，品質嚴格把關用心研製， 粒粒好蛋、唇齒留香。";
+								document.getElementById("inventoryquantity").value = "2000";
 							});
 		});
 		$(function() {
 			$("#autokeyin2")
 					.click(
 							function() {
-								document.getElementById("productname").value = "梅花捲肉片300g";
+								document.getElementById("productname").value = "香Q熟鹹蛋266g(4入)";
 								document.getElementById("categoryid").selectedIndex = "4";
-								document.getElementById("productprice").value = "229";
+								document.getElementById("productprice").value = "85";
 								document.getElementById("takedown").selectedIndex = "0";
-								document.getElementById("productdesciption").value = "梅花捲肉片(300g±10%)";
+								document.getElementById("productdesciption").value = "嚴選鴨蛋遵循古法製成，品質嚴格把關用心研製， 粒粒好蛋、唇齒留香。";
 								document.getElementById("inventoryquantity").value = "2000";
+							});
+		});
+		$(function() {
+			$("#autokeyin3")
+					.click(
+							function() {
+								document.getElementById("productname").value = "土雞蛋*10入";
+								document.getElementById("categoryid").selectedIndex = "4";
+								document.getElementById("productprice").value = "115";
+								document.getElementById("takedown").selectedIndex = "0";
+								document.getElementById("productdesciption").value = "無抗生素反應，天然純淨、健康安心 一貫作業：從育種到生蛋嚴格監管，不打抗生素、不吃藥 營養配方：乾淨飼料加上活菌、…為健康加分";
+								document.getElementById("inventoryquantity").value = "20000";
 							});
 		});
 	</script>
@@ -96,7 +108,7 @@ table, td, th {
 											pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss E "
 											value="${lastestpMsg.added}" /></td>
 									<%-- 							<td><c:out value="${lastestpMsg.administrator}" /></td> --%>
-									<td style="text-align: center;"><c:out
+									<td style=";"><c:out
 											value="${lastestpMsg.productdesciption}" /></td>
 									<td style="text-align: center;"><c:out
 											value="${lastestpMsg.inventoryquantity}" /></td>
@@ -118,7 +130,17 @@ table, td, th {
 			<div class="row justify-content-center">
 				<div class="col-9">
 					<div class="card">
-						<div class="card-header">請輸入新商品資訊</div>
+						<div class="card-header">請輸入新商品資訊
+						<div class="btn-group " role="group">
+								<button id="autokeyin" class="btn btn-light" type="submit">第1筆</button>
+							</div>
+							<div class="btn-group " role="group">
+								<button id="autokeyin2" class="btn btn-light" type="submit">第2筆</button>
+							</div>
+							<div class="btn-group " role="group">
+								<button id="autokeyin3" class="btn btn-light" type="submit">第3筆</button>
+							</div>
+						</div>
 						<div class="card-body">
 
 							<%--   <form:form class="form" method="post" action="${contextRoot}/postMessage" modelAttribute="workMessages"> --%>
@@ -178,7 +200,6 @@ table, td, th {
 														</c:otherwise>
 													</c:choose>
 
-													<%-- 													<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>  --%>
 												</c:forEach>
 											</select>
 											<%-- 									<form:select class="custom-select" id="inputGroupSelect01" path="categoryid"> --%>
@@ -290,7 +311,10 @@ table, td, th {
 
 
 									<div>
-										<img id="output" style="width: 100px; height: 100px;" />
+									<div class="input-group-prepend">
+									<label class="input-group-text" for="customFileLang">圖片預覽</label>
+									</div>
+										<img id="output" style="width: 250px; height: 250px;" />
 									</div>
 									<script>
 										// function preview() {
@@ -330,12 +354,7 @@ table, td, th {
 									value="新增商品">
 
 							</form:form>
-							<div class="btn-group " role="group">
-								<button id="autokeyin" class="btn btn-light" type="submit">1</button>
-							</div>
-							<div class="btn-group " role="group">
-								<button id="autokeyin2" class="btn btn-light" type="submit">2</button>
-							</div>
+							
 
 							<script>
 								document.getElementById('test')

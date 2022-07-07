@@ -25,7 +25,7 @@
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card">
-					<div class="card-header">修改商品</div>
+					<div class="card-header"><h2>修改商品</h2></div>
 					<div class="card-body">
 
 						<form:form class="form" method="post" modelAttribute="pMsg" 
@@ -36,42 +36,48 @@
 							<div class="form-group">
 								<div>
 									<%--   <form:textarea path="text" class="form-control"/> --%>
-									商品名稱
+									<label class="input-group-text" for="inputGroupSelect01">商品名稱</label>
 									<form:input path="productname" class="form-control" />
 <!-- 									商品類別編號 -->
 <%-- 									<form:input path="productcategory" class="form-control" /> --%>
 									<div>
 									
 									<br/>
-									
+									<div>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
 									</div>
-									<input class="form-control" id="inputGroupSelect01"
-										name="categoryid" style="pointer-events: none" value="${pMsg.productcategoryBean.categoryid}"/>
-<%-- 									<form:input class="form-control" id="inputGroupSelect01" --%>
-<%-- 										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>  --%>
+									<input class="form-control" id="categoryid"
+										name="categoryid" type="hidden" value="${pMsg.productcategoryBean.categoryid}"/>
+										<input class="form-control" id=""
+										name=""  style="pointer-events: none" value="${pMsg.productcategoryBean.productcategoryname}"/>
+									<form:input class="form-control" id="inputGroupSelect01" 
+										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>  
 <!-- 									<select class="custom-select" id="categoryid" -->
 <!-- 												name="productcategoryid"> -->
-<%-- 												<c:forEach var="productcategorytakeon" --%>
-<%-- 													items="${productcategorytakeon}"> --%>
-<%-- 													<c:choose> --%>
-<%-- 														<c:when --%>
-<%-- 															test="${WorkProduct.productcategoryid == productcategorytakeon.categoryid}"> --%>
-<!-- 															<option selected="selected" -->
-<%-- 																value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
-<%-- 														</c:when> --%>
-<%-- 														<c:otherwise> --%>
-<%-- 															<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option> --%>
-<%-- 														</c:otherwise> --%>
-<%-- 													</c:choose> --%>
+<!-- 											<select class="custom-select" id="categoryid" -->
+<!-- 												name="productcategoryid"> -->
 
-<%-- 												</c:forEach> --%>
-<!-- 											</select> -->
+<%-- 												<c:forEach var="productcategorytakeon" --%>
+<%--  													items="${productcategorytakeon}">   --%>
+<%-- 													<c:choose>   --%>
+<%-- 														<c:when   --%>
+<%-- 															test="${pMsg.categoryid == pMsg.productcategoryBean.categoryid}">   --%>
+<!-- 															<option selected="selected" -->
+<%--  																value="${pMsg.productcategoryBean.categoryid}">${pMsg.productcategoryBean.productcategoryname}</option>   --%>
+<%-- 														</c:when>   --%>
+<%--  														<c:otherwise>   --%>
+<%--  															<option value="${pMsg.productcategoryBean.categoryid}">${pMsg.productcategoryBean.productcategoryname}</option>   --%>
+<%-- 														</c:otherwise>   --%>
+<%--  													</c:choose>   --%>
+
+<%--   												</c:forEach>   --%>
+<!--  											</select>  -->
+								</div>
 								</div>
 							</div>
-									價格
+									<label class="input-group-text" for="inputGroupSelect01">價格</label>
 									<form:input path="productprice" class="form-control" />
 									
 					</div> 
@@ -131,21 +137,26 @@
 										type="hidden" />
 										
 										
-										商品圖片
+										<div>
+										<label class="input-group-text" for="inputGroupSelect01">商品圖片</label>
 									<%--   <form:input path="productimg" class="form-control"/> --%>
-
+										</div>
 									<div>
 										<form:input path="productimg" type="file" accept="image/*"
-											onchange="loadFile(event)" />
+											onchange="loadFile(event)"/>
+									<div class="input-group-prepend">
+<!-- 									<label class="input-group-text" for="customFileLang">原始圖片</label> -->
 									</div>
-									<br />
-									修改後圖片
-									 <img id="output" style="width: 100px; height: 100px;" />
-									
-									原始圖片
-									<img id="output" style="width: 100px; height: 100px;"
+									<img id="output" style="width: 250px; height: 250px;"
 										src="data:image/*;base64,${pMsg.productimg}"
 										alt="image" />
+									</div>
+<!-- 									<br /> -->
+<!-- 									<div class="input-group-prepend"> -->
+<!-- 									<label class="input-group-text" for="customFileLang">修改後圖片</label> -->
+<!-- 									</div> -->
+<!-- 									 <img id="output" style="width: 250px; height: 250px;" /> -->
+									
 									<script>
 										var loadFile = function(event) {
 											var reader = new FileReader();

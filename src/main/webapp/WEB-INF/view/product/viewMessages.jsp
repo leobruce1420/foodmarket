@@ -162,6 +162,7 @@ img {
 								<tr>
 									<th style="text-align: center;" scope="row"><c:out
 											value="${workProduct.productid}" /></th>
+											
 									<td style="text-align: center;"><c:out
 											value="${workProduct.productname}" /></td>
 									<td style="text-align: center;"><c:out
@@ -175,10 +176,10 @@ img {
 										src="data:image/image/*;base64,${workProduct.productimg}"
 										alt="image" /></td>
 									<td style="text-align: center;"><fmt:formatDate
-											pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss  EEEE"
+											pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss  E"
 											value="${workProduct.added}" /></td>
 
-									<td style="text-align: center;"><c:out
+									<td style=""><c:out
 											value="${workProduct.productdesciption}" /></td>
 									<td style="text-align: center;"><c:out
 											value="${workProduct.inventoryquantity}" /></td>
