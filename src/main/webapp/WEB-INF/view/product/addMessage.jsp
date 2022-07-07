@@ -83,7 +83,7 @@ table, td, th {
 											value="${lastestpMsg.productname}" /></td>
 									<%-- 								<td><c:out value="${lastestpMsg.productcategory}" /></td> --%>
 <%-- 									<td style="text-align: center;"><c:out --%>
-<%-- 											value="${lastestpMsg.productcategoryBean.productcategoryname}" /></td> --%>
+<%--  											value="${lastestpMsg.productcategoryBean.productcategoryname}" /></td>  --%>
 									<td style="text-align: center;"><c:out
 											value="${lastestpMsg.productprice}" /></td>
 									<td style="text-align: center;">

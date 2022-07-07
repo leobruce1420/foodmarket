@@ -48,8 +48,10 @@
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">商品類別</label>
 									</div>
-									<form:input class="form-control" id="inputGroupSelect01"
-										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>
+									<input class="form-control" id="inputGroupSelect01"
+										name="categoryid" style="pointer-events: none" value="${pMsg.productcategoryBean.categoryid}"/>
+<%-- 									<form:input class="form-control" id="inputGroupSelect01" --%>
+<%-- 										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>  --%>
 <!-- 									<select class="custom-select" id="categoryid" -->
 <!-- 												name="productcategoryid"> -->
 <%-- 												<c:forEach var="productcategorytakeon" --%>
