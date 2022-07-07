@@ -20,6 +20,8 @@ import com.foodmarket.app.product.service.ProductcategoryService;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.shopadvertisement.ShopAdService;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+import com.foodmarket.app.shopcar.entity.ShopCart;
+import com.foodmarket.app.shopcar.service.ShopCartService;
 import com.foodmarket.app.wishList.model.WishList;
 import com.foodmarket.app.wishList.service.WishListServiceInterface;
 
@@ -33,7 +35,10 @@ public class ProductPageController {
 
 	@Autowired
 	private ShopAdService sService;
-
+	
+	@Autowired
+	private ShopCartService shopCartService;
+	
 	@Autowired
 	private MemberServiceInterface memberService;
 
@@ -49,11 +54,18 @@ public class ProductPageController {
 //		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
 		List<ShopAdvertisement> ad = sService.findByBoard();
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//		List<ShopCart> ShopCarts = shopCartService.findAll();
+//		
+//		int totalNum = 0;
+//		for(ShopCart shopCart : ShopCarts) {
+//			Integer productNum = shopCart.getProductNumber();
+//			totalNum += productNum;
+//		}
 		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		model.addAttribute("ad", ad);
 //		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
-
 		model.addAttribute("page", page);
+//		model.addAttribute("totalNum", totalNum);
 		return "index";
 
 	}
@@ -80,34 +92,50 @@ public class ProductPageController {
 //		return "index";
 //		
 //	}
-//inner join
+//inner join===========================================================
+	@GetMapping("product/add")
+	public String addcategoryPage(@RequestParam(required = false, value = "takeon") String takeon,
+			Model model) {
+//		Util method = new Util();
+		WorkProduct workProduct = new WorkProduct();
+		WorkProduct lastestpMsg = pmsgService.getLastest();
+		List<productcategoryBean> lastestpcMsg = pcmsgService.getList();
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		
+		model.addAttribute("productcategorytakeon", productcategorytakeon);
+		model.addAttribute("workProduct", workProduct);
+		model.addAttribute("lastestpMsg", lastestpMsg);
+		model.addAttribute("lastestpcMsg", lastestpcMsg);
+//		model.addAttribute("productcategoryBean", new productcategoryBean());
+		return "product/addMessage";
+	}
+	//=================================================================
 //	@GetMapping("product/add")
-//	public String addcategoryPage(Model model) {
+//	public ModelAndView addcategoryPage(ModelAndView mav,
+//			@RequestParam(required = false, value = "takeon") String takeon) {
+//		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//
+//		mav.getModel().put("productcategorytakeon", productcategorytakeon);
+//		mav.setViewName("product/addMessage");
+////		mav.setViewName("index");
+//		return mav;
+//	}
+	
+	
+	//==============================================================
+	// 好的
+//	@GetMapping("product/add")
+//	public String addMessagePage(Model model) {
 ////		Util method = new Util();
 //		WorkProduct workProduct = new WorkProduct();
 //		WorkProduct lastestpMsg = pmsgService.getLastest();
-//		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
 ////		byte[] imgBytes = mf.getBytes();
 ////		workProduct.setProductimg(method.decoder(imgBytes));
-//		model.addAttribute("productcategory", productcategory);
 //		model.addAttribute("workProduct", workProduct);
 //		model.addAttribute("lastestpMsg", lastestpMsg);
 //
 //		return "product/addMessage";
 //	}
-	// 好的
-	@GetMapping("product/add")
-	public String addMessagePage(Model model) {
-//		Util method = new Util();
-		WorkProduct workProduct = new WorkProduct();
-		WorkProduct lastestpMsg = pmsgService.getLastest();
-//		byte[] imgBytes = mf.getBytes();
-//		workProduct.setProductimg(method.decoder(imgBytes));
-		model.addAttribute("workProduct", workProduct);
-		model.addAttribute("lastestpMsg", lastestpMsg);
-
-		return "product/addMessage";
-	}
 
 	// 測試
 //	@GetMapping("/p")
@@ -140,7 +168,6 @@ public class ProductPageController {
 		Page<WorkProduct> page = pmsgService.findByPage(pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByPage(pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
-//		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("productcategorytakeon", productcategorytakeon);
 		mav.getModel().put("page", cpage);
 		mav.getModel().put("page", page);
@@ -200,10 +227,10 @@ public class ProductPageController {
 //	管理員商品種類查詢分頁 測試
 	@GetMapping("product/productcategory")
 	public ModelAndView Productcategory(ModelAndView mav,
-			@RequestParam(required = false, value = "productcategory") String productcategory,
+			@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		Page<WorkProduct> page = pmsgService.findByProductcategorypage(productcategory, pageNumber);
+		Page<WorkProduct> page = pmsgService.findByProductcategorypage(categoryid, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 //		model.addAttribute("productcategorytakeon", productcategorytakeon);
@@ -228,13 +255,13 @@ public class ProductPageController {
 //	}
 //	消費者商品種類查詢無分頁 跳頁顯示 join
 	@GetMapping("product/category")
-	public String viewProductcategory(@RequestParam(required = false, value = "productcategory") String productcategory,
+	public String viewProductcategory(@RequestParam(required = false, value = "categoryid") Integer categoryid,
 			@RequestParam(required = false, value = "takeon") String takeon, Model m) {
-		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(productcategory);
+		List<WorkProduct> workProduct = pmsgService.findByProductcategoryKey(categoryid);
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 		m.addAttribute("productcategorytakeon", productcategorytakeon);
 		m.addAttribute("workProduct", workProduct);
-		m.addAttribute("productcategory", productcategory);
+		m.addAttribute("categoryid", categoryid);
 		return "product/viewcategoryMessages";
 
 	}
@@ -314,7 +341,8 @@ public class ProductPageController {
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, ModelAndView m) {
 		Page<WorkProduct> page = pmsgService.findByNamePage(productname, pageNumber);
 		Page<productcategoryBean> cpage = pcmsgService.findByProductCategoryTakeonPage(takeon, pageNumber);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		m.getModel().put("productcategorytakeon", productcategorytakeon);
 		m.getModel().put("page", cpage);
 		m.getModel().put("page", page);
 		m.setViewName("product/viewMessages");

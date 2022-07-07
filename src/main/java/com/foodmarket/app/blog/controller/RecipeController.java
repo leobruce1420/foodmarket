@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.foodmarket.app.blog.model.MemberLikeRecipe;
 import com.foodmarket.app.blog.model.Recipe;
 import com.foodmarket.app.blog.model.RecipeType;
 import com.foodmarket.app.blog.service.MemberLikeRecipeServer;
@@ -214,19 +214,17 @@ public class RecipeController {
 		return "blog/showRecipe";
 	}
 
-	
+	@GetMapping("recipe/showHouseRecipe")
+	public String showHouseRecipe(@RequestParam("recipePostId") Long recipePostId,Model model) {
+		Recipe rec = rService.findById(recipePostId);
+		model.addAttribute("rec", rec);
+		return "blog/showHouseRecipe";
+	}
 	
 	@GetMapping("recipe/forshowrecipe/{recipePostId}")
 	public ResponseEntity<Recipe> getRecipe(@PathVariable Long recipePostId) {
 		return new ResponseEntity<Recipe>(rService.getRecipeById(recipePostId), HttpStatus.OK);
 	}
-	
-//	@GetMapping("recipe/addLikeTime")
-//	public String LikeTimeAddOne(@RequestParam("recipePostId") Long recipePostId,Model model) {
-//		Integer afterLike = rService.postLikeTimeIncrease(recipePostId);
-//		System.out.println("文章喜歡人數:"+afterLike);
-//		return "afterLike";
-//	}
 	
 	@GetMapping("recipe/addLikeTimeView/{recipePostId}")
 	public String updateRecipeLikeTime(@PathVariable Long recipePostId) {
@@ -244,7 +242,7 @@ public class RecipeController {
 	
 	@PostMapping("recipe/addRecipeToLike/{recipePostId}")
 	@ResponseBody
-	public Recipe addRecipeToLike(@PathVariable Long recipePostId) {
+	public Recipe addRecipeToLike(@PathVariable Long recipePostId,HttpSession session) {
 		
 		Recipe rec = rService.findById(recipePostId);
 		Integer liketime = rec.getPostLikeTime();
@@ -255,11 +253,20 @@ public class RecipeController {
 		rec.setPostLikeTime(liketime);
 		rService.insertRecipe(rec);
 		System.out.println(rec);
+		
+		Object customerId = session.getAttribute("loginUserId");
+		MemberLikeRecipe mlr = new MemberLikeRecipe();
+		mlr.setRecipePostId(recipePostId);
+		mlr.setCustomerId(Long.parseLong(customerId.toString()));
+		memberLikeRecipeServer.testSaveYourLikeRecipe(mlr);
+		
+		
 		return rec;
 	}
 	
-	@GetMapping("recipe/cancelRecipeToLike/{recipePostId}")
-	public String cancelRecipeToLike(@PathVariable Long recipePostId,Model model) {
+	@PostMapping("recipe/cancelRecipeToLike/{recipePostId}")
+	@ResponseBody
+	public Recipe cancelRecipeToLike(@PathVariable Long recipePostId,HttpSession session) {
 		
 		Recipe rec = rService.findById(recipePostId);
 		Integer liketime = rec.getPostLikeTime();
@@ -271,10 +278,10 @@ public class RecipeController {
 		rService.insertRecipe(rec);
 		System.out.println(rec);
 		
-		Recipe rec2 = rService.findById(recipePostId);
-		model.addAttribute("rec2", rec2);
+		Object customerId = session.getAttribute("loginUserId");
+		memberLikeRecipeServer.testDeleteYourLikeRecipe(Long.parseLong(customerId.toString()),recipePostId);
 		
-		return "redirect:/recipe/showRecipe?recipePostId="+recipePostId;
+		return rec;
 	}
 
 	@PostMapping("recipe/addLikeTimeSearch/{recipePostId}")
@@ -291,20 +298,23 @@ public class RecipeController {
 		return "redirect:/recipe/search?recipeType=";
 	}
 	
-	@PostMapping("recipe/addLikeTimeByCustomer")
-	public void updateRecipeLikeTime2(@RequestParam("customerId") Long customerId
-			,@RequestParam("recipePostId") Long recipePostId) {
-		memberLikeRecipeServer.addLikeTimeByCustomer(customerId,recipePostId);
-		System.out.println("");
-//		Recipe rec = rService.findById(recipePostId);
-//		Integer liketime = rec.getPostLikeTime();
-//		System.out.println(rec);
-//		System.out.println("文章喜歡人數:"+liketime);
-//		liketime++;
-//		System.out.println("之後喜歡的人數:"+liketime);
-//		rec.setPostLikeTime(liketime);
-//		rService.insertRecipe(rec);
-		return ;
+	@GetMapping("lock/recipe/addLikeTimeByCustomer")
+	public MemberLikeRecipe setRecipeToLike(@RequestParam("recipePostId") Long recipePostId,HttpSession session) {
+		Object customerId = session.getAttribute("loginUserId");
+		MemberLikeRecipe mlr = new MemberLikeRecipe();
+		mlr.setRecipePostId(recipePostId);
+		mlr.setCustomerId(Long.parseLong(customerId.toString()));
+		memberLikeRecipeServer.testSaveYourLikeRecipe(mlr);
+		
+
+		return mlr;
+	}
+	
+	@GetMapping("lock/recipe/deleteLikeTimeByCustomer")
+	public void deleteRecipeFromLike(@RequestParam("recipePostId") Long recipePostId,HttpSession session) {
+		Object customerId = session.getAttribute("loginUserId");
+		memberLikeRecipeServer.testDeleteYourLikeRecipe(Long.parseLong(customerId.toString()),recipePostId);
+		return;
 	}
 	
 	@GetMapping("ajaxRecipeList")

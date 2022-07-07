@@ -27,12 +27,14 @@ public class WorkProductController {
 	@Autowired
 	private ProductcategoryService pcmsgService;
 	
+	//
+	
 	
 //0704==============================================
 	// 新增商品 join
 	@PostMapping("postProduct")
 	public String addMessage(@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productcategory")  String productcategory,
 			 @RequestParam("productprice") Integer productprice,
 			 @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam("productdesciption") String productdesciption,
@@ -52,17 +54,21 @@ public class WorkProductController {
 //			request.setCharacterEncoding("UTF-8");
 			WorkProduct workProduct = new WorkProduct();
 //			productcategoryBean productcategoryBean = pcmsgService.findById(productcategoryid);
+//			productcategoryBean cateB = pcmsgService.findById(categoryid);
+			productcategoryBean productcategoryBean = new productcategoryBean();
+			
+			productcategoryBean.setCategoryid(productcategoryid);
+			
 			workProduct.setProductname(productname);
-			workProduct.setProductcategory(productcategory);
+//			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
 			workProduct.setAdministrator(administrator);
 			workProduct.setProductdesciption(productdesciption);
 			workProduct.setInventoryquantity(inventoryquantity);
 			workProduct.setTakedown(takedown);
-			workProduct.setProductdesciption(productdesciption);
-			workProduct.setInventoryquantity(inventoryquantity);
-			workProduct.setProductcategoryid(productcategoryid);
+//			workProduct.setProductcategoryid(productcategoryid);
 //			workProduct.setProductcategoryBean(productcategoryBean);
+			workProduct.setProductcategoryBean(productcategoryBean);
 
 			byte[] imgBytes = mf.getBytes();
 			workProduct.setProductimg(method.encoder(imgBytes));
@@ -71,12 +77,22 @@ public class WorkProductController {
 			pmsgService.insertProduct(workProduct);
 			WorkProduct newpMsg = new WorkProduct();
 			WorkProduct lastestpMsg = pmsgService.getLastest();
+//			List<productcategoryBean> lastestpcMsg = pcmsgService.getList();
 			List<WorkProduct> Products = pmsgService.selectAll();
 			List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+			
+			System.out.println(pcmsgService.findByProductCategoryTakeon(takeon));
 			m.addAttribute("productcategorytakeon", productcategorytakeon);
+			System.out.println(productcategorytakeon);
 			m.addAttribute("workProduct", newpMsg);
 			m.addAttribute("products", Products);
 			m.addAttribute("lastestpMsg", lastestpMsg);
+//			m.addAttribute("lastestpcMsg", lastestpcMsg);
+			//0705T1900=====================================
+//			productcategoryBean cateB = pcmsgService.findById(categoryid);
+//			WorkProduct pro = new WorkProduct();
+//			pro.setProductcategoryBean(cateB);
+			//================================
 			return "product/addMessage";
 
 		} catch (UnsupportedEncodingException e) {
@@ -139,39 +155,49 @@ public class WorkProductController {
 //			}
 //			return "product/addMessage";
 //		}
-
+	//========================================================
+//  join
 	@GetMapping("product/editProduct")
-	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+	public String editMessage(@RequestParam("productid") Long productid,
+			@RequestParam(required = false, value = "takeon") String takeon,
+			Model model) {
 //		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
 		WorkProduct pMsg = pmsgService.findById(productid);
-
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		model.addAttribute("pMsg", pMsg);
 		return "product/editMessage";
 	}
-	//修改2加圖片
+	//join
 	@PostMapping("product/editProduct")
 	public String postMessage(@RequestParam("productid") Long productid, 
 			@RequestParam("productname") String productname, 
-			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productcategory")  String productcategory,
 			 @RequestParam("productprice") Integer productprice,
 			 @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam("productdesciption") String productdesciption,
 			 @RequestParam("administrator") String administrator,
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
-			 @RequestParam("takedown") String takedown,Model m) throws IOException {
+			 @RequestParam("takedown") String takedown,
+//			 @RequestParam("categoryid") Integer categoryid,
+			 @RequestParam(required = false, value = "takeon") String takeon,
+			 Model m) throws IOException {
 		WorkProduct workProduct = pmsgService.findById(productid);
 		Util method = new Util();
 //		WorkProduct newworkProduct = new WorkProduct();
-
+//		newworkProduct.setCategoryid(categoryid);
+//		productcategoryBean productcategoryBean = new productcategoryBean();
+		
+//		productcategoryBean.setCategoryid(productcategoryid);
 		workProduct.setProductname(productname);
-		workProduct.setProductcategory(productcategory);
+//		workProduct.setProductcategory(productcategory);
 		workProduct.setProductprice(productprice);
 		workProduct.setAdministrator(administrator);
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
 		workProduct.setTakedown(takedown);
-		workProduct.setProductdesciption(productdesciption);
-		workProduct.setInventoryquantity(inventoryquantity);
+//		workProduct.setProductcategoryid(productcategoryid);
+//		workProduct.setProductcategoryBean(productcategoryBean);
 		
 		if(!mf.isEmpty()) {
 		byte[] imgBytes = mf.getBytes();
@@ -180,7 +206,9 @@ public class WorkProductController {
 		pmsgService.insertProduct(workProduct);
 		
 		List<WorkProduct> pMsg = pmsgService.selectAll();
+		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
 		
+		m.addAttribute("productcategorytakeon", productcategorytakeon);
 		m.addAttribute("pMsg",pMsg);
 		
 		
@@ -199,6 +227,67 @@ public class WorkProductController {
 		pmsgService.deleteById(productid);
 		return "redirect:/product/all";
 	}
+	//=======================================
+////  OK
+//	@GetMapping("product/editProduct")
+//	public String editMessage(@RequestParam("productid") Long productid, Model model) {
+////		Optional<WorkProduct> opmsg = pmsgService.findById(productid);
+//		WorkProduct pMsg = pmsgService.findById(productid);
+//		
+//		model.addAttribute("pMsg", pMsg);
+//		return "product/editMessage";
+//	}
+//	//OK
+//	@PostMapping("product/editProduct")
+//	public String postMessage(@RequestParam("productid") Long productid, 
+//			@RequestParam("productname") String productname, 
+//			@RequestParam("productcategory")  String productcategory,
+//			@RequestParam("productprice") Integer productprice,
+//			@RequestParam("productimg") MultipartFile mf,
+//			@RequestParam("productdesciption") String productdesciption,
+//			@RequestParam("administrator") String administrator,
+//			@RequestParam("inventoryquantity") Integer inventoryquantity,
+//			@RequestParam("takedown") String takedown,Model m) throws IOException {
+//		WorkProduct workProduct = pmsgService.findById(productid);
+//		Util method = new Util();
+////		WorkProduct newworkProduct = new WorkProduct();
+//		
+//		workProduct.setProductname(productname);
+//		workProduct.setProductcategory(productcategory);
+//		workProduct.setProductprice(productprice);
+//		workProduct.setAdministrator(administrator);
+//		workProduct.setProductdesciption(productdesciption);
+//		workProduct.setInventoryquantity(inventoryquantity);
+//		workProduct.setTakedown(takedown);
+//		workProduct.setProductdesciption(productdesciption);
+//		workProduct.setInventoryquantity(inventoryquantity);
+//		
+//		if(!mf.isEmpty()) {
+//			byte[] imgBytes = mf.getBytes();
+//			workProduct.setProductimg(method.encoder(imgBytes));
+//		}
+//		pmsgService.insertProduct(workProduct);
+//		
+//		List<WorkProduct> pMsg = pmsgService.selectAll();
+//		
+//		m.addAttribute("pMsg",pMsg);
+//		
+//		
+//		return "redirect:/product/all";
+//	}
+////	//修改
+////	@PostMapping("product/editProduct")
+////	public String postMessage(@ModelAttribute(name = "pMsg") WorkProduct pMsg) {
+////		pmsgService.insertProduct(pMsg);
+////		
+////		return "redirect:/product/all";
+////	}
+//	
+//	@GetMapping("product/delete")
+//	public String deleteMsg(@RequestParam("productid") Long productid) {
+//		pmsgService.deleteById(productid);
+//		return "redirect:/product/all";
+//	}
 
 //	@PostMapping("api/postProduct")
 //	@ResponseBody

@@ -13,10 +13,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-div.col.card h-100{
-	height:800px;
+div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/viewRecipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
+button#timebutton{
+float:left;
 }
-button.btn{
+button#likebutton{
 float:right;
 }
 
@@ -25,12 +30,11 @@ float:right;
 		text-align:center;
 }
 </style>
-<script type="text/javascript">
-</script>
+
 </head>
 <body>
-<br>
 
+<div class="background">
 <div class="container">
 <div class="search">
 搜尋：<input class="searchtext" type="text" placeholder="請輸入關鍵字">
@@ -49,10 +53,10 @@ float:right;
       		<div class="card-body">
         		<h5 class="card-title"><a href="${contextRoot}/recipe/showRecipe?recipePostId=${recipe.recipePostId}"><c:out value="${recipe.postTitle}" /></a></h5>
         		<p class="card-text">分類:<c:out value="${recipe.recipeType}" /></p>
-        		<p class="card-text">標籤:<c:out value="${recipe.postTag}" /></p>
-        		<p>⌚  ${recipe.cookTime} 
-        			<a id="likebutton" href="${contextRoot}/recipe/addLikeTimeSearch/${recipe.recipePostId}#${recipe.recipePostId}" ><button id="likebutton" class="btn btn-info" style="display:block">♥  ${recipe.postLikeTime}</button></a>
-       				<a id="likebutton" href="" ><button id="cancelbutton" class="btn btn-danger" style="display:none">♡  ${recipe.postLikeTime}</button></a>
+<%--         		<p class="card-text">標籤:<c:out value="${recipe.postTag}" /></p> --%>
+        		<p>
+        			<button id="timebutton" class="btn btn-warning" style="display:block" disabled="disabled">⌚ ${recipe.cookTime} </button> 
+        			<button id="likebutton" class="btn btn-warning" style="display:block" disabled="disabled">♥  ${recipe.postLikeTime}</button>
        			</p>
       		</div>
     	</div>
@@ -65,9 +69,9 @@ float:right;
     </div>
     <br>
 </div>
+</div>
 
 <script>
-
 const insertdata = document.querySelector('.searchtext');
 const post = document.querySelector('#search');
 
@@ -81,9 +85,6 @@ function showValue(){
 	
 	};
 }
-	
-
-
 </script>
 </body>
 </html>

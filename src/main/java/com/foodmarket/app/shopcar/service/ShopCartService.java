@@ -16,27 +16,24 @@ public class ShopCartService {
 
 	@Autowired
 	private ShopCartDao shopCartDao;
-	
+
 	public ShopCart save(ShopCart shopCart) {
 		return shopCartDao.save(shopCart);
 	}
 
-	
-	public List<ShopCart> findAll(){
+	public List<ShopCart> findAll() {
 		return shopCartDao.findAll();
 	}
-	
-	
-	public List<ShopCart> findShopCartByCustomerId(Long customerId){
-		
+
+	public List<ShopCart> findShopCartByCustomerId(Long customerId) {
+
 		return shopCartDao.findShopCartByCustomerId(customerId);
 	}
-	
 
-	public ShopCart findById(Integer id){
+	public ShopCart findById(Integer id) {
 		return shopCartDao.findById(id).orElse(null);
 	}
-	
+
 //	public List<ShopCart> getAllShopCart(){
 //		Long productId= shopCart.getProductId();
 //		WorkProduct product = productDao.findById(productId).get();
@@ -50,12 +47,15 @@ public class ShopCartService {
 	public void deleteById(Integer id) {
 		shopCartDao.deleteById(id);
 	}
-	
+
 	public void deleteByCustomerId(Long userId) {
-		shopCartDao.deleteByCustomerId(userId);;
+		shopCartDao.deleteByCustomerId(userId);
+		;
 	}
-	
-	public ShopCart findByproductId(Long productId){
+
+	public ShopCart findByproductId(Long productId) {
 		return shopCartDao.findByProductId(productId);
 	}
+
+
 }

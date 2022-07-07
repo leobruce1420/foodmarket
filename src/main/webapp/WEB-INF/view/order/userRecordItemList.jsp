@@ -40,7 +40,6 @@
 				<td><input type="text" value="${items.productPrice}" disabled></td>
 				<td><input type="text" value="${items.totalAmount}" disabled></td>
 			</tr>
-			<br>
 				
 		</c:forEach>
 		

@@ -111,7 +111,7 @@
           <ul class="nav navbar-nav w-100 justify-content-between">
   			<c:forEach var="productcategorytakeon" items="${productcategorytakeon}">
             <li class="nav-item dropdown"><a class="nav-link"
-              href="${contextRoot}/product/category?productcategory=${productcategorytakeon.productcategoryname}">${productcategorytakeon.productcategoryname}</a>
+              href="${contextRoot}/product/category?categoryid=${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</a>
             </li>
             </c:forEach> 
           </ul>
@@ -124,7 +124,11 @@
     
 	<a class="nav-link" data-display="static" href="${contextRoot}/lock/shopCart/all">
 		<img src="${contextRoot}/img/shopcart.png">
-	 	<span class='badge badge-warning' id='lblCartCount'> 5 </span>
+<!-- 	 	<span class='badge badge-warning' id='lblCartCount'>  -->
+	 	
+<%-- 	 	<c:out value="${totalNum}"></c:out> --%>
+	 
+<!-- 	 	</span> -->
 	</a>
 
       

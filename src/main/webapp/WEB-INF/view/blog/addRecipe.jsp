@@ -16,6 +16,11 @@
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <style>
+div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/writeRecipeBackGroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
 div #pullinup{
 	background-color:rgba(128, 128, 128, 0.199) ;
 	border:dotted 5px ;
@@ -31,14 +36,14 @@ div #pullinup{
 </style>
 </head>
 <body>
-
+<div class="background">
 <div class="container">
 <div id="pullinup"><h2>新增封面照請拖曳至此</h2></div>
 	<div class="row justify-content-center">
 		<div class="col-9">
- 		 <h1>新增食譜頁面<br>這裡是一般使用者</h1>
+ 		 
 			<div class="card">
-  				<div class="card-header" style="background-color: gold">請輸入食譜，使用者輸入data區</div>
+  				
  				<div class="card-body">
   
   					<form:form id="myform" class="form" method="post" action="${contextRoot}/postRecipe" modelAttribute="recipe">
@@ -66,9 +71,9 @@ div #pullinup{
  						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字"/><br/>
  						所需食材:<form:input path="ingredients" class="form-control"/><br/>
  						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
- 						烹飪時間:<form:input path="cookTime" class="form-control"/><br/>
- 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true" style="display:none"/><br/>
- 						<div id="summernote"><h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文<br><br>請先按下儲存才可新增食譜</h3></div>
+ 						烹飪時間:<form:input path="cookTime" class="form-control" placeholder="ex:40分鐘"/><br/>
+ 						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true" type="hidden"/><br/>
+ 						<div id="summernote"></div>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
  						
  						
@@ -83,9 +88,7 @@ div #pullinup{
  					</form:form>
     				
     				
-					<button id="edit2" class="btn btn-info" onclick="edit2()" type="button">修改內文</button>
-					<button id="save2" class="btn btn-info" onclick="save2()" type="button">儲存</button>
-    				<button class="btn btn-primary" id="submitbtn" type="submit" form="myform" disabled="disabled">新增食譜</button>
+    				<button class="btn btn-primary" id="submitbtn" type="submit" form="myform">新增食譜</button>
   				</div>
 			</div>
 
@@ -93,6 +96,7 @@ div #pullinup{
 
 	</div>
 
+</div>
 </div>
 <script>
   const dropzone = document.querySelector('#pullinup');
@@ -141,28 +145,27 @@ div #pullinup{
 		      console.log(img)
 	    });
 	  });
-  
-  
-	const edit2 = function() {
-		  $('#summernote').summernote({focus: true});
-		};
-
-	const save2 = function() {
-	const markup2 = $('#summernote').summernote('code');
-	  $('#summernote').summernote('destroy');
-	  console.log('ok');
-	  console.log(markup2);
-	  const insertvalue = document.querySelector('#catchSummernote');
-	  insertvalue.readonly='true';
-	  insertvalue.value=markup2;
-	  finAddRecipe.removeAttribute("disabled");
-	};
 	
 
 	
   $(document).ready(function() {
-      $('#summernote').summernote();
-		
+	// onChange callback
+	  $('#summernote').summernote({
+		  height: 300,
+		  placeholder: '<h2>請在此處輸入:</h2><br><h3>食材用量<br>食譜內文<br></h3>',
+		  callbacks: {
+	      onChange: function(contents, $editable) {
+	        console.log('onChange:', contents, $editable);
+	        const insertvalue2 = document.querySelector('#catchSummernote');
+	        insertvalue2.value=contents;
+	      }
+	    }
+	  });
+
+	  // summernote.change
+	  $('#summernote').on('summernote.change', function(we, contents, $editable) {
+	    console.log('summernote\'s content is changed.');
+	  });
 	});
 </script>
 </body>

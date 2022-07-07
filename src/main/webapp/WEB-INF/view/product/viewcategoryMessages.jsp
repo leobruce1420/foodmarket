@@ -66,7 +66,7 @@ table, td {
 		<div class="row justify-content-center text-center">
 			<%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
 
-			<div class="col-18">
+			<div class="col-12">
 
 				<div class="album py-3 bg-light">
 					<div class="container">
@@ -76,7 +76,7 @@ table, td {
 
 							<c:forEach var="workProduct" items="${workProduct}">
 								<div class="col-md-4">
-									<div class="card mb-4 shadow-sm text-center">
+									<div class="card-group mb-4 shadow-sm text-center  h-100">
 										<div class="card-body ">
 											<a
 												href="${contextRoot}/product/product?productid=${workProduct.productid}">
