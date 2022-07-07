@@ -10,6 +10,22 @@
 <!DOCTYPE html>
 <html>
 <style>
+html { 
+            			height: 100%; 
+     					} 
+                    body {
+                        background-image: url("<c:url value="/img/image4.jpg"/>");
+                        background-repeat: no-repeat;
+                        background-attachment:fixed;
+                        background-position: 50% 50%;
+                        background-size: 100% 100%;
+                    }
+/*                背景滿版    */
+
+                    .swiper-container {
+                        width: 830px;
+                        height: 370px;
+                    }
 table, td {
 	border: 3px rgb(66, 170, 218) solid;
 	background-color: rgb(187, 229, 235);
@@ -40,16 +56,14 @@ table, td {
 							<div class="card-group">
 								<div class="card">
 									<div class="card-body">
-										<a
-											href="${contextRoot}/product/product?productid=${workProduct.productid}">
+										
 											<img style="width: 400px; height: 400px;"
 											src="data:image/image/*;base64,${workProduct.productimg}"
 											alt="image" />
-										</a>
+										
 										<hr />
-										<a href="${contextRoot}/product/product?productid=${workProduct.productid}">
-										<h5 class="card-title">${workProduct.productname}</h5></a>
-										<p class="card-text">$${workProduct.productprice}</p>
+										<h5 class="card-title">${workProduct.productname}</h5>
+										<p class="card-text">售價 $${workProduct.productprice}</p>
 										<div class="card-footer" style="background-color: rgba(0,0,0,0);">
 										<div class="card-group text-center" >
 										<div class="card"  style="border: 0px;" >
@@ -89,6 +103,10 @@ table, td {
 
 
 								<div class="card">
+								<div class="card-body">
+								<h3 class="card-title">${workProduct.productname}</h3>
+								</div>
+								<hr/>
 									<div class="card-body">
 
 										<h4>商品詳情</h4>
