@@ -20,6 +20,8 @@ import com.foodmarket.app.product.service.ProductcategoryService;
 import com.foodmarket.app.product.service.WorkProductService;
 import com.foodmarket.app.shopadvertisement.ShopAdService;
 import com.foodmarket.app.shopadvertisement.ShopAdvertisement;
+import com.foodmarket.app.shopcar.entity.ShopCart;
+import com.foodmarket.app.shopcar.service.ShopCartService;
 import com.foodmarket.app.wishList.model.WishList;
 import com.foodmarket.app.wishList.service.WishListServiceInterface;
 
@@ -33,7 +35,10 @@ public class ProductPageController {
 
 	@Autowired
 	private ShopAdService sService;
-
+	
+	@Autowired
+	private ShopCartService shopCartService;
+	
 	@Autowired
 	private MemberServiceInterface memberService;
 
@@ -52,7 +57,6 @@ public class ProductPageController {
 		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		model.addAttribute("ad", ad);
 //		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
-
 		model.addAttribute("page", page);
 		return "index";
 

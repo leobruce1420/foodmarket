@@ -210,5 +210,14 @@ public class ShopCarController {
 		
 		return "shopcart/Item";
 	} 
-//>>>>>>> 90df862ca3cffb8c97e895c3f120c8ca35a8869d
+
+//	@GetMapping("shopCart/carNum")
+//	public String getShopCartNum(Model model) {
+//		List<ShopCart> shopCarts = shopCartService.findByShopCartNum();
+//		
+//		model.addAttribute("shopCarts",shopCarts);
+//		
+//		return "index";
+//	} 
+	
 }

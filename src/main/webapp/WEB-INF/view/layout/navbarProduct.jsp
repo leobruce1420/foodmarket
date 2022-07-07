@@ -124,7 +124,9 @@
     
 	<a class="nav-link" data-display="static" href="${contextRoot}/lock/shopCart/all">
 		<img src="${contextRoot}/img/shopcart.png">
-	 	<span class='badge badge-warning' id='lblCartCount'> 5 </span>
+	 	<span class='badge badge-warning' id='lblCartCount'> 
+	 	2
+	 	</span>
 	</a>
 
       
