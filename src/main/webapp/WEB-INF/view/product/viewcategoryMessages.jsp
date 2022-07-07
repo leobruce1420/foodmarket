@@ -10,6 +10,22 @@
 <!DOCTYPE html>
 <html>
 <style>
+html { 
+            			height: 100%; 
+     					} 
+                    body {
+                        background-image: url("<c:url value="/img/image4.jpg"/>");
+                        background-repeat: no-repeat;
+                        background-attachment:fixed;
+                        background-position: 50% 50%;
+                        background-size: 100% 100%;
+                    }
+/*                背景滿版    */
+
+                    .swiper-container {
+                        width: 830px;
+                        height: 370px;
+                    }
 table, td {
 	border: 3px rgb(66, 170, 218) solid;
 	background-color: rgb(187, 229, 235);

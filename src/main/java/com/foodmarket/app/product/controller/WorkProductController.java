@@ -179,7 +179,7 @@ public class WorkProductController {
 			 @RequestParam("administrator") String administrator,
 			 @RequestParam("inventoryquantity") Integer inventoryquantity,
 			 @RequestParam("takedown") String takedown,
-//			 @RequestParam("categoryid") Integer categoryid,
+			 @RequestParam("categoryid") Integer categoryid,
 			 @RequestParam(required = false, value = "takeon") String takeon,
 			 Model m) throws IOException {
 		WorkProduct workProduct = pmsgService.findById(productid);
@@ -196,7 +196,7 @@ public class WorkProductController {
 		workProduct.setProductdesciption(productdesciption);
 		workProduct.setInventoryquantity(inventoryquantity);
 		workProduct.setTakedown(takedown);
-//		workProduct.setProductcategoryid(productcategoryid);
+		workProduct.setCategoryid(categoryid);
 //		workProduct.setProductcategoryBean(productcategoryBean);
 		
 		if(!mf.isEmpty()) {
