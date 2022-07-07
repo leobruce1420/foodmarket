@@ -15,5 +15,6 @@ public interface ShopAdRepository extends JpaRepository<ShopAdvertisement, Integ
 	@Query(value="  select * from shop_advertisement where onboard = 'on' order by shop_activity_id desc;",nativeQuery = true)
 	public List<ShopAdvertisement> findShopAdByBoard();
 		
-	
+	@Query(value=" select * from shop_advertisement order by shop_activity_id desc;",nativeQuery = true)
+	public List<ShopAdvertisement> findShopAd();
 }
