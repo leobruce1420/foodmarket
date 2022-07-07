@@ -14,10 +14,9 @@
 <%-- <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> --%>
 <script src="${contextRoot}/js/highcharts.src.js"></script>
 <script src="${contextRoot}/js/exporting.src.js"></script>
-
 <%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"> --%>
 <meta charset="UTF-8">
-<title>銷售圓餅圖</title>
+<title>商品銷量分布</title>
 
 </head>
 <body>
@@ -25,7 +24,7 @@
 <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 pt-3 pb-2 mb-3 border-bottom">
  <div class="container-fluid">
  	 <div class="row justify-content-center">
-			<div id="chart1" style="min-width: 750px; height: 550px;"></div>
+			<div id="chart1" style="min-width: 825px; height: 550px;"></div>
 		</div>
 	</div>
 	</div>
@@ -42,9 +41,7 @@
 		$.get(
 						"${contextRoot}/productCount",
 						function(rtnMap) {
-							console.log(rtnMap)
-							console.log(rtnMapLabels)
-							console.log(rtnMapData)
+
 							var array = [];
 							for ( var key in rtnMap) {
 								array.push({
@@ -56,22 +53,13 @@
 								return (a.value < b.value) ? 1
 										: ((b.value < a.value) ? -1 : 0)
 							});
-							console.log(sorted1)
-							console.log(sorted1[0].value)
 
 							for (var i = 0; i < sorted1.length; i++) {
 								rtnMapResult.push([ sorted1[i].name,
 										sorted1[i].value ])
 							}
 							console.log(rtnMapResult)
-
-// 							Highcharts.setOptions({
-// 								chart : {
-// 									style : {
-// 										fontFamily : 'Times New Roman'
-// 									}
-// 								}
-// 							});
+							console.log(data)
 							Highcharts.chart('chart1', {
 												chart : {
 													type : 'pie',
@@ -87,7 +75,7 @@
 														'#D770AD', '#c42525',
 														'#a6c96a' ],
 												title : {
-													text : '銷售圓餅圖',
+													text : '商品銷量分布',
 // 													margin: 25,  //調整title和圖之間的距離
 													style : {
 														color : '#000',
@@ -115,7 +103,7 @@
 															style : {
 																color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
 																		|| 'black',
-																width: '60px'
+																width: '100px'
 															}
 														}
 													},
