@@ -10,6 +10,22 @@
 <!DOCTYPE html>
 <html>
 <style>
+html { 
+            			height: 100%; 
+     					} 
+                    body {
+                        background-image: url("<c:url value="/img/image4.jpg"/>");
+                        background-repeat: no-repeat;
+                        background-attachment:fixed;
+                        background-position: 50% 50%;
+                        background-size: 100% 100%;
+                    }
+/*                背景滿版    */
+
+                    .swiper-container {
+                        width: 830px;
+                        height: 370px;
+                    }
 table, td {
 	border: 3px rgb(66, 170, 218) solid;
 	background-color: rgb(187, 229, 235);
@@ -32,11 +48,11 @@ table, td {
 	<!-- 					type="submit" value="查詢"> -->
 	<!-- 			</div> -->
 	<br />
-
+<div class="container">
 	<div class="album py-5 bg-light">
 		<div class="container">
-
 			<div class="row">
+
 				<c:forEach var="workProduct" items="${workProduct}">
 				<div class="col-md-4">
 					<div class="card mb-4 shadow-sm text-center">
@@ -74,7 +90,7 @@ table, td {
 		</div>
 	</div>
 
-
+</div>
 	<hr />
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
