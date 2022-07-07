@@ -4,6 +4,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -108,7 +110,7 @@ public class OrderRecordController {
 	@GetMapping("/lastestRecord")
 	public String getLastRecord(Model model) {
 		
-		OrderRecord lastestRecord= orderRecordService.getLastest();
+		OrderRecord lastestRecord = orderRecordService.getLastest();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		lastestRecord.setCreateDateStr(dtf.format(lastestRecord.getCreateDate()));
 		List<OrderItem> orderItems= orderItemService.getByOrderRecordId(lastestRecord.getId());
@@ -126,6 +128,56 @@ public class OrderRecordController {
 		model.addAttribute("lastestRecord",lastestRecord);
 		model.addAttribute("orderItems" , orderItems);
 		return "order/lastestRecord";
+	}
+	
+	
+	@GetMapping("user/records")
+	public String getUserRecord(Model model,HttpSession session) {
+		Long userId= (Long) session.getAttribute("loginUserId");
+		System.out.println("userId"+ userId);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		List<OrderRecord> userRecords = orderRecordService.getByCustomerId(userId);
+		
+		for(OrderRecord orderRecord:userRecords) {
+			orderRecord.setCreateDateStr(dtf.format(orderRecord.getCreateDate()));
+//			 Integer recordId= orderRecord.getId();
+//			 List<OrderItem> orderItems= orderItemService.getByOrderRecordId(recordId);
+//			 for(OrderItem orderItem:orderItems) {
+//				 Long productId = orderItem.getProductId();
+//				 WorkProduct product= productService.findById(productId);
+//				 String productName = product.getProductname();
+//				 Integer productPrice = product.getProductprice();
+//					orderRecord.setProductName(productName);
+//					orderRecord.setProductPrice(productPrice);
+//				 
+//				 Integer quantity= orderItem.getQuantity();
+//				 	orderRecord.setQuantity(quantity);
+//
+//			 }
+		}
+
+		model.addAttribute("userRecords",userRecords);
+		return "order/UserRecord";
+	}
+	
+	@GetMapping("/userRecordItem/{orderRecordId}")
+	public String getUserItemByRecordId(Model model,@PathVariable Integer orderRecordId) {
+	
+		List<OrderItem> orderItems = orderItemService.getByOrderRecordId(orderRecordId);
+		
+		for(OrderItem orderItem:orderItems) {
+			Long productId = orderItem.getProductId();
+			WorkProduct product= productService.findById(productId);
+					
+			String productName = product.getProductname();
+			Integer productPrice = product.getProductprice();
+			
+			orderItem.setProductName(productName);
+			orderItem.setProductPrice(productPrice);
+		}
+		
+		model.addAttribute("orderItems" , orderItems);
+		return "order/userRecordItemList";
 	}
 	
 }

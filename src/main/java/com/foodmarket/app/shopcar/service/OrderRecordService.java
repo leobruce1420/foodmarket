@@ -101,4 +101,10 @@ public class OrderRecordService {
 		return page;
 	}
 	
+	public List<OrderRecord> getByCustomerId(Long userId){
+		
+		return orderRecordDao.findByUserId(userId);
+	}
+	
+	
 }

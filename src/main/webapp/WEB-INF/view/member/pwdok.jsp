@@ -20,10 +20,10 @@
       </div>
       <div class="modal-body">
       	<h4><span class="badge badge-secondary badge-danger">修改密碼成功，請重新登入</span></h4>
-      	<span class="form-text text-muted">5秒後將自動跳轉至首頁</span>
+      	<span class="form-text text-muted" id="count_up_timer">5秒後將自動跳轉至首頁</span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/'">返回首頁</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='${contextRoot}/HOME'">返回首頁</button>
       </div>
     </div>
   </div>
@@ -32,18 +32,23 @@
 <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		
-		$('#myModal').modal('show')
-		
-		
-		var timeout = setTimeout(toIndex, 5000);
-		
-		function toIndex() {
-			window.location.href='${contextRoot}/';
-		}
+$(document).ready(function(){
+	
+	$('#myModal').modal('show')
+	
+	
+	var timerVariable = setInterval(countDownTimer, 1000);
+	var totalSeconds = 0;
 
-	})
+	function countDownTimer() {
+		++totalSeconds;
+		if(totalSeconds < 5){
+			$("#count_up_timer")[0].innerHTML = 5-totalSeconds+'秒後將自動跳轉至首頁';
+		}else{
+			window.location.href='${contextRoot}/HOME';	
+		}
+	}
+})
 	
 </script>
 </body>

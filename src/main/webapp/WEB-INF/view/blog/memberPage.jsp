@@ -12,6 +12,11 @@
 <meta charset="UTF-8">
 <title>個人頁面</title>
 <style type="text/css">
+div.background{
+/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
+ 	background: gray url("/foodmarket/img/viewRecipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
+	background-attachment: fixed
+	}
 button#timebutton{
 float:left;
 }
@@ -25,7 +30,7 @@ div.container{
 </style>
 </head>
 <body>
-
+<div class="background">
 <div class="container">
 			
 	<div class="titleline">
@@ -80,6 +85,7 @@ div.container{
 	</div>
 
 
+</div>
 </div>
   <br><br><br>
 
