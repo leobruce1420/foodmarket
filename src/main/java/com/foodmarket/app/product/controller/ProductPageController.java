@@ -54,10 +54,18 @@ public class ProductPageController {
 //		List<productcategoryBean> productcategory = pcmsgService.selectproductcategoryAll();
 		List<ShopAdvertisement> ad = sService.findByBoard();
 		List<productcategoryBean> productcategorytakeon = pcmsgService.findByProductCategoryTakeon(takeon);
+//		List<ShopCart> ShopCarts = shopCartService.findAll();
+//		
+//		int totalNum = 0;
+//		for(ShopCart shopCart : ShopCarts) {
+//			Integer productNum = shopCart.getProductNumber();
+//			totalNum += productNum;
+//		}
 		model.addAttribute("productcategorytakeon", productcategorytakeon);
 		model.addAttribute("ad", ad);
 //		Page<productcategory> page = pmsgService.findByTakeDown(takedown,pageNumber);
 		model.addAttribute("page", page);
+//		model.addAttribute("totalNum", totalNum);
 		return "index";
 
 	}
