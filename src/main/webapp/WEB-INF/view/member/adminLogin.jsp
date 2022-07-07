@@ -25,12 +25,23 @@
       <h1 class="h3 mb-3 font-weight-normal">管理員登入</h1>
       <h5><span class="badge badge-secondary badge-danger">${errors.loginFail}</span></h5>
       <label for="inputEmail" class="sr-only">Account</label>
-      <input type="text" id="inputAccount" class="form-control" placeholder="Account" name="account" required autofocus>
+      <input type="text" id="inputAccount" class="form-control" placeholder="Account" name="account" required autofocus value="">
       <h5><span class="badge badge-secondary badge-danger">${errors.mailNotImput}</span></h5>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required value="">
       <h5><span class="badge badge-secondary badge-danger">${errors.pswNotImput}</span></h5>
+      <button class="btn btn-sm btn-success btn-block" type="button" id="input">一鍵輸入</button>
       <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
     </form>
+    
+    
+    <script src="${contextRoot}/js/jquery-3.6.0.js"></script>
+    <script>
+    	$('#input').click(function(){
+    		$('#inputAccount').val('admin');
+    		$('#inputPassword').val('a12345');
+    	})
+    
+    </script>
   </body>
 </html>

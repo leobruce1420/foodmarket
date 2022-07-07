@@ -45,59 +45,95 @@
  }
 }
 
+  nav {
+    top: 0;
+    width: 100%;
+    transition: all 0.5s;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .fixed-nav nav {
+    position: fixed;
+  }
+  
+  .img1 {
+    float: left;
+    border-radius: 10px;;
+  }
+  
+  /* /搜尋欄位/ */
+  form {
+    margin: 15px;
+  }
+  input {
+    outline: none;
+  }
+  
+  input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button {
+    display: none; 
+  }
+  input[type=search] {
+    padding: 9px 10px 9px 25px;
+    width: 45px;
+    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: solid 1px #ccc;
+    
+    -webkit-border-radius: 10em;
+       -moz-border-radius: 10em;
+            border-radius: 10em;
+    
+    -webkit-transition: all .5s;
+       -moz-transition: all .5s;
+            transition: all .5s;
+  }
+  	input[type=search]:focus {
+    width: 130px;
+    background-color: #fff;
+    border-color: #66CC75;
+    
+    -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+       -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+            box-shadow: 0 0 5px rgba(109,207,246,.5);
+  }
+  /* /按鈕/ */
+  .btn-round-2 {
+    border-radius: 20px;
+  }
+
+/* /購物車數量顯示/  */
+	#lblCartCount {
+    font-size: 15px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 3px;
+    vertical-align: top;
+    margin-left: -10px;
+  } 
+
 </style>
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark sticky-top" >
-
-    <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
+<!-- ==================================nav1=========================================== -->
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark sticky-top" >
+  <a class="navbar-brand" href="${contextRoot}/HOME">好食光市場</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav mr-auto ">
-    
-<!--       <li class="nav-item dropdown"> -->
-<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> -->
-<!--           商品管理 -->
-<!--         </a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<%--           <a class="dropdown-item" href="${contextRoot}/product/add">新增商品訊息</a> --%>
-<%--           <a class="dropdown-item" href="${contextRoot}/product/all">所有商品訊息</a> --%>
-<!--         </div> -->
-<!--       </li> -->
-
-		
-
        <li class="nav-item">
 			<a class="navbar-brand" href="${contextRoot}/question/allQuestion">常見問題</a>
-      </li>
-    
-<!--     <li class="nav-item dropdown"> -->
-<%--         <a class="nav-link dropdown-toggle" href="${contextRoot}/lock/shopCart/all" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> --%>
-<!--           購物車 -->
-<!--         </a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<%--           <a class="dropdown-item" href="${contextRoot}/lock/shopCart/all">購物車</a> --%>
-<!--           <div class="dropdown-divider"></div> -->
-<%--           <a class="dropdown-item" href="${contextRoot}/lock/orderList/{orderId}">購物明細</a> --%>
-<!--         </div> -->
-<!--       </li> -->
-      
+      </li>     
     </ul>
-    
-    
- <a href="${contextRoot}/lock/shopCart/all"><button type="button" class="btn btn-primary mr-sm-2">
- 購物車
-</button></a>
-
-
-    <form class="form-inline my-2 my-lg-0" action="${contextRoot}/product/searchproductname" method="get">
-      <input class="form-control mr-sm-0" type="text" placeholder="Search" aria-label="Search" id="productname" name="productname" autocomplete="off" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-    </form>
     
     <c:choose>
 		<c:when test="${loginUserId != null}">
@@ -111,8 +147,8 @@
 		</c:otherwise>
 	</c:choose>
   </div>
-  
 </nav>
+<!-- ==================================nav1=========================================== -->
 
 <div class="container-fluid">
   <div class="row">

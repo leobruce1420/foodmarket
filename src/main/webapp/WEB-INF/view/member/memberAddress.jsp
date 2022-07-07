@@ -55,7 +55,7 @@
      <div class="w-100"></div>
     
     <div class="form-group col-md-10">
-      <label for="add3">地址1</label>
+      <label for="add3">地址3</label>
       <span id="msg3" class="badge badge-secondary badge-danger"></span>
       <input type="text" class="form-control form-control-xxx" id="add3" name="add3" autocomplete="off" value="${member.adress3}">
       <button type="button" class="btn btn-outline-info" id="view3">顯示地圖</button>
@@ -65,6 +65,7 @@
 </div>
 
 <div class="form-row justify-content-start mt-4">
+<button class="btn btn-outline-success col-md-2 mt-4" type="button" id="input">一鍵輸入</button>
 <button type="submit" class="btn btn-outline-primary col-md-2 mt-4" id="submit">修改</button></div>
 </div>
 </form>
@@ -94,6 +95,12 @@
 </c:if>
 
 <script type="text/javascript">
+
+$('#input').click(function(){
+	$('#add1').val('556南投縣信義鄉');
+	$('#add2').val('新北市石門區富基村1號富貴角燈塔');
+	$('#add3').val('946屏東縣恆春鎮燈塔路');
+})
 
 $(window).ready(() => {
 	$('#myModal').modal('show');
