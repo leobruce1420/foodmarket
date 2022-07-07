@@ -3,138 +3,101 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/adminNavbar.jsp" />
 <c:set value="${pageContext.request.contextPath}" var="contextRoot"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>修改資料</title>
-<style>
-fieldset {
-	width: 800px;
-	height: 750px;
-	margin: auto;
-	margin-top: 10px;
-	text-align: center;
-}
-
-h2 {
-	text-align: center;
-}
-
-form {
-	margin: auto;
-	text-align: left;
-	width: 600px;
-}
-
-.submit {
-	text-align: center;
-}
-
-.picture {
-	width: 450px;
-	text-algin: center;
-}
-
-.div1 {
-	margin: auto;
-	margin-top: 10px;
-}
-
-picture {
-	text-algin: center;
-}
-
-textarea {
-	resize: none;
-}
-</style>
+<title>修改部落格資料</title>
 </head>
 <body>
-	<fieldset>
-		<br>
-		<h2>修改部落格活動資料</h2>
-		<form:form method="post" action="${contextRoot}/blogad/update"
-			enctype='multipart/form-data' modelAttribute="editAd">
 
-			<!--  <div class="picturediv">
-				<label for="picture" class="FormTitle">目前圖片 :  </label> <img
-					id="" src="data:image/*;base64, ${ad.picture}"
-					class="picture" name="picture"/>
-			</div><br>-->
+	<br>
+	<div class="container">
+		<h2 class="form-row justify-content-center">修改部落格活動資料</h2>
+		<div class="row justify-content-center">
+			<form:form method="post" action="${contextRoot}/blogad/update"
+				enctype='multipart/form-data' modelAttribute="editAd">
 
-			<div class="div1">
-				<label for="imgFile" class="FormTitle">更新圖片 : </label><img
-					id="output" class="picture" width="400px"
-					src="data:image/*;base64, ${ad.picture}"> <input type="file"
-					onchange="loadFile(event)" name="picture" accept="image/*" />
-			</div>
+				<div class="form-group">
+					<img id="output" class="picture" width="450px"
+						src="data:image/*;base64, ${ad.picture}">
+				</div>
 
-			<div class="div1">
-				活動編號: <input type="text" readonly name="blogAdId" required
-					value="${ad.blogAdId}">
-			</div>
+				<div class="form-group">
+					<label for="imgFile" class="FormTitle">更新圖片 : </label> <input
+						type="file" onchange="loadFile(event)" name="picture"
+						accept="image/*" />
+				</div>
 
-			<div class="div1">
-				<label for="blogAdName" class="FormTitle">活動名稱 : </label> <input
-					type="text" id="blogAdName" name="blogAdName" autocomplete="off"
-					required value="${ad.blogAdName}" />
-			</div>
+				<div class="form-group">
+					活動編號: <input type="text" readonly name="blogAdId" required
+						value="${ad.blogAdId}" class="form-control">
+				</div>
 
+				<div class="form-group">
+					<label for="blogAdName" class="FormTitle">活動名稱 : </label> <input
+						type="text" id="blogAdName" name="blogAdName" autocomplete="off"
+						required value="${ad.blogAdName}" class="form-control" />
+				</div>
 
-			<div class="div1">
-				<label for="beginDate" class="FormTitle">活動開始日期 : </label> <input
-					type="date" id="date" name="beginDate" max="2022-06-10" required
-					value="${ad.beginDate}" />
-			</div>
+				<div class="form-row">
+					<div class="col-6">
+						<label for="beginDate" class="FormTitle">活動開始日期 : </label> <input
+							type="date" id="date" name="beginDate" max="2022-06-10" required
+							value="${ad.beginDate}" class="form-control" />
+					</div>
 
-			<div class="div1">
-				<label for="endDate" class="FormTitle">活動結束日期 : </label> <input
-					type="date" id="date" name="endDate" max="2022-06-10" required
-					value="${ad.endDate}" />
-			</div>
+					<div class="col-6">
+						<label for="endDate" class="FormTitle">活動結束日期 : </label> <input
+							type="date" id="date" name="endDate" max="2022-06-10" required
+							value="${ad.endDate}" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="remark" class="FormTitle">備註 :</label>
+					<textarea id="remark" name="remark" rows="4" cols="50"
+						onKeyDown="checkMaxInput(this.form)"
+						onKeyUp="checkMaxInput(this.form)" maxlength="20" required
+						class="form-control">${ad.remark}</textarea>
+					<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
+						readonly type=text name=remLen size="3" maxlength="3" value="">字
+				</div>
 
-			<div class="div1">
-				<label for="remark" class="FormTitle">備註 :</label>
-				<textarea id="remark" name="remark" rows="4" cols="50"
-					onKeyDown="checkMaxInput(this.form)"
-					onKeyUp="checkMaxInput(this.form)" maxlength="20" required>${ad.remark}</textarea>
-				<br> <label for="remark" class="FormTitle">剩餘 : </label> <input
-					readonly type=text name=remLen size="3" maxlength="3" value="">字
+				<div class="form-group">
+					<label for="recipeUrl" class="FormTitle">食譜路徑 : </label> <input
+						id="recipeUrl" name="recipeUrl" autocomplete="off" required
+						value="${ad.recipeUrl}" class="form-control" />
+				</div>
 
-			</div>
+				<div class="form-row">
+					<div class="col-6">
+						<label for="recipeId" class="FormTitle">食譜編號 : </label> <select
+							id="recipeId" name="recipeId" class="custom-select">
+							<option value="1" ${ad.recipeId == '1'? 'selected' : ''}>1</option>
+							<option value="2" ${ad.recipeId == '2'? 'selected' : ''}>2</option>
+						</select>
+					</div>
 
-			<div class="div1">
-				<label for="recipeId" class="FormTitle">食譜編號 : </label> <select id="recipeId"
-					 name="recipeId">
-					<option value="1" ${ad.recipeId == '1'? 'selected' : ''}>1</option>
-					<option value="2" ${ad.recipeId == '2'? 'selected' : ''}>2</option>
-				</select>
-			</div>
-			
-			<div class="div1">
-				<label for="recipeUrl" class="FormTitle">食譜路徑 : </label> <input
-					id="recipeUrl" name="recipeUrl" autocomplete="off" required
-					value="${ad.recipeUrl}" />
-			</div>
-
-			<div class="div1">
-				<label for="onboard" class="FormTitle">上架狀態 : </label><select
-					id="onboard" name="onboard">
-					<option value="on" ${ad.onboard == 'on'? 'selected' : ''}>on</option>
-					<option value="off" ${ad.onboard == 'off'? 'selected' : ''}>off</option>
-				</select>
-			</div>
-			
-			<div class="submit">
-				<input type="submit" id="submit" class="btn btn-outline-info"
-					value="確定" /> <input class="btn btn-outline-danger" type="button"
-					name="back" value="返回" onClick="javascript:history.back()">
-			</div>
-		</form:form>
-	</fieldset>
+					<div class="col-6">
+						<label for="onboard" class="FormTitle">上架狀態 : </label><select
+							id="onboard" name="onboard" class="custom-select">
+							<option value="on" ${ad.onboard == 'on'? 'selected' : ''}>on</option>
+							<option value="off" ${ad.onboard == 'off'? 'selected' : ''}>off</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="form-row justify-content-center">
+					<input type="submit" id="submit" class="btn btn-outline-info"
+						value="確定" /> <input class="btn btn-outline-danger" type="button"
+						name="back" value="返回" onClick="javascript:history.back()">
+				</div>
+			</form:form>
+		</div>
+	</div>
+	<br>
 	<script>
 		var loadFile = function(event) {
 			var reader = new FileReader();
