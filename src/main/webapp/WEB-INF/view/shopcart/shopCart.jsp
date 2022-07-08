@@ -83,7 +83,7 @@ function sendOrder() {
 		var orderRecordId = res.data.id
 		document.location.href = `${contextRoot}/lock/orderList/` + orderRecordId
 	})
-	console.log(shoplist.list.length)
+	
 }
 
 function amountChange(apId){
