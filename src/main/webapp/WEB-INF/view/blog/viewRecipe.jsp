@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/navbarRecipe.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 			<style type="text/css">
-			div.background{
+			body{
 			/* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
  				background: gray url("/foodmarket/img/viewRecipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
 				background-attachment: fixed
@@ -34,6 +34,53 @@
 		</script>
 	</head>
 <body>
+<div class="container">
+  <div class="carousel slide" data-ride="carousel" id="carousel-demo">
+   <ol class="carousel-indicators">
+    <li data-target="#carousel-demo" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-demo" data-slide-to="1"></li>
+    <li data-target="#carousel-demo" data-slide-to="2"></li>
+   </ol>
+
+
+   <div class="carousel-inner">
+
+    <div class="carousel-item active">
+     <c:forEach items="${ad}" step="4" begin="0" end="2" var="ad"
+      varStatus="s">
+      <div>
+       <a href="${ad.recipeUrl}"> <img class="d-block w-100"
+        src="data:image/*;base64, ${ad.picture}" alt="">
+       </a>
+      </div>
+     </c:forEach>
+    </div>
+
+    <div class="carousel-item">
+     <c:forEach items="${ad}" step="3" begin="1" end="2" var="ad"
+      varStatus="s">
+      <img class="d-block w-100"
+       src="data:image/*;base64, ${ad.picture}" alt="">
+     </c:forEach>
+    </div>
+    <c:forEach items="${ad}" step="1" begin="2" end="2" var="ad"
+     varStatus="s">
+     <div class="carousel-item">
+      <img class="d-block w-100"
+       src="data:image/*;base64, ${ad.picture}" alt="">
+     </div>
+    </c:forEach>
+   </div>
+
+   <a href="#carousel-demo" class="carousel-control-prev"
+    data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+   </a> <a href="#carousel-demo" class="carousel-control-next"
+    data-slide="next"> <span class="carousel-control-next-icon"></span>
+   </a>
+
+  </div>
+
+ </div>
 
 <div class="background">
 	<div class="container">
