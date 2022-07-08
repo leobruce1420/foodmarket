@@ -34,7 +34,7 @@ public class WorkProductController {
 	// 新增商品 join
 	@PostMapping("postProduct")
 	public String addMessage(@RequestParam("productname") String productname, 
-//			@RequestParam("productcategory")  String productcategory,
+			@RequestParam("productcategory")  String productcategory,
 			 @RequestParam("productprice") Integer productprice,
 			 @RequestParam("productimg") MultipartFile mf,
 			 @RequestParam("productdesciption") String productdesciption,
@@ -57,10 +57,13 @@ public class WorkProductController {
 //			productcategoryBean cateB = pcmsgService.findById(categoryid);
 			productcategoryBean productcategoryBean = new productcategoryBean();
 			
+			pcmsgService.findById(productcategoryid);
+			
+			
 			productcategoryBean.setCategoryid(productcategoryid);
 			
 			workProduct.setProductname(productname);
-//			workProduct.setProductcategory(productcategory);
+			workProduct.setProductcategory(productcategory);
 			workProduct.setProductprice(productprice);
 			workProduct.setAdministrator(administrator);
 			workProduct.setProductdesciption(productdesciption);

@@ -29,6 +29,8 @@ import com.foodmarket.app.blog.model.RecipeType;
 import com.foodmarket.app.blog.service.MemberLikeRecipeServer;
 import com.foodmarket.app.blog.service.RecipeService;
 import com.foodmarket.app.blog.service.RecipeTypeService;
+import com.foodmarket.app.blogadvertisement.BlogAdService;
+import com.foodmarket.app.blogadvertisement.BlogAdvertisement;
 
 
 
@@ -42,6 +44,9 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeTypeService recipeTypeService;
+	
+	@Autowired
+	private BlogAdService bSer;
 	
 	@Autowired
 	private MemberLikeRecipeServer memberLikeRecipeServer;
@@ -140,16 +145,16 @@ public class RecipeController {
 	}
 
 	@GetMapping("recipe/all")
-	public ModelAndView viewRecipe(ModelAndView mav, 
+	public ModelAndView viewRecipe(ModelAndView mav,Model m, 
 			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
 		Page<Recipe> page = rService.findByViewPage(pageNumber);
 		Page<Recipe> likePage = rService.findByViewPage2(pageNumber);
 		Page<RecipeType> recType = recipeTypeService.findByPage(pageNumber);
-		
+		List<BlogAdvertisement> ad = bSer.findByBoard();
 		mav.getModel().put("page", page);
 		mav.getModel().put("likePage", likePage);
 		mav.getModel().put("recType", recType);
-	
+		m.addAttribute("ad",ad);
 		
 		mav.setViewName("blog/viewRecipe");
 		return mav;

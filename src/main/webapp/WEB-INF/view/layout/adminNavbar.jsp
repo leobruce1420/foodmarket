@@ -80,24 +80,31 @@
     </div>
   </div><!--panel end-->
   <!--  ==================================================================================================    -->
-      <div class="panel panel-primary leftMenu">
-    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse"
-         data-target="#collapseListGroup2" role="tab">
-		<a class="nav-link" href="#"> <span data-feather="coffee"></span> 論壇管理 </a>
+   <div class="panel panel-primary leftMenu">
+    <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse"
+         data-target="#collapseListGroup6" role="tab">
+		<a class="nav-link" href="${contextRoot}/recipe/backall"> <span data-feather="file-text"></span> 食譜管理 </a>
     </div>
+  </div>
+<!--       <div class="panel panel-primary leftMenu"> -->
+<!--     <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" -->
+<!--          data-target="#collapseListGroup2" role="tab"> -->
+<!-- 		<a class="nav-link" href="#"> <span data-feather="coffee"></span> 論壇管理 </a> -->
+<!--     </div> -->
     <!-- .panel-collapse和.collapse標明摺疊元素 .in表示要顯示出來 -->
-    <div id="collapseListGroup2" class="panel-collapse collapse in" role="tabpanel"
-         aria-labelledby="collapseListGroupHeading2">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/recipe/manageradd">新增食譜</a>
-        </li>
-        <li class="list-group-item">
-          <a class="dropdown-item" href="${contextRoot}/recipe/backall">所有食譜訊息</a>
-        </li>
-      </ul>
-    </div>
-  </div><!--panel end-->
+<!--     <div id="collapseListGroup2" class="panel-collapse collapse in" role="tabpanel" -->
+<!--          aria-labelledby="collapseListGroupHeading2"> -->
+<!--       <ul class="list-group"> -->
+<!--         <li class="list-group-item"> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/recipe/manageradd">新增食譜</a> --%>
+<!--         </li> -->
+<!--         <li class="list-group-item"> -->
+<%--           <a class="dropdown-item" href="${contextRoot}/recipe/backall">所有食譜訊息</a> --%>
+<!--         </li> -->
+<!--       </ul> -->
+<!--     </div> -->
+<!--   </div> -->
+  <!--panel end-->
  <!--  ==================================================================================================    --> 
    <div class="panel panel-primary leftMenu">
     <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse"

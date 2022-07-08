@@ -77,22 +77,22 @@ table, td {
 	<!-- 					type="submit" value="查詢"> -->
 	<!-- 			</div> -->
 	<br />
-	<div class="container">
+	<div class="container"style="background-color:transparent">
 
 		<div class="row justify-content-center text-center">
 			<%-- 			<c:out  value="${workProduct.productcategory}" /> --%>
 
 			<div class="col-12">
 
-				<div class="album py-3 bg-light">
+				<div class="album py-3 "style="background-color:transparent">
 					<div class="container">
 
 						<div class="row">
 
 
 							<c:forEach var="workProduct" items="${workProduct}">
-								<div class="col-md-4">
-									<div class="card-group mb-4 shadow-sm text-center  h-100">
+								<div class="col-md-4 " >
+									<div class="card mb-4 shadow-sm text-center ">
 										<div class="card-body ">
 											<a
 												href="${contextRoot}/product/product?productid=${workProduct.productid}">

@@ -52,8 +52,8 @@
 										name="categoryid" type="hidden" value="${pMsg.productcategoryBean.categoryid}"/>
 										<input class="form-control" id=""
 										name=""  style="pointer-events: none" value="${pMsg.productcategoryBean.productcategoryname}"/>
-									<form:input class="form-control" id="inputGroupSelect01" 
-										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>  
+<%-- 									<form:input class="form-control" id="inputGroupSelect01"  --%>
+<%-- 										path="productcategoryBean.productcategoryname" style="pointer-events: none"/>   --%>
 <!-- 									<select class="custom-select" id="categoryid" -->
 <!-- 												name="productcategoryid"> -->
 <!-- 											<select class="custom-select" id="categoryid" -->

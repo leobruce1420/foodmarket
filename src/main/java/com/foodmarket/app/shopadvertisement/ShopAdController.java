@@ -40,15 +40,15 @@ public class ShopAdController {
 		return "advertisement/insertShopAd";
 	}
 	
-//	@GetMapping("/shopad/getAll")
-//	public String showAllAd(Model m) {
-//		
-//		List<ShopAdvertisement> ad = sService.getAllAds();
-//		
-//		m.addAttribute("ad",ad);
-//		
-//		return "advertisement/getAllShopAd";
-//	}
+	@GetMapping("/shopad/getAll")
+	public String showAllAd(Model m) {
+		
+		List<ShopAdvertisement> ad = sService.getAllAdsById();
+		
+		m.addAttribute("ad",ad);
+		
+		return "advertisement/getAllShopAd";
+	}
 	
 	@GetMapping("/shopad/queryById")
 	public String queryById(@RequestParam("id") Integer id, Model m) {
@@ -76,14 +76,14 @@ public class ShopAdController {
 //		return "index"; 
 //	}
 	
-	@GetMapping("/shopad/getAll")
-	public ModelAndView viewMessages(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
-		Page<ShopAdvertisement> page = sService.findByPage(pageNumber);
-		mav.getModel().put("page", page);
-		mav.setViewName("advertisement/getAllShopAd");
-		return mav;
-	}
+//	@GetMapping("/shopad/getAll")
+//	public ModelAndView viewMessages(ModelAndView mav, 
+//			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+//		Page<ShopAdvertisement> page = sService.findByPage(pageNumber);
+//		mav.getModel().put("page", page);
+//		mav.setViewName("advertisement/getAllShopAd");
+//		return mav;
+//	}
 	
 	////////////////////////////
 	

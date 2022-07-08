@@ -108,7 +108,7 @@ table tbody tr:last-child td:last-child {
 					</tr>
 				</thead>
 
-				<c:forEach items="${page.content}" var="ad" varStatus="s">
+				<c:forEach items="${ad}" var="ad" varStatus="s">
 					<tbody id="myBody">
 						<tr id="${ad.shopAdId}">
 							<th scope="row">${ad.shopAdId}
@@ -135,25 +135,25 @@ table tbody tr:last-child td:last-child {
 			</table>
 		</div>
 
-		<div class="row justify-content-center">
-			<div class="col-9">
-				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-					<c:choose>
-						<c:when test="${page.number != pageNumber-1}">
-							<a href="${contextRoot}/shopad/getAll?p=${pageNumber}"><c:out
-									value="${pageNumber}" /></a>
-						</c:when>
-						<c:otherwise>
-							<c:out value="${pageNumber}"></c:out>
-						</c:otherwise>
-					</c:choose>
-					<c:if test="${pageNumber != page.totalPages}">
+<!-- 		<div class="row justify-content-center"> -->
+<!-- 			<div class="col-9"> -->
+<%-- 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${page.number != pageNumber-1}"> --%>
+<%-- 							<a href="${contextRoot}/shopad/getAll?p=${pageNumber}"><c:out --%>
+<%-- 									value="${pageNumber}" /></a> --%>
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<%-- 							<c:out value="${pageNumber}"></c:out> --%>
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+<%-- 					<c:if test="${pageNumber != page.totalPages}"> --%>
 
-					</c:if>
-				</c:forEach>
+<%-- 					</c:if> --%>
+<%-- 				</c:forEach> --%>
 
-			</div>
-		</div>
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 	<script type="text/javascript">
 		// 		(function(document) {

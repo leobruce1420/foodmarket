@@ -165,7 +165,7 @@ ul.social-network li {
 						varStatus="s">
 						<div>
 							<a href="${ad.shopUrl}"> <img class="d-block w-100"
-								src="data:image/*;base64, ${ad.picture}" alt="">
+								src="data:image/*;base64, ${ad.picture}"  alt="">
 							</a>
 						</div>
 					</c:forEach>
@@ -283,9 +283,9 @@ ul.social-network li {
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 					<c:forEach var="workProduct" items="${page.content}">
 						<li>
-							<div class="card-deck text-center">
+							<div class="card-deck text-center" >
 								<!-- 								<div class="card-deck mb-4 shadow-sm"> -->
-								<div class="card">
+								<div class="card"style="background-color:#FFF3DE">
 									<div class="card-body">
 										<a
 											href="${contextRoot}/product/product?productid=${workProduct.productid}">
@@ -325,8 +325,8 @@ ul.social-network li {
 		<br />
 
 
-		<div class="album py-5 bg-light">
-			<div class="container">
+		<div class="album py-5 " style="background-color:transparent">
+			<div class="container" style="background-color:transparent">
 
 				<div class="row">
 					<c:forEach var="workProduct" items="${page.content}">
