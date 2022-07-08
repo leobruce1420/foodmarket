@@ -81,7 +81,7 @@
 <%-- <a href="${contextRoot}/recipe/manageradd"><button type="button" class="btn btn-primary btn-lg">新增食譜</button></a> --%>
 搜尋：<input type="search" class="light-table-filter" data-table="table" placeholder="請輸入關鍵字"><br>
 	<br><table class="table">
-		<thead  class="table-dark">
+		<thead  class="table">
 			<tr><th>食譜Id<th>使用者Id<th>食譜分類<th>食譜標題<th>食譜標籤<th>收藏人數<th>烹飪時間<th>份量<th>創建時間<th>功能列表</tr>
 		</thead>	
 		<c:forEach var="recipe" items="${page.content}">
@@ -107,29 +107,67 @@
 	</table>
 
 
- <div class="row justify-content-center">
-  	<div class="col-9">
-   		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-   
-   			<c:choose>
-     			<c:when test="${page.number != pageNumber-1}">
-        			<a href="${contextRoot}/recipe/backall?p=${pageNumber}" class="pagenumber"><c:out value="${pageNumber}" /></a>
-     			</c:when>
-   
-     			<c:otherwise>
-       			<c:out value="${pageNumber}" />
-     			</c:otherwise>
-   			</c:choose>
-   
-   			<c:if test="${pageNumber != page.totalPages}">
-   			|
-   			</c:if>
-     
-   		</c:forEach>
-  	</div>
- </div>
+ 
+ <div class="w-100"></div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
 
-</div>
+				<c:choose>
+					<c:when test="${page.number == 0}">
+						<li class="page-item disabled"><a class="page-link" href="#"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="${contextRoot}/recipe/backall?p=${page.number+1 -1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:otherwise>
+				</c:choose>
+
+
+				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+					<c:choose>
+
+						<c:when test="${pageNumber == page.number+1}">
+							<li class="page-item disabled"><a class="page-link"
+								href="${contextRoot}/recipe/backall?p=${pageNumber}"><c:out
+										value="${pageNumber}" /></a></li>
+						</c:when>
+
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="${contextRoot}/recipe/backall?p=${pageNumber}"><c:out
+										value="${pageNumber}" /></a></li>
+						</c:otherwise>
+
+					</c:choose>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${page.number == page.totalPages-1}">
+						<li class="page-item disabled"><a class="page-link" href="#"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="${contextRoot}/recipe/backall?p=${page.number +2}"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</ul>
+		</nav>
+	</div>
+ 
+ 
+
+
 </div>
 
 
