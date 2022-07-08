@@ -51,7 +51,7 @@ div #pullinup{
   						<div class="form-group">
   						
  						<form:input path="customerId" class="form-control" value="${customerId}" type="hidden"/><br/>
- 						食譜標題:<form:input path="postTitle" class="form-control"/><br/>
+ 						食譜標題:<form:input path="postTitle" class="form-control" id="titleForBtn"/><br/>
  						食譜封面圖: (拖曳放入頁面即可，要更換則再次拖入)<form:input path="postImage" class="form-control" id="pullintext"  readonly="true" value=""/><br/>
  							<div id="show" ><img src="" id="showdivimg" style="width: 400px;"></div>
 						食譜種類:<form:select path="recipeType" class="form-control"> 						
@@ -68,10 +68,10 @@ div #pullinup{
 							<form:option value="義大利料理" label="義大利料理"/>
  						</form:select><br>
 
- 						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字"/><br/>
- 						所需食材:<form:input path="ingredients" class="form-control"/><br/>
- 						食譜標籤:<form:input path="postTag" class="form-control"/><br/>
- 						烹飪時間:<form:input path="cookTime" class="form-control" placeholder="ex:40分鐘"/><br/>
+ 						份量:<form:input path="serving" class="form-control" placeholder="請輸入數字" id="servingForBtn"/><br/>
+ 						所需食材:<form:input path="ingredients" class="form-control" id="ingredientsForBtn"/><br/>
+ 						食譜標籤:<form:input path="postTag" class="form-control" id="postTagForBtn"/><br/>
+ 						烹飪時間:<form:input path="cookTime" class="form-control" placeholder="ex:40分鐘" id="cookTimeForBtn"/><br/>
  						食譜內文:<form:input id="catchSummernote" path="postText" class="form-control" readonly="true" type="hidden"/><br/>
  						<div id="summernote"></div>
  						<form:input path="postLikeTime" class="form-control" value="0" type="hidden"/>
@@ -89,6 +89,7 @@ div #pullinup{
     				
     				
     				<button class="btn btn-primary" id="submitbtn" type="submit" form="myform">新增食譜</button>
+    				<input class="btn btn-primary" id="oneclick" type="button" value="一鍵新增食譜" onclick="insertByOneClick()"/>
   				</div>
 			</div>
 
@@ -146,7 +147,21 @@ div #pullinup{
 	    });
 	  });
 	
+  const oneBtn1 = document.querySelector('#titleForBtn');
+  const oneBtn2 = document.querySelector('#servingForBtn');
+  const oneBtn3 = document.querySelector('#ingredientsForBtn');
+  const oneBtn4 = document.querySelector('#postTagForBtn');
+  const oneBtn5 = document.querySelector('#cookTimeForBtn');
+ // const thatBtn = document.querySelector('#oneclick');
 
+  function insertByOneClick() {
+	  oneBtn1.value='香蔥牛排丼飯';
+	  oneBtn2.value=1;
+	  oneBtn3.value='牛排、青蔥、大蒜、辣椒、黑胡椒、鹽、糖、油';
+	  oneBtn4.value='牛排、丼飯';
+	  oneBtn5.value='30分鐘';
+  };
+  
 	
   $(document).ready(function() {
 	// onChange callback
