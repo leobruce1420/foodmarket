@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.foodmarket.app.member.model.Member;
 import com.foodmarket.app.member.service.MemberServiceInterface;
+import com.foodmarket.app.shopcar.service.ShopCartService;
 
 import ecpay.payment.integration.AllInOne;
 import ecpay.payment.integration.domain.AioCheckOutDevide;
@@ -35,6 +36,9 @@ public class CheckOutController {
 	@Autowired
 	private MemberServiceInterface memberService;
 
+	@Autowired
+	private ShopCartService shopCartService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(CheckOutController.class);
 
 	@GetMapping("/goECPay")
