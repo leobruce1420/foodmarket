@@ -23,7 +23,11 @@ public class ShopAdService {
 	}
 	
 	public List<ShopAdvertisement> getAllAds(){
-		return sDao.findAll();
+		return sDao.findShopAdByBoard();
+	}
+	
+	public List<ShopAdvertisement> getAllAdsById(){
+		return sDao.findShopAd();
 	}
 	
 	public ShopAdvertisement findById(Integer id) {
