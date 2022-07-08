@@ -165,7 +165,7 @@ ul.social-network li {
 						varStatus="s">
 						<div>
 							<a href="${ad.shopUrl}"> <img class="d-block w-100"
-								src="data:image/*;base64, ${ad.picture}" alt="">
+								src="data:image/*;base64, ${ad.picture}"  alt="">
 							</a>
 						</div>
 					</c:forEach>
@@ -980,7 +980,8 @@ function insertProduct(pId,cId) {
 // 				location.reload();
 			})	
 	}else{
-		alert("請先登入")	
+		alert("請先登入");
+		location.href='${contextRoot}/login';
 	}
 		}
 

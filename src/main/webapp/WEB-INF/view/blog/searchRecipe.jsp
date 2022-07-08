@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../layout/navbar.jsp" />
+<jsp:include page="../layout/navbarRecipe.jsp" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-div.background{
+body{
 /* 	background: gray url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg") scroll no-repeat center / 100% 100%; */
  	background: gray url("/foodmarket/img/viewRecipebackgroundHD1.jpg") scroll no-repeat center / 100% 100%; 
 	background-attachment: fixed

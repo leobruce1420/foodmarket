@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface BlogAdRepository extends JpaRepository<BlogAdvertisement, Integer> {
-	@Query(value="select * from blog_advertisement where onboard = 'on'",nativeQuery = true)
+	@Query(value="select * from blog_advertisement where onboard = 'on'  order by blog_activity_id desc ",nativeQuery = true)
 	public List<BlogAdvertisement> findShopAdByBoard();
+	
+	
 }
