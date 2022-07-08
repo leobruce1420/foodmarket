@@ -45,13 +45,13 @@
 				<div class="form-row">
 					<div class="col-6">
 						<label for="beginDate" class="FormTitle">活動開始日期 : </label> <input
-							type="date" id="date" name="beginDate" max="2022-06-10" required
+							type="date" id="date" name="beginDate" max="2022-07-30" required
 							value="${ad.beginDate}"  class="form-control"/>
 					</div>
 
 					<div class="col-6">
 						<label for="endDate" class="FormTitle">活動結束日期 : </label> <input
-							type="date" id="date" name="endDate" max="2022-06-10" required
+							type="date" id="date" name="endDate" max="2022-07-30" required
 							value="${ad.endDate}" class="form-control" />
 					</div>
 				</div>
