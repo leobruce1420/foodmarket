@@ -53,7 +53,7 @@ public class StatisticController {
 	@GetMapping("/productCountCategory")
 	@ResponseBody
 	public Map getProductCountCategory(){
-		Map rtnMap = soiService.productCountCategory();		
+		Map rtnMap = soiService.productCountCategory();
 		return rtnMap;
 	}
 	
