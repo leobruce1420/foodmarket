@@ -148,7 +148,7 @@ public class StatisticOrderItemService {
 		}
 		
 //		System.err.println("加總結果:" + keyMap);
-
+		System.out.println(keyMap);
 		return keyMap;
 	}	
 	
@@ -187,7 +187,7 @@ public class StatisticOrderItemService {
 				int total_salles = keyMap.getOrDefault(pn_meat, 0);
 				total_salles = total_salles + s;
 				keyMap.put(pn_meat, total_salles);
-				System.out.println(keyMap);
+//				System.out.println(keyMap);
 			}
 		}
 		return keyMap;
@@ -208,7 +208,7 @@ public class StatisticOrderItemService {
 				int total_salles = keyMap.getOrDefault(pn_fruit, 0);
 				total_salles = total_salles + s;
 				keyMap.put(pn_fruit, total_salles);
-				System.out.println(keyMap);
+//				System.out.println(keyMap);
 			}
 		}
 		return keyMap;
@@ -229,7 +229,7 @@ public class StatisticOrderItemService {
 				int total_salles = keyMap.getOrDefault(pn_Seafood, 0);
 				total_salles = total_salles + s;
 				keyMap.put(pn_Seafood, total_salles);
-				System.out.println(keyMap);
+//				System.out.println(keyMap);
 			}
 		}
 		return keyMap;
