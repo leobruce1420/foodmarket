@@ -9,7 +9,7 @@ public class PageController {
 	
 	@GetMapping("/member/test")
 	public String tese() {
-		return "member/forgotPwd/pwdMail";
+		return "member/auth/authMailReSend";
 	}
 	
 	@GetMapping("/login")

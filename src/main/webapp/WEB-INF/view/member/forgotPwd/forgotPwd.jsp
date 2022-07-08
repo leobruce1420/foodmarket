@@ -11,7 +11,6 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
 <title>忘記密碼</title>
-<script>window.verifyCallback = verifyCallback;</script>
 </head>
 <body>
 
@@ -30,7 +29,7 @@ alert(${error});
       <label for="mail">請輸入電子信箱</label>
       <span id="emailcheck" class="badge badge-secondary badge-danger"></span>
       <span id="emailmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="on">
+      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="off" value="">
     </div>
     
      <div class="w-100"></div>
@@ -47,7 +46,7 @@ alert(${error});
 </div>
 
 <div class="w-100"></div>
-
+<button class="btn btn-outline-success col-md-3 mt-4" type="button" id="input">一鍵輸入</button>
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
 
 </div>
@@ -58,12 +57,18 @@ alert(${error});
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
+
+window.verifyCallback = verifyCallback;
+
+$('#input').click(function(){
+	$('#mail').val('molamolaking860201@gmail.com');
+})
 	
 // 到後端進行機器人驗證	
 function verifyCallback(token) {
 	$.ajax({
     type :"POST",
-    url  : "checkRecaptcha",
+    url  : "${contextRoot}/checkRecaptcha",
     contentType:'application/json',
 	data: JSON.stringify(grecaptcha.getResponse()),
 	success: function(data){
@@ -106,7 +111,7 @@ $('#mail').keyup(function(){
 		} else {
 			$.ajax({
 				type :"POST",
-				url  : "checkMail",
+				url  : "${contextRoot}/checkMail",
 				contentType:'application/text',
 				data: mailInput,
 				success: function(data){

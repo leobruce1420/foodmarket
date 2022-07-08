@@ -58,7 +58,8 @@ public class JavaMail {
 
 		// class
 		Auth auth = new Auth(userName, password);
-		Session session = Session.getDefaultInstance(prop, auth);
+//		Session session = Session.getDefaultInstance(prop, auth);
+		Session session = Session.getInstance(prop, auth);
 
 		// ---------------------------------------------------------Message郵件格式
 		MimeMessage message = new MimeMessage(session);

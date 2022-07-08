@@ -24,7 +24,7 @@
  	<div class="form-group col-md-5">
       <label for="customerName">姓名</label>
       <span id="namemsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="customerName" name="customerName" required autocomplete="off">
+      <input type="text" class="form-control" id="customerName" name="customerName" required autocomplete="off" value="">
     </div>
     
     <div class="w-100"></div>
@@ -32,7 +32,7 @@
     <div class="form-group col-md-5">
       <label for="mobile">手機</label>
       <span id="mobilemsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="mobile" name="mobile" required autocomplete="off">
+      <input type="text" class="form-control" id="mobile" name="mobile" required autocomplete="off" value="">
     </div>
     
      <div class="w-100"></div>
@@ -41,7 +41,7 @@
       <label for="mail">電子信箱</label>
       <span id="emailcheck" class="badge badge-secondary badge-danger"></span>
       <span id="emailmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="on">
+      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="off" value="">
        <small id="emailHelp" class="form-text text-muted">此信箱將當作帳號使用</small>
     </div>
     
@@ -50,14 +50,14 @@
     <div class="form-group col-md-5">
       <label for="password">密碼</label>
       <span id="pswmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="password" class="form-control" id="password" name="password" required autocomplete="off">
+      <input type="password" class="form-control" id="password" name="password" required autocomplete="off" value="">
     </div>
     
     <div class="w-100"></div>
     
     <div class="form-group col-md-3">
       <label for="birthday">生日</label>
-      <input type="date" class="form-control" id="birthday" name="birthday" required autocomplete="off">
+      <input type="date" class="form-control" id="birthday" name="birthday" required autocomplete="off" value="">
     </div>
      <div class="form-group col-md-2">
       <label for="gender">性別</label>
@@ -82,6 +82,7 @@
 
 <div class="w-100"></div>
 
+<button class="btn btn-outline-success col-md-3 mt-4" type="button" id="input">一鍵輸入</button>
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
 
 </div>
@@ -97,6 +98,31 @@ let mobileChecked = false;
 let mailChecked = false;
 let pswChecked = false;
 window.verifyCallback = verifyCallback;
+
+
+//限制日期最大值是今天
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var yyyy = today.getFullYear();
+if(dd<10){
+  dd='0'+dd
+} 
+if(mm<10){
+  mm='0'+mm
+} 
+today = yyyy+'-'+mm+'-'+dd;
+$("#birthday").attr("max",today);
+
+
+$('#input').click(function(){
+	$('#customerName').val('吳柏毅');
+	$('#mobile').val('0912345678');
+	$('#mail').val('molamolaking860201ispan@gmail.com');
+	$('#password').val('a12345');
+	$('#birthday').val('1997-02-01');
+})
+
 	
 // 到後端進行機器人驗證	
 function verifyCallback(token) {

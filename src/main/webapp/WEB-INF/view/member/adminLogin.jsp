@@ -25,7 +25,7 @@
       <h1 class="h3 mb-3 font-weight-normal">管理員登入</h1>
       <h5><span class="badge badge-secondary badge-danger">${errors.loginFail}</span></h5>
       <label for="inputEmail" class="sr-only">Account</label>
-      <input type="text" id="inputAccount" class="form-control" placeholder="Account" name="account" required autofocus value="">
+      <input type="text" id="inputAccount" class="form-control" placeholder="Account" name="account" required autocomplete="off" autofocus value="">
       <h5><span class="badge badge-secondary badge-danger">${errors.mailNotImput}</span></h5>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required value="">

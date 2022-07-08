@@ -28,7 +28,7 @@ alert(${error});
     <div class="form-group col-md-5">
       <label for="password">請輸入新密碼</label>
       <span id="pswmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="password" class="form-control" id="password" name="password" required>
+      <input type="password" class="form-control" id="password" name="password" required value="">
     </div>
     
      <div class="w-100"></div>
@@ -36,12 +36,13 @@ alert(${error});
     <div class="form-group col-md-5">
       <label for="password2">請再次輸入新密碼</label>
       <span id="pswmsg2" class="badge badge-secondary badge-danger"></span>
-      <input type="password" class="form-control" id="password2" name="password2" required>
+      <input type="password" class="form-control" id="password2" name="password2" required value="">
     </div>
 
 </div>
 
 <div class="form-row justify-content-center mt-4">
+<button class="btn btn-outline-success col-md-3 mt-4" type="button" id="input">一鍵輸入</button>
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
 </div>
 </form>
@@ -51,6 +52,11 @@ alert(${error});
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
+
+$('#input').click(function(){
+	$('#password').val('a12345');
+	$('#password2').val('a12345');
+})
 
 $('#password').blur(function(){
 	var pswInput = $('#password').val();

@@ -10,7 +10,6 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
 <title>重新發送驗證信</title>
-<script>window.verifyCallback = verifyCallback;</script>
 </head>
 <body>
 
@@ -29,12 +28,12 @@ alert(${error});
       <label for="mail">請輸入電子信箱</label>
       <span id="emailcheck" class="badge badge-secondary badge-danger"></span>
       <span id="emailmsg" class="badge badge-secondary badge-danger"></span>
-      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="on">
+      <input type="text" class="form-control" id="mail" placeholder="email@example.com" name="mail" required autocomplete="off" value="">
     </div>
     
      <div class="w-100"></div>
     
-    <small id="readme" class="form-text text-muted ">點擊送出後請在三天內至信箱進行驗證，本站所提供之服務需經驗正後方可正式開通</small>
+    <small id="readme" class="form-text text-muted ">點擊送出後請在三天內至信箱進行驗證，本站所提供之服務需經信箱驗證後方可正式開通</small>
 </div>
 
 <div class="form-row justify-content-center mt-4">
@@ -46,7 +45,7 @@ alert(${error});
 </div>
 
 <div class="w-100"></div>
-
+<button class="btn btn-outline-success col-md-3 mt-4" type="button" id="input">一鍵輸入</button>
 <button type="submit" class="btn btn-outline-primary col-md-3 mt-4" id="submit">送出</button></div>
 
 </div>
@@ -57,12 +56,17 @@ alert(${error});
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
+window.verifyCallback = verifyCallback;
+
+$('#input').click(function(){
+	$('#mail').val('molamolaking860201@gmail.com');
+})
 	
 // 到後端進行機器人驗證	
 function verifyCallback(token) {
 	$.ajax({
     type :"POST",
-    url  : "checkRecaptcha",
+    url  : "${contextRoot}/checkRecaptcha",
     contentType:'application/json',
 	data: JSON.stringify(grecaptcha.getResponse()),
 	success: function(data){
@@ -105,7 +109,7 @@ $('#mail').keyup(function(){
 		} else {
 			$.ajax({
 				type :"POST",
-				url  : "checkYourMail",
+				url  : "${contextRoot}/checkYourMail",
 				contentType:'application/text',
 				data: mailInput,
 				success: function(data){

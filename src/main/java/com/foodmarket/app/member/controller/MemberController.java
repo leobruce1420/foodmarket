@@ -224,7 +224,7 @@ public class MemberController {
 
 				mail.SendMail(email, title, text);
 
-				return "redirect:/HOME";
+				return "member/auth/authMail";
 			} else {
 				logger.info("驗證過的帳號!");
 				m.addAttribute("error", "驗證過的帳號!");
