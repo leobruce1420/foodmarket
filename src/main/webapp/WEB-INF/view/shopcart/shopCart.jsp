@@ -26,7 +26,7 @@
 	
 	<c:forEach var="product" items="${shopCarts}">
 		<tr>
-			<td><input type="text" value="${product.productName}" disabled></td>
+			<td><input type="text" value="${product.productName}" disabled size="40"></td>
 			<td><input type="hidden" id="shopcartId_${product.id}" name="shopCartId" value="${product.id}">			
 				<input type="hidden" id="productId_${product.id}" value="${product.productId}">
 				<select id="amount_${product.id}" class="form-select" onchange="amountChange('${product.id}')" class="numberBtn" name="amount" >
