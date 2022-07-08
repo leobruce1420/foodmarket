@@ -38,13 +38,13 @@
 				<div class="form-row">
 					<div class="col-6">
 						<label for="createDate" class="FormTitle">活動開始日期 : </label> <input
-							type="date" id="date" name="beginDate" max="2022-06-30" required
+							type="date" id="date" name="beginDate" max="2022-07-30" required
 							class="form-control" autocomplete="off"/>
 					</div>
 
 					<div class="col-6">
 						<label for="endDate" class="FormTitle">活動結束日期 : </label> <input
-							type="date" id="date" name="endDate" max="2022-06-30" required
+							type="date" id="date" name="endDate" max="2022-07-30" required
 							class="form-control" autocomplete="off"/>
 					</div>
 				</div>
@@ -79,8 +79,8 @@
 					id="productId" name="productId" autocomplete="off" required /> -->
 						<label for="productId">上架狀態 : </label> <select id="onboard"
 							name="onboard" class="custom-select">
-							<option value="on">上架</option>
-							<option value="off">下架</option>
+							<option value="on">on</option>
+							<option value="off">off</option>
 						</select>
 					</div>
 				</div>
@@ -120,7 +120,7 @@
 		$('#input').click(function(){
     		$('#shopAdName').val('石斑感謝祭');
     		$('#remark').val('一人一石斑，救救產銷班');
-    		$('#shopUrl').val('gfshrjset');    		
+    		$('#shopUrl').val('http://localhost:8080/foodmarket/product/searchproductname?productname=%E7%9F%B3%E6%96%91');    		
     	})
 	</script>
 </body>
