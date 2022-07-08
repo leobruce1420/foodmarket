@@ -153,15 +153,15 @@ function insertManyProduct(cId) {
 	  data : [{
 	           "productNumber" : 1,
 	           "customerId" : cId ,
-	           "productId" :22
+	           "productId" :1
 	    },{
 	     "productNumber" : 1,
 	     "customerId" : cId ,
-	     "productId" :33
+	     "productId" :19
 	    },{
 	     "productNumber" : 1,
 	     "customerId" : cId ,
-	     "productId" :44
+	     "productId" :51
 	    }]
 	    }).then(function(res) {
 	    alert("已加入購物車");

@@ -37,7 +37,7 @@ float:right;
 <div class="background">
 <div class="container">
 <div class="search">
-搜尋：<input class="searchtext" type="text" placeholder="請輸入關鍵字">
+<input class="searchtext" type="text" placeholder="請輸入關鍵字">
 <input id="search" type="submit" value="🔍"/>
 </div>
 <br>
