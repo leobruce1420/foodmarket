@@ -165,7 +165,10 @@ public class StatisticOrderItemService {
 		for (OrderItem data : ps_list) {
 			Long productid = data.getProductId();
 			WorkProduct wp = spDao.findByproductid(productid);
-			String pc = wp.getProductcategory();
+			productcategoryBean productcategoryBean = wp.getProductcategoryBean();
+			Integer categoryId = productcategoryBean.getCategoryid();
+			productcategoryBean productCategory = scDao.findByCategoryid(categoryId);
+			String pc = productCategory.getProductcategoryname();
 			if(pc.equals("蔬菜類")) {
 				WorkProduct wp_vegetable = spDao.findByproductid(productid);
 				String pn_vegetable = wp_vegetable.getProductname();
@@ -186,7 +189,10 @@ public class StatisticOrderItemService {
 		for (OrderItem data : ps_list) {
 			Long productid = data.getProductId();
 			WorkProduct wp = spDao.findByproductid(productid);
-			String pc = wp.getProductcategory();
+			productcategoryBean productcategoryBean = wp.getProductcategoryBean();
+			Integer categoryId = productcategoryBean.getCategoryid();
+			productcategoryBean productCategory = scDao.findByCategoryid(categoryId);
+			String pc = productCategory.getProductcategoryname();
 			if(pc.equals("肉品")) {
 				WorkProduct wp_meat = spDao.findByproductid(productid);
 				String pn_meat = wp_meat.getProductname();
@@ -207,7 +213,10 @@ public class StatisticOrderItemService {
 		for (OrderItem data : ps_list) {
 			Long productid = data.getProductId();
 			WorkProduct wp = spDao.findByproductid(productid);
-			String pc = wp.getProductcategory();
+			productcategoryBean productcategoryBean = wp.getProductcategoryBean();
+			Integer categoryId = productcategoryBean.getCategoryid();
+			productcategoryBean productCategory = scDao.findByCategoryid(categoryId);
+			String pc = productCategory.getProductcategoryname();
 			if(pc.equals("水果類")) {
 				WorkProduct wp_fruit = spDao.findByproductid(productid);
 				String pn_fruit = wp_fruit.getProductname();
@@ -228,7 +237,10 @@ public class StatisticOrderItemService {
 		for (OrderItem data : ps_list) {
 			Long productid = data.getProductId();
 			WorkProduct wp = spDao.findByproductid(productid);
-			String pc = wp.getProductcategory();
+			productcategoryBean productcategoryBean = wp.getProductcategoryBean();
+			Integer categoryId = productcategoryBean.getCategoryid();
+			productcategoryBean productCategory = scDao.findByCategoryid(categoryId);
+			String pc = productCategory.getProductcategoryname();
 			if(pc.equals("海鮮")) {
 				WorkProduct wp_Seafood = spDao.findByproductid(productid);
 				String pn_Seafood = wp_Seafood.getProductname();
