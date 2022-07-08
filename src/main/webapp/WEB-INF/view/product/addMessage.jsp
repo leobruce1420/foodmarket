@@ -93,7 +93,7 @@ table, td, th {
 								<tr>
 									<td style="text-align: center;"><c:out
 											value="${lastestpMsg.productname}" /></td>
-									<%-- 								<td><c:out value="${lastestpMsg.productcategory}" /></td> --%>
+<%-- 									<td><c:out value="${lastestpMsg.productcategory}"/></td> --%>
 <%-- 									<td style="text-align: center;"><c:out --%>
 <%--  											value="${lastestpMsg.productcategoryBean.productcategoryname}" /></td>  --%>
 									<td style="text-align: center;"><c:out
@@ -159,22 +159,22 @@ table, td, th {
 										</div>
 									</div>
 									<br />
-									<!-- 								<div> -->
-									<!-- 									<div class="input-group mb-3"> -->
-									<!-- 										<div class="input-group-prepend"> -->
-									<!-- 											<label class="input-group-text" for="inputGroupSelect01">商品類別</label> -->
-									<!-- 										</div> -->
-									<%-- 										<form:select class="custom-select" id="inputGroupSelect01" --%>
-									<%-- <%-- 											path="productcategory"> --%>
-									<%-- 											<option value="蔬菜類">蔬菜類</option> --%>
-									<%-- 											<option value="水果類">水果類</option> --%>
-									<%-- 											<option value="肉品">肉品</option> --%>
-									<%-- 											<option value="海鮮">海鮮</option> --%>
-									<%-- <%-- 										</form:select> --%>
-									<%-- 									</div> --%>
-									<!-- 								</div> -->
+<!-- 																	<div> -->
+<!-- 																		<div class="input-group mb-3"> -->
+<!-- 																			<div class="input-group-prepend"> -->
+<!-- 																				<label class="input-group-text" for="inputGroupSelect01">商品類別</label> -->
+<!-- 																			</div> -->
+<%-- 																			<form:select class="custom-select" id="inputGroupSelect01" --%>
+<%-- 																				path="productcategory">  --%>
+<!-- 																				<option value="蔬菜類">蔬菜類</option>  -->
+<!-- 																				<option value="水果類">水果類</option>  -->
+<!-- 																				<option value="肉品">肉品</option>  -->
+<!-- 									 											<option value="海鮮">海鮮</option>  -->
+<%-- 																			</form:select>  --%>
+<!-- 																		</div>  -->
+<!-- 																	</div> -->
 
-									<!-- 								<br /> -->
+<!-- 																	<br /> -->
 
 									<div>
 										<%-- 									<form:form class="form" method="post" --%>
@@ -197,6 +197,7 @@ table, td, th {
 														</c:when>
 														<c:otherwise>
 															<option value="${productcategorytakeon.categoryid}">${productcategorytakeon.productcategoryname}</option>
+														
 														</c:otherwise>
 													</c:choose>
 
