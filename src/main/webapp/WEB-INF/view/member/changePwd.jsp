@@ -165,6 +165,27 @@ $('#password').keyup(function(){
 	}
 });
 
+$('#password').keyup(function(){
+	var pswInput = $('#password').val();
+	var pswInput2 = $('#password2').val();
+	
+	if (pswInput2 == "") {
+		pwd2Checked = false;
+		lock();
+		$('#pswmsg2')[0].innerHTML='請再次輸入密碼'
+	}	
+	
+	if(pswInput2 != pswInput){
+		pwd2Checked = false;
+		lock();
+		$('#pswmsg2')[0].innerHTML='密碼不一致'	
+	}else{
+		pwd2Checked = true;
+		lock();
+		$('#pswmsg2')[0].innerHTML=''
+	}
+});
+
 $('#password2').keyup(function(){
 	var pswInput = $('#password').val();
 	var pswInput2 = $('#password2').val();
