@@ -97,8 +97,8 @@ $(window).ready(() => {
 })
 
 var oldPwdCheck = false;
-var pwd1Checked = false;
-var pwd2Checked = false;
+var pwd1Checked = true;
+var pwd2Checked = true;
 var oldPwdInput = $('#oldPassword').val();
 
 $(document).ready(function(){
