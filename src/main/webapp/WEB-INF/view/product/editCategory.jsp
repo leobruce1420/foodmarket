@@ -71,7 +71,7 @@
 									</div>
 									<form:select class="custom-select" id="takeon" name="takeon"
 										path="takeon" >
-										<form:option value="上架中">上架</form:option>
+										<form:option value="上架中">直接上架</form:option>
 										<form:option value="已下架">下架</form:option>
 										</form:select>
 								</div>
