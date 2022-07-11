@@ -85,7 +85,7 @@ table, td, th {
 										<th style="text-align: center;" scope="col">新增日期</th>
 										<th style="text-align: center;" scope="col">商品介紹</th>
 										<th style="text-align: center;" scope="col">庫存數量</th>
-										<th style="text-align: center;" scope="col">上下架</th>
+										<th style="text-align: center;" scope="col">上架狀態</th>
 										<!-- 									<th scope="col">商品類別</th> -->
 										<!-- 								<th scope="col">修改人員</th> -->
 									</tr>
