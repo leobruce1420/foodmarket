@@ -50,7 +50,7 @@ public class ProductCategoryController {
 			List<productcategoryBean> Products = pcmsgService.selectproductcategoryAll();
 			m.addAttribute("productcategory", newpMsg);
 			m.addAttribute("products", Products);
-			return "product/addCategory";
+			return "redirect:/product/all";
 
 //		} catch (UnsupportedEncodingException e) {
 //			// TODO Auto-generated catch block
